@@ -4,7 +4,7 @@ extends Node
 const NAMES := {"camino": "El camino", "z_camino": "Camino", "z_sueno": "Un sueño y muchos momentos", "z_miedo": "Miedo", "z_cambio": "Cambio", "z_final": "Al final"}
 const ZONES := {
 	"camino": "res://zones/zone_camino.gd",
-	"z_camino": "res://zones/zone_camino_lateral.gd",
+	"z_camino": "res://zones/nivel_01_camino.gd",
 }
 
 var zone: Node

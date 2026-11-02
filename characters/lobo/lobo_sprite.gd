@@ -77,7 +77,7 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 			# ciclos por segundo que pide el avance / ciclos por segundo de la animación a speed_scale 1
 			var ciclos := ground / (STRIDE * absf(global_scale.y))
 			var base := sprite.sprite_frames.get_animation_speed(WALK) / sprite.sprite_frames.get_frame_count(WALK)
-			sprite.speed_scale = clampf(ciclos / base, 0.3, 2.5)
+			sprite.speed_scale = clampf(ciclos / base, 0.3, 4.5)
 			sprite.play(WALK)
 	else:
 		_idle_time += delta
