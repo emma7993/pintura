@@ -1,0 +1,347 @@
+[
+  {
+    "path": "manifest.json",
+    "sha256": "d52a8450b8e371f20a3db63ef54ad4b5da862cc6fe61434364d6f1242293f23e",
+    "bytes": 710
+  },
+  {
+    "path": "qa_metrics.json",
+    "sha256": "0807d9f5f6e37182c0287f08649270dc046defdba95b322b69751704517a2f6a",
+    "bytes": 2216
+  },
+  {
+    "path": "QA.md",
+    "sha256": "2eab026ecd6d3aec54c1041b0e33218cda889f7edc776992e093fc6c6bd6ac8b",
+    "bytes": 1515
+  },
+  {
+    "path": "README.md",
+    "sha256": "8094d7c331fa8531d3d4cdbe4023bf895c61dd2cecd6a67f8e4cf6ccb064d9e4",
+    "bytes": 1491
+  },
+  {
+    "path": "00_Art_Direction/Wolf_Design_Guide.md",
+    "sha256": "e861a0269f292047fc2e78b8c517e59081f57471ae5370df127fc6cb41647480",
+    "bytes": 3225
+  },
+  {
+    "path": "00_Art_Direction/References/Original_Brief.txt",
+    "sha256": "014f2eb5a2e879c76871fde6e02d56945a31f5cf115698d19d371db7585987fc",
+    "bytes": 11476
+  },
+  {
+    "path": "00_Art_Direction/References/Wolf_Approved_Neutral.png",
+    "sha256": "c32966113a88208cb6e8accf9e211bb25c57b396144bb403595b01299e957e2c",
+    "bytes": 1571139
+  },
+  {
+    "path": "00_Art_Direction/References/Wolf_Previous_Sheet.png",
+    "sha256": "be3591cd78af957fbac7b83725ad11edae83e78de3652f0c0ede37e1ed55bd92",
+    "bytes": 1262953
+  },
+  {
+    "path": "00_Art_Direction/Skills/wolf-sprites/SKILL.md",
+    "sha256": "3cf7819afa1807dc2555139d13bacd06c569ba703712a33c59d1940bd90af308",
+    "bytes": 1886
+  },
+  {
+    "path": "01_Characters/Wolf/Godot/Preview.gd",
+    "sha256": "4b8bb08b5a5a92d9f2007ff33a2f25b09d0b8849e6383e86218eeef180244b87",
+    "bytes": 1156
+  },
+  {
+    "path": "01_Characters/Wolf/Godot/Preview.tscn",
+    "sha256": "b8acb925da6583c66244d60bfa9bfe93a4e0eb8077b0f0dcd61f6c30ac74809e",
+    "bytes": 612
+  },
+  {
+    "path": "01_Characters/Wolf/Godot/Wolf.gd",
+    "sha256": "24cdf9d1456f7c2acffb1a653a0f95b6c02f861b5f98869172d61b0d6baa4f46",
+    "bytes": 1746
+  },
+  {
+    "path": "01_Characters/Wolf/Godot/Wolf.tres",
+    "sha256": "bb31f8628790aac8790d4a72b2a6d65b6a899169108c0034e10f6577699be0ea",
+    "bytes": 2939
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/look_around/look_around_01.png",
+    "sha256": "46434408ede154eea393a281798118ea6b2215388ff94bf3493f680607e764ce",
+    "bytes": 42258
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/look_around/look_around_02.png",
+    "sha256": "40d8e236a5b2269834cba026ec35edb2fb00c6a9413dadf4fa6725050d810fbf",
+    "bytes": 41825
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/look_around/look_around_03.png",
+    "sha256": "6cb2c5dab1a8774179c89dbc138f4ae2da7f7c651cc213ef0c250527f9965bfd",
+    "bytes": 40355
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/look_around/look_around_04.png",
+    "sha256": "ddd6e73caf49bf5931deb6578741cecca5a4b13e7e84a73cc0334ec472dd86c4",
+    "bytes": 39632
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/look_around/look_around_05.png",
+    "sha256": "02074e035c4419501658d81a3d5d16881895258b5e084ef6e5a7f0ec718bd7f4",
+    "bytes": 41954
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/look_around/look_around_06.png",
+    "sha256": "83d9f1087a66040527bb63ff5e7c30132a06f71d367c43ac5a4f7dd612972b03",
+    "bytes": 40562
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_01.png",
+    "sha256": "4cb3a770d32db1397bd9b0e2b37793b45fce367397b5e47df6fa581e39049858",
+    "bytes": 52337
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_02.png",
+    "sha256": "a0687541f18c4614324fe2a319d5a27b68b98a3d222d3429bd6a37e624002c53",
+    "bytes": 48947
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_03.png",
+    "sha256": "8586ea1ec267402ffa395468eaec7109044220ce8b35000399d03d7a982776f7",
+    "bytes": 51295
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_04.png",
+    "sha256": "08591d1e55e75032bb50984c7988f35ba47bcb4f2bc85d53c5bca46998194725",
+    "bytes": 50803
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_05.png",
+    "sha256": "086cba259df9be980a002f12d0a0c9a234e7f955bf09da8ad49aa6fa85e4e47b",
+    "bytes": 52501
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_06.png",
+    "sha256": "a42d6e2d34f05161e31e5f9d5999ee1a1d03ae7b8d9a19eeeaec9e405990f58e",
+    "bytes": 49968
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_07.png",
+    "sha256": "65c49372d3be20bfc7cf8805c8070b973ccffaef1e4443bbd5464a5c8b4a79ed",
+    "bytes": 51759
+  },
+  {
+    "path": "01_Characters/Wolf/Individual_Frames/walk/walk_08.png",
+    "sha256": "ae2a3b664e2fdaa366781018de2a4f499327a6cab6cf58bd2326f7026e5412db",
+    "bytes": 51438
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/look_around_contact.png",
+    "sha256": "b6b92d911299c83f80197917966801062d2e6a15a018105c66f35a17f90f4bb0",
+    "bytes": 201413
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/look_around.apng",
+    "sha256": "78d119aa3afce7c92b17339f4a46ccaefbad8d52cfcb6101044e0c6e8a317bc2",
+    "bytes": 241558
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/look_around.gif",
+    "sha256": "c4fb0857103505bf2810d81ba6cc26da3461b72288065724a59928205acdcf29",
+    "bytes": 113468
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/Walk_And_Occasional_Look.gif",
+    "sha256": "0ccf8bbd6990f36dfa51f75ae602adc996791c64cbce8174b70da8e0a8b0ba00",
+    "bytes": 1426461
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/walk_contact.png",
+    "sha256": "2779198e8617d7d9eeb5f45c11224562d97d8ed8bb647b3099d8da9db5ff5bd4",
+    "bytes": 332249
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/walk.apng",
+    "sha256": "d891d2580831cccdd2a7f5f4e1a8d38603ec24f8567ab20f3ef423c521631141",
+    "bytes": 404488
+  },
+  {
+    "path": "01_Characters/Wolf/Previews/walk.gif",
+    "sha256": "29b55080f975996f1f396c5c6dbcf6e74535e7a1249f21dae3e3640bfe3d68b3",
+    "bytes": 187591
+  },
+  {
+    "path": "01_Characters/Wolf/Source/GENERATION.md",
+    "sha256": "c7ea600fa9298fbce551a19e2160063753b94a6afb1b19474f887924a2d69268",
+    "bytes": 572
+  },
+  {
+    "path": "01_Characters/Wolf/Source/look_around_original.png",
+    "sha256": "c9c17ca5961b96869a7b7a1c12bd1311c01051967426b141adb5a732f2e725f2",
+    "bytes": 1882655
+  },
+  {
+    "path": "01_Characters/Wolf/Source/walk_original.png",
+    "sha256": "511174dfaebc997b3217e5ec19f46ca16d2f95dda5bda2fae6def0318e489663",
+    "bytes": 1474179
+  },
+  {
+    "path": "01_Characters/Wolf/SpriteSheets/look_around_v003.png",
+    "sha256": "c57f315301b90cb003964f4f0c4795bb6cb1ee13d317a7cb4a906486e1b34e5c",
+    "bytes": 239608
+  },
+  {
+    "path": "01_Characters/Wolf/SpriteSheets/walk_v003.png",
+    "sha256": "d640802eb8defbe4028e096145c46b956d5ea5303ef8e0373093f152965cbd66",
+    "bytes": 399203
+  },
+  {
+    "path": "Godot_Preview/project.godot",
+    "sha256": "0f196ee9a4b5e9224570d4057046ec0f6723e6aa0b25bf401a5f0d33ad48ecf2",
+    "bytes": 258
+  },
+  {
+    "path": "Godot_Preview/Wolf/Godot/Preview.gd",
+    "sha256": "4b8bb08b5a5a92d9f2007ff33a2f25b09d0b8849e6383e86218eeef180244b87",
+    "bytes": 1156
+  },
+  {
+    "path": "Godot_Preview/Wolf/Godot/Preview.tscn",
+    "sha256": "b8acb925da6583c66244d60bfa9bfe93a4e0eb8077b0f0dcd61f6c30ac74809e",
+    "bytes": 612
+  },
+  {
+    "path": "Godot_Preview/Wolf/Godot/Wolf.gd",
+    "sha256": "24cdf9d1456f7c2acffb1a653a0f95b6c02f861b5f98869172d61b0d6baa4f46",
+    "bytes": 1746
+  },
+  {
+    "path": "Godot_Preview/Wolf/Godot/Wolf.tres",
+    "sha256": "bb31f8628790aac8790d4a72b2a6d65b6a899169108c0034e10f6577699be0ea",
+    "bytes": 2939
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/look_around/look_around_01.png",
+    "sha256": "46434408ede154eea393a281798118ea6b2215388ff94bf3493f680607e764ce",
+    "bytes": 42258
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/look_around/look_around_02.png",
+    "sha256": "40d8e236a5b2269834cba026ec35edb2fb00c6a9413dadf4fa6725050d810fbf",
+    "bytes": 41825
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/look_around/look_around_03.png",
+    "sha256": "6cb2c5dab1a8774179c89dbc138f4ae2da7f7c651cc213ef0c250527f9965bfd",
+    "bytes": 40355
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/look_around/look_around_04.png",
+    "sha256": "ddd6e73caf49bf5931deb6578741cecca5a4b13e7e84a73cc0334ec472dd86c4",
+    "bytes": 39632
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/look_around/look_around_05.png",
+    "sha256": "02074e035c4419501658d81a3d5d16881895258b5e084ef6e5a7f0ec718bd7f4",
+    "bytes": 41954
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/look_around/look_around_06.png",
+    "sha256": "83d9f1087a66040527bb63ff5e7c30132a06f71d367c43ac5a4f7dd612972b03",
+    "bytes": 40562
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_01.png",
+    "sha256": "4cb3a770d32db1397bd9b0e2b37793b45fce367397b5e47df6fa581e39049858",
+    "bytes": 52337
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_02.png",
+    "sha256": "a0687541f18c4614324fe2a319d5a27b68b98a3d222d3429bd6a37e624002c53",
+    "bytes": 48947
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_03.png",
+    "sha256": "8586ea1ec267402ffa395468eaec7109044220ce8b35000399d03d7a982776f7",
+    "bytes": 51295
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_04.png",
+    "sha256": "08591d1e55e75032bb50984c7988f35ba47bcb4f2bc85d53c5bca46998194725",
+    "bytes": 50803
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_05.png",
+    "sha256": "086cba259df9be980a002f12d0a0c9a234e7f955bf09da8ad49aa6fa85e4e47b",
+    "bytes": 52501
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_06.png",
+    "sha256": "a42d6e2d34f05161e31e5f9d5999ee1a1d03ae7b8d9a19eeeaec9e405990f58e",
+    "bytes": 49968
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_07.png",
+    "sha256": "65c49372d3be20bfc7cf8805c8070b973ccffaef1e4443bbd5464a5c8b4a79ed",
+    "bytes": 51759
+  },
+  {
+    "path": "Godot_Preview/Wolf/Individual_Frames/walk/walk_08.png",
+    "sha256": "ae2a3b664e2fdaa366781018de2a4f499327a6cab6cf58bd2326f7026e5412db",
+    "bytes": 51438
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/look_around_contact.png",
+    "sha256": "b6b92d911299c83f80197917966801062d2e6a15a018105c66f35a17f90f4bb0",
+    "bytes": 201413
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/look_around.apng",
+    "sha256": "78d119aa3afce7c92b17339f4a46ccaefbad8d52cfcb6101044e0c6e8a317bc2",
+    "bytes": 241558
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/look_around.gif",
+    "sha256": "c4fb0857103505bf2810d81ba6cc26da3461b72288065724a59928205acdcf29",
+    "bytes": 113468
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/Walk_And_Occasional_Look.gif",
+    "sha256": "0ccf8bbd6990f36dfa51f75ae602adc996791c64cbce8174b70da8e0a8b0ba00",
+    "bytes": 1426461
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/walk_contact.png",
+    "sha256": "2779198e8617d7d9eeb5f45c11224562d97d8ed8bb647b3099d8da9db5ff5bd4",
+    "bytes": 332249
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/walk.apng",
+    "sha256": "d891d2580831cccdd2a7f5f4e1a8d38603ec24f8567ab20f3ef423c521631141",
+    "bytes": 404488
+  },
+  {
+    "path": "Godot_Preview/Wolf/Previews/walk.gif",
+    "sha256": "29b55080f975996f1f396c5c6dbcf6e74535e7a1249f21dae3e3640bfe3d68b3",
+    "bytes": 187591
+  },
+  {
+    "path": "Godot_Preview/Wolf/Source/look_around_original.png",
+    "sha256": "c9c17ca5961b96869a7b7a1c12bd1311c01051967426b141adb5a732f2e725f2",
+    "bytes": 1882655
+  },
+  {
+    "path": "Godot_Preview/Wolf/Source/walk_original.png",
+    "sha256": "511174dfaebc997b3217e5ec19f46ca16d2f95dda5bda2fae6def0318e489663",
+    "bytes": 1474179
+  },
+  {
+    "path": "Godot_Preview/Wolf/SpriteSheets/look_around_v003.png",
+    "sha256": "c57f315301b90cb003964f4f0c4795bb6cb1ee13d317a7cb4a906486e1b34e5c",
+    "bytes": 239608
+  },
+  {
+    "path": "Godot_Preview/Wolf/SpriteSheets/walk_v003.png",
+    "sha256": "d640802eb8defbe4028e096145c46b956d5ea5303ef8e0373093f152965cbd66",
+    "bytes": 399203
+  }
+]

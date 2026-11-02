@@ -1,0 +1,32 @@
+{
+  "version": "0.0.3",
+  "status": "candidate_pending_visual_gameplay_acceptance",
+  "animations": {
+    "walk": {
+      "frames": 8,
+      "fps": 8,
+      "loop": true
+    },
+    "look_around": {
+      "frames": 6,
+      "duration_seconds": 0.99,
+      "loop": false
+    },
+    "idle": {
+      "frames": 1,
+      "description": "static hold"
+    }
+  },
+  "cell_size": [
+    256,
+    256
+  ],
+  "ground_y": 238,
+  "alert_interval_seconds": [
+    7,
+    14
+  ],
+  "alert_policy": "idle only, interrupt on movement or air; auto demo simulates a stop",
+  "preferred_destination": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\Game_Assets",
+  "installed_in_user_project": false
+}

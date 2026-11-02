@@ -24,6 +24,8 @@ func _ready() -> void:
 	add_child(music)
 	_load_zone("camino")
 	_fade_to(0.0, 1.6)
+	if "--auto-prueba" in OS.get_cmdline_user_args():
+		add_child((load("res://herramientas/auto_prueba.gd") as GDScript).new())
 
 
 func _load_zone(id: String) -> void:

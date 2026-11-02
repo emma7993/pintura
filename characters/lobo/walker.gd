@@ -12,13 +12,13 @@ var depth_y_far := 280.0         # y (en px de imagen) más lejana
 var depth_y_near := 1290.0       # y más cercana
 var scale_far := 0.4
 var scale_near := 1.35
-var wolf: Wolf
+var wolf: LoboSprite
 var enabled := true
 var _vel := Vector2.ZERO
 
 
 func _ready() -> void:
-	wolf = Wolf.new()
+	wolf = LoboSprite.new()
 	add_child(wolf)
 
 
@@ -63,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	_vel = _vel.move_toward(target, rate * delta)
 	if not _walkable(position):
 		position = _snap(position)
+	var prev := position
 	var step := _vel * delta
 	if step.length() > 0.01:
 		var try_pos := position + step
@@ -75,8 +76,10 @@ func _physics_process(delta: float) -> void:
 		else:
 			_vel = Vector2.ZERO
 	_update_depth()
-	var sp := clampf(_vel.length() / speed, 0.0, 1.0)
-	wolf.animate(delta, sp, _vel.x)
+	# se anima con el desplazamiento real: contra un borde del camino no camina en el sitio
+	var real := (position - prev) / delta
+	var sp := clampf(real.length() / speed, 0.0, 1.0)
+	wolf.animate(delta, sp, real.x if sp > 0.05 else dir.x * 10.0)
 	if sp > 0.05:
 		moved.emit()
 
@@ -87,7 +90,7 @@ func _depth01() -> float:
 
 func _update_depth() -> void:
 	var k := _scale_here()
-	wolf.scale = Vector2.ONE * Wolf.BASE_SCALE * k
+	wolf.scale = Vector2.ONE * LoboSprite.BASE_SCALE * k
 	z_index = int(position.y)
 
 

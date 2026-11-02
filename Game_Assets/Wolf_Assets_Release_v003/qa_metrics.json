@@ -1,0 +1,146 @@
+{
+  "walk": [
+    {
+      "frame": 1,
+      "solid_bbox": [
+        60,
+        28,
+        224,
+        238
+      ],
+      "transparent_pixels": 44149
+    },
+    {
+      "frame": 2,
+      "solid_bbox": [
+        41,
+        26,
+        201,
+        238
+      ],
+      "transparent_pixels": 47376
+    },
+    {
+      "frame": 3,
+      "solid_bbox": [
+        28,
+        26,
+        191,
+        238
+      ],
+      "transparent_pixels": 45566
+    },
+    {
+      "frame": 4,
+      "solid_bbox": [
+        28,
+        27,
+        184,
+        238
+      ],
+      "transparent_pixels": 45608
+    },
+    {
+      "frame": 5,
+      "solid_bbox": [
+        58,
+        29,
+        226,
+        238
+      ],
+      "transparent_pixels": 45618
+    },
+    {
+      "frame": 6,
+      "solid_bbox": [
+        39,
+        28,
+        204,
+        238
+      ],
+      "transparent_pixels": 46591
+    },
+    {
+      "frame": 7,
+      "solid_bbox": [
+        30,
+        28,
+        189,
+        238
+      ],
+      "transparent_pixels": 46454
+    },
+    {
+      "frame": 8,
+      "solid_bbox": [
+        25,
+        29,
+        186,
+        238
+      ],
+      "transparent_pixels": 46367
+    }
+  ],
+  "look_around": [
+    {
+      "frame": 1,
+      "solid_bbox": [
+        66,
+        32,
+        216,
+        238
+      ],
+      "transparent_pixels": 50330
+    },
+    {
+      "frame": 2,
+      "solid_bbox": [
+        47,
+        28,
+        189,
+        238
+      ],
+      "transparent_pixels": 50391
+    },
+    {
+      "frame": 3,
+      "solid_bbox": [
+        39,
+        28,
+        171,
+        238
+      ],
+      "transparent_pixels": 51034
+    },
+    {
+      "frame": 4,
+      "solid_bbox": [
+        66,
+        30,
+        195,
+        238
+      ],
+      "transparent_pixels": 51229
+    },
+    {
+      "frame": 5,
+      "solid_bbox": [
+        47,
+        26,
+        193,
+        238
+      ],
+      "transparent_pixels": 50330
+    },
+    {
+      "frame": 6,
+      "solid_bbox": [
+        39,
+        39,
+        184,
+        238
+      ],
+      "transparent_pixels": 50953
+    }
+  ]
+}

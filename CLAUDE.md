@@ -1,0 +1,22 @@
+# Pintura — contexto para Claude
+
+Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720). Vive dentro de la pintura de la portada del álbum de Immix. Dueño: Emma (Emanuel), habla español, prefiere tono formal, respuestas concisas, opciones cuando haya mejoras, y que todo se haga en automático.
+
+## Reparto de trabajo
+- ChatGPT/Codex: arte y diseño, siempre en `Game_Assets/` (versionado, con `.gdignore`: Godot NO lo importa).
+- Claude: estructura, código e integración. El arte se copia a `characters/...` (p. ej. `characters/lobo/v003/`). No editar los originales de `Game_Assets`; los ajustes se hacen con scripts en `herramientas/`.
+- Leer `Game_Assets/LEEME_CODEX_CLAUDE.md` y el `INTEGRACION_CLAUDE.md` de la entrega vigente antes de integrar arte nuevo.
+
+## Estado del juego
+- Fase 1: movimiento lateral. El lobo (negro, bufanda roja, temeroso) solo CAMINA al inicio; `can_jump=false` en `zones/zone_camino_lateral.gd`. Salto solo con Espacio.
+- Interfaz de animación: `LoboSprite.animate(delta, speed01, vel_x, air, vy)` en `characters/lobo/lobo_sprite.gd`. Lo usan `player.gd` (zonas laterales) y `walker.gd` (zona de la pintura).
+- Zonas: `main.gd` (ZONES), `zones/zone_camino.gd` (pintura), `zones/zone_camino_lateral.gd`, `zones/prueba.tscn` (F6).
+
+## Pruebas
+- Windows: `herramientas/probar_juego.bat` ejecuta el juego unos segundos, guarda capturas en `pruebas/` y el log en `pruebas/godot_log.txt`. Revisar el log y las capturas antes de pedirle nada a Emma.
+- Godot: `C:\Users\Immix\Documents\Godot_v4.7.2-stable_win64_console.exe`.
+
+## Git (dos computadoras: Windows y Mac)
+- Repo privado con Git LFS (png, audio, 3D). `herramientas/subir_cambios.*` y `bajar_cambios.*` sincronizan; revisar `git status` antes de subir.
+- No commitear `.godot/`, logs ni `pruebas/`. Respetar mayúsculas exactas en rutas `res://` y usar `/`.
+- Los archivos .bat usan CRLF y los .sh LF.

@@ -6,3 +6,6 @@ export_credentials.cfg
 *.blend1
 *.blend2
 Thumbs.db
+
+*.log
+pruebas/

@@ -9,8 +9,7 @@ Estructura
 - zones/zone_camino.gd ....... zona Camino en la pintura (vista libre, perspectiva)
 - zones/zone_camino_lateral.gd  zona Camino en vista lateral (el lobo solo camina)
 - zones/prueba.tscn .......... zona de prueba del movimiento (F6): correr y saltar
-- characters/lobo/ ........... lobo jugable: player.gd + sprites de Blender (lobo_walk_*)
-- characters/lobo/procedural/  lobo dibujado por código (respaldo y zona del camino)
+- characters/lobo/ ........... lobo: lobo_sprite.gd (sprites), player.gd (vista lateral), walker.gd (zona de la pintura), lobo_walk_* (hoja de 8 cuadros)
 - core/controls.gd ........... controles (teclado y mando)
 - art/backgrounds/ ........... pintura del camino y su máscara transitable
 - art/reference/ ............. referencia del lobo

@@ -1,0 +1,3 @@
+# Keep Mac/Linux shell scripts executable by their interpreter after checkout.
+*.sh text eol=lf
+*.bat text eol=crlf

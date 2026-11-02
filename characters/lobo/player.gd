@@ -1,14 +1,9 @@
 class_name Player
 extends CharacterBody2D
-## Lobo jugable en vista lateral. Usa los sprites de Blender (characters/lobo/lobo_walk_frames.tres);
-## si no los encuentra, usa el lobo dibujado por código como respaldo.
+## Lobo jugable en vista lateral (sprites en characters/lobo/, ver lobo_sprite.gd).
 ## Los números de abajo son el "tacto" del juego: se pueden ajustar.
 
-const FRAMES_PATH := "res://characters/lobo/lobo_walk_frames.tres"
-const WALK_ANIM := &"walk_shy"
-const SPRITE_SCALE := 0.27        # tamaño del lobo en pantalla (la hoja trae 509 px de alto)
-const SPRITE_OFFSET := Vector2(0, -244)   # deja el origen del nodo en los pies
-const ANIM_REF_SPEED := 60.0      # velocidad (px/s) a la que la caminata va a su ritmo normal (8 FPS)
+const SPRITE_SCALE := 0.60        # tamaño del lobo en pantalla (~130 px de alto)
 
 const ACCEL := 2600.0
 const AIR_ACCEL := 1900.0
@@ -28,8 +23,7 @@ var max_speed := 340.0
 var can_jump := true
 var enabled := true
 
-var sprite: AnimatedSprite2D
-var wolf: Wolf                    # respaldo
+var lobo: LoboSprite
 var _coyote := 0.0
 var _buffer := 0.0
 var _drop_timer := 0.0
@@ -52,33 +46,9 @@ func _ready() -> void:
 
 
 func _build_visual() -> void:
-	var frames: SpriteFrames = null
-	if ResourceLoader.exists(FRAMES_PATH):
-		frames = load(FRAMES_PATH) as SpriteFrames
-	if frames != null:
-		_add_shadow()
-		sprite = AnimatedSprite2D.new()
-		sprite.sprite_frames = frames
-		sprite.animation = WALK_ANIM
-		sprite.offset = SPRITE_OFFSET
-		sprite.scale = Vector2.ONE * SPRITE_SCALE
-		sprite.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-		add_child(sprite)
-	else:
-		wolf = Wolf.new()
-		add_child(wolf)
-
-
-func _add_shadow() -> void:
-	var sh := Polygon2D.new()
-	var pts := PackedVector2Array()
-	for i in 24:
-		var a := TAU * i / 24.0
-		pts.append(Vector2(cos(a) * 42.0, sin(a) * 7.0))
-	sh.polygon = pts
-	sh.color = Color(0, 0, 0, 0.28)
-	sh.z_index = -1
-	add_child(sh)
+	lobo = LoboSprite.new()
+	lobo.scale = Vector2.ONE * SPRITE_SCALE
+	add_child(lobo)
 
 
 func _physics_process(delta: float) -> void:
@@ -132,17 +102,4 @@ func _physics_process(delta: float) -> void:
 
 
 func _animate(delta: float) -> void:
-	if sprite != null:
-		if absf(velocity.x) > 6.0:
-			sprite.flip_h = velocity.x < 0.0            # la hoja mira a la derecha
-		if is_on_floor() and absf(velocity.x) > 6.0:
-			sprite.speed_scale = clampf(absf(velocity.x) / ANIM_REF_SPEED, 0.4, 3.0)
-			if not sprite.is_playing():
-				sprite.play(WALK_ANIM)
-		else:
-			# solo existe la caminata: quieto o en el aire se queda en el primer cuadro
-			if sprite.is_playing():
-				sprite.stop()
-			sprite.frame = 0
-	elif wolf != null:
-		wolf.animate(delta, absf(velocity.x) / max_speed, velocity.x, not is_on_floor(), velocity.y)
+	lobo.animate(delta, absf(velocity.x) / max_speed, velocity.x, not is_on_floor(), velocity.y)

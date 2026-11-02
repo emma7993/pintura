@@ -1,0 +1,2 @@
+# Regenerable import cache is also excluded by the repository .gitignore.
+*.log

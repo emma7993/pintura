@@ -1,0 +1,9 @@
+config_version=5
+[application]
+config/name="Lobo — caminata y alerta"
+run/main_scene="res://Wolf/Godot/Preview.tscn"
+[display]
+window/size/viewport_width=960
+window/size/viewport_height=640
+[rendering]
+renderer/rendering_method="gl_compatibility"

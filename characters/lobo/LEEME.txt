@@ -1,15 +1,4 @@
-Zorro - caminata timida (walk_shy)
-==================================
-Hoja de sprites: fox_walk_shy_sheet.png  (2704 x 1018 px, PNG con transparencia)
-Celdas: 338 x 509 px, 8 columnas x 2 filas, 16 cuadros, orden izquierda->derecha, arriba->abajo
-Velocidad: 8 FPS (ciclo de 2 s), en loop. El zorro mira hacia la DERECHA.
-
-Como importarlo en Godot 4:
-1. Copia esta carpeta al proyecto como res://fox/  (si usas otra ruta, edita las rutas res:// dentro de los .tres/.tscn).
-2. Abre fox_walk_shy.tscn: es un AnimatedSprite2D con la animacion "walk_shy" ya configurada.
-   El origen del nodo queda en los pies del personaje.
-3. Para voltearlo hacia la izquierda: flip_h = true.
-4. Si lo ves muy grande, ajusta la escala del nodo (por ejemplo 0.4). Deja el filtro de textura en Linear.
-
-Cuadros sueltos: carpeta walk_shy/ (768x768, transparentes).
-Los intentos anteriores (idle, walk, jump) estan en _pruebas_anteriores/.
+Lobo - caminata (PROVISIONAL, tomada de Game_Assets/.../References/Wolf_Previous_Sheet.png, fila 1)
+Hoja: lobo_walk_sheet.png (2048 x 320, 8 cuadros de 256 x 320, mira a la DERECHA, loop 8 FPS).
+Suelo en y=312 de la celda y cuerpo en x=150: offset del AnimatedSprite2D = (-22, -152) deja el origen en los pies.
+Para rehacerla con otra hoja: python herramientas/armar_hoja_lobo.py <hoja.png> characters/lobo/lobo_walk_sheet.png <fila> <filas_totales>
