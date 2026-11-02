@@ -4,11 +4,11 @@ extends Node2D
 ## Interfaz: animate(delta, speed01, vel_x, air, vy). Sustituye al lobo dibujado por código.
 
 const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BASE_SCALE * profundidad)
-const FRAMES_PATH := "res://characters/lobo/v003/Godot/Wolf.tres"
+const FRAMES_PATH := "res://characters/lobo/v004/Godot/Wolf.tres"
 const WALK := &"walk"
 const IDLE := &"idle"
 const LOOK := &"look_around"
-const SPRITE_OFFSET := Vector2(0, -110)   # celdas v003 256x256, suelo en y=238
+const SPRITE_OFFSET := Vector2(0, -110)   # celdas v004 256x256, suelo en y=238
 const LOOK_MIN := 7.0
 const LOOK_MAX := 14.0
 
