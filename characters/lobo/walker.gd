@@ -7,7 +7,7 @@ signal moved
 
 var mask: Image
 var world_scale := 1.5           # píxeles del mundo por píxel de la imagen
-var speed := 150.0
+var speed := 88.0                # paso pausado: ~1.1 ciclos de caminata por segundo
 var depth_y_far := 280.0         # y (en px de imagen) más lejana
 var depth_y_near := 1290.0       # y más cercana
 var scale_far := 0.4
@@ -97,12 +97,12 @@ func _update_depth() -> void:
 ## Recorrido del puente (px de imagen) de la ruina hacia lo más lejano. A lo largo de él el lobo
 ## se encoge de forma continua, siguiendo la perspectiva de la pintura.
 const BRIDGE := [Vector2(612, 440), Vector2(590, 420), Vector2(560, 406), Vector2(500, 392), Vector2(400, 376), Vector2(300, 353), Vector2(200, 332), Vector2(188, 326), Vector2(250, 312), Vector2(300, 303), Vector2(350, 296), Vector2(400, 290), Vector2(445, 284)]
-const BRIDGE_SCALE_NEAR := 0.95
+const BRIDGE_SCALE_NEAR := 0.88
 const BRIDGE_SCALE_FAR := 0.76
 
-## Escala fuera del puente, según la altura (px de imagen): casi constante entre la ruina y el faro
-## y grande abajo, en el agua.
-const SCALE_KEYS := [[414.0, 0.95], [668.0, 0.88], [1000.0, 1.10], [1290.0, 1.35]]
+## Escala fuera del puente, según la altura (px de imagen): constante entre Miedo (y=426) y Cambio
+## (y=668) y grande abajo, en el agua.
+const SCALE_KEYS := [[414.0, 0.88], [668.0, 0.88], [1000.0, 1.10], [1290.0, 1.35]]
 
 
 func _scale_here() -> float:

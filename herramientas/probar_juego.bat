@@ -1,5 +1,5 @@
 @echo off
-rem Ejecuta el juego ~18 s moviendo al lobo solo (herramientas/auto_prueba.gd), guarda capturas (pruebas\cuadro_*.png) y log (pruebas\godot_log.txt).
+rem Ejecuta el juego ~22 s moviendo al lobo solo (herramientas/auto_prueba.gd), guarda capturas (pruebas\cuadro_*.png) y log (pruebas\godot_log.txt).
 set GODOT=C:\Users\Immix\Documents\Godot_v4.7.2-stable_win64_console.exe
 cd /d "%~dp0.."
 if not exist pruebas mkdir pruebas

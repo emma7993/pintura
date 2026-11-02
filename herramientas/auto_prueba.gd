@@ -10,8 +10,9 @@ const GUION := [
 	[5.3, ["move_left"], "camina a la izquierda (giro)"],
 	[7.3, [], "se detiene"],
 	[7.8, ["move_right", "move_down"], "diagonal hacia abajo"],
-	[9.3, [], "reposo largo: debe mirar alrededor"],
-	[18.0, null, "fin"],
+	[9.3, ["move_up"], "sube de Cambio hacia Miedo (tamaño constante)"],
+	[15.3, [], "reposo largo: debe mirar alrededor"],
+	[22.0, null, "fin"],
 ]
 
 var _t := 0.0
@@ -47,6 +48,9 @@ func _vigilar_lobo() -> void:
 	if _lobo.sprite and _lobo.sprite.animation != _anim:
 		_anim = _lobo.sprite.animation
 		print("[auto] %.1f s: animación %s (mira %s, escala %.2f)" % [_t, _anim, "derecha" if _lobo.facing > 0 else "izquierda", _lobo.global_scale.x])
+	if _anim == &"walk" and fmod(_t, 1.0) < get_process_delta_time():
+		var y_img: float = (_lobo.get_parent() as Node2D).position.y / 1.5
+		print("[auto] %.1f s:   y=%d escala %.3f ritmo %.2f" % [_t, y_img, _lobo.global_scale.x, _lobo.sprite.speed_scale])
 
 
 func _buscar(n: Node) -> LoboSprite:
