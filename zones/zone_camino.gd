@@ -30,7 +30,7 @@ var _mask_tex: Texture2D
 
 
 func _ready() -> void:
-	var tex: Texture2D = load("res://assets/camino.jpg")
+	var tex: Texture2D = load("res://art/backgrounds/camino.jpg")
 	var bg := Sprite2D.new()
 	bg.texture = tex
 	bg.centered = false
@@ -39,7 +39,7 @@ func _ready() -> void:
 	bg.z_index = -4000
 	add_child(bg)
 
-	_mask_tex = load("res://assets/camino_walk.png")
+	_mask_tex = load("res://art/backgrounds/camino_walk.png")
 	var mask_img := _mask_tex.get_image()
 	if mask_img.is_compressed():
 		mask_img.decompress()

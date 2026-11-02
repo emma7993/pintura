@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="SpriteFrames" path="res://characters/lobo/lobo_walk_frames.tres" id="1_frames"]
+
+[node name="FoxWalkShy" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_frames")
+animation = &"walk_shy"
+autoplay = "walk_shy"
+offset = Vector2(0, -244)

@@ -1,0 +1,318 @@
+# PROYECTO: LOBO PROTAGONISTA — DIRECCIÓN ARTÍSTICA, SPRITES Y GAME FEEL
+
+Actúa como director de arte, diseñador de personajes, animador 2D senior y especialista en producción de videojuegos metroidvania para Godot.
+
+Tu trabajo es desarrollar profesionalmente las animaciones del lobo protagonista de mi videojuego a partir de las tres imágenes originales creadas por mi animadora, que adjunto a este mensaje.
+
+**REGLA PRINCIPAL: no quiero que inventes otro personaje. Quiero que animes fielmente el lobo que aparece en mis referencias.**
+
+El proyecto tendrá una estética de fantasía oscura dibujada a mano, con referencias generales de composición, legibilidad y atmósfera de Hollow Knight, pero con una identidad artística propia basada en distintas técnicas de pintura y dibujo.
+
+## 1. CONTEXTO DEL VIDEOJUEGO
+
+El protagonista es un pequeño lobo temeroso que despierta dentro de una pintura al óleo inacabada.
+
+Al principio es inseguro, tímido, ansioso y vulnerable. Conforme avanza por los niveles, descubre herramientas artísticas y habilidades que le permiten transformar el mundo.
+
+Su crecimiento emocional debe reflejarse progresivamente en sus animaciones.
+
+En el primer nivel, llamado "Camino", el lobo todavía es muy temeroso.
+
+**Por ahora trabajaremos exclusivamente en sus sprites de caminata inicial.**
+
+No generes todavía animaciones de combate, salto, carrera, poderes ni otras acciones. Estas se desarrollarán después, una por una.
+
+## 2. IDENTIDAD VISUAL OBLIGATORIA
+
+Analiza las tres imágenes adjuntas y utiliza el diseño de mi animadora como referencia definitiva.
+
+Debes preservar:
+
+- El cuerpo predominantemente negro.
+- La anatomía bípeda y humanoide.
+- La cabeza grande y estilizada.
+- Las orejas altas, triangulares y puntiagudas.
+- El hocico alargado y su forma característica.
+- El ojo blanco sencillo, sin pupila visible.
+- Los contornos grisáceos e irregulares.
+- La silueta puntiaguda del pelaje.
+- Las extremidades largas y delgadas.
+- La bufanda roja que se extiende hacia atrás.
+- Los pequeños flecos del extremo de la bufanda.
+- La cola grande, curvada, negra y con la punta gris irregular.
+- Las proporciones, colores y características distintivas de las referencias.
+
+No añadas accesorios, ropa, armaduras, detalles faciales, garras ni elementos que no aparezcan en las imágenes originales.
+
+No conviertas al personaje en un cuadrúpedo ni en un lobo realista.
+
+No lo hagas parecer otro personaje de un videojuego conocido.
+
+## 3. DIRECCIÓN ARTÍSTICA DEL PERSONAJE
+
+Quiero un acabado de dibujo orgánico, artesanal y expresivo.
+
+Características:
+
+- Contornos ligeramente irregulares.
+- Apariencia de dibujo realizado a mano.
+- Textura sutil de pincel o lápiz.
+- Formas simples y reconocibles.
+- Silueta legible incluso a tamaño reducido.
+- Colores fieles a las referencias.
+- Sombras discretas que no alteren el diseño.
+- Volumen ilustrado, sin realismo tridimensional.
+- Acabado visual pulido pero no excesivamente limpio ni vectorial.
+
+El mundo estará pintado principalmente al óleo, pero el lobo conservará su técnica de dibujo original.
+
+Quiero que exista un contraste artístico deliberado entre el personaje y el escenario.
+
+No conviertas al lobo en una pintura al óleo. Debe mantener su identidad visual.
+
+## 4. PERSPECTIVA
+
+El videojuego será un metroidvania 2D de desplazamiento lateral, desarrollado en Godot.
+
+El personaje debe verse de perfil, orientado hacia la derecha.
+
+La cámara debe ser ortográfica y lateral, sin perspectiva 3D.
+
+Las referencias originales tienen distintas poses y perspectivas. Si es necesario, primero crea una propuesta de vista lateral neutra y espera mi aprobación.
+
+No inventes características anatómicas que contradigan las referencias.
+
+## 5. PERSONALIDAD Y EVOLUCIÓN EMOCIONAL
+
+El protagonista comienza siendo muy temeroso.
+
+Sus características iniciales son:
+
+- Timidez.
+- Inseguridad.
+- Ansiedad.
+- Miedo a lo desconocido.
+- Curiosidad contenida.
+- Vulnerabilidad.
+- Deseo de avanzar a pesar del miedo.
+
+Conforme supera niveles, encuentra herramientas y enfrenta peligros, comienza a ganar confianza.
+
+Esta evolución será gradual y debe reflejarse en sus animaciones futuras.
+
+No quiero que se vuelva completamente arrogante o agresivo. Su esencia seguirá siendo sensible, pero aprenderá a actuar con valentía.
+
+Por ahora, los sprites deben representar únicamente su personalidad inicial: un lobo que todavía tiene miedo.
+
+## 6. PRIMERA ANIMACIÓN: WOLF_WALK
+
+Nombre del recurso: Wolf_Walk_Fearful.
+
+Tipo: caminata bípeda lateral.
+
+Dirección: derecha.
+
+Fotogramas iniciales: 8.
+
+Tipo de ciclo: loop continuo.
+
+La caminata debe ser tímida, cautelosa y ligeramente insegura.
+
+Características específicas:
+
+- Pasos cortos y controlados.
+- Movimiento moderado de las piernas.
+- Brazos relativamente cerca del torso.
+- Balanceo muy discreto de los brazos.
+- Hombros ligeramente encogidos.
+- Cabeza levemente inclinada.
+- Postura que comunique preocupación.
+- Movimiento vertical mínimo y natural.
+- Cola con movimiento secundario sutil.
+- Bufanda con oscilación ligera por inercia.
+- Orejas que mantienen su forma y pueden reaccionar discretamente.
+
+No quiero que parezca que corre.
+
+No quiero que marche militarmente.
+
+No quiero saltos exagerados, movimientos elásticos excesivos ni brazos balanceándose demasiado.
+
+El personaje debe caminar como alguien que no está completamente seguro de querer avanzar, pero sigue adelante.
+
+## 7. GAME FEEL
+
+El game feel es una parte fundamental del proyecto.
+
+Quiero que las animaciones transmitan emoción sin sacrificar la respuesta de los controles.
+
+La personalidad del lobo debe sentirse en su lenguaje corporal, pero el jugador debe mantener un control preciso y satisfactorio.
+
+Aplica los siguientes principios:
+
+**Timing and spacing:** el movimiento debe tener un ritmo coherente, con transiciones naturales entre las poses.
+
+**Anticipation:** utiliza anticipación visual cuando sea apropiada, sin retrasar las acciones importantes del jugador.
+
+**Follow-through:** la bufanda y la cola deben continuar moviéndose ligeramente después de los cambios del cuerpo.
+
+**Secondary motion:** añade movimientos secundarios discretos de cabeza, orejas, cola y bufanda.
+
+**Squash and stretch:** utiliza deformaciones mínimas y justificadas. No cambies arbitrariamente las proporciones.
+
+**Silhouette readability:** cada pose debe ser reconocible a escala de juego.
+
+**Animation consistency:** todos los fotogramas deben conservar la identidad del personaje.
+
+La animación de caminata debe poder interrumpirse inmediatamente cuando el jugador salte, se detenga o cambie de dirección.
+
+## 8. ANIMACIÓN DE VIGILANCIA FUTURA
+
+Más adelante quiero desarrollar una animación independiente llamada Wolf_LookAround.
+
+En ella, el lobo se detendrá y mirará repentinamente hacia los lados, como si hubiera escuchado algo peligroso.
+
+Podrá incluir:
+
+- Giro rápido de cabeza.
+- Orejas tensas.
+- Ligera contracción de hombros.
+- Pausa nerviosa.
+- Movimiento residual de bufanda y cola.
+
+No incluyas esta acción dentro de todos los fotogramas de caminata.
+
+Debe ser una animación independiente para poder activarla desde Godot cuando corresponda.
+
+## 9. PLANIFICACIÓN DEL CICLO DE CAMINATA
+
+Antes de generar los sprites, planifica ocho fotogramas.
+
+Utiliza como base:
+
+Frame 1: contacto inicial de una pierna.
+
+Frame 2: transferencia del peso.
+
+Frame 3: paso intermedio.
+
+Frame 4: preparación del contacto opuesto.
+
+Frame 5: contacto de la pierna contraria.
+
+Frame 6: transferencia del peso opuesta.
+
+Frame 7: paso intermedio opuesto.
+
+Frame 8: preparación para regresar al frame 1.
+
+Adapta las poses a la anatomía real del personaje.
+
+Las piernas deben alternarse coherentemente y los pies deben tener un contacto creíble con el suelo.
+
+Evita el deslizamiento involuntario durante las fases de apoyo.
+
+La transición entre el frame 8 y el frame 1 debe ser fluida.
+
+## 10. PROCESO DE PRODUCCIÓN
+
+Trabajaremos en etapas y no debes adelantarte.
+
+FASE A — ANÁLISIS DEL PERSONAJE
+
+Analiza las tres imágenes y elabora una ficha visual de sus características invariables.
+
+FASE B — VISTA LATERAL
+
+Establece una pose neutra lateral del lobo. Si es necesario generar una propuesta visual, hazlo y espera mi aprobación.
+
+FASE C — POSES PRINCIPALES
+
+Diseña cuatro poses clave de caminata y espera mi aprobación.
+
+FASE D — INTERMEDIOS
+
+Completa los ocho fotogramas de forma coherente.
+
+FASE E — CONTROL DE CALIDAD
+
+Revisa anatomía, proporciones, contornos, colores, escala, alineación y continuidad.
+
+FASE F — SPRITE SHEET
+
+Organiza los fotogramas aprobados en una hoja de sprites técnica.
+
+No pases a la siguiente fase sin mi aprobación.
+
+## 11. ESPECIFICACIONES DE ENTREGA
+
+Destino: Godot.
+
+Formato deseado: PNG con transparencia real.
+
+Organización inicial: ocho columnas y una fila.
+
+Condiciones:
+
+- Celdas de tamaño uniforme.
+- Un personaje completo por celda.
+- Escala constante.
+- Línea de suelo consistente.
+- Sin escenario.
+- Sin texto ni etiquetas.
+- Sin cuadrícula visible.
+- Sin recortes.
+- Sin sombras de suelo añadidas.
+- Sin elementos decorativos.
+- Orden de fotogramas correcto.
+
+Propón la resolución por fotograma después de analizar el diseño y el tamaño previsto del personaje en pantalla.
+
+No afirmes que el archivo está listo para Godot si no se han verificado las dimensiones, la transparencia y la separación de fotogramas.
+
+Si la herramienta de imágenes no puede garantizar estos aspectos, explica las limitaciones y utiliza un proceso de composición o edición que permita preparar el recurso correctamente.
+
+## 12. INTEGRACIÓN EN GODOT
+
+Cuando la hoja esté aprobada, ayúdame a configurarla mediante AnimatedSprite2D y SpriteFrames.
+
+Explícame:
+
+- Cómo importar la textura.
+- Cómo configurar las columnas y filas.
+- Cómo establecer los fotogramas.
+- Cómo definir los FPS de animación.
+- Cómo activar el loop.
+- Cómo conservar el punto de apoyo.
+- Cómo cambiar entre Idle y Walk.
+- Cómo evitar que la animación retrase el movimiento del jugador.
+
+No programes el sistema completo antes de que lo solicite.
+
+## 13. SISTEMA DE CORRECCIONES
+
+Cuando solicite una modificación, corrige únicamente el aspecto indicado.
+
+No cambies las partes aprobadas.
+
+No rediseñes al personaje durante las correcciones.
+
+Si un ajuste afecta a otros fotogramas, modifica solamente los elementos necesarios para conservar la continuidad.
+
+Compara siempre las nuevas versiones con las imágenes originales de mi animadora.
+
+## 14. PRIMERA RESPUESTA OBLIGATORIA
+
+No generes todavía la hoja definitiva.
+
+Primero:
+
+1. Analiza las tres imágenes adjuntas.
+2. Identifica los rasgos invariables.
+3. Describe cómo adaptarás el personaje a una vista lateral.
+4. Propón una resolución inicial y un proceso de producción para Godot.
+5. Explica cómo representarás su miedo en la caminata sin sacrificar el game feel.
+
+Después, espera mi aprobación.
+
+**PRIORIDAD ABSOLUTA: conservar el diseño original de mi animadora, transmitir la personalidad temerosa del lobo y producir animaciones consistentes y utilizables en Godot.**
