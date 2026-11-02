@@ -1,0 +1,6 @@
+.godot/
+*.translation
+export_credentials.cfg
+*.blend1
+*.blend
+.DS_Store
