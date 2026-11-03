@@ -3,6 +3,8 @@ extends Node2D
 ## Guion: el lobo aparece con miedo y solo camina; unas sombras lo persiguen y lo obligan a apurarse y luego
 ## a correr. A lo lejos ve una luz al otro lado de un hueco (ahí descubre el salto). La luz guarda el pincel,
 ## primer upgrade: con él pinta una barrera de óleo detrás de sí y las sombras se quedan atrás.
+## La luz está en una plataforma alta al otro lado del hueco. Al final, la puerta de regreso al lienzo
+## principal es un boceto apagado: hay que pintarla con el pincel para que se active.
 ## Se corre solo con F6 (zones/nivel_01_camino.tscn) o entrando desde el camino de la pintura (main.gd).
 
 signal exit_requested(next_zone: String)
@@ -13,9 +15,11 @@ const GROUND_Y := 600.0
 const WIDTH := 6000.0
 const SPAWN := Vector2(260, 600)
 const TRACK := 5                          # canción: Camino
-const GAP := Vector2(3950, 4120)          # hueco que hay que saltar (x de inicio, x de fin); primer salto: generoso
+const GAP := Vector2(3950, 4110)          # hueco que hay que saltar (x de inicio, x de fin)
+const HIGH_Y := 490.0                     # suelo de la plataforma alta, después del hueco (salto máx. ~175 px)
 const BRUSH_X := 4560.0                   # la luz con el pincel
-const EXIT_X := 5800.0
+const EXIT_X := 5700.0                    # puerta de regreso al lienzo principal
+const GATE_SCALE := 1.8
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 const STAGES := [
 	[0.0, 115.0, 85.0, 760.0],            # miedo: solo camina
@@ -34,8 +38,12 @@ var shadow_x := -INF                      # frente de las sombras (px de mundo);
 var has_brush := false
 var barrier_x := -INF                     # -INF = sin barrera
 var shadows_gone := false
+var gate_open := false                    # la puerta ya se pintó
 
 var _t := 0.0
+var _gate_k := 0.0                        # 0..1: avance de la pintura de la puerta
+var _gate_paint: Sprite2D                 # copia de la puerta en óleo, se revela de abajo hacia arriba
+var _gate_hint := false
 var _stage := 0
 var _shadow_speed := 0.0
 var _shadow_alpha := 1.0
@@ -93,19 +101,26 @@ func _ready() -> void:
 # --- terreno y decoración -------------------------------------------------------------------------
 
 func _build_ground() -> void:
-	_ground_strip(-160.0, GAP.x)
-	_ground_strip(GAP.y, WIDTH + 200.0)
+	_ground_strip(-160.0, GAP.x, GROUND_Y)
+	_ground_strip(GAP.y, WIDTH + 200.0, HIGH_Y)
 	_solid(Rect2(-200, GROUND_Y, GAP.x + 200, 400))
-	_solid(Rect2(GAP.y, GROUND_Y, WIDTH - GAP.y + 400, 400))
+	_solid(Rect2(GAP.y, HIGH_Y, WIDTH - GAP.y + 400, 510))
 	_solid(Rect2(-240, GROUND_Y - 1200, 240, 1200))          # bordes del mundo
 	_solid(Rect2(WIDTH, GROUND_Y - 1200, 240, 1200))
-	# bordes del hueco: piedras para que se lea dónde se acaba el suelo
+	# pared de la plataforma alta y piedras en el borde del hueco
+	var wb: Array = _metrics.wall.bounds
+	_place("wall", Vector2(GAP.y + 30, GROUND_Y + 40), 170.0 / float(wb[3]), -9).modulate.a = 0.8
 	_place("stones", Vector2(GAP.x - 20, GROUND_Y + 8), 0.7, -8)
-	_place("stones", Vector2(GAP.y + 30, GROUND_Y + 8), 0.7, -8)
+	_place("stones", Vector2(GAP.y + 40, HIGH_Y + 8), 0.6, -8)
 
 
-## Tira de suelo a lápiz entre x0 y x1 con los módulos ground_a/b/c (sin colisión: va aparte).
-func _ground_strip(x0: float, x1: float) -> void:
+## Altura del suelo en x: baja antes del hueco, alta después.
+func _ground_at(x: float) -> float:
+	return HIGH_Y if x >= GAP.y else GROUND_Y
+
+
+## Tira de suelo a lápiz entre x0 y x1 a la altura y (sin colisión: va aparte).
+func _ground_strip(x0: float, x1: float, ground: float) -> void:
 	var x := x0
 	var i := 0
 	while x < x1 - 40.0:
@@ -114,7 +129,7 @@ func _ground_strip(x0: float, x1: float) -> void:
 		var f := 2.0
 		var s := _sprite(id, -10)
 		s.scale = Vector2.ONE * f
-		s.position = Vector2(x - float(b[0]) * f, GROUND_Y - float(b[1]) * f)
+		s.position = Vector2(x - float(b[0]) * f, ground - float(b[1]) * f)
 		# el último módulo se recorta para no invadir el hueco
 		var room := x1 - x
 		if room < float(b[2]) * f:
@@ -139,14 +154,19 @@ func _solid(r: Rect2) -> void:
 
 func _build_decor() -> void:
 	for e in [["tree_left", 760.0, 2.4], ["tree_right", 1900.0, 2.8], ["tree_left", 2900.0, 2.6], ["tree_right", 5100.0, 2.6]]:
-		_place(e[0], Vector2(e[1], GROUND_Y + 4), e[2], -18).modulate.a = 0.38
+		_place(e[0], Vector2(e[1], _ground_at(e[1]) + 4), e[2], -18).modulate.a = 0.38
 	for j in 17:
 		var x := 420.0 + j * 330.0
 		if x > GAP.x - 120 and x < GAP.y + 120:
 			continue
-		_place("reeds" if j % 2 == 0 else "stones", Vector2(x, GROUND_Y + 5), 0.55, -8).modulate.a = 0.6
-	_place("pedestal", Vector2(BRUSH_X, GROUND_Y + 5), 0.6, -8)
-	_place("gate", Vector2(EXIT_X, GROUND_Y + 4), 1.8, -18).modulate.a = 0.5
+		_place("reeds" if j % 2 == 0 else "stones", Vector2(x, _ground_at(x) + 5), 0.55, -8).modulate.a = 0.6
+	_place("pedestal", Vector2(BRUSH_X, HIGH_Y + 5), 0.6, -8)
+	# puerta: boceto gris apagado; encima, su versión en óleo, oculta hasta que se pinta
+	_place("gate", Vector2(EXIT_X, HIGH_Y + 4), GATE_SCALE, -18).modulate.a = 0.5
+	_gate_paint = _place("gate", Vector2(EXIT_X, HIGH_Y + 4), GATE_SCALE, -17)
+	_gate_paint.modulate = Color(0.80, 0.16, 0.14)
+	_gate_paint.region_enabled = true
+	_gate_paint.visible = false
 
 
 func _place(id: String, at: Vector2, f: float, depth: int) -> Sprite2D:
@@ -258,11 +278,20 @@ func _physics_process(delta: float) -> void:
 		_caught("cayó al hueco")
 	if not has_brush and absf(x - BRUSH_X) < 70.0 and walker.is_on_floor():
 		_take_brush()
-	if has_brush and barrier_x == -INF and not _busy and Input.is_action_just_pressed("paint"):
-		_paint_barrier()
+	var at_gate := absf(x - EXIT_X) < 170.0
+	if shadows_gone and at_gate and not gate_open and not _gate_hint:
+		_gate_hint = true
+		_show_hint("La puerta está apagada.  F: pintarla para volver al lienzo", 4.5)
+	if has_brush and not _busy and Input.is_action_just_pressed("paint"):
+		if barrier_x == -INF and not shadows_gone:
+			_paint_barrier()
+		elif shadows_gone and at_gate and not gate_open and _gate_k == 0.0:
+			_paint_gate()
+	_update_gate_paint()
 
 	_update_camera(delta)
 	_update_exits()
+	_check_exit()
 	queue_redraw()
 	_shadow_layer.queue_redraw()
 
@@ -316,7 +345,7 @@ func _caught(why: String) -> void:
 
 func _take_brush() -> void:
 	has_brush = true
-	_checkpoint = Vector2(BRUSH_X, GROUND_Y)
+	_checkpoint = Vector2(BRUSH_X, HIGH_Y)
 	# el destello de la luz empuja a las sombras hacia atrás un momento
 	if shadow_x != -INF:
 		shadow_x = minf(shadow_x, BRUSH_X - 950.0)
@@ -339,6 +368,29 @@ func _paint_barrier() -> void:
 	tw.tween_property(self, "_barrier_k", 1.0, 0.55).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
+func _paint_gate() -> void:
+	print("[nivel1] %.1f s: pinta la puerta" % _t)
+	_gate_paint.visible = true
+	var tw := create_tween()
+	tw.tween_property(self, "_gate_k", 1.0, 1.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tw.tween_callback(func() -> void:
+		gate_open = true
+		print("[nivel1] %.1f s: la puerta se activa" % _t)
+		_show_hint("La puerta está abierta"))
+
+
+## Revela la puerta en óleo de abajo hacia arriba según _gate_k.
+func _update_gate_paint() -> void:
+	if not _gate_paint.visible:
+		return
+	var b: Array = _metrics.gate.bounds
+	var bottom := float(b[1]) + float(b[3])
+	var h := float(b[3]) * _gate_k
+	var base := Vector2(EXIT_X, HIGH_Y + 4) - Vector2(float(b[0]) + float(b[2]) * 0.5, bottom) * GATE_SCALE
+	_gate_paint.region_rect = Rect2(0, bottom - h, 256, h)
+	_gate_paint.position = base + Vector2(0, (bottom - h) * GATE_SCALE)
+
+
 func _update_camera(delta: float) -> void:
 	# mira hacia adelante cuando corre, para ver lo que viene
 	var ahead := clampf(walker.velocity.x * 0.45, -60.0, 200.0)
@@ -346,43 +398,69 @@ func _update_camera(delta: float) -> void:
 
 
 func _update_exits() -> void:
+	# única salida: la puerta pintada, que lleva de vuelta al lienzo principal
 	var found := ""
-	if absf(walker.position.x - 110.0) < 80.0 and shadow_x == -INF:
+	if gate_open and absf(walker.position.x - EXIT_X) < 90.0:
 		found = "camino"
-	elif shadows_gone and absf(walker.position.x - EXIT_X) < 90.0:
-		found = "z_sueno"
 	cur_exit = found
 	var now_near := found != "" and _moved
 	if now_near != near_exit:
 		near_exit = now_near
 		near_exit_changed.emit(near_exit)
 		if near_exit and exit_requested.get_connections().is_empty():
-			_show_hint("Fin de la prueba  ·  E: salir (en el juego completo)")
+			_show_hint("E: volver al lienzo  (en el juego completo)")
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if near_exit and InputMap.has_action("interact") and event.is_action_pressed("interact"):
+func _check_exit() -> void:
+	if near_exit and not _busy and InputMap.has_action("interact") and Input.is_action_just_pressed("interact"):
+		print("[nivel1] %.1f s: entra por la puerta hacia «%s»" % [_t, cur_exit])
 		exit_requested.emit(cur_exit)
 
 
 # --- dibujo -----------------------------------------------------------------------------------------
 
 func _draw() -> void:
-	# salidas: destello rojo, como en el camino de la pintura
-	var pulse := 1.0 + sin(_t * 3.0) * 0.15
-	for e in [[110.0, shadow_x == -INF], [EXIT_X, shadows_gone]]:
-		if e[1]:
-			var c := Vector2(e[0] as float, GROUND_Y - 70.0)
-			draw_circle(c, 46.0 * pulse, Color(0.75, 0.1, 0.12, 0.10))
+	# puerta pintada: luz cálida en el vano y el destello rojo de salida, como en el camino de la pintura
+	if _gate_k > 0.0:
+		var pulse := 1.0 + sin(_t * 3.0) * 0.15
+		var c := Vector2(EXIT_X, HIGH_Y - 90.0)
+		for k in [[120.0, 0.08], [70.0, 0.14], [38.0, 0.26]]:
+			draw_circle(c, (k[0] as float) * pulse, Color(1.0, 0.88, 0.6, (k[1] as float) * _gate_k))
+		_draw_gate_oil()
+		if gate_open:
 			draw_circle(c, 26.0 * pulse, Color(0.75, 0.1, 0.12, 0.28))
 			draw_circle(c, 9.0, Color(0.95, 0.85, 0.8, 0.9))
 	if not has_brush:
 		_draw_light()
 
 
+## Trazos de óleo sobre el arco de la puerta: suben por los dos pilares y se juntan en la clave.
+func _draw_gate_oil() -> void:
+	for stroke in [[78.0, OIL[0], 15.0], [64.0, OIL[1], 8.0], [92.0, OIL[2], 6.0]]:
+		var r: float = stroke[0]
+		var spring := HIGH_Y - 150.0
+		for side in [-1.0, 1.0]:
+			# medio arco: del pie del pilar a la clave
+			var pts := PackedVector2Array()
+			var n := 16
+			for i in n + 1:
+				var u := float(i) / n
+				var p: Vector2
+				if u < 0.45:
+					p = Vector2(EXIT_X + side * r, lerpf(HIGH_Y + 2.0, spring, u / 0.45))
+				else:
+					var a := lerpf(0.0, PI / 2.0, (u - 0.45) / 0.55)
+					p = Vector2(EXIT_X + side * r * cos(a), spring - r * sin(a))
+				if u > _gate_k:
+					break
+				pts.append(p + Vector2(sin(u * 9.0 + side) * 2.5, 0))
+			if pts.size() > 1:
+				draw_polyline(pts, stroke[1], stroke[2], true)
+
+
 ## La luz que se ve a lo lejos, con el pincel flotando sobre el pedestal.
 func _draw_light() -> void:
-	var c := Vector2(BRUSH_X, GROUND_Y - 150.0 + sin(_t * 1.6) * 6.0)
+	var c := Vector2(BRUSH_X, HIGH_Y - 150.0 + sin(_t * 1.6) * 6.0)
 	var p := 1.0 + sin(_t * 2.2) * 0.08
 	draw_colored_polygon(PackedVector2Array([c + Vector2(-26, 0), c + Vector2(26, 0), c + Vector2(90, -620), c + Vector2(-90, -620)]), Color(1.0, 0.93, 0.72, 0.16))
 	for k in [[150.0, 0.07], [95.0, 0.12], [55.0, 0.22], [28.0, 0.45]]:
@@ -398,18 +476,19 @@ func _draw_light() -> void:
 ## Barrera de óleo: trazos gruesos y ondulados que crecen desde el suelo.
 func _draw_barrier(ci: CanvasItem) -> void:
 	var h := 300.0 * _barrier_k
+	var gy := _ground_at(barrier_x)
 	for i in 7:
 		var x0 := barrier_x - 48.0 + i * 16.0
 		var pts := PackedVector2Array()
 		var steps := 14
 		for s in steps + 1:
-			var y := GROUND_Y + 6.0 - h * float(s) / steps
+			var y := gy + 6.0 - h * float(s) / steps
 			pts.append(Vector2(x0 + sin(float(s) * 0.7 + i * 1.9) * 9.0 + sin(_t * 1.5 + i) * 2.0, y))
 		var col: Color = OIL[i % OIL.size()]
 		ci.draw_polyline(pts, col, 20.0 - absf(i - 3.0) * 2.0, true)
 	# brillo de la pintura fresca
 	if h > 10.0:
-		ci.draw_line(Vector2(barrier_x - 6, GROUND_Y - 20), Vector2(barrier_x + 2, GROUND_Y - h + 24), Color(1, 0.97, 0.9, 0.55), 3.0, true)
+		ci.draw_line(Vector2(barrier_x - 6, gy - 20), Vector2(barrier_x + 2, gy - h + 24), Color(1, 0.97, 0.9, 0.55), 3.0, true)
 
 
 ## Sombras: una masa de tinta con borde ondulante, brazos que se estiran y ojos pálidos.
@@ -437,7 +516,7 @@ func _draw_shadows() -> void:
 		_shadow_layer.draw_colored_polygon(pts, Color(INK, (layer[1] as float) * _shadow_alpha))
 	# brazos que se estiran hacia el lobo
 	for i in 5:
-		var base := Vector2(fx, GROUND_Y - 30.0 - i * 70.0)
+		var base := Vector2(fx, _ground_at(fx + 60.0) - 30.0 - i * 70.0)
 		var arm_len := 70.0 + 45.0 * sin(_t * 2.1 + i * 1.3)
 		if barrier_x != -INF:
 			arm_len = minf(arm_len, barrier_x - 50.0 - fx)   # chocan contra la barrera

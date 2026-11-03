@@ -11,6 +11,7 @@ static func ensure() -> void:
 	_action("move_down", [KEY_S, KEY_DOWN], JOY_BUTTON_DPAD_DOWN, JOY_AXIS_LEFT_Y, 1.0)
 	_action("jump", [KEY_SPACE], JOY_BUTTON_A, -1, 0.0)
 	_action("paint", [KEY_F, KEY_K], JOY_BUTTON_X, -1, 0.0)
+	_action("interact", [KEY_E, KEY_ENTER], JOY_BUTTON_Y, -1, 0.0)
 
 
 static func _action(action_name: String, keys: Array, joy_button: int, axis: int, axis_val: float) -> void:
