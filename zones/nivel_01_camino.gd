@@ -315,12 +315,14 @@ func _build_color_props() -> void:
 	_brush_pickup = _color_sprite("Objects/brush_pickup.png", -6)
 	_brush_pickup.centered = true
 	_brush_pickup.scale = Vector2.ONE * 0.42
-	# altar pequeño: pie del dibujo en y=198 de su celda; el tintero se apoya en la losa (y≈114)
-	var altar := _color_sprite("Altar/altar_small.png", -8)
-	altar.position = Vector2(ALTAR_X - 128.0, HIGH_Y + 4.0 - 198.0)
+	# altar: el mismo pedestal a lápiz que el del pincel (sin color); encima, el tintero de vidrio vacío,
+	# aclarado para que se lea transparente (pie del frasco en y=236 de su celda)
+	var ped := _place("pedestal", Vector2(ALTAR_X, HIGH_Y + 5.0), 0.6, -8)
+	var top: float = ped.position.y + float(_metrics.pedestal.bounds[1]) * 0.6
 	_inkwell = _color_sprite("Altar/inkwell_empty.png", -7)
 	_inkwell.scale = Vector2.ONE * 0.5
-	_inkwell.position = Vector2(ALTAR_X - 128.0 * 0.5, HIGH_Y + 4.0 - 198.0 + 116.0 - 236.0 * 0.5)
+	_inkwell.position = Vector2(ALTAR_X - 128.0 * 0.5, top + 4.0 - 236.0 * 0.5)
+	_inkwell.modulate = Color(1.45, 1.45, 1.5, 0.95)
 	# cascada: chorro 160x720 en (112,0) y charco 384x128 en (0,676) de un lienzo 384x804; el agua del
 	# charco (y≈100 de su celda) queda a ras del suelo alto
 	var origin := Vector2(FALL_X - 192.0, HIGH_Y + 8.0 - 776.0)

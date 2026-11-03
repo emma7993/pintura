@@ -11,6 +11,11 @@ signal action_finished(anim: StringName)
 
 const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BASE_SCALE * profundidad)
 const VARITA := "res://characters/lobo/varita_v002"
+const CAMINATA := "res://characters/lobo/caminata_v005"
+## La caminata v005 tiene dos cuadros corridos: el 2 (cuerpo ~8 px atrás) y el 8 (~9 px adelante); se
+## corrigen a medias para que el torso no tiemble sin que los pies patinen. Índices desde 0.
+const WALK_FIX := {1: 5.0, 7: -6.0}
+const IDLE_WALK_FRAME := 2        # reposo sin pincel: cuadro 3 de la caminata (pies juntos)
 const IDLE := &"idle"
 const WALK := &"walk"
 const RUN := &"run"
@@ -24,6 +29,7 @@ const CELL_FEET := Vector2(128, 238)      # pies dentro de la celda (para la pun
 ## usa un poco más para un paso algo más largo sin que se note el deslizamiento.
 const STRIDE := 152.0
 const RUN_STRIDE := 311.0
+const STRIDE_V005 := 145.0         # caminata sin pincel (v005, zancada medida ~132)
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0
@@ -49,7 +55,7 @@ func _ready() -> void:
 	for state in ["color", "dry", "ink"]:
 		_tips[state] = load(VARITA + "/Godot/Wolf_tip_%s.tres" % state)
 	_tip = _layer(_tips.dry)
-	sprite = _layer(load(VARITA + "/Godot/Wolf_body.tres"))
+	sprite = _layer(_body_frames())
 	sprite.animation = IDLE
 	sprite.play(IDLE)
 	sprite.animation_finished.connect(_on_finished)
@@ -59,6 +65,26 @@ func _ready() -> void:
 	for c in JSON.parse_string(FileAccess.get_file_as_string(VARITA + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c
 	_sync_layers()
+
+
+## Cuadros del cuerpo de varita_v002, pero sin pincel camina y reposa con las manos encogidas al pecho
+## (caminata v005, elegida por Emma): la mano adelantada de v002 parecía en guardia, como para pelear.
+func _body_frames() -> SpriteFrames:
+	var f := (load(VARITA + "/Godot/Wolf_body.tres") as SpriteFrames).duplicate() as SpriteFrames
+	var walk: Array[Texture2D] = []
+	for i in 12:
+		walk.append(load(CAMINATA + "/walk_%02d.png" % (i + 1)))
+	f.clear(WALK)
+	for t in walk:
+		f.add_frame(WALK, t)
+	f.clear(IDLE)
+	f.add_frame(IDLE, walk[IDLE_WALK_FRAME])
+	return f
+
+
+## Corrección horizontal (px de celda) de los cuadros de la caminata v005 que quedaron corridos.
+func _frame_fix() -> float:
+	return WALK_FIX.get(sprite.frame, 0.0) if sprite.animation == WALK else 0.0
 
 
 func _layer(frames: SpriteFrames) -> AnimatedSprite2D:
@@ -85,6 +111,7 @@ func _sync_layers() -> void:
 	if _base == null or sprite == null:
 		return
 	var shown := brush != "" and _base.sprite_frames.has_animation(sprite.animation)
+	sprite.offset = SPRITE_OFFSET + Vector2(_frame_fix(), 0.0)
 	for s in [_base, _tip]:
 		s.visible = shown
 		if shown:
@@ -188,7 +215,8 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 		_running = cell > (RUN_TO if _running else RUN_FROM)
 		var base := RUN if _running else WALK
 		# ciclos por segundo que pide el avance / ciclos por segundo de la animación a speed_scale 1
-		var ciclos := cell / (RUN_STRIDE if _running else STRIDE)
+		var walk_stride := STRIDE if brush != "" else STRIDE_V005
+		var ciclos := cell / (RUN_STRIDE if _running else walk_stride)
 		var fps := sprite.sprite_frames.get_animation_speed(base)
 		var rate := fps / sprite.sprite_frames.get_frame_count(base)
 		sprite.speed_scale = clampf(ciclos / rate, 0.3, 4.5)

@@ -14,6 +14,7 @@ var fade: ColorRect
 var music: AudioStreamPlayer
 var _busy := false
 var _first := true
+var _choosing := false            # esperando "continuar" o "nueva partida" al arrancar
 const LEGEND := "No es para mí, es para ti…"
 
 
@@ -22,10 +23,44 @@ func _ready() -> void:
 	_build_ui()
 	music = AudioStreamPlayer.new()
 	add_child(music)
+	var auto := "--auto-prueba" in OS.get_cmdline_user_args()
+	if auto:
+		Inventario.reiniciar()
+	else:
+		Inventario.cargar()
 	_load_zone("camino")
 	_fade_to(0.0, 1.6)
-	if "--auto-prueba" in OS.get_cmdline_user_args():
+	if auto:
 		add_child((load("res://herramientas/auto_prueba.gd") as GDScript).new())
+	elif _has_save():
+		# hay una partida guardada: se elige seguir o empezar de cero antes de caminar
+		_choosing = true
+		zone.walker.enabled = false
+		hint.text = "Partida guardada.   Enter: continuar   ·   N: nueva partida"
+		hint.modulate.a = 1.0
+
+
+func _has_save() -> bool:
+	return Inventario.pincel or Inventario.tintero or not Inventario.progreso.is_empty()
+
+
+## N (o 0 en cualquier momento): borra la partida y vuelve a empezar desde el principio de la pintura.
+func _new_game() -> void:
+	Inventario.reiniciar()
+	(load("res://zones/zone_camino.gd") as GDScript).set("return_pos", Vector2.ZERO)
+	get_tree().reload_current_scene()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	var k := event as InputEventKey
+	if k == null or not k.pressed or k.echo:
+		return
+	if k.keycode == KEY_0 or (_choosing and k.keycode == KEY_N):
+		_new_game()
+	elif _choosing and k.keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_E, KEY_SPACE]:
+		_choosing = false
+		hint.modulate.a = 0.0
+		zone.walker.enabled = true
 
 
 func _load_zone(id: String) -> void:

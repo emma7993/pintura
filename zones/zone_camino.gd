@@ -59,6 +59,8 @@ func _ready() -> void:
 	add_child(walker)
 	walker.moved.connect(func() -> void: _moved = true)
 	walker.place((return_pos if return_pos != Vector2.ZERO else SPAWN) * S)
+	if Inventario.pincel:                        # ya trae el pincel del Nivel 1: lo lleva como varita
+		walker.wolf.set_brush("ink" if Inventario.tinta > 0.0 else "dry")
 
 	camera = Camera2D.new()
 	camera.position_smoothing_enabled = true
