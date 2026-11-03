@@ -13,8 +13,13 @@ const HAND_SCALE := 0.55                  # manos de ~170–210 px frente a un l
 const ANCHORS := {"A": Vector2(128, 480), "B": Vector2(64, 480), "C": Vector2(128, 480)}
 const PUDDLE_ANCHOR := Vector2(192, 47)
 
+const MAX_HANDS := 7
+const SPEEDS := {"A": 1.0, "B": 0.85, "C": 1.2}   # la pesada es más lenta; la pequeña, más rápida
+
 ## Intervalo entre manos (s): [mínimo, máximo]. El nivel lo ajusta según el tramo.
-var hand_every := Vector2(2.2, 3.4)
+var hand_every := Vector2(1.2, 2.0)
+## Velocidad con la que se arrastran tras el lobo (px/s); el nivel la pone un poco por debajo de la del lobo.
+var chase_speed := 110.0
 var hands_on := false
 
 var _mist := Node2D.new()
@@ -97,29 +102,55 @@ func _process(delta: float) -> void:
 
 # --- manos ------------------------------------------------------------------------------------------
 
-## Avanza las manos: brota alguna cada tanto entre la bruma y el lobo, y devuelve true si una lo agarró.
-func update_hands(delta: float, wolf: Vector2, front_x: float, ground_y: float) -> bool:
+## Avanza las manos: brotan detrás del lobo, se arrastran tras él por el suelo (cada vez más), y cuando
+## alguna lo tiene al alcance da el zarpazo. Devuelve true si una lo agarró.
+## ground_at(x) da el suelo bajo una mano; NAN si ahí no hay suelo (un hueco): la mano se hunde.
+func update_hands(delta: float, wolf: Vector2, front_x: float, ground_at: Callable) -> bool:
 	if hands_on:
 		_next_hand -= delta
 		if _next_hand <= 0.0:
 			_next_hand = _rng.randf_range(hand_every.x, hand_every.y)
-			# brota justo detrás: si el lobo duda o se detiene, el zarpazo (≈60 px por delante de la mano) lo alcanza
-			var hx := wolf.x - _rng.randf_range(40.0, 90.0)
-			if hx > front_x + 90.0 and _hands.size() < 2:
-				_spawn_hand(hx, ground_y)
+			var hx := wolf.x - _rng.randf_range(60.0, 240.0)
+			var gy: float = ground_at.call(hx)
+			if hx > front_x + 60.0 and _hands.size() < MAX_HANDS and not is_nan(gy):
+				_spawn_hand(hx, gy)
 	var hit := false
 	for h in _hands.duplicate():
 		var spr: AnimatedSprite2D = h.sprite
+		var node: Node2D = h.node
 		var anim := String(spr.animation)
 		h.t += delta
-		if anim.ends_with("_reach") and h.t >= h.reach_until:
-			spr.play(h.design + "_grab")
+		var dx := wolf.x - node.position.x
+		var moving := anim.ends_with("_emerge") or anim.ends_with("_reach")
+		if moving:
+			# se arrastran hacia el lobo, sin encimarse unas con otras
+			var dir := signf(dx) if absf(dx) > 4.0 else float(h.dir)
+			var push := 0.0
+			for o in _hands:
+				if o != h:
+					var d: float = node.position.x - (o.node as Node2D).position.x
+					if absf(d) < 46.0:
+						push += signf(d) * (46.0 - absf(d)) * 4.0
+			var speed: float = chase_speed * SPEEDS[h.design] * (0.5 if anim.ends_with("_emerge") else 1.0)
+			node.position.x += (dir * speed + push) * delta
+			var gy: float = ground_at.call(node.position.x)
+			if is_nan(gy):
+				spr.play(h.design + "_sink")
+				continue
+			node.position.y = gy + 6.0
+			if dir != h.dir:
+				h.dir = dir
+				spr.scale.x = HAND_SCALE * dir
+			if absf(dx) > 950.0:
+				spr.play(h.design + "_sink")            # se quedó muy atrás
+			elif anim.ends_with("_reach") and h.t >= h.reach_until and absf(dx) < 105.0 and absf(wolf.y - node.position.y) < 120.0:
+				spr.play(h.design + "_grab")
 		elif anim.ends_with("_grab") and (spr.frame == 2 or spr.frame == 3):
 			var c: Vector2 = _contacts.get("%s_grab:%d" % [h.design, spr.frame + 1], ANCHORS[h.design])
 			var anchor: Vector2 = ANCHORS[h.design]
 			var local: Vector2 = (c - anchor) * HAND_SCALE * Vector2(h.dir, 1.0)
-			var p: Vector2 = h.node.position + local
-			if absf(wolf.x - p.x) < 42.0 and absf((wolf.y - 60.0) - p.y) < 90.0:
+			var p: Vector2 = node.position + local
+			if absf(wolf.x - p.x) < 46.0 and absf((wolf.y - 60.0) - p.y) < 90.0:
 				hit = true
 	return hit
 
@@ -138,7 +169,7 @@ func _spawn_hand(x: float, ground_y: float) -> void:
 	if design == "C":
 		spr.speed_scale = 1.25             # la pequeña es más rápida
 	var h := {"node": node, "sprite": spr, "puddle": puddle, "design": design, "dir": 1.0, "t": 0.0,
-		"reach_until": _rng.randf_range(0.5, 0.9)}
+		"reach_until": _rng.randf_range(0.25, 0.6)}
 	_hands.append(h)
 	spr.animation_finished.connect(_on_hand_finished.bind(h))
 

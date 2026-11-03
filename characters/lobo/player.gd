@@ -5,15 +5,19 @@ extends CharacterBody2D
 
 const SPRITE_SCALE := 0.60        # tamaño del lobo en pantalla (~130 px de alto)
 
-const ACCEL := 2600.0
-const AIR_ACCEL := 1900.0
-const FRICTION := 3000.0
-const AIR_FRICTION := 1200.0
-const GRAVITY := 2300.0
-const FALL_MULT := 1.35           # cae un poco más rápido de lo que sube
-const MAX_FALL := 1500.0
-const JUMP_VELOCITY := -900.0     # altura máxima del salto ~175 px
-const JUMP_CUT := 0.45            # soltar el botón en el ascenso corta el salto
+## Tacto de metroidvania de acción precisa: arranca y frena casi al instante (sin patinar), control total
+## en el aire, salto alto y vivo con un instante de "flote" en la cima y caída rápida con tope.
+const ACCEL := 7000.0             # llega a la velocidad tope en ~0.06 s
+const AIR_ACCEL := 5500.0
+const FRICTION := 8000.0          # se detiene casi en seco al soltar
+const AIR_FRICTION := 4000.0
+const GRAVITY := 2700.0
+const FALL_MULT := 1.5            # cae más rápido de lo que sube
+const MAX_FALL := 1300.0
+const JUMP_VELOCITY := -1080.0    # altura máxima del salto ~210 px (1.6 veces el lobo)
+const JUMP_CUT := 0.3             # soltar el botón en el ascenso corta el salto (saltos cortos precisos)
+const APEX_SPEED := 160.0         # cerca de la cima, con el botón apretado...
+const APEX_GRAVITY := 0.55        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
 const COYOTE_TIME := 0.10
 const JUMP_BUFFER := 0.12
 
@@ -65,6 +69,8 @@ func _physics_process(delta: float) -> void:
 
 	# --- gravedad
 	var g := GRAVITY * (FALL_MULT if velocity.y > 0.0 else 1.0)
+	if not on_floor and absf(velocity.y) < APEX_SPEED and Input.is_action_pressed("jump"):
+		g *= APEX_GRAVITY
 	velocity.y = minf(velocity.y + g * delta, MAX_FALL)
 
 	# --- salto (coyote time + buffer), solo si ya está desbloqueado

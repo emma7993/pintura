@@ -28,7 +28,7 @@ Estilo: el mismo de Nivel_01_Camino/Bocetos_v001: boceto a grafito sobre papel c
 ## 3. Plataformas y foso
 - **step_float.png**: 192×96, escalón de piedra flotante, pequeño.
 - **plateau_side_left/right.png**: 128×256, cara del acantilado de una meseta de 200 px de alto.
-- **ink_pit 01..08**: 256×128, tinta negra en el fondo de un foso, en bucle (8 FPS), con brillos fríos como la cascada.
+- **spikes_a/b/c.png**: 256×96, hilera de espinas de piedra/grafito para el fondo de un foso (puntas a ~46 px de altura, base en y=90), **repetibles en horizontal**; las puntas en tinta negra.
 - **pit_edge_left/right.png**: 128×256, bordes rotos del foso.
 
 ## 4. Cascada bajo tierra

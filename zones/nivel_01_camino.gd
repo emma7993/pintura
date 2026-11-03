@@ -5,7 +5,7 @@ extends Node2D
 ## primer upgrade: con él pinta una barrera de óleo detrás de sí y las sombras se quedan atrás.
 ## La luz está en una plataforma alta al otro lado del hueco. El pincel trae restos de color para un solo
 ## trazo y queda seco. La puerta (arco) de regreso al lienzo es un boceto apagado; junto a ella hay un pozo
-## cerrado. Más adelante: un escalón, una meseta y un foso de tinta (hay que correr y saltar), y la boca
+## cerrado. Más adelante: un escalón, una meseta y un foso con espinas (corriendo se salta), y la boca
 ## de una cueva que baja. Abajo, en una cámara honda, el tintero vacío (core/inventario.gd); a la izquierda,
 ## bajo tierra, la cascada de tinta donde se llena; de vuelta bajo el pozo, un golpe de pincel rompe su tapa
 ## y se sube por él hasta el arco, que se pinta con tinta para volver al lienzo. La tinta se gasta.
@@ -32,16 +32,20 @@ const GATE_SCALE := 1.8
 const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
 const WELL_X := 5980.0                    # pozo junto al arco; su tiro baja hasta el techo de la cueva
 const WELL_HALF := 110.0
-const STEP_X := Vector2(6700, 6870)       # escalón flotante (arriba: HIGH_Y - 100)
-const PLATEAU := Vector2(6900, 7500)      # meseta (arriba: HIGH_Y - 200): sin el escalón no se sube
-const PIT := Vector2(7700, 7900)          # foso de tinta: hay que correr (Shift) y saltar
+const STEP_X := Vector2(6700, 6870)       # escalón flotante
+const STEP_Y := HIGH_Y - 150.0
+const PLATEAU := Vector2(6900, 7500)      # meseta: sin el escalón no se sube (salto máx. ~225 px)
+const PLATEAU_Y := HIGH_Y - 300.0
+const PIT := Vector2(7850, 8050)          # foso con espinas en el fondo: se salta corriendo
 const PIT_FLOOR := 760.0
-const HOLE := Vector2(8400, 8560)         # boca de la cueva
+const SPIKE_H := 46.0
+const HOLE := Vector2(8450, 8610)         # boca de la cueva
 const CAVE_TOP := 800.0                   # techo de la cueva (entre el suelo alto y aquí: roca)
 const CAVE_Y := 1250.0                    # suelo de la cueva
 const CAVE_X := Vector2(5000, 8750)
 const CHAMBER := Vector2(6900, 7600)      # cámara honda con el tintero
-const CHAMBER_Y := 1450.0
+const CHAMBER_Y := 1550.0                 # 300 px bajo la cueva: se sale por una repisa
+const CHAMBER_LEDGE_Y := CHAMBER_Y - 150.0
 const ALTAR_X := 7250.0                   # pedestal con el tintero (en la cámara)
 const FALL_X := 5350.0                    # cascada de tinta (bajo tierra, a la izquierda)
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
@@ -56,8 +60,7 @@ const STAGES := [
 	[2200.0, 360.0, 320.0, 430.0],        # corre
 ]
 const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
-const CALM_SPEED := 198.0                 # paso del lobo cuando ya no lo persiguen
-const RUN_SPEED := 380.0                  # con Shift, una vez libre de las sombras
+const RUN_SPEED := 400.0                  # con el pincel el lobo ya no camina: siempre corre
 const INK := Color(0.07, 0.06, 0.07)
 const STROKE_ANGLE := PI / 3.0            # pincelada de color: 60° sobre la horizontal
 const STROKE_LEN := 1000.0                # largo de la pincelada (del suelo hasta arriba de la pantalla)
@@ -187,9 +190,8 @@ func _restore_progress() -> void:
 		_barrier_k = 1.0
 		for part in 3:
 			_stroke_part(part)
-		walker.run_speed = RUN_SPEED
 		walker.can_jump = true
-		walker.max_speed = CALM_SPEED
+		walker.max_speed = RUN_SPEED
 		_checkpoint = Vector2(BRUSH_X, HIGH_Y)
 		walker.position = Vector2(BRUSH_X + 200.0, HIGH_Y)
 	if Inventario.tintero:
@@ -282,12 +284,12 @@ func _build_ground() -> void:
 	_place("stones", Vector2(GAP.x - 20, GROUND_Y + 8), 0.7, -8)
 	_place("stones", Vector2(GAP.y + 40, HIGH_Y + 8), 0.6, -8)
 	# escalón flotante y meseta: sin el escalón la meseta es demasiado alta para un salto
-	_platform(Rect2(STEP_X.x, HIGH_Y - 100.0, STEP_X.y - STEP_X.x, 16), "platform_short")
-	var plateau_top := HIGH_Y - 200.0
+	_platform(Rect2(STEP_X.x, STEP_Y, STEP_X.y - STEP_X.x, 16), "platform_short")
+	var plateau_top := PLATEAU_Y
 	_ground_strip(PLATEAU.x, PLATEAU.y, plateau_top)
-	_solid(Rect2(PLATEAU.x, plateau_top, PLATEAU.y - PLATEAU.x, 200))
+	_solid(Rect2(PLATEAU.x, plateau_top, PLATEAU.y - PLATEAU.x, HIGH_Y - plateau_top))
 	for side in [PLATEAU.x + 20.0, PLATEAU.y - 20.0]:
-		_place("wall", Vector2(side, HIGH_Y + 30), 230.0 / float(wb[3]), -9).modulate.a = 0.8
+		_place("wall", Vector2(side, HIGH_Y + 30), (HIGH_Y - PLATEAU_Y + 30.0) / float(wb[3]), -9).modulate.a = 0.8
 	# cueva: suelo, cámara honda con el tintero (se sale por una repisa) y paredes
 	_ground_strip(CAVE_X.x, CHAMBER.x, CAVE_Y)
 	_ground_strip(CHAMBER.x, CHAMBER.y, CHAMBER_Y)
@@ -297,7 +299,7 @@ func _build_ground() -> void:
 	_solid(Rect2(CHAMBER.y, CAVE_Y, CAVE_X.y - CHAMBER.y, 600))
 	_solid(Rect2(CAVE_X.x - 400, CAVE_TOP, 400, 1200))
 	_solid(Rect2(CAVE_X.y, CAVE_TOP, 400, 1200))
-	_platform(Rect2(CHAMBER.x + 60, CHAMBER_Y - 110.0, 130, 16), "platform_short")
+	_platform(Rect2(CHAMBER.x + 40, CHAMBER_LEDGE_Y, 240, 16), "platform_long")
 	# bajo el pozo: repisas para subir; la tapa cierra el tiro hasta romperla
 	for i in WELL_LEDGES.size():
 		var y: float = WELL_LEDGES[i]
@@ -324,8 +326,15 @@ func _ground_at(x: float) -> float:
 	if x < GAP.y:
 		return GROUND_Y
 	if x >= PLATEAU.x and x <= PLATEAU.y:
-		return HIGH_Y - 200.0
+		return PLATEAU_Y
 	return HIGH_Y
+
+
+## Suelo para las manos de las sombras: NAN sobre el hueco (ahí se hunden).
+func _hand_ground(x: float) -> float:
+	if x > GAP.x - 10.0 and x < GAP.y + 10.0:
+		return NAN
+	return _ground_at(x)
 
 
 ## Repisa de un solo sentido (se atraviesa de abajo hacia arriba), con un módulo a lápiz encima.
@@ -673,9 +682,9 @@ func _physics_process(delta: float) -> void:
 				print("[nivel1] %.1f s: tramo %d (lobo %d px/s, sombras %d px/s)" % [_t, i, st[1], st[2]])
 	var target: float = st[1]
 	if shadows_gone:
-		target = CALM_SPEED
+		target = RUN_SPEED
 	elif has_brush:
-		target = STAGES[STAGES.size() - 1][1]
+		target = RUN_SPEED
 	walker.max_speed = move_toward(walker.max_speed, target, 140.0 * delta)
 
 	# a lo lejos se ve la luz y el hueco: aquí descubre el salto
@@ -692,12 +701,17 @@ func _physics_process(delta: float) -> void:
 
 	if x < GAP.y + 60.0 and walker.position.y > GROUND_Y + 450.0:
 		_caught("cayó al hueco")
-	elif x > PIT.x and x < PIT.y and walker.position.y > PIT_FLOOR - 40.0 and walker.position.y < CAVE_TOP:
-		_caught("cayó al foso de tinta")
+	elif x > PIT.x and x < PIT.y and walker.position.y > PIT_FLOOR - SPIKE_H and walker.position.y < CAVE_TOP:
+		_caught("cayó en las espinas")
 	elif walker.position.y > CHAMBER_Y + 400.0:
 		_caught("cayó fuera del mundo")
 	if shadows_gone and x > PIT.x - 400.0 and x < PIT.x and absf(walker.position.y - HIGH_Y) < 8.0:
 		_checkpoint = Vector2(PIT.x - 120.0, HIGH_Y)
+	# si cruza la mitad del arco sin haber dado la pincelada, las sombras lo alcanzan
+	if has_brush and brush == "color" and barrier_x == -INF and not _acting and not _busy and x > EXIT_X:
+		shadow_x = x
+		_caught("cruzó el arco sin dar la pincelada")
+		_show_hint("Las sombras te alcanzaron: da la pincelada (F) antes de llegar al arco", 4.0)
 	if not has_brush and absf(x - BRUSH_X) < 70.0 and walker.is_on_floor():
 		_take_brush()
 	_update_places(x)
@@ -753,18 +767,18 @@ func _update_shadows(delta: float, st: Array) -> void:
 				shadows_gone = true
 				_sombras.set_front(-INF, 0.0)
 				_vignette.modulate.a = 0.0
-				walker.run_speed = RUN_SPEED           # ya sin miedo: corre y salta cuando quiere
 				Inventario.progreso["n1_trazo_x"] = barrier_x
 				Inventario.marcar("n1_sombras")
 				walker.can_jump = true
-				_show_hint("Las sombras se quedaron atrás… pero el pincel quedó seco.  Shift: correr", 4.5)
+				_show_hint("Las sombras se quedaron atrás… pero el pincel quedó seco", 4.0)
 				return
 	var near := walker.position.x - shadow_x
 	_vignette.modulate.a = clampf(1.0 - (near - 120.0) / 650.0, 0.0, 1.0) * _shadow_alpha
 	_sombras.set_front(shadow_x, _shadow_alpha)
 	_sombras.hands_on = barrier_x == -INF and not _busy and not _acting
-	_sombras.hand_every = [Vector2(2.4, 3.6), Vector2(1.8, 2.8), Vector2(1.3, 2.2)][_stage]
-	var grabbed := _sombras.update_hands(delta, walker.position, shadow_x, _ground_at(walker.position.x))
+	_sombras.hand_every = [Vector2(1.4, 2.2), Vector2(0.9, 1.5), Vector2(0.6, 1.1)][_stage]
+	_sombras.chase_speed = walker.max_speed * 0.9      # casi tan rápidas como él: si se detiene, lo alcanzan
+	var grabbed := _sombras.update_hands(delta, walker.position, shadow_x, _hand_ground)
 	if (near < 30.0 or grabbed) and not _busy:
 		_caught("lo atrapó una mano" if grabbed else "lo alcanzaron las sombras")
 
@@ -861,6 +875,7 @@ func _on_action_finished(_anim: StringName) -> void:
 ## ascendente (paint_rise de Wolf_Varita_v002).
 func _paint_barrier() -> void:
 	print("[nivel1] %.1f s: se gira y pinta la barrera (sombras a %d px)" % [_t, walker.position.x - shadow_x])
+	_sombras.dissolve_hands()              # al girarse con el pincel, las manos retroceden
 	_start_action(&"paint_rise", -1.0)
 
 
@@ -1099,7 +1114,7 @@ func _draw_cave_back(ci: CanvasItem) -> void:
 	ci.draw_rect(Rect2(HOLE.x, HIGH_Y, HOLE.y - HOLE.x, CAVE_TOP - HIGH_Y), air)
 
 
-## Lo que cambia: el brocal y la losa del pozo, la tapa del fondo, sus trozos y la tinta del foso.
+## Lo que cambia: el brocal y la losa del pozo, la tapa del fondo, sus trozos, y las espinas del foso.
 func _draw_terrain() -> void:
 	var line := Color(0.30, 0.28, 0.26, 0.85)
 	var stone := Color(0.80, 0.78, 0.74)
@@ -1126,15 +1141,14 @@ func _draw_terrain() -> void:
 		_terrain.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	for d in _debris:
 		_terrain.draw_circle(d.p, d.r, Color(0.45, 0.43, 0.40))
-	# tinta en el fondo del foso
-	var pts := PackedVector2Array()
-	var x := PIT.x
-	while x <= PIT.y:
-		pts.append(Vector2(x, PIT_FLOOR - 26.0 + sin(x * 0.05 + _t * 2.2) * 4.0))
-		x += 10.0
-	pts.append(Vector2(PIT.y, PIT_FLOOR + 4.0))
-	pts.append(Vector2(PIT.x, PIT_FLOOR + 4.0))
-	_terrain.draw_colored_polygon(pts, Color(0.04, 0.04, 0.05, 0.95))
+	# espinas en el fondo del foso (provisional hasta tener arte)
+	var x := PIT.x + 4.0
+	while x < PIT.y - 10.0:
+		var h := SPIKE_H - fmod(x * 0.37, 12.0)
+		var tri := PackedVector2Array([Vector2(x, PIT_FLOOR + 2), Vector2(x + 22.0, PIT_FLOOR + 2), Vector2(x + 11.0, PIT_FLOOR - h)])
+		_terrain.draw_colored_polygon(tri, Color(0.20, 0.19, 0.20))
+		_terrain.draw_polyline(PackedVector2Array([tri[0], tri[2], tri[1]]), Color(0.08, 0.08, 0.09), 1.5, true)
+		x += 24.0
 
 
 func track() -> int:

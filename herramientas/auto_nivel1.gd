@@ -1,7 +1,7 @@
 extends Node
 ## Prueba automática del nivel 1 (Camino), de principio a fin:
 ##   1) huye de las sombras (camina, se apura, corre), salta el hueco, toma el pincel y da la pincelada;
-##   2) sube el escalón y la meseta, salta el foso de tinta corriendo y baja por la boca de la cueva;
+##   2) sube el escalón y la meseta, salta el foso de espinas y baja por la boca de la cueva;
 ##   3) en la cámara honda toma el tintero, sale por la repisa y va a la izquierda hasta la cascada;
 ##   4) vuelve bajo el pozo, sube a la repisa, rompe la tapa, sube por el tiro hasta el arco, lo pinta y entra.
 ## Se activa con `-- --auto-nivel1` (probar_nivel1.bat). El nivel escribe en el log su guion ([nivel1]).
@@ -56,7 +56,7 @@ func _huir() -> void:
 	_mover(1.0)
 	if _w.can_jump and _w.is_on_floor() and x > _nivel.GAP.x - 45.0 and x < _nivel.GAP.x:
 		_saltar("el hueco")
-	if not _pinto_barrera and _nivel.has_brush and x - _nivel.shadow_x < 380.0:
+	if not _pinto_barrera and _nivel.has_brush and (x - _nivel.shadow_x < 380.0 or x > _nivel.EXIT_X - 350.0):
 		_pinto_barrera = true
 		_f("pincelada (sombras a %d px)" % (x - _nivel.shadow_x))
 
@@ -72,12 +72,14 @@ func _explorar() -> void:
 	match _fase:
 		0:  # hasta el escalón; salta encima
 			_mover(1.0)
-			if suelo and x >= n.STEP_X.x - 80.0 and x < n.STEP_X.x and _cerca(y, n.HIGH_Y) and _w.velocity.x > 100.0:
+			if suelo and x >= n.STEP_X.x - 130.0 and x < n.STEP_X.x - 40.0 and _cerca(y, n.HIGH_Y) and _w.velocity.x > 100.0:
 				_saltar("al escalón")
 				_fase = 1
+			elif suelo and x >= n.STEP_X.x - 40.0 and _cerca(y, n.HIGH_Y) and _retro == -INF:
+				_retroceder(n.STEP_X.x - 320.0)      # se pasó: vuelve para tomar impulso
 		1:  # del escalón a la meseta
 			_mover(1.0)
-			if suelo and _cerca(y, n.HIGH_Y - 100.0) and x >= n.STEP_X.y - 40.0:
+			if suelo and _cerca(y, n.STEP_Y) and x >= n.STEP_X.y - 40.0:
 				_saltar("a la meseta")
 				_fase = 2
 			elif suelo and _cerca(y, n.HIGH_Y):
@@ -85,13 +87,13 @@ func _explorar() -> void:
 				_retroceder(n.STEP_X.x - 160.0)
 		2:  # por la meseta y abajo, hacia el foso
 			_mover(1.0)
-			if suelo and _cerca(y, n.HIGH_Y - 100.0):
+			if suelo and _cerca(y, n.STEP_Y):
 				_saltar("a la meseta (otra vez)")
 			if suelo and _cerca(y, n.HIGH_Y) and x > n.PLATEAU.y:
 				_fase = 3
 			elif suelo and _cerca(y, n.HIGH_Y) and x < n.PLATEAU.x:
 				_fase = 0
-		3:  # corre y salta el foso de tinta
+		3:  # salta el foso de espinas
 			_mover(1.0, true)
 			if suelo and x >= n.PIT.x - 40.0 and x < n.PIT.x:
 				_saltar("el foso")
@@ -114,12 +116,12 @@ func _explorar() -> void:
 					_fase = 7
 		7:  # sale de la cámara por la repisa
 			_mover(-1.0)
-			if suelo and _cerca(y, n.CHAMBER_Y) and x <= n.CHAMBER.x + 260.0:
+			if suelo and _cerca(y, n.CHAMBER_Y) and x <= n.CHAMBER.x + 340.0:
 				_saltar("a la repisa de la cámara")
 				_fase = 8
 		8:
 			_mover(-1.0)
-			if suelo and _cerca(y, n.CHAMBER_Y - 110.0):
+			if suelo and _cerca(y, n.CHAMBER_LEDGE_Y):
 				_saltar("fuera de la cámara")
 			elif suelo and _cerca(y, n.CAVE_Y) and x < n.CHAMBER.x:
 				_fase = 9
