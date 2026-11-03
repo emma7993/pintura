@@ -605,15 +605,16 @@ func _start_action(anim: StringName, dir: float) -> void:
 func _on_action_frame(anim: StringName, frame: int) -> void:
 	var tip := walker.lobo.tip_global(anim, frame)
 	match anim:
-		&"paint_slash":
-			if frame == 4:
-				_start_stroke()
-			if frame >= 4 and frame <= 6:
-				_stroke_part(frame - 4)
-			if frame == 6:
-				_set_brush("seco")         # se acabó la carga de color
-		&"paint_up":
-			if frame == 4:
+		&"paint_rise", &"paint_up":
+			if brush == "color":
+				# primera pincelada (con los restos de color): sube del suelo en diagonal
+				if frame == 4:
+					_start_stroke()
+				if frame >= 4 and frame <= 6:
+					_stroke_part(frame - 4)
+				if frame == 6:
+					_set_brush("seco")     # se acabó la carga de color
+			elif frame == 4:
 				_reveal_gate()
 		&"dip":
 			if frame == 4:
@@ -633,15 +634,17 @@ func _on_action_finished(_anim: StringName) -> void:
 		walker.enabled = true
 
 
-## Las sombras siempre vienen por la izquierda: se gira hacia ellas y las enfrenta con el tajo.
+## Las sombras siempre vienen por la izquierda: se gira hacia ellas y las enfrenta con una pincelada
+## ascendente. Usa paint_rise (pedida a Codex en Wolf_Varita_v002) y, mientras no exista, paint_up.
 func _paint_barrier() -> void:
 	print("[nivel1] %.1f s: se gira y pinta la barrera (sombras a %d px)" % [_t, walker.position.x - shadow_x])
-	_start_action(&"paint_slash", -1.0)
+	var anim := &"paint_rise" if walker.lobo.sprite.sprite_frames.has_animation(&"paint_rise") else &"paint_up"
+	_start_action(anim, -1.0)
 
 
-## Pincelada de color: una estocada diagonal (~60°) sobre el fondo, de arriba a la derecha hacia el suelo
-## delante del lobo (que mira a las sombras). No es un muro: es color sobre el lienzo, y las sombras no
-## lo cruzan. barrier_x es el pie del trazo.
+## Pincelada de color: una estocada diagonal (~60°) sobre el fondo, del suelo delante del lobo (que mira
+## a las sombras) hacia arriba y atrás. No es un muro: es color sobre el lienzo, y las sombras no lo
+## cruzan. barrier_x es el pie del trazo.
 func _start_stroke() -> void:
 	barrier_x = walker.position.x - 150.0
 	print("[nivel1] %.1f s: pincelada de color en x=%d" % [_t, barrier_x])
@@ -650,12 +653,12 @@ func _start_stroke() -> void:
 	tw.tween_property(self, "_barrier_k", 1.0, 0.6)
 
 
-## Un tercio de la pincelada por cuadro activo del tajo (0 arriba, 2 abajo): tres estampas por tercio.
+## Un tercio de la pincelada por cuadro activo (0 el pie, 2 arriba): tres estampas por tercio.
 func _stroke_part(part: int) -> void:
 	var foot := Vector2(barrier_x, _ground_at(barrier_x) + 50.0)
 	var dir := Vector2(cos(-STROKE_ANGLE), sin(-STROKE_ANGLE))   # hacia arriba a la derecha
 	for i in 3:
-		var k := 1.0 - (part * 3 + i + 0.5) / 9.0                  # de 1 (arriba) a 0 (pie)
+		var k := (part * 3 + i + 0.5) / 9.0                        # de 0 (pie) a 1 (arriba)
 		_stamp(foot + dir * STROKE_LEN * k + Vector2(randf_range(-10, 10), 0), 520.0, -STROKE_ANGLE, [1, 4, 3][i] - 1)
 
 

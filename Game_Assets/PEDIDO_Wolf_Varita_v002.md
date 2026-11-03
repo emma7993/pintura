@@ -26,7 +26,8 @@ Necesito una nueva entrega del lobo de Pintura: **Game_Assets/Wolf_Varita_v002/*
 | jump_up / jump_up_varita | 2 + 2 | Despegue (2 cuadros) y subida en bucle (2 cuadros). |
 | fall / fall_varita | 2 | Caída en bucle. |
 | land / land_varita | 2 | Aterrizaje: flexión de rodillas y vuelta a la postura. |
-| paint_slash | 8 | **Estocada diagonal**: la varita baja de arriba-atrás a abajo-adelante, trazando una línea recta a ~60° (de arriba a la derecha hacia el suelo, delante del lobo). Cuadros 4–6 = contacto que pinta. |
+| paint_rise | 8 | **Pincelada ascendente diagonal** (la más importante): el lobo se agacha un poco, apoya la punta en el suelo delante de él y la sube con fuerza en línea recta a ~60° hacia arriba y atrás, por encima de su cabeza, como abriendo una línea de color en el aire. Cuadros 1–3 preparación (punta baja), 4–6 contacto que pinta (punta subiendo por la diagonal), 7–8 recuperación con la varita en alto. |
+| paint_slash | 8 | Estocada diagonal descendente: la varita baja de arriba-atrás a abajo-adelante, en línea recta a ~60°. Cuadros 4–6 pintan. Para ataques más adelante. |
 | paint_up | 8 | Trazo vertical hacia arriba, para pintar una puerta. Cuadros 4–6 pintan. |
 | dip | 6 | Baja la punta hasta el suelo para mojarla en un lago de tinta. Cuadros 4–5 cargan tinta. |
 
