@@ -1,0 +1,5 @@
+Copia de integración de Game_Assets/Wolf_Pincel_v001 (ChatGPT/Codex, 2026-11-02).
+Capas por animación: body (lobo), brush_base (mango) y tip_color / tip_dry / tip_ink (punta).
+Orden de dibujo: mango, punta, cuerpo. Celdas 256x256, suelo y=238. brush_contacts.json: punta por cuadro.
+walk_pincel/body = Wolf_Walk_v005/Revision_03 (12 cuadros); se usa también como caminata sin pincel.
+Lo usa characters/lobo/lobo_sprite.gd.
