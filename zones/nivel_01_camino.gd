@@ -5,8 +5,9 @@ extends Node2D
 ## primer upgrade: con él pinta una barrera de óleo detrás de sí y las sombras se quedan atrás.
 ## La luz está en una plataforma alta al otro lado del hueco. El pincel trae restos de color para un solo
 ## trazo (la barrera) y queda seco. La puerta de regreso al lienzo principal es un boceto apagado: más
-## adelante, en un altar pequeño junto a una cascada de tinta negra, hay un tintero donde se recarga el
-## pincel; con esa tinta se vuelve a la puerta y se pinta para que se active.
+## adelante, en un altar pequeño junto a una cascada de tinta negra, hay un tintero vacío: se guarda en el
+## inventario (core/inventario.gd), se llena en el lago de tinta al pie de la cascada y con esa tinta se
+## vuelve a la puerta y se pinta para que se active. La tinta se gasta y hay que volver a llenarlo.
 ## Se corre solo con F6 (zones/nivel_01_camino.tscn) o entrando desde el camino de la pintura (main.gd).
 
 signal exit_requested(next_zone: String)
@@ -22,8 +23,10 @@ const HIGH_Y := 490.0                     # suelo de la plataforma alta, despué
 const BRUSH_X := 4560.0                   # la luz con el pincel
 const EXIT_X := 5700.0                    # puerta de regreso al lienzo principal
 const GATE_SCALE := 1.8
+const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
 const ALTAR_X := 6950.0                   # altar pequeño con el tintero
-const FALL_X := 7200.0                    # cascada de tinta negra, al lado del altar
+const FALL_X := 7230.0                    # cascada de tinta negra, al lado del altar
+const LAKE_R := 150.0                     # medio ancho del lago de tinta al pie de la cascada
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 const STAGES := [
 	[0.0, 115.0, 85.0, 760.0],            # miedo: solo camina
@@ -40,7 +43,7 @@ var cur_exit := ""
 var near_exit := false
 var shadow_x := -INF                      # frente de las sombras (px de mundo); -INF = aún no aparecen
 var has_brush := false
-var brush := ""                           # carga del pincel: "color" (un trazo), "seco" o "tinta"
+var brush := ""                           # restos del pincel: "color" (un trazo) o "seco"; la tinta sale del tintero
 var barrier_x := -INF                     # -INF = sin barrera
 var shadows_gone := false
 var gate_open := false                    # la puerta ya se pintó
@@ -50,8 +53,11 @@ var _gate_k := 0.0                        # 0..1: avance de la pintura de la pue
 var _gate_paint: Sprite2D                 # copia de la puerta en óleo, se revela de abajo hacia arriba
 var _at_gate := false
 var _at_altar := false
-var _dip_t := -10.0                       # momento en que mojó el pincel (salpicadura)
+var _at_lake := false
+var _splash_t := -10.0                    # momento en que llenó el tintero (salpicadura)
 var _brush_label: Label
+var _ink_bar: ColorRect                   # barra del tintero: fondo; su hijo es el nivel de tinta
+var _ink_fill: ColorRect
 var _stage := 0
 var _shadow_speed := 0.0
 var _shadow_alpha := 1.0
@@ -137,7 +143,8 @@ func _ground_strip(x0: float, x1: float, ground: float) -> void:
 		var f := 2.0
 		var s := _sprite(id, -10)
 		s.scale = Vector2.ONE * f
-		s.position = Vector2(x - float(b[0]) * f, ground - float(b[1]) * f)
+		# los pies van dentro del trazo del suelo (fila ~120-130 del módulo), no sobre su borde superior
+		s.position = Vector2(x - float(b[0]) * f, ground - GROUND_LINE * f)
 		# el último módulo se recorta para no invadir el hueco
 		var room := x1 - x
 		if room < float(b[2]) * f:
@@ -245,12 +252,34 @@ func _build_ui() -> void:
 	_brush_label.add_theme_color_override("font_outline_color", Color(0.08, 0.06, 0.05))
 	_brush_label.add_theme_constant_override("outline_size", 6)
 	ui.add_child(_brush_label)
+	_ink_bar = ColorRect.new()
+	_ink_bar.position = Vector2(132, 54)
+	_ink_bar.size = Vector2(170, 12)
+	_ink_bar.color = Color(0.96, 0.92, 0.82, 0.55)
+	_ink_bar.visible = false
+	ui.add_child(_ink_bar)
+	_ink_fill = ColorRect.new()
+	_ink_fill.position = Vector2(2, 2)
+	_ink_fill.color = Color(0.03, 0.03, 0.05)
+	_ink_bar.add_child(_ink_fill)
 
 
 func _set_brush(state: String) -> void:
 	brush = state
-	_brush_label.text = {"color": "Pincel: restos de color (un trazo)", "seco": "Pincel: seco", "tinta": "Pincel: cargado de tinta negra"}.get(state, "")
 	print("[nivel1] %.1f s: pincel -> %s" % [_t, state])
+	_update_inventory_ui()
+
+
+## Indicador provisional del inventario (arriba a la izquierda): pincel y nivel de tinta del tintero.
+func _update_inventory_ui() -> void:
+	var lines: Array[String] = []
+	if has_brush:
+		lines.append("Pincel: restos de color (un trazo)" if brush == "color" else "Pincel")
+	if Inventario.tintero:
+		lines.append("Tintero:")
+		_ink_fill.size = Vector2(166.0 * Inventario.tinta / Inventario.TINTA_MAX, 8)
+	_ink_bar.visible = Inventario.tintero
+	_brush_label.text = "\n".join(lines)
 
 
 func _show_hint(text: String, hold := 3.5) -> void:
@@ -306,12 +335,17 @@ func _physics_process(delta: float) -> void:
 	if has_brush and not _busy and Input.is_action_just_pressed("paint"):
 		if brush == "color" and not shadows_gone:
 			_paint_barrier()
-		elif _at_altar and brush != "tinta":
-			_dip_brush()
-		elif _at_gate and brush == "tinta" and not gate_open and _gate_k == 0.0:
-			_paint_gate()
+		elif _at_altar and not Inventario.tintero:
+			_take_inkwell()
+		elif _at_lake and Inventario.tintero:
+			_fill_inkwell()
+		elif _at_gate and not gate_open and _gate_k == 0.0:
+			if Inventario.gastar(Inventario.COSTO_PUERTA):
+				_paint_gate()
+			else:
+				_show_hint("No hay tinta suficiente", 1.5)
 		elif brush == "seco":
-			_show_hint("El pincel está seco", 1.2)
+			_show_hint("El pincel está seco" if Inventario.tinta <= 0.0 else "Aquí no hay nada que pintar", 1.2)
 	_update_gate_paint()
 
 	_update_camera(delta)
@@ -380,6 +414,7 @@ func _take_brush() -> void:
 	flash.tween_property(_fade, "color:a", 0.75, 0.12)
 	flash.tween_property(_fade, "color:a", 0.0, 0.9)
 	flash.tween_callback(func() -> void: _fade.color = Color(INK, 0.0))
+	Inventario.pincel = true
 	_set_brush("color")
 	_show_hint("El pincel. Le queda color para un trazo.  F: pintar una barrera detrás de ti", 5.0)
 
@@ -395,31 +430,48 @@ func _paint_barrier() -> void:
 	tw.tween_property(self, "_barrier_k", 1.0, 0.55).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
-## Avisos al llegar a la puerta o al altar (solo una vez por visita).
+## Avisos al llegar a la puerta, al altar o al lago (solo una vez por visita).
 func _update_places(x: float) -> void:
 	var at_gate := absf(x - EXIT_X) < 170.0 and shadows_gone and not gate_open
 	if at_gate and not _at_gate:
-		if brush == "tinta":
+		if Inventario.tinta >= Inventario.COSTO_PUERTA:
 			_show_hint("F: pintar la puerta con tinta")
 		else:
-			_show_hint("La puerta es solo un boceto. Hace falta algo para pintarla…", 3.5)
+			_show_hint("La puerta es solo un boceto. Hace falta tinta para pintarla…", 3.5)
 	_at_gate = at_gate
-	var at_altar := absf(x - ALTAR_X) < 150.0 and has_brush and shadows_gone
-	if at_altar and not _at_altar and brush != "tinta":
-		_show_hint("Un tintero junto a la cascada.  F: mojar el pincel")
+	var at_altar := absf(x - ALTAR_X) < 110.0 and has_brush and shadows_gone and not Inventario.tintero
+	if at_altar and not _at_altar:
+		_show_hint("Un tintero sobre el altar.  F: tomarlo")
 	_at_altar = at_altar
+	var at_lake := absf(x - FALL_X) < LAKE_R and Inventario.tintero
+	if at_lake and not _at_lake and Inventario.tinta < Inventario.TINTA_MAX:
+		_show_hint("El lago de tinta.  F: llenar el tintero")
+	_at_lake = at_lake
 
 
-func _dip_brush() -> void:
-	_dip_t = _t
-	_set_brush("tinta")
-	_show_hint("El pincel está cargado de tinta. Vuelve a la puerta", 4.0)
+func _take_inkwell() -> void:
+	Inventario.tintero = true
+	Inventario.tinta = 0.0
+	print("[nivel1] %.1f s: toma el tintero (vacío)" % _t)
+	_update_inventory_ui()
+	_show_hint("Tomaste el tintero. Está vacío: llénalo en el lago de tinta", 4.0)
+
+
+func _fill_inkwell() -> void:
+	if Inventario.tinta >= Inventario.TINTA_MAX:
+		_show_hint("El tintero ya está lleno", 1.2)
+		return
+	_splash_t = _t
+	Inventario.llenar()
+	print("[nivel1] %.1f s: llena el tintero" % _t)
+	_update_inventory_ui()
+	_show_hint("Tintero lleno. La tinta se gasta al pintar: vuelve aquí a llenarlo", 4.0)
 
 
 func _paint_gate() -> void:
-	print("[nivel1] %.1f s: pinta la puerta" % _t)
+	print("[nivel1] %.1f s: pinta la puerta (tinta restante %d)" % [_t, Inventario.tinta])
 	_gate_paint.visible = true
-	_set_brush("seco")
+	_update_inventory_ui()
 	var tw := create_tween()
 	tw.tween_property(self, "_gate_k", 1.0, 1.6).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tw.tween_callback(func() -> void:
@@ -509,20 +561,23 @@ func _draw_gate_ink() -> void:
 				draw_polyline(pts, stroke[1], stroke[2], true)
 
 
-## Tintero redondo sobre el altar pequeño; al mojar el pincel salpica.
+## Tintero redondo de vidrio, vacío, sobre el altar pequeño (desaparece al tomarlo).
 func _draw_altar() -> void:
-	var c := Vector2(ALTAR_X, HIGH_Y - 74.0)
-	draw_circle(c + Vector2(0, 4), 30.0, Color(0.55, 0.6, 0.75, 0.10))       # reflejo frío de la tinta
-	draw_circle(c, 17.0, Color(0.10, 0.10, 0.13))
-	draw_circle(c + Vector2(0, 3), 13.0, Color(0.02, 0.02, 0.03))
-	draw_rect(Rect2(c + Vector2(-6, -27), Vector2(12, 12)), Color(0.10, 0.10, 0.13))
-	draw_rect(Rect2(c + Vector2(-8, -31), Vector2(16, 5)), Color(0.40, 0.30, 0.20))
-	draw_circle(c + Vector2(-6, -6), 3.5, Color(1, 1, 1, 0.45))
-	var k := (_t - _dip_t) / 0.7
+	if not Inventario.tintero:
+		var c := Vector2(ALTAR_X, HIGH_Y - 74.0)
+		draw_circle(c + Vector2(0, 4), 30.0, Color(0.55, 0.6, 0.75, 0.10))       # brillo frío del vidrio
+		draw_circle(c, 17.0, Color(0.32, 0.34, 0.40, 0.85))                     # vidrio sin tinta
+		draw_arc(c, 17.0, 0.0, TAU, 24, Color(0.10, 0.10, 0.13), 2.5)
+		draw_rect(Rect2(c + Vector2(-6, -27), Vector2(12, 12)), Color(0.32, 0.34, 0.40, 0.85))
+		draw_rect(Rect2(c + Vector2(-8, -31), Vector2(16, 5)), Color(0.40, 0.30, 0.20))
+		draw_circle(c + Vector2(-6, -6), 3.5, Color(1, 1, 1, 0.55))
+	# salpicadura al llenar el tintero en el lago
+	var k := (_t - _splash_t) / 0.7
 	if k >= 0.0 and k < 1.0:
+		var s := Vector2(walker.position.x, HIGH_Y - 6.0)
 		for i in 7:
 			var a := -PI / 2.0 + (i - 3) * 0.35
-			var p := c + Vector2(0, -28) + Vector2(cos(a), sin(a)) * 60.0 * k + Vector2(0, 140.0 * k * k)
+			var p := s + Vector2(cos(a), sin(a)) * 60.0 * k + Vector2(0, 140.0 * k * k)
 			draw_circle(p, 5.0 * (1.0 - k) + 1.5, Color(0.02, 0.02, 0.03, 1.0 - k))
 
 
@@ -548,9 +603,11 @@ func _draw_waterfall() -> void:
 		while yy < HIGH_Y - 20.0:
 			draw_line(Vector2(x, yy), Vector2(x + sin(yy * 0.05) * 3.0, minf(yy + 60.0, HIGH_Y - 10.0)), Color(0.55, 0.58, 0.7, 0.22), 2.0, true)
 			yy += 240.0
-	# charco y salpicaduras
-	draw_set_transform(Vector2(FALL_X, HIGH_Y + 4.0), 0.0, Vector2(1.0, 0.16))
-	draw_circle(Vector2.ZERO, 105.0, Color(0.03, 0.03, 0.04, 0.9))
+	# lago de tinta y salpicaduras
+	draw_set_transform(Vector2(FALL_X, HIGH_Y + 6.0), 0.0, Vector2(1.0, 0.13))
+	draw_circle(Vector2.ZERO, LAKE_R, Color(0.03, 0.03, 0.04, 0.9))
+	draw_set_transform(Vector2(FALL_X - 30.0, HIGH_Y + 2.0), 0.0, Vector2(1.0, 0.05))
+	draw_circle(Vector2.ZERO, LAKE_R * 0.6, Color(0.55, 0.58, 0.7, 0.18))   # reflejo
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 	for i in 8:
 		var ph := fmod(_t * 1.6 + i * 0.37, 1.0)

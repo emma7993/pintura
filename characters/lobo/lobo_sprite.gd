@@ -11,6 +11,9 @@ const LOOK := &"look_around"
 const SPRITE_OFFSET := Vector2(0, -110)   # celdas v004 256x256, suelo en y=238
 const LOOK_MIN := 7.0
 const LOOK_MAX := 14.0
+## La mirada disponible es de v003: más baja y encogida que la caminata v004, y al reproducirla el lobo
+## parecía crecer y encogerse. Queda apagada hasta tener una mirada en la postura v004.
+const LOOK_ENABLED := false
 ## px de celda que avanza un ciclo de caminata (2 pasos). La zancada medida en v004 es ~132; se usa
 ## ~10 % más para un paso más pausado a cambio de un deslizamiento casi imperceptible.
 const STRIDE := 145.0
@@ -26,7 +29,6 @@ var _last_pos := Vector2.ZERO
 
 func _ready() -> void:
 	add_child(_flip)
-	_add_shadow()
 	sprite = AnimatedSprite2D.new()
 	sprite.sprite_frames = load(FRAMES_PATH) as SpriteFrames
 	sprite.offset = SPRITE_OFFSET
@@ -37,18 +39,6 @@ func _ready() -> void:
 	sprite.animation_finished.connect(_on_finished)
 	_rng.randomize()
 	_cooldown = _rng.randf_range(LOOK_MIN, LOOK_MAX)
-
-
-func _add_shadow() -> void:
-	var sh := Polygon2D.new()
-	var pts := PackedVector2Array()
-	for i in 24:
-		var a := TAU * i / 24.0
-		pts.append(Vector2(cos(a) * 95.0 + 18.0, sin(a) * 13.0))
-	sh.polygon = pts
-	sh.color = Color(0, 0, 0, 0.28)
-	sh.z_index = -1
-	_flip.add_child(sh)
 
 
 func _on_finished() -> void:
@@ -84,5 +74,5 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 		sprite.speed_scale = 1.0
 		if sprite.animation == WALK:
 			sprite.play(IDLE)
-		if sprite.animation == IDLE and _cooldown <= 0.0 and _idle_time >= 0.4:
+		if LOOK_ENABLED and sprite.animation == IDLE and _cooldown <= 0.0 and _idle_time >= 0.4:
 			sprite.play(LOOK)

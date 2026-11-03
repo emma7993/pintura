@@ -1,7 +1,7 @@
 extends Node
 ## Prueba automática del nivel 1 (Camino): corre a la derecha, salta a la plataforma alta, toma el pincel,
-## pinta la barrera cuando las sombras se acercan, moja el pincel en el tintero, vuelve a la puerta, la pinta
-## y entra.
+## pinta la barrera cuando las sombras se acercan, toma el tintero del altar, lo llena en el lago de tinta,
+## vuelve a la puerta, la pinta y entra.
 ## Se activa con `-- --auto-nivel1` (probar_nivel1.bat).
 ## El nivel escribe en el log cada momento del guion ([nivel1]); aquí se anota lo que hace el "jugador".
 
@@ -11,7 +11,8 @@ var _t := 0.0
 var _salto := -1.0                # momento en que se pulsó el salto
 var _pinto_barrera := false
 var _pinto_puerta := false
-var _mojo := false
+var _tomo := false
+var _lleno := false
 var _entro := -1.0
 var _ultimo_log := 0.0
 var _nivel: Node
@@ -31,7 +32,11 @@ func _process(delta: float) -> void:
 	# caminar: a la derecha; sin sombras, al tintero y luego de vuelta a la puerta
 	var dir := 1.0
 	if _nivel.shadows_gone:
-		var meta: float = _nivel.EXIT_X if _nivel.brush == "tinta" or _pinto_puerta else _nivel.ALTAR_X
+		var meta: float = _nivel.ALTAR_X
+		if _tomo:
+			meta = _nivel.FALL_X
+		if _lleno:
+			meta = _nivel.EXIT_X
 		var dx: float = meta - x
 		dir = 0.0 if absf(dx) < 30.0 else signf(dx)
 	_mover(dir)
@@ -53,12 +58,17 @@ func _process(delta: float) -> void:
 		_pinto_barrera = true
 		Input.action_press("paint")
 		print("[auto] %.1f s: pinta la barrera (sombras a %d px)" % [_t, x - _nivel.shadow_x])
-	# mojar el pincel, pintar la puerta y entrar
-	if _nivel.shadows_gone and dir == 0.0 and not _mojo and _nivel.brush != "tinta" and w.is_on_floor():
-		_mojo = true
+	# tomar el tintero, llenarlo, pintar la puerta y entrar
+	var quieto: bool = _nivel.shadows_gone and dir == 0.0 and w.is_on_floor()
+	if quieto and not _tomo:
+		_tomo = true
 		Input.action_press("paint")
-		print("[auto] %.1f s: moja el pincel" % _t)
-	elif _nivel.shadows_gone and dir == 0.0 and _nivel.brush == "tinta" and not _pinto_puerta and w.is_on_floor():
+		print("[auto] %.1f s: toma el tintero" % _t)
+	elif quieto and _tomo and not _lleno and absf(x - _nivel.FALL_X) < 40.0:
+		_lleno = true
+		Input.action_press("paint")
+		print("[auto] %.1f s: llena el tintero" % _t)
+	elif quieto and _lleno and not _pinto_puerta:
 		_pinto_puerta = true
 		Input.action_press("paint")
 		print("[auto] %.1f s: pinta la puerta" % _t)
