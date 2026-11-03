@@ -129,11 +129,105 @@ func _ready() -> void:
 	_cam.limit_bottom = int(GROUND_Y + 160.0)
 	_cam.offset = Vector2(0, -70)
 	walker.add_child(_cam)
-	_cam.reset_smoothing()
 	_build_ui()
 
-	if "--auto-nivel1" in OS.get_cmdline_user_args():
+	var auto := "--auto-nivel1" in OS.get_cmdline_user_args()
+	if auto:
+		Inventario.reiniciar()               # la prueba automática siempre empieza de cero
+	else:
+		Inventario.cargar()
+	_restore_progress()
+	if Inventario.atajo >= 0:
+		_apply_shortcut(Inventario.atajo)
+		Inventario.atajo = -1
+	elif _shortcuts_on() and not auto:
+		_show_hint("Atajos de prueba:  0 reiniciar · 1 hueco · 2 pincel · 3 sin sombras · 4 lago · 5 puerta", 4.0)
+	_cam.reset_smoothing()
+	if auto:
 		add_child((load("res://herramientas/auto_nivel1.gd") as GDScript).new())
+
+
+# --- partida guardada y atajos de prueba ------------------------------------------------------------
+
+## Devuelve el nivel al punto guardado: sombras vencidas (con su pincelada), tintero tomado, puerta pintada.
+func _restore_progress() -> void:
+	if Inventario.pincel and not Inventario.hecho("n1_sombras"):
+		Inventario.pincel = false          # tomó el pincel pero no venció a las sombras: se repite ese tramo
+	if Inventario.pincel:
+		has_brush = true
+		brush = "seco"
+		_brush_pickup.visible = false
+	if Inventario.hecho("n1_sombras"):
+		shadows_gone = true
+		barrier_x = Inventario.progreso.get("n1_trazo_x", BRUSH_X + 650.0)
+		_barrier_k = 1.0
+		for part in 3:
+			_stroke_part(part)
+		walker.run_speed = RUN_SPEED
+		walker.can_jump = true
+		walker.max_speed = CALM_SPEED
+		_checkpoint = Vector2(BRUSH_X, HIGH_Y)
+		walker.position = Vector2(BRUSH_X + 200.0, HIGH_Y)
+	if Inventario.tintero:
+		_inkwell.visible = false
+	if Inventario.hecho("n1_puerta"):
+		gate_open = true
+		_gate_k = 1.0
+		_gate_paint.visible = true
+		walker.position = Vector2(EXIT_X + 120.0, HIGH_Y)   # vuelve del lienzo por la puerta
+	_update_inventory_ui()
+
+
+## Atajos solo en versiones de desarrollo (F6 / F5 en el editor) y cuando el nivel se corre solo.
+func _shortcuts_on() -> bool:
+	return OS.is_debug_build() and get_tree().current_scene == self
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	var k := event as InputEventKey
+	if k == null or not k.pressed or k.echo or not _shortcuts_on():
+		return
+	var n := k.keycode - KEY_0
+	if n < 0 or n > 5:
+		return
+	# cada atajo arma la partida que necesita y vuelve a cargar el nivel
+	Inventario.reiniciar()
+	if n >= 3:
+		Inventario.pincel = true
+		Inventario.progreso["n1_sombras"] = true
+		Inventario.progreso["n1_trazo_x"] = BRUSH_X + 650.0
+	if n >= 4:
+		Inventario.tintero = true
+	if n == 5:
+		Inventario.tinta = Inventario.TINTA_MAX
+	Inventario.guardar()
+	Inventario.atajo = n
+	get_tree().reload_current_scene()
+
+
+func _apply_shortcut(n: int) -> void:
+	var names := ["desde el principio (partida borrada)", "antes del hueco, corriendo", "junto al pincel",
+		"sin sombras, rumbo al altar", "en el lago con el tintero vacío", "en la puerta con el tintero lleno"]
+	match n:
+		1:
+			walker.position = Vector2(GAP.x - 700.0, GROUND_Y)
+			walker.max_speed = STAGES[2][1]
+			shadow_x = walker.position.x - 430.0
+			_shadow_speed = STAGES[2][2]
+		2:
+			walker.position = Vector2(BRUSH_X - 40.0, HIGH_Y)
+			walker.max_speed = STAGES[2][1]
+			walker.can_jump = true
+			shadow_x = BRUSH_X - 700.0
+			_shadow_speed = 320.0
+		3:
+			walker.position = Vector2(ALTAR_X - 250.0, HIGH_Y)
+		4:
+			walker.position = Vector2(FALL_X - 120.0, HIGH_Y)
+		5:
+			walker.position = Vector2(EXIT_X - 160.0, HIGH_Y)
+	print("[nivel1] atajo %d: %s" % [n, names[n]])
+	_show_hint("Atajo %d: %s" % [n, names[n]], 2.5)
 
 
 # --- terreno y decoración -------------------------------------------------------------------------
@@ -542,6 +636,8 @@ func _update_shadows(delta: float, st: Array) -> void:
 				shadows_gone = true
 				_vignette.modulate.a = 0.0
 				walker.run_speed = RUN_SPEED           # ya sin miedo: corre y salta cuando quiere
+				Inventario.progreso["n1_trazo_x"] = barrier_x
+				Inventario.marcar("n1_sombras")
 				walker.can_jump = true
 				_show_hint("Las sombras se quedaron atrás… pero el pincel quedó seco.  Shift: correr", 4.5)
 				return
@@ -587,6 +683,7 @@ func _take_brush() -> void:
 	flash.tween_property(_fade, "color:a", 0.0, 0.9)
 	flash.tween_callback(func() -> void: _fade.color = Color(INK, 0.0))
 	Inventario.pincel = true
+	Inventario.guardar()
 	_brush_pickup.visible = false
 	_set_brush("color")
 	_show_hint("El pincel. Le queda color para un trazo.  F: dar una pincelada contra las sombras", 5.0)
@@ -609,7 +706,7 @@ func _on_action_frame(anim: StringName, frame: int) -> void:
 			if brush == "color":
 				# primera pincelada (con los restos de color): sube del suelo en diagonal
 				if frame == 4:
-					_start_stroke()
+					_start_stroke(tip)
 				if frame >= 4 and frame <= 6:
 					_stroke_part(frame - 4)
 				if frame == 6:
@@ -635,18 +732,17 @@ func _on_action_finished(_anim: StringName) -> void:
 
 
 ## Las sombras siempre vienen por la izquierda: se gira hacia ellas y las enfrenta con una pincelada
-## ascendente. Usa paint_rise (pedida a Codex en Wolf_Varita_v002) y, mientras no exista, paint_up.
+## ascendente (paint_rise de Wolf_Varita_v002).
 func _paint_barrier() -> void:
 	print("[nivel1] %.1f s: se gira y pinta la barrera (sombras a %d px)" % [_t, walker.position.x - shadow_x])
-	var anim := &"paint_rise" if walker.lobo.sprite.sprite_frames.has_animation(&"paint_rise") else &"paint_up"
-	_start_action(anim, -1.0)
+	_start_action(&"paint_rise", -1.0)
 
 
 ## Pincelada de color: una estocada diagonal (~60°) sobre el fondo, del suelo delante del lobo (que mira
-## a las sombras) hacia arriba y atrás. No es un muro: es color sobre el lienzo, y las sombras no lo
-## cruzan. barrier_x es el pie del trazo.
-func _start_stroke() -> void:
-	barrier_x = walker.position.x - 150.0
+## a las sombras) hacia arriba y atrás, por donde sube la punta de la varita en paint_rise (cuadros 4–6).
+## No es un muro: es color sobre el lienzo, y las sombras no lo cruzan. barrier_x es el pie del trazo.
+func _start_stroke(tip: Vector2) -> void:
+	barrier_x = tip.x
 	print("[nivel1] %.1f s: pincelada de color en x=%d" % [_t, barrier_x])
 	_barrier_k = 0.0
 	var tw := create_tween()
@@ -684,6 +780,7 @@ func _update_places(x: float) -> void:
 func _take_inkwell() -> void:
 	Inventario.tintero = true
 	Inventario.tinta = 0.0
+	Inventario.guardar()
 	_inkwell.visible = false
 	print("[nivel1] %.1f s: toma el tintero (vacío)" % _t)
 	_update_inventory_ui()
@@ -711,6 +808,7 @@ func _reveal_gate() -> void:
 	tw.tween_property(self, "_gate_k", 1.0, 1.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tw.tween_callback(func() -> void:
 		gate_open = true
+		Inventario.marcar("n1_puerta")
 		print("[nivel1] %.1f s: la puerta se activa" % _t)
 		_show_hint("La puerta está abierta"))
 
