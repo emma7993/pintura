@@ -1,0 +1,4 @@
+Copia de integración de Game_Assets/Sombras_v001 (ChatGPT/Codex, 2026-11-03). Ver su INTEGRACION_CLAUDE.md.
+Manos A/B/C (256x512, ancla A y C (128,480), B (64,480)); charco 384x96 (ancla 192,47); bruma: front_loop,
+body (repetible), wisps, eyes y recoil. Golpe de las manos en los cuadros 3-4 de grab (hand_contacts.json).
+Lo usa zones/nivel_01_camino.gd (las sombras que persiguen al lobo).

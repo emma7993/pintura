@@ -29,7 +29,7 @@ const CELL_FEET := Vector2(128, 238)      # pies dentro de la celda (para la pun
 ## usa un poco más para un paso algo más largo sin que se note el deslizamiento.
 const STRIDE := 152.0
 const RUN_STRIDE := 311.0
-const STRIDE_V005 := 145.0         # caminata sin pincel (v005, zancada medida ~132)
+const STRIDE_V005 := 170.0         # caminata sin pincel (v005, zancada medida ~132): más lenta, a pedido de Emma
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0

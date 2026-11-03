@@ -1,0 +1,1480 @@
+[
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 1,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        180,
+        54
+      ],
+      [
+        194,
+        93
+      ],
+      [
+        191,
+        137
+      ],
+      [
+        177,
+        166
+      ]
+    ],
+    "primary_tip_xy": [
+      195,
+      94
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 2,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        197,
+        59
+      ],
+      [
+        210,
+        100
+      ],
+      [
+        208,
+        154
+      ],
+      [
+        185,
+        180
+      ]
+    ],
+    "primary_tip_xy": [
+      211,
+      101
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 3,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        213,
+        69
+      ],
+      [
+        226,
+        100
+      ],
+      [
+        220,
+        163
+      ],
+      [
+        193,
+        199
+      ]
+    ],
+    "primary_tip_xy": [
+      227,
+      101
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 4,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        232,
+        60
+      ],
+      [
+        244,
+        100
+      ],
+      [
+        239,
+        179
+      ],
+      [
+        193,
+        193
+      ],
+      [
+        206,
+        232
+      ]
+    ],
+    "primary_tip_xy": [
+      246,
+      101
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 5,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        207,
+        87
+      ],
+      [
+        210,
+        106
+      ],
+      [
+        207,
+        144
+      ],
+      [
+        191,
+        168
+      ],
+      [
+        189,
+        185
+      ]
+    ],
+    "primary_tip_xy": [
+      210,
+      105
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 6,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        232,
+        60
+      ],
+      [
+        244,
+        100
+      ],
+      [
+        239,
+        179
+      ],
+      [
+        193,
+        193
+      ],
+      [
+        206,
+        232
+      ]
+    ],
+    "primary_tip_xy": [
+      246,
+      101
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 7,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        213,
+        69
+      ],
+      [
+        226,
+        100
+      ],
+      [
+        220,
+        163
+      ],
+      [
+        193,
+        199
+      ]
+    ],
+    "primary_tip_xy": [
+      227,
+      101
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_reach",
+    "design": "A",
+    "frame": 8,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        197,
+        59
+      ],
+      [
+        210,
+        100
+      ],
+      [
+        208,
+        154
+      ],
+      [
+        185,
+        180
+      ]
+    ],
+    "primary_tip_xy": [
+      211,
+      101
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_grab",
+    "design": "A",
+    "frame": 1,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        186,
+        60
+      ],
+      [
+        196,
+        91
+      ],
+      [
+        192,
+        144
+      ],
+      [
+        177,
+        169
+      ]
+    ],
+    "primary_tip_xy": [
+      196,
+      92
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_grab",
+    "design": "A",
+    "frame": 2,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        197,
+        139
+      ],
+      [
+        193,
+        165
+      ],
+      [
+        195,
+        186
+      ],
+      [
+        180,
+        206
+      ],
+      [
+        178,
+        220
+      ]
+    ],
+    "primary_tip_xy": [
+      197,
+      138
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_grab",
+    "design": "A",
+    "frame": 3,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        241,
+        345
+      ],
+      [
+        244,
+        361
+      ],
+      [
+        240,
+        384
+      ],
+      [
+        240,
+        398
+      ],
+      [
+        220,
+        417
+      ]
+    ],
+    "primary_tip_xy": [
+      244,
+      362
+    ],
+    "contact_xy": [
+      244,
+      362
+    ],
+    "hits": true,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_grab",
+    "design": "A",
+    "frame": 4,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        184,
+        295
+      ],
+      [
+        219,
+        315
+      ],
+      [
+        233,
+        351
+      ],
+      [
+        233,
+        373
+      ],
+      [
+        227,
+        395
+      ]
+    ],
+    "primary_tip_xy": [
+      232,
+      364
+    ],
+    "contact_xy": [
+      232,
+      364
+    ],
+    "hits": true,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_grab",
+    "design": "A",
+    "frame": 5,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        205,
+        200
+      ],
+      [
+        220,
+        241
+      ],
+      [
+        222,
+        257
+      ],
+      [
+        221,
+        272
+      ],
+      [
+        215,
+        290
+      ]
+    ],
+    "primary_tip_xy": [
+      222,
+      261
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "A_grab",
+    "design": "A",
+    "frame": 6,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        186,
+        61
+      ],
+      [
+        196,
+        91
+      ],
+      [
+        192,
+        144
+      ],
+      [
+        177,
+        169
+      ]
+    ],
+    "primary_tip_xy": [
+      196,
+      92
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 1,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        105,
+        104
+      ],
+      [
+        122,
+        151
+      ],
+      [
+        119,
+        200
+      ],
+      [
+        105,
+        226
+      ],
+      [
+        66,
+        251
+      ]
+    ],
+    "primary_tip_xy": [
+      121,
+      148
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 2,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        138,
+        140
+      ],
+      [
+        134,
+        203
+      ],
+      [
+        113,
+        239
+      ],
+      [
+        66,
+        266
+      ],
+      [
+        64,
+        280
+      ]
+    ],
+    "primary_tip_xy": [
+      138,
+      140
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 3,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        150,
+        140
+      ],
+      [
+        147,
+        210
+      ],
+      [
+        95,
+        229
+      ],
+      [
+        118,
+        248
+      ],
+      [
+        62,
+        270
+      ]
+    ],
+    "primary_tip_xy": [
+      150,
+      140
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 4,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        164,
+        156
+      ],
+      [
+        109,
+        199
+      ],
+      [
+        152,
+        232
+      ],
+      [
+        117,
+        287
+      ],
+      [
+        48,
+        301
+      ]
+    ],
+    "primary_tip_xy": [
+      165,
+      157
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 5,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        107,
+        123
+      ],
+      [
+        130,
+        151
+      ],
+      [
+        129,
+        191
+      ],
+      [
+        129,
+        205
+      ],
+      [
+        122,
+        229
+      ]
+    ],
+    "primary_tip_xy": [
+      130,
+      160
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 6,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        164,
+        156
+      ],
+      [
+        109,
+        199
+      ],
+      [
+        152,
+        232
+      ],
+      [
+        117,
+        287
+      ],
+      [
+        48,
+        301
+      ]
+    ],
+    "primary_tip_xy": [
+      165,
+      157
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 7,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        150,
+        140
+      ],
+      [
+        147,
+        210
+      ],
+      [
+        95,
+        229
+      ],
+      [
+        118,
+        248
+      ],
+      [
+        62,
+        270
+      ]
+    ],
+    "primary_tip_xy": [
+      150,
+      140
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_reach",
+    "design": "B",
+    "frame": 8,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        138,
+        140
+      ],
+      [
+        134,
+        203
+      ],
+      [
+        113,
+        239
+      ],
+      [
+        66,
+        266
+      ],
+      [
+        64,
+        280
+      ]
+    ],
+    "primary_tip_xy": [
+      138,
+      140
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_grab",
+    "design": "B",
+    "frame": 1,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        129,
+        135
+      ],
+      [
+        155,
+        167
+      ],
+      [
+        150,
+        224
+      ],
+      [
+        118,
+        246
+      ]
+    ],
+    "primary_tip_xy": [
+      155,
+      167
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_grab",
+    "design": "B",
+    "frame": 2,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        208,
+        302
+      ],
+      [
+        208,
+        316
+      ],
+      [
+        208,
+        330
+      ],
+      [
+        208,
+        344
+      ],
+      [
+        208,
+        358
+      ]
+    ],
+    "primary_tip_xy": [
+      208,
+      334
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_grab",
+    "design": "B",
+    "frame": 3,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        210,
+        335
+      ],
+      [
+        235,
+        374
+      ],
+      [
+        222,
+        396
+      ],
+      [
+        228,
+        418
+      ]
+    ],
+    "primary_tip_xy": [
+      235,
+      374
+    ],
+    "contact_xy": [
+      235,
+      374
+    ],
+    "hits": true,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_grab",
+    "design": "B",
+    "frame": 4,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        104,
+        305
+      ],
+      [
+        197,
+        360
+      ],
+      [
+        201,
+        387
+      ],
+      [
+        190,
+        410
+      ]
+    ],
+    "primary_tip_xy": [
+      201,
+      388
+    ],
+    "contact_xy": [
+      201,
+      388
+    ],
+    "hits": true,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_grab",
+    "design": "B",
+    "frame": 5,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        175,
+        232
+      ],
+      [
+        190,
+        268
+      ],
+      [
+        182,
+        299
+      ]
+    ],
+    "primary_tip_xy": [
+      190,
+      269
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "B_grab",
+    "design": "B",
+    "frame": 6,
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        130,
+        137
+      ],
+      [
+        155,
+        172
+      ],
+      [
+        150,
+        224
+      ],
+      [
+        119,
+        244
+      ]
+    ],
+    "primary_tip_xy": [
+      155,
+      172
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 1,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        176,
+        181
+      ],
+      [
+        200,
+        219
+      ],
+      [
+        192,
+        246
+      ],
+      [
+        169,
+        269
+      ]
+    ],
+    "primary_tip_xy": [
+      199,
+      218
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 2,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        196,
+        182
+      ],
+      [
+        221,
+        207
+      ],
+      [
+        221,
+        246
+      ],
+      [
+        191,
+        272
+      ]
+    ],
+    "primary_tip_xy": [
+      165,
+      227
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 3,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        213,
+        177
+      ],
+      [
+        235,
+        203
+      ],
+      [
+        230,
+        248
+      ],
+      [
+        242,
+        299
+      ]
+    ],
+    "primary_tip_xy": [
+      242,
+      299
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 4,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        206,
+        175
+      ],
+      [
+        235,
+        189
+      ],
+      [
+        236,
+        248
+      ],
+      [
+        199,
+        288
+      ]
+    ],
+    "primary_tip_xy": [
+      235,
+      246
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 5,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        205,
+        191
+      ],
+      [
+        225,
+        216
+      ],
+      [
+        210,
+        250
+      ]
+    ],
+    "primary_tip_xy": [
+      225,
+      217
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 6,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        206,
+        175
+      ],
+      [
+        235,
+        189
+      ],
+      [
+        236,
+        248
+      ],
+      [
+        199,
+        288
+      ]
+    ],
+    "primary_tip_xy": [
+      235,
+      246
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 7,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        213,
+        177
+      ],
+      [
+        235,
+        203
+      ],
+      [
+        230,
+        248
+      ],
+      [
+        242,
+        299
+      ]
+    ],
+    "primary_tip_xy": [
+      242,
+      299
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_reach",
+    "design": "C",
+    "frame": 8,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        196,
+        182
+      ],
+      [
+        221,
+        207
+      ],
+      [
+        221,
+        246
+      ],
+      [
+        191,
+        272
+      ]
+    ],
+    "primary_tip_xy": [
+      165,
+      227
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_grab",
+    "design": "C",
+    "frame": 1,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        172,
+        165
+      ],
+      [
+        196,
+        192
+      ],
+      [
+        189,
+        233
+      ],
+      [
+        167,
+        254
+      ]
+    ],
+    "primary_tip_xy": [
+      196,
+      192
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_grab",
+    "design": "C",
+    "frame": 2,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        187,
+        212
+      ],
+      [
+        196,
+        239
+      ],
+      [
+        186,
+        276
+      ]
+    ],
+    "primary_tip_xy": [
+      196,
+      242
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_grab",
+    "design": "C",
+    "frame": 3,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        223,
+        321
+      ],
+      [
+        228,
+        353
+      ],
+      [
+        135,
+        413
+      ]
+    ],
+    "primary_tip_xy": [
+      228,
+      356
+    ],
+    "contact_xy": [
+      228,
+      356
+    ],
+    "hits": true,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_grab",
+    "design": "C",
+    "frame": 4,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        200,
+        337
+      ],
+      [
+        211,
+        358
+      ]
+    ],
+    "primary_tip_xy": [
+      211,
+      358
+    ],
+    "contact_xy": [
+      211,
+      358
+    ],
+    "hits": true,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_grab",
+    "design": "C",
+    "frame": 5,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        209,
+        282
+      ],
+      [
+        210,
+        311
+      ]
+    ],
+    "primary_tip_xy": [
+      210,
+      311
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  },
+  {
+    "animation": "C_grab",
+    "design": "C",
+    "frame": 6,
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "fingertips_xy": [
+      [
+        175,
+        168
+      ],
+      [
+        201,
+        197
+      ],
+      [
+        191,
+        232
+      ],
+      [
+        167,
+        259
+      ]
+    ],
+    "primary_tip_xy": [
+      201,
+      197
+    ],
+    "contact_xy": null,
+    "hits": false,
+    "method": "Measured silhouette tips by row extrema; hooked claws use leading contour as primary strike contact."
+  }
+]

@@ -4,10 +4,12 @@ extends Node2D
 ## a correr. A lo lejos ve una luz al otro lado de un hueco (ahí descubre el salto). La luz guarda el pincel,
 ## primer upgrade: con él pinta una barrera de óleo detrás de sí y las sombras se quedan atrás.
 ## La luz está en una plataforma alta al otro lado del hueco. El pincel trae restos de color para un solo
-## trazo (la barrera) y queda seco. La puerta de regreso al lienzo principal es un boceto apagado: más
-## adelante, en un altar pequeño junto a una cascada de tinta negra, hay un tintero vacío: se guarda en el
-## inventario (core/inventario.gd), se llena en el lago de tinta al pie de la cascada y con esa tinta se
-## vuelve a la puerta y se pinta para que se active. La tinta se gasta y hay que volver a llenarlo.
+## trazo y queda seco. La puerta (arco) de regreso al lienzo es un boceto apagado; junto a ella hay un pozo
+## cerrado. Más adelante: un escalón, una meseta y un foso de tinta (hay que correr y saltar), y la boca
+## de una cueva que baja. Abajo, en una cámara honda, el tintero vacío (core/inventario.gd); a la izquierda,
+## bajo tierra, la cascada de tinta donde se llena; de vuelta bajo el pozo, un golpe de pincel rompe su tapa
+## y se sube por él hasta el arco, que se pinta con tinta para volver al lienzo. La tinta se gasta.
+## Las sombras (bruma y manos que brotan del suelo) son zones/sombras.gd.
 ## Se corre solo con F6 (zones/nivel_01_camino.tscn) o entrando desde el camino de la pintura (main.gd).
 
 signal exit_requested(next_zone: String)
@@ -16,10 +18,10 @@ signal near_exit_changed(is_near: bool)
 const ART := "res://art/worlds/camino/nivel_01_bocetos_v001"
 const COLOR_ART := "res://art/worlds/camino/nivel_01_color_v001"   # óleo, máscaras, barrera, cascada, altar
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
-const MASK_SIZE := Vector2(8000, 1400)
+const MASK_SIZE := Vector2(10400, 2300)
 const MASK_DIV := 4.0                     # px de mundo por px de máscara
 const GROUND_Y := 600.0
-const WIDTH := 7600.0
+const WIDTH := 10000.0
 const SPAWN := Vector2(260, 600)
 const TRACK := 5                          # canción: Camino
 const GAP := Vector2(3950, 4110)          # hueco que hay que saltar (x de inicio, x de fin)
@@ -28,14 +30,30 @@ const BRUSH_X := 4560.0                   # la luz con el pincel
 const EXIT_X := 5700.0                    # puerta de regreso al lienzo principal
 const GATE_SCALE := 1.8
 const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
-const ALTAR_X := 6950.0                   # altar pequeño con el tintero
-const FALL_X := 7230.0                    # cascada de tinta negra, al lado del altar
+const WELL_X := 5980.0                    # pozo junto al arco; su tiro baja hasta el techo de la cueva
+const WELL_HALF := 110.0
+const STEP_X := Vector2(6700, 6870)       # escalón flotante (arriba: HIGH_Y - 100)
+const PLATEAU := Vector2(6900, 7500)      # meseta (arriba: HIGH_Y - 200): sin el escalón no se sube
+const PIT := Vector2(7700, 7900)          # foso de tinta: hay que correr (Shift) y saltar
+const PIT_FLOOR := 760.0
+const HOLE := Vector2(8400, 8560)         # boca de la cueva
+const CAVE_TOP := 800.0                   # techo de la cueva (entre el suelo alto y aquí: roca)
+const CAVE_Y := 1250.0                    # suelo de la cueva
+const CAVE_X := Vector2(5000, 8750)
+const CHAMBER := Vector2(6900, 7600)      # cámara honda con el tintero
+const CHAMBER_Y := 1450.0
+const ALTAR_X := 7250.0                   # pedestal con el tintero (en la cámara)
+const FALL_X := 5350.0                    # cascada de tinta (bajo tierra, a la izquierda)
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
+## Repisas para subir del suelo de la cueva al arco por el pozo (salto máx. ~175 px). La de 965 queda
+## justo bajo la tapa: desde ahí se golpea. Las de dentro del tiro solo se alcanzan con la tapa rota.
+const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0]
+const PLUG := Rect2(5870, 812, 220, 24)   # tapa de piedra en el fondo del pozo
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 const STAGES := [
 	[0.0, 127.0, 122.0, 520.0],           # miedo: solo camina (las sombras casi lo igualan)
-	[1700.0, 215.0, 190.0, 560.0],        # se apura
-	[3000.0, 360.0, 320.0, 430.0],        # corre
+	[1100.0, 215.0, 190.0, 560.0],        # se apura
+	[2200.0, 360.0, 320.0, 430.0],        # corre
 ]
 const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
 const CALM_SPEED := 198.0                 # paso del lobo cuando ya no lo persiguen
@@ -53,6 +71,7 @@ var brush := ""                           # restos del pincel: "color" (un trazo
 var barrier_x := -INF                     # -INF = sin barrera
 var shadows_gone := false
 var gate_open := false                    # la puerta ya se pintó
+var well_open := false                    # la tapa del pozo ya se rompió
 
 var _t := 0.0
 var _gate_k := 0.0                        # 0..1: avance de la pintura de la puerta
@@ -62,6 +81,14 @@ var _gate_glow: Sprite2D
 var _at_gate := false
 var _at_altar := false
 var _at_lake := false
+var _at_well := false                     # bajo la tapa del pozo, en la repisa de 965
+var _over_well := false
+var _action_target := ""                  # qué pinta paint_up: "gate" o "well"
+var _plug: StaticBody2D
+var _lid: StaticBody2D                    # losa del pozo en el suelo alto (luego, repisa de un solo sentido)
+var _debris: Array[Dictionary] = []       # trozos de la tapa al romperse
+var _terrain: Node2D                      # roca y pozo dibujados (provisional hasta tener arte)
+var _sombras: Sombras
 var _acting := false                      # el lobo está pintando o mojando el pincel: no camina
 var _brush_pickup: Sprite2D
 var _inkwell: Sprite2D                    # tintero sobre el altar
@@ -86,7 +113,6 @@ var _busy := false
 var _moved := false
 var _metrics := {}
 var _env: Node2D
-var _shadow_layer: Node2D
 var _cam: Camera2D
 var _hint: Label
 var _fade: ColorRect
@@ -116,17 +142,15 @@ func _ready() -> void:
 	walker.lobo.action_frame.connect(_on_action_frame)
 	walker.lobo.action_finished.connect(_on_action_finished)
 
-	_shadow_layer = Node2D.new()
-	_shadow_layer.z_index = 20            # las sombras cubren al lobo cuando lo alcanzan
-	_shadow_layer.draw.connect(_draw_shadows)
-	add_child(_shadow_layer)
+	_sombras = Sombras.new()
+	add_child(_sombras)
 
 	_cam = Camera2D.new()
 	_cam.position_smoothing_enabled = true
 	_cam.position_smoothing_speed = 5.0
 	_cam.limit_left = 0
 	_cam.limit_right = int(WIDTH)
-	_cam.limit_bottom = int(GROUND_Y + 160.0)
+	_cam.limit_bottom = int(CHAMBER_Y + 200.0)
 	_cam.offset = Vector2(0, -70)
 	walker.add_child(_cam)
 	_build_ui()
@@ -141,7 +165,7 @@ func _ready() -> void:
 		_apply_shortcut(Inventario.atajo)
 		Inventario.atajo = -1
 	elif _shortcuts_on() and not auto:
-		_show_hint("Atajos de prueba:  0 reiniciar · 1 hueco · 2 pincel · 3 sin sombras · 4 lago · 5 puerta", 4.0)
+		_show_hint("Atajos:  0 reiniciar · 1 hueco · 2 pincel · 3 plataformas · 4 cascada · 5 arco · 6 pozo", 4.0)
 	_cam.reset_smoothing()
 	if auto:
 		add_child((load("res://herramientas/auto_nivel1.gd") as GDScript).new())
@@ -170,6 +194,8 @@ func _restore_progress() -> void:
 		walker.position = Vector2(BRUSH_X + 200.0, HIGH_Y)
 	if Inventario.tintero:
 		_inkwell.visible = false
+	if Inventario.hecho("n1_pozo"):
+		_open_well(false)
 	if Inventario.hecho("n1_puerta"):
 		gate_open = true
 		_gate_k = 1.0
@@ -188,7 +214,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	if k == null or not k.pressed or k.echo or not _shortcuts_on():
 		return
 	var n := k.keycode - KEY_0
-	if n < 0 or n > 5:
+	if n < 0 or n > 6:
 		return
 	# cada atajo arma la partida que necesita y vuelve a cargar el nivel
 	Inventario.reiniciar()
@@ -198,8 +224,10 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		Inventario.progreso["n1_trazo_x"] = BRUSH_X + 650.0
 	if n >= 4:
 		Inventario.tintero = true
-	if n == 5:
+	if n >= 5:
 		Inventario.tinta = Inventario.TINTA_MAX
+	if n == 5:
+		Inventario.progreso["n1_pozo"] = true
 	Inventario.guardar()
 	Inventario.atajo = n
 	get_tree().reload_current_scene()
@@ -207,7 +235,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _apply_shortcut(n: int) -> void:
 	var names := ["desde el principio (partida borrada)", "antes del hueco, corriendo", "junto al pincel",
-		"sin sombras, rumbo al altar", "en el lago con el tintero vacío", "en la puerta con el tintero lleno"]
+		"sin sombras, antes de las plataformas", "en la cascada (cueva) con el tintero vacío",
+		"en el arco con el tintero lleno", "bajo el pozo con tinta, listo para romper la tapa"]
 	match n:
 		1:
 			walker.position = Vector2(GAP.x - 700.0, GROUND_Y)
@@ -221,11 +250,13 @@ func _apply_shortcut(n: int) -> void:
 			shadow_x = BRUSH_X - 700.0
 			_shadow_speed = 320.0
 		3:
-			walker.position = Vector2(ALTAR_X - 250.0, HIGH_Y)
+			walker.position = Vector2(STEP_X.x - 350.0, HIGH_Y)
 		4:
-			walker.position = Vector2(FALL_X - 120.0, HIGH_Y)
+			walker.position = Vector2(FALL_X + 120.0, CAVE_Y)
 		5:
 			walker.position = Vector2(EXIT_X - 160.0, HIGH_Y)
+		6:
+			walker.position = Vector2(WELL_X, CAVE_Y)
 	print("[nivel1] atajo %d: %s" % [n, names[n]])
 	_show_hint("Atajo %d: %s" % [n, names[n]], 2.5)
 
@@ -233,22 +264,88 @@ func _apply_shortcut(n: int) -> void:
 # --- terreno y decoración -------------------------------------------------------------------------
 
 func _build_ground() -> void:
+	# antes del hueco: suelo bajo; después, suelo alto con el pozo, el foso y la boca de la cueva
 	_ground_strip(-160.0, GAP.x, GROUND_Y)
-	_ground_strip(GAP.y, WIDTH + 200.0, HIGH_Y)
 	_solid(Rect2(-200, GROUND_Y, GAP.x + 200, 400))
-	_solid(Rect2(GAP.y, HIGH_Y, WIDTH - GAP.y + 400, 510))
-	_solid(Rect2(-240, GROUND_Y - 1200, 240, 1200))          # bordes del mundo
-	_solid(Rect2(WIDTH, GROUND_Y - 1200, 240, 1200))
+	for seg in [Vector2(GAP.y, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, PIT.x), Vector2(PIT.y, HOLE.x), Vector2(HOLE.y, WIDTH + 200.0)]:
+		_ground_strip(seg.x, seg.y, HIGH_Y)
+		_solid(Rect2(seg.x, HIGH_Y, seg.y - seg.x, CAVE_TOP - HIGH_Y))
+	_ground_strip(WELL_X - WELL_HALF, WELL_X + WELL_HALF, HIGH_Y)    # la losa del pozo, a lápiz
+	_lid = _solid(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, 30))
+	_solid(Rect2(GAP.y, CAVE_TOP, CAVE_X.x - GAP.y, 1000))          # roca maciza a la izquierda de la cueva
+	_solid(Rect2(PIT.x, PIT_FLOOR, PIT.y - PIT.x, CAVE_TOP - PIT_FLOOR))
+	_solid(Rect2(-240, GROUND_Y - 1200, 240, 1200))                  # bordes del mundo
+	_solid(Rect2(WIDTH, GROUND_Y - 1200, 240, 2600))
 	# pared de la plataforma alta y piedras en el borde del hueco
 	var wb: Array = _metrics.wall.bounds
 	_place("wall", Vector2(GAP.y + 30, GROUND_Y + 40), 170.0 / float(wb[3]), -9).modulate.a = 0.8
 	_place("stones", Vector2(GAP.x - 20, GROUND_Y + 8), 0.7, -8)
 	_place("stones", Vector2(GAP.y + 40, HIGH_Y + 8), 0.6, -8)
+	# escalón flotante y meseta: sin el escalón la meseta es demasiado alta para un salto
+	_platform(Rect2(STEP_X.x, HIGH_Y - 100.0, STEP_X.y - STEP_X.x, 16), "platform_short")
+	var plateau_top := HIGH_Y - 200.0
+	_ground_strip(PLATEAU.x, PLATEAU.y, plateau_top)
+	_solid(Rect2(PLATEAU.x, plateau_top, PLATEAU.y - PLATEAU.x, 200))
+	for side in [PLATEAU.x + 20.0, PLATEAU.y - 20.0]:
+		_place("wall", Vector2(side, HIGH_Y + 30), 230.0 / float(wb[3]), -9).modulate.a = 0.8
+	# cueva: suelo, cámara honda con el tintero (se sale por una repisa) y paredes
+	_ground_strip(CAVE_X.x, CHAMBER.x, CAVE_Y)
+	_ground_strip(CHAMBER.x, CHAMBER.y, CHAMBER_Y)
+	_ground_strip(CHAMBER.y, CAVE_X.y, CAVE_Y)
+	_solid(Rect2(CAVE_X.x, CAVE_Y, CHAMBER.x - CAVE_X.x, 600))
+	_solid(Rect2(CHAMBER.x, CHAMBER_Y, CHAMBER.y - CHAMBER.x, 400))
+	_solid(Rect2(CHAMBER.y, CAVE_Y, CAVE_X.y - CHAMBER.y, 600))
+	_solid(Rect2(CAVE_X.x - 400, CAVE_TOP, 400, 1200))
+	_solid(Rect2(CAVE_X.y, CAVE_TOP, 400, 1200))
+	_platform(Rect2(CHAMBER.x + 60, CHAMBER_Y - 110.0, 130, 16), "platform_short")
+	# bajo el pozo: repisas para subir; la tapa cierra el tiro hasta romperla
+	for i in WELL_LEDGES.size():
+		var y: float = WELL_LEDGES[i]
+		var x0 := WELL_X - 80.0 + (30.0 if i % 2 == 0 else -30.0)
+		_platform(Rect2(x0, y, 160, 16), "platform_long")
+	_plug = _solid(PLUG)
+	# roca, cueva y pozo dibujados por código (provisional)
+	var back := Node2D.new()
+	back.z_index = -60
+	back.draw.connect(_draw_cave_back.bind(back))
+	add_child(back)
+	var rock := Node2D.new()
+	rock.z_index = -3                      # tapa el chorro de la cascada por encima del techo de la cueva
+	rock.draw.connect(_draw_rock.bind(rock))
+	add_child(rock)
+	_terrain = Node2D.new()
+	_terrain.z_index = -2
+	_terrain.draw.connect(_draw_terrain)
+	add_child(_terrain)
 
 
-## Altura del suelo en x: baja antes del hueco, alta después.
+## Altura del suelo en x por arriba (lo que pisa el lobo antes de bajar a la cueva).
 func _ground_at(x: float) -> float:
-	return HIGH_Y if x >= GAP.y else GROUND_Y
+	if x < GAP.y:
+		return GROUND_Y
+	if x >= PLATEAU.x and x <= PLATEAU.y:
+		return HIGH_Y - 200.0
+	return HIGH_Y
+
+
+## Repisa de un solo sentido (se atraviesa de abajo hacia arriba), con un módulo a lápiz encima.
+func _platform(r: Rect2, art: String) -> void:
+	var body := StaticBody2D.new()
+	body.collision_layer = 2
+	body.collision_mask = 0
+	var cs := CollisionShape2D.new()
+	var shape := RectangleShape2D.new()
+	shape.size = r.size
+	cs.shape = shape
+	cs.one_way_collision = true
+	cs.position = r.get_center()
+	body.add_child(cs)
+	add_child(body)
+	var b: Array = _metrics[art].bounds
+	var f := r.size.x / float(b[2])
+	var s := _sprite(art, -9)
+	s.scale = Vector2.ONE * f
+	s.position = Vector2(r.position.x - float(b[0]) * f, r.position.y - float(b[1]) * f - 6.0)
 
 
 ## Tira de suelo a lápiz entre x0 y x1 a la altura y (sin colisión: va aparte).
@@ -273,7 +370,7 @@ func _ground_strip(x0: float, x1: float, ground: float) -> void:
 		i += 1
 
 
-func _solid(r: Rect2) -> void:
+func _solid(r: Rect2) -> StaticBody2D:
 	var body := StaticBody2D.new()
 	body.collision_layer = 1
 	body.collision_mask = 0
@@ -284,19 +381,24 @@ func _solid(r: Rect2) -> void:
 	cs.position = r.get_center()
 	body.add_child(cs)
 	add_child(body)
+	return body
 
 
 func _build_decor() -> void:
 	# self_modulate: el grafito se atenúa, pero el óleo de debajo (hijo) conserva su color al pintarse
-	for e in [["tree_left", 760.0, 2.4], ["tree_right", 1900.0, 2.8], ["tree_left", 2900.0, 2.6], ["tree_right", 5100.0, 2.6], ["tree_left", 6450.0, 2.2]]:
+	for e in [["tree_left", 760.0, 2.4], ["tree_right", 1900.0, 2.8], ["tree_left", 2900.0, 2.6], ["tree_right", 5100.0, 2.6],
+			["tree_left", 6450.0, 2.2], ["tree_right", 8100.0, 2.4], ["tree_left", 9300.0, 2.6]]:
 		_place(e[0], Vector2(e[1], _ground_at(e[1]) + 4), e[2], -18).self_modulate.a = 0.38
-	for j in 20:
+	var skip := [Vector2(GAP.x - 120, GAP.y + 120), Vector2(EXIT_X - 200, WELL_X + WELL_HALF + 60),
+		Vector2(STEP_X.x - 60, PLATEAU.y + 60), Vector2(PIT.x - 80, PIT.y + 80), Vector2(HOLE.x - 80, HOLE.y + 80)]
+	for j in 29:
 		var x := 420.0 + j * 330.0
-		if x > GAP.x - 120 and x < GAP.y + 120:
-			continue
-		if absf(x - EXIT_X) < 200.0 or absf(x - FALL_X) < LAKE_R + 60.0:
+		if skip.any(func(r: Vector2) -> bool: return x > r.x and x < r.y):
 			continue
 		_place("reeds" if j % 2 == 0 else "stones", Vector2(x, _ground_at(x) + 5), 0.55, -8).self_modulate.a = 0.6
+	# piedras en la cueva
+	for x in [5600.0, 6550.0, 7900.0, 8300.0]:
+		_place("stones", Vector2(x, CAVE_Y + 6), 0.6, -8).self_modulate.a = 0.7
 	_place("pedestal", Vector2(BRUSH_X, HIGH_Y + 5), 0.6, -8)
 	# puerta: boceto gris apagado; encima, su versión entintada (gate_tinta, mismo lienzo), oculta hasta que se pinta
 	_gate_sketch = _place("gate", Vector2(EXIT_X, HIGH_Y + 4), GATE_SCALE, -18)
@@ -315,17 +417,17 @@ func _build_color_props() -> void:
 	_brush_pickup = _color_sprite("Objects/brush_pickup.png", -6)
 	_brush_pickup.centered = true
 	_brush_pickup.scale = Vector2.ONE * 0.42
-	# altar: el mismo pedestal a lápiz que el del pincel (sin color); encima, el tintero de vidrio vacío,
+	# altar (en la cámara honda de la cueva): el mismo pedestal a lápiz que el del pincel; encima, el tintero vacío,
 	# aclarado para que se lea transparente (pie del frasco en y=236 de su celda)
-	var ped := _place("pedestal", Vector2(ALTAR_X, HIGH_Y + 5.0), 0.6, -8)
+	var ped := _place("pedestal", Vector2(ALTAR_X, CHAMBER_Y + 5.0), 0.6, -8)
 	var top: float = ped.position.y + float(_metrics.pedestal.bounds[1]) * 0.6
 	_inkwell = _color_sprite("Altar/inkwell_empty.png", -7)
 	_inkwell.scale = Vector2.ONE * 0.5
 	_inkwell.position = Vector2(ALTAR_X - 128.0 * 0.5, top + 4.0 - 236.0 * 0.5)
 	_inkwell.modulate = Color(1.45, 1.45, 1.5, 0.95)
 	# cascada: chorro 160x720 en (112,0) y charco 384x128 en (0,676) de un lienzo 384x804; el agua del
-	# charco (y≈100 de su celda) queda a ras del suelo alto
-	var origin := Vector2(FALL_X - 192.0, HIGH_Y + 8.0 - 776.0)
+	# charco (y≈100 de su celda) queda a ras del suelo de la cueva; la roca tapa lo que sobra arriba
+	var origin := Vector2(FALL_X - 192.0, CAVE_Y + 8.0 - 776.0)
 	# el chorro baja 60 px más que en el montaje de Codex: su borde inferior recto queda dentro del charco
 	for e in [["ink_stream", Vector2(112, 60), -6], ["ink_base", Vector2(0, 676), -5]]:
 		var a := AnimatedSprite2D.new()
@@ -379,7 +481,7 @@ func _build_paint_mask() -> void:
 	layer.centered = false
 	layer.position = MASK_ORIGIN
 	layer.scale = MASK_SIZE / 4.0
-	layer.z_index = -4
+	layer.z_index = -25                    # detrás del arco, los árboles y el suelo: colorea el fondo
 	var mat := ShaderMaterial.new()
 	mat.shader = load("res://zones/pintura_multiplica.gdshader")
 	mat.set_shader_parameter("paint_mask", _mask_tex)
@@ -588,8 +690,14 @@ func _physics_process(delta: float) -> void:
 	if shadow_x != -INF and not shadows_gone:
 		_update_shadows(delta, st)
 
-	if walker.position.y > GROUND_Y + 450.0:
+	if x < GAP.y + 60.0 and walker.position.y > GROUND_Y + 450.0:
 		_caught("cayó al hueco")
+	elif x > PIT.x and x < PIT.y and walker.position.y > PIT_FLOOR - 40.0 and walker.position.y < CAVE_TOP:
+		_caught("cayó al foso de tinta")
+	elif walker.position.y > CHAMBER_Y + 400.0:
+		_caught("cayó fuera del mundo")
+	if shadows_gone and x > PIT.x - 400.0 and x < PIT.x and absf(walker.position.y - HIGH_Y) < 8.0:
+		_checkpoint = Vector2(PIT.x - 120.0, HIGH_Y)
 	if not has_brush and absf(x - BRUSH_X) < 70.0 and walker.is_on_floor():
 		_take_brush()
 	_update_places(x)
@@ -600,6 +708,11 @@ func _physics_process(delta: float) -> void:
 			_take_inkwell()
 		elif _at_lake and Inventario.tintero:
 			_fill_inkwell()
+		elif _at_well:
+			if Inventario.gastar(Inventario.COSTO_TRAZO):
+				_strike_well()
+			else:
+				_show_hint("El pincel está seco: hace falta tinta para romper la tapa", 2.0)
 		elif _at_gate and not gate_open and _gate_k == 0.0:
 			if Inventario.gastar(Inventario.COSTO_PUERTA):
 				_paint_gate()
@@ -612,11 +725,12 @@ func _physics_process(delta: float) -> void:
 		_mask_dirty = false
 		_mask_tex.update(_mask_img)
 
+	_update_debris(delta)
 	_update_camera(delta)
 	_update_exits()
 	_check_exit()
 	queue_redraw()
-	_shadow_layer.queue_redraw()
+	_terrain.queue_redraw()
 
 
 func _update_shadows(delta: float, st: Array) -> void:
@@ -633,9 +747,11 @@ func _update_shadows(delta: float, st: Array) -> void:
 		# la barrera de óleo las detiene y se deshacen contra ella
 		shadow_x = minf(shadow_x, barrier_x - 26.0)
 		if shadow_x >= barrier_x - 40.0 and _barrier_k >= 1.0:
+			_sombras.recoil()
 			_shadow_alpha = maxf(0.0, _shadow_alpha - delta / 2.5)
 			if _shadow_alpha <= 0.0:
 				shadows_gone = true
+				_sombras.set_front(-INF, 0.0)
 				_vignette.modulate.a = 0.0
 				walker.run_speed = RUN_SPEED           # ya sin miedo: corre y salta cuando quiere
 				Inventario.progreso["n1_trazo_x"] = barrier_x
@@ -645,8 +761,12 @@ func _update_shadows(delta: float, st: Array) -> void:
 				return
 	var near := walker.position.x - shadow_x
 	_vignette.modulate.a = clampf(1.0 - (near - 120.0) / 650.0, 0.0, 1.0) * _shadow_alpha
-	if near < 30.0 and not _busy:
-		_caught("lo alcanzaron las sombras")
+	_sombras.set_front(shadow_x, _shadow_alpha)
+	_sombras.hands_on = barrier_x == -INF and not _busy and not _acting
+	_sombras.hand_every = [Vector2(2.4, 3.6), Vector2(1.8, 2.8), Vector2(1.3, 2.2)][_stage]
+	var grabbed := _sombras.update_hands(delta, walker.position, shadow_x, _ground_at(walker.position.x))
+	if (near < 30.0 or grabbed) and not _busy:
+		_caught("lo atrapó una mano" if grabbed else "lo alcanzaron las sombras")
 
 
 func _caught(why: String) -> void:
@@ -664,6 +784,7 @@ func _caught(why: String) -> void:
 	if shadow_x != -INF:
 		shadow_x = _checkpoint.x - (STAGES[_stage][3] as float) - 150.0
 		_shadow_speed = 0.0
+	_sombras.clear_hands()
 	_cam.reset_smoothing()
 	tw = create_tween()
 	tw.tween_property(_fade, "color:a", 0.0, 0.6)
@@ -714,10 +835,13 @@ func _on_action_frame(anim: StringName, frame: int) -> void:
 				if frame == 6:
 					_set_brush("seco")     # se acabó la carga de color
 			elif frame == 4:
-				_reveal_gate()
+				if _action_target == "well":
+					_open_well(true)
+				else:
+					_reveal_gate()
 		&"dip":
 			if frame == 4:
-				_splash.position = Vector2(tip.x, HIGH_Y + 4.0) - Vector2(64, 112)
+				_splash.position = Vector2(tip.x, CAVE_Y + 4.0) - Vector2(64, 112)
 				_splash.visible = true
 				_splash.play("dip_splash")
 				Inventario.llenar()
@@ -745,6 +869,7 @@ func _paint_barrier() -> void:
 ## No es un muro: es color sobre el lienzo, y las sombras no lo cruzan. barrier_x es el pie del trazo.
 func _start_stroke(tip: Vector2) -> void:
 	barrier_x = tip.x
+	_sombras.dissolve_hands()
 	print("[nivel1] %.1f s: pincelada de color en x=%d" % [_t, barrier_x])
 	_barrier_k = 0.0
 	var tw := create_tween()
@@ -760,23 +885,71 @@ func _stroke_part(part: int) -> void:
 		_stamp(foot + dir * STROKE_LEN * k + Vector2(randf_range(-10, 10), 0), 520.0, -STROKE_ANGLE, [1, 4, 3][i] - 1)
 
 
-## Avisos al llegar a la puerta, al altar o al lago (solo una vez por visita).
+## Avisos al llegar a la puerta, al altar, al lago o al pozo (solo una vez por visita).
 func _update_places(x: float) -> void:
-	var at_gate := absf(x - EXIT_X) < 170.0 and shadows_gone and not gate_open
+	var y := walker.position.y
+	var floor_ok := walker.is_on_floor()
+	var at_gate := absf(x - EXIT_X) < 170.0 and absf(y - HIGH_Y) < 20.0 and shadows_gone and not gate_open
 	if at_gate and not _at_gate:
 		if Inventario.tinta >= Inventario.COSTO_PUERTA:
 			_show_hint("F: pintar la puerta con tinta")
 		else:
 			_show_hint("La puerta es solo un boceto. Hace falta tinta para pintarla…", 3.5)
 	_at_gate = at_gate
-	var at_altar := absf(x - ALTAR_X) < 110.0 and has_brush and shadows_gone and not Inventario.tintero
+	var at_altar := absf(x - ALTAR_X) < 110.0 and absf(y - CHAMBER_Y) < 20.0 and has_brush and not Inventario.tintero
 	if at_altar and not _at_altar:
 		_show_hint("Un tintero sobre el altar.  F: tomarlo")
 	_at_altar = at_altar
-	var at_lake := absf(x - FALL_X) < LAKE_R and Inventario.tintero
+	var at_lake := absf(x - FALL_X) < LAKE_R and absf(y - CAVE_Y) < 20.0 and Inventario.tintero
 	if at_lake and not _at_lake and Inventario.tinta < Inventario.TINTA_MAX:
 		_show_hint("El lago de tinta.  F: llenar el tintero")
 	_at_lake = at_lake
+	# bajo la tapa del pozo (repisa de 965): con tinta en el pincel se rompe de un golpe
+	var at_well := not well_open and absf(x - WELL_X) < 100.0 and absf(y - WELL_LEDGES[1]) < 12.0 and floor_ok
+	if at_well and not _at_well:
+		if Inventario.tinta >= Inventario.COSTO_TRAZO:
+			_show_hint("Una tapa de piedra cierra el pozo.  F: golpearla con el pincel")
+		else:
+			_show_hint("Una tapa de piedra cierra el pozo… con tinta en el pincel podrías romperla", 3.5)
+	_at_well = at_well
+	var over_well := not well_open and absf(x - WELL_X) < WELL_HALF and absf(y - HIGH_Y) < 10.0 and shadows_gone
+	if over_well and not _over_well:
+		_show_hint("Un pozo tapado con una losa. Por arriba no se abre…", 3.0)
+	_over_well = over_well
+
+
+## Golpe hacia arriba con el pincel entintado (paint_up): en su cuadro 4 la tapa se rompe (_open_well).
+func _strike_well() -> void:
+	print("[nivel1] %.1f s: golpea la tapa del pozo (tinta restante %d)" % [_t, Inventario.tinta])
+	_update_inventory_ui()
+	_action_target = "well"
+	_start_action(&"paint_up", walker.lobo.facing)
+
+
+## Rompe la tapa del fondo del pozo y quita la losa de arriba: queda un tiro con repisas hasta el arco.
+## La losa pasa a ser una repisa de un solo sentido, para salir por arriba y volver a bajar.
+func _open_well(effects: bool) -> void:
+	if well_open:
+		return
+	well_open = true
+	_plug.queue_free()
+	_lid.queue_free()
+	_platform(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, 16), "bridge")
+	if effects:
+		for i in 14:
+			_debris.append({"p": Vector2(WELL_X + randf_range(-100, 100), PLUG.position.y + randf_range(0, 20)),
+				"v": Vector2(randf_range(-160, 160), randf_range(-260, 40)), "r": randf_range(4, 11)})
+		Inventario.marcar("n1_pozo")
+		print("[nivel1] %.1f s: se rompe la tapa del pozo" % _t)
+		_show_hint("La tapa se rompió: sube por el pozo", 3.0)
+
+
+func _update_debris(delta: float) -> void:
+	for d in _debris.duplicate():
+		d.v.y += 1400.0 * delta
+		d.p += d.v * delta
+		if d.p.y > CAVE_Y:
+			_debris.erase(d)
 
 
 func _take_inkwell() -> void:
@@ -800,6 +973,7 @@ func _fill_inkwell() -> void:
 func _paint_gate() -> void:
 	print("[nivel1] %.1f s: pinta la puerta (tinta restante %d)" % [_t, Inventario.tinta])
 	_update_inventory_ui()
+	_action_target = "gate"
 	_start_action(&"paint_up", signf(EXIT_X - walker.position.x))
 
 
@@ -873,46 +1047,94 @@ func _draw_light() -> void:
 	_brush_pickup.rotation = sin(_t * 1.1) * 0.06
 
 
-## Sombras: una masa de tinta con borde ondulante, brazos que se estiran y ojos pálidos.
-func _draw_shadows() -> void:
-	# la barrera es un sprite delante de esta capa (z 21): las sombras quedan detrás de ella
-	if shadow_x == -INF or shadows_gone:
-		return
-	var fx := shadow_x
-	var top := GROUND_Y - 1100.0
-	var bottom := GROUND_Y + 200.0
-	for layer in [[70.0, 0.22], [32.0, 0.5], [0.0, 0.93]]:
-		var reach: float = layer[0]
-		var pts := PackedVector2Array()
-		pts.append(Vector2(fx - 3000.0, top))
-		var y := top
-		while y <= bottom:
-			var w := sin(y * 0.018 + _t * 2.6) * 34.0 + sin(y * 0.051 - _t * 4.3) * 15.0
-			# más cerca del suelo, el frente se adelanta (se arrastra hacia el lobo)
-			var lean := clampf((y - GROUND_Y + 560.0) / 560.0, 0.0, 1.0) * 60.0
-			pts.append(Vector2(fx + reach + w + lean - 60.0, y))
-			y += 18.0
-		pts.append(Vector2(fx - 3000.0, bottom))
-		_shadow_layer.draw_colored_polygon(pts, Color(INK, (layer[1] as float) * _shadow_alpha))
-	# brazos que se estiran hacia el lobo
-	for i in 5:
-		var base := Vector2(fx, _ground_at(fx + 60.0) - 30.0 - i * 70.0)
-		var arm_len := 70.0 + 45.0 * sin(_t * 2.1 + i * 1.3)
-		if barrier_x != -INF:
-			arm_len = minf(arm_len, barrier_x - 50.0 - fx)   # chocan contra la barrera
-		var arm := PackedVector2Array()
-		for s in 9:
-			var k := float(s) / 8.0
-			arm.append(base + Vector2(k * arm_len, sin(k * 4.0 + _t * 3.0 + i) * 14.0 * k))
-		_shadow_layer.draw_polyline(arm, Color(INK, 0.85 * _shadow_alpha), 9.0, true)
-	# ojos
-	for i in 3:
-		var blink := 1.0 if fmod(_t + i * 1.7, 4.0) > 0.18 else 0.15
-		var e := Vector2(fx - 70.0 - i * 120.0, GROUND_Y - 150.0 - i * 95.0 + sin(_t + i) * 8.0)
-		for dx in [-9.0, 9.0]:
-			_shadow_layer.draw_set_transform(e + Vector2(dx, 0), 0.0, Vector2(1.0, blink))
-			_shadow_layer.draw_circle(Vector2.ZERO, 4.0, Color(0.95, 0.93, 0.88, 0.8 * _shadow_alpha))
-	_shadow_layer.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+## Roca maciza (corte del terreno a lápiz) entre el suelo alto y la cueva, y bajo el suelo de la cueva.
+## Provisional hasta tener arte de cueva; se dibuja una sola vez.
+func _rock_rects() -> Array[Rect2]:
+	var band := HIGH_Y + 26.0
+	var deep := CHAMBER_Y + 420.0
+	var r: Array[Rect2] = []
+	# franja entre el suelo alto y el techo de la cueva, con los huecos del pozo, el foso y la boca
+	for seg in [Vector2(GAP.y, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, PIT.x), Vector2(PIT.y, HOLE.x), Vector2(HOLE.y, WIDTH + 200.0)]:
+		r.append(Rect2(seg.x, band, seg.y - seg.x, CAVE_TOP - band))
+	r.append(Rect2(PIT.x, PIT_FLOOR, PIT.y - PIT.x, CAVE_TOP - PIT_FLOOR))
+	r.append(Rect2(GAP.y, CAVE_TOP, CAVE_X.x - GAP.y, deep - CAVE_TOP))
+	r.append(Rect2(CAVE_X.y, CAVE_TOP, WIDTH + 200.0 - CAVE_X.y, deep - CAVE_TOP))
+	r.append(Rect2(CAVE_X.x, CAVE_Y + 26.0, CHAMBER.x - CAVE_X.x, deep - CAVE_Y))
+	r.append(Rect2(CHAMBER.x, CHAMBER_Y + 26.0, CHAMBER.y - CHAMBER.x, deep - CHAMBER_Y))
+	r.append(Rect2(CHAMBER.y, CAVE_Y + 26.0, CAVE_X.y - CHAMBER.y, deep - CAVE_Y))
+	return r
+
+
+func _draw_rock(ci: CanvasItem) -> void:
+	var fill := Color(0.84, 0.82, 0.78)
+	var hatch := Color(0.42, 0.40, 0.37, 0.30)
+	for r in _rock_rects():
+		ci.draw_rect(r, fill)
+		# rayado de lápiz irregular (determinista)
+		var y := r.position.y + 14.0
+		while y < r.end.y - 6.0:
+			var x := r.position.x + fmod(y * 7.3, 37.0)
+			while x < r.end.x - 20.0:
+				var n := sin(x * 0.013 + y * 0.071) * 0.5 + 0.5
+				ci.draw_line(Vector2(x, y), Vector2(x + 14.0 + n * 10.0, y - 9.0 - n * 6.0), hatch, 1.2, true)
+				x += 30.0 + n * 26.0
+			y += 22.0
+		ci.draw_line(r.position, Vector2(r.end.x, r.position.y), Color(0.30, 0.28, 0.26, 0.35), 1.5)
+	# estalactitas en el techo de la cueva
+	var x := CAVE_X.x + 90.0
+	while x < CAVE_X.y - 60.0:
+		if absf(x - WELL_X) > WELL_HALF + 30.0 and (x < HOLE.x - 40.0 or x > HOLE.y + 40.0):
+			var h := 26.0 + fmod(x * 0.37, 38.0)
+			var pts := PackedVector2Array([Vector2(x - 14, CAVE_TOP), Vector2(x + 14, CAVE_TOP), Vector2(x + 2, CAVE_TOP + h)])
+			ci.draw_colored_polygon(pts, fill)
+			ci.draw_polyline(PackedVector2Array([pts[0], pts[2], pts[1]]), Color(0.30, 0.28, 0.26, 0.55), 1.5, true)
+		x += 140.0 + fmod(x * 0.61, 90.0)
+
+
+## Aire de la cueva, del tiro del pozo y de la boca: papel un poco más oscuro, detrás de todo.
+func _draw_cave_back(ci: CanvasItem) -> void:
+	var air := Color(0.88, 0.86, 0.82)
+	ci.draw_rect(Rect2(CAVE_X.x, CAVE_TOP, CAVE_X.y - CAVE_X.x, CHAMBER_Y + 40.0 - CAVE_TOP), air)
+	ci.draw_rect(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, CAVE_TOP - HIGH_Y), air)
+	ci.draw_rect(Rect2(HOLE.x, HIGH_Y, HOLE.y - HOLE.x, CAVE_TOP - HIGH_Y), air)
+
+
+## Lo que cambia: el brocal y la losa del pozo, la tapa del fondo, sus trozos y la tinta del foso.
+func _draw_terrain() -> void:
+	var line := Color(0.30, 0.28, 0.26, 0.85)
+	var stone := Color(0.80, 0.78, 0.74)
+	# brocal del pozo (sobre el suelo alto)
+	var l := WELL_X - WELL_HALF - 14.0
+	var r := WELL_X + WELL_HALF + 14.0
+	for side in [l, r - 22.0]:
+		_terrain.draw_rect(Rect2(side, HIGH_Y - 46.0, 22.0, 48.0), stone)
+		_terrain.draw_rect(Rect2(side, HIGH_Y - 46.0, 22.0, 48.0), line, false, 1.5)
+	if not well_open:
+		_terrain.draw_rect(Rect2(l - 6.0, HIGH_Y - 58.0, r - l + 12.0, 14.0), stone)            # losa
+		_terrain.draw_rect(Rect2(l - 6.0, HIGH_Y - 58.0, r - l + 12.0, 14.0), line, false, 2.0)
+		# tapa del fondo, vista desde la cueva
+		_terrain.draw_rect(PLUG, Color(0.45, 0.43, 0.40))
+		_terrain.draw_rect(PLUG, line, false, 2.0)
+		for k in 3:
+			var cx := PLUG.position.x + 50.0 + k * 60.0
+			_terrain.draw_polyline(PackedVector2Array([Vector2(cx, PLUG.position.y + 2), Vector2(cx + 9, PLUG.position.y + 12), Vector2(cx + 2, PLUG.end.y - 2)]), line, 1.2)
+	else:
+		# losa caída en el suelo, junto al brocal
+		_terrain.draw_set_transform(Vector2(r + 20.0, HIGH_Y - 9.0), 0.08, Vector2.ONE)
+		_terrain.draw_rect(Rect2(0, -7, 150.0, 14.0), stone)
+		_terrain.draw_rect(Rect2(0, -7, 150.0, 14.0), line, false, 2.0)
+		_terrain.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+	for d in _debris:
+		_terrain.draw_circle(d.p, d.r, Color(0.45, 0.43, 0.40))
+	# tinta en el fondo del foso
+	var pts := PackedVector2Array()
+	var x := PIT.x
+	while x <= PIT.y:
+		pts.append(Vector2(x, PIT_FLOOR - 26.0 + sin(x * 0.05 + _t * 2.2) * 4.0))
+		x += 10.0
+	pts.append(Vector2(PIT.y, PIT_FLOOR + 4.0))
+	pts.append(Vector2(PIT.x, PIT_FLOOR + 4.0))
+	_terrain.draw_colored_polygon(pts, Color(0.04, 0.04, 0.05, 0.95))
 
 
 func track() -> int:
