@@ -27,6 +27,10 @@ const LOOK_ENABLED := false
 ## ~10 % más para un paso más pausado a cambio de un deslizamiento casi imperceptible.
 const STRIDE := 145.0
 const RUN_STRIDE := 290.0
+## La caminata v005 tiene dos cuadros corridos: el 2 (cuerpo ~8 px atrás) y el 8 (~9 px adelante); se
+## corrigen a medias para que el torso no tiemble sin que los pies patinen. Índices desde 0.
+const WALK_FIX := {1: 5.0, 7: -6.0}
+const IDLE_WALK_FRAME := 2
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0
@@ -66,17 +70,29 @@ func _ready() -> void:
 	_sync_layers()
 
 
-## Cuadros del cuerpo: los de pincel_v001 más el reposo y la mirada de v004.
+## Cuadros del cuerpo: los de pincel_v001; reposo sin pincel = cuadro 3 de la misma caminata (pies juntos),
+## para que al soltar la tecla el lobo no cambie de postura ni "dé un paso atrás"; mirada de v004 (apagada).
 func _body_frames() -> SpriteFrames:
 	var f := (load(PINCEL + "/Godot/Wolf_body.tres") as SpriteFrames).duplicate() as SpriteFrames
+	f.add_animation(IDLE)
+	f.add_frame(IDLE, f.get_frame_texture(WALK, IDLE_WALK_FRAME))
 	var old := load(IDLE_FRAMES) as SpriteFrames
-	for anim in [IDLE, LOOK]:
-		f.add_animation(anim)
-		f.set_animation_speed(anim, old.get_animation_speed(anim))
-		f.set_animation_loop(anim, old.get_animation_loop(anim))
-		for i in old.get_frame_count(anim):
-			f.add_frame(anim, old.get_frame_texture(anim, i))
+	f.add_animation(LOOK)
+	f.set_animation_speed(LOOK, old.get_animation_speed(LOOK))
+	f.set_animation_loop(LOOK, false)
+	for i in old.get_frame_count(LOOK):
+		f.add_frame(LOOK, old.get_frame_texture(LOOK, i))
 	return f
+
+
+## Corrección horizontal (px de celda) de los cuadros que en el dibujo quedaron corridos respecto al resto.
+func _frame_fix(anim: StringName, frame: int) -> float:
+	match anim:
+		WALK:
+			return WALK_FIX.get(frame, 0.0)
+		&"idle_pincel":
+			return 3.0
+	return 0.0
 
 
 func _layer(frames: SpriteFrames) -> AnimatedSprite2D:
@@ -103,6 +119,9 @@ func _sync_layers() -> void:
 	if _base == null or sprite == null:
 		return
 	var shown := brush != "" and _base.sprite_frames.has_animation(sprite.animation)
+	var fix := Vector2(_frame_fix(sprite.animation, sprite.frame), 0.0)
+	for s in [sprite, _base, _tip]:
+		s.offset = SPRITE_OFFSET + fix
 	for s in [_base, _tip]:
 		s.visible = shown
 		if shown:

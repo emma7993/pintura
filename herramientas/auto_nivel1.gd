@@ -40,6 +40,11 @@ func _process(delta: float) -> void:
 		var dx: float = meta - x
 		dir = 0.0 if absf(dx) < 30.0 else signf(dx)
 	_mover(dir)
+	# de vuelta a la puerta, ya libre: corre con Shift
+	if _lleno and absf(_nivel.EXIT_X - x) > 200.0:
+		Input.action_press("run")
+	else:
+		Input.action_release("run")
 
 	# salto: al llegar al borde del hueco
 	if _salto < 0.0 and w.can_jump and w.is_on_floor() and x > _nivel.GAP.x - 45.0 and x < _nivel.GAP.x:

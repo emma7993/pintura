@@ -33,14 +33,16 @@ const FALL_X := 7230.0                    # cascada de tinta negra, al lado del 
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 const STAGES := [
-	[0.0, 115.0, 85.0, 760.0],            # miedo: solo camina
+	[0.0, 127.0, 122.0, 520.0],           # miedo: solo camina (las sombras casi lo igualan)
 	[1700.0, 215.0, 190.0, 560.0],        # se apura
 	[3000.0, 360.0, 320.0, 430.0],        # corre
 ]
-const SHADOW_START_X := 650.0             # las sombras aparecen cuando el lobo pasa de aquí
-const CALM_SPEED := 180.0                 # paso del lobo cuando ya no lo persiguen
+const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
+const CALM_SPEED := 198.0                 # paso del lobo cuando ya no lo persiguen
+const RUN_SPEED := 380.0                  # con Shift, una vez libre de las sombras
 const INK := Color(0.07, 0.06, 0.07)
-const BARRIER_SCALE := 0.7
+const STROKE_ANGLE := PI / 3.0            # pincelada de color: 60° sobre la horizontal
+const STROKE_LEN := 1000.0                # largo de la pincelada (del suelo hasta arriba de la pantalla)
 
 var walker: Player
 var cur_exit := ""
@@ -63,7 +65,6 @@ var _at_lake := false
 var _acting := false                      # el lobo está pintando o mojando el pincel: no camina
 var _brush_pickup: Sprite2D
 var _inkwell: Sprite2D                    # tintero sobre el altar
-var _barrier: AnimatedSprite2D
 var _splash: AnimatedSprite2D
 var _effects: SpriteFrames
 var _mask_img: Image                      # dónde ya pintó el pincel (0..255), en coordenadas de mundo
@@ -239,14 +240,6 @@ func _build_color_props() -> void:
 		a.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 		add_child(a)
 		a.play(e[0])
-	_barrier = AnimatedSprite2D.new()
-	_barrier.sprite_frames = _effects
-	_barrier.centered = false
-	_barrier.scale = Vector2.ONE * BARRIER_SCALE
-	_barrier.z_index = 21                  # delante de las sombras: chocan contra ella
-	_barrier.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-	_barrier.visible = false
-	add_child(_barrier)
 	_splash = AnimatedSprite2D.new()
 	_splash.sprite_frames = _effects
 	_splash.centered = false
@@ -282,6 +275,22 @@ func _build_paint_mask() -> void:
 	_oil_mat.shader = load("res://zones/oleo_revelado.gdshader")
 	_oil_mat.set_shader_parameter("paint_mask", _mask_tex)
 	_oil_mat.set_shader_parameter("mask_rect", Vector4(MASK_ORIGIN.x, MASK_ORIGIN.y, MASK_SIZE.x, MASK_SIZE.y))
+	# capa que colorea el fondo y el grafito (multiplicando) donde pasó la pincelada; el lobo queda encima
+	var white := Image.create(4, 4, false, Image.FORMAT_RGBA8)
+	white.fill(Color.WHITE)
+	var layer := Sprite2D.new()
+	layer.texture = ImageTexture.create_from_image(white)
+	layer.centered = false
+	layer.position = MASK_ORIGIN
+	layer.scale = MASK_SIZE / 4.0
+	layer.z_index = -4
+	var mat := ShaderMaterial.new()
+	mat.shader = load("res://zones/pintura_multiplica.gdshader")
+	mat.set_shader_parameter("paint_mask", _mask_tex)
+	mat.set_shader_parameter("oil", load(COLOR_ART + "/Barrier/rest.png"))
+	mat.set_shader_parameter("mask_rect", Vector4(MASK_ORIGIN.x, MASK_ORIGIN.y, MASK_SIZE.x, MASK_SIZE.y))
+	layer.material = mat
+	add_child(layer)
 
 
 ## Pone debajo de un módulo de grafito su versión al óleo (si existe), con el mismo registro y recorte.
@@ -324,15 +333,6 @@ func _stamp(at: Vector2, length: float, angle: float, idx := -1) -> void:
 				_mask_img.set_pixel(x, y, Color(m, m, m))
 	_mask_dirty = true
 
-
-## El color se extiende desde la barrera por el suelo y los árboles cercanos, a brochazos.
-func _spread_color(from_x: float) -> void:
-	var gy := _ground_at(from_x)
-	var spots := [[-60.0, -20.0], [140.0, -10.0], [-260.0, -30.0], [330.0, -20.0], [-170.0, -230.0],
-		[520.0, -10.0], [-430.0, -15.0], [-200.0, -420.0], [240.0, -200.0], [700.0, -30.0]]
-	for p in spots:
-		await get_tree().create_timer(0.09).timeout
-		_stamp(Vector2(from_x + (p[0] as float), gy + (p[1] as float)), randf_range(380.0, 560.0), randf_range(-0.35, 0.35))
 
 
 func _place(id: String, at: Vector2, f: float, depth: int) -> Sprite2D:
@@ -486,8 +486,8 @@ func _physics_process(delta: float) -> void:
 		_show_hint("Espacio: saltar  (mantén para llegar más lejos)")
 
 	if shadow_x == -INF and x > SHADOW_START_X and not shadows_gone:
-		shadow_x = x - (STAGES[0][3] as float) - 200.0
-		_shadow_speed = STAGES[0][2]
+		shadow_x = x - 700.0                  # entran por el borde izquierdo de la pantalla...
+		_shadow_speed = 280.0                  # ...de golpe, y luego se calman al paso del tramo
 		print("[nivel1] %.1f s: aparecen las sombras" % _t)
 	if shadow_x != -INF and not shadows_gone:
 		_update_shadows(delta, st)
@@ -541,7 +541,9 @@ func _update_shadows(delta: float, st: Array) -> void:
 			if _shadow_alpha <= 0.0:
 				shadows_gone = true
 				_vignette.modulate.a = 0.0
-				_show_hint("Las sombras se quedaron atrás… pero el pincel quedó seco", 4.0)
+				walker.run_speed = RUN_SPEED           # ya sin miedo: corre y salta cuando quiere
+				walker.can_jump = true
+				_show_hint("Las sombras se quedaron atrás… pero el pincel quedó seco.  Shift: correr", 4.5)
 				return
 	var near := walker.position.x - shadow_x
 	_vignette.modulate.a = clampf(1.0 - (near - 120.0) / 650.0, 0.0, 1.0) * _shadow_alpha
@@ -587,7 +589,7 @@ func _take_brush() -> void:
 	Inventario.pincel = true
 	_brush_pickup.visible = false
 	_set_brush("color")
-	_show_hint("El pincel. Le queda color para un trazo.  F: pintar una barrera detrás de ti", 5.0)
+	_show_hint("El pincel. Le queda color para un trazo.  F: dar una pincelada contra las sombras", 5.0)
 
 
 ## Acción de pincel: el lobo se detiene, se gira hacia `dir` y reproduce la animación; lo que pinta
@@ -605,13 +607,11 @@ func _on_action_frame(anim: StringName, frame: int) -> void:
 	match anim:
 		&"paint_slash":
 			if frame == 4:
-				_raise_barrier()
+				_start_stroke()
 			if frame >= 4 and frame <= 6:
-				var ang := (tip - _last_tip).angle() if frame > 4 else 0.4
-				_stamp(tip, 560.0, ang)
+				_stroke_part(frame - 4)
 			if frame == 6:
 				_set_brush("seco")         # se acabó la carga de color
-				_spread_color(barrier_x)
 		&"paint_up":
 			if frame == 4:
 				_reveal_gate()
@@ -639,16 +639,24 @@ func _paint_barrier() -> void:
 	_start_action(&"paint_slash", -1.0)
 
 
-func _raise_barrier() -> void:
-	barrier_x = walker.position.x - 120.0
-	print("[nivel1] %.1f s: la barrera crece en x=%d" % [_t, barrier_x])
-	# pie del dibujo en (128,491) de su celda 256x512
-	_barrier.position = Vector2(barrier_x, _ground_at(barrier_x) + 8.0) - Vector2(128, 491) * BARRIER_SCALE
-	_barrier.visible = true
-	_barrier.play("barrier")
+## Pincelada de color: una estocada diagonal (~60°) sobre el fondo, de arriba a la derecha hacia el suelo
+## delante del lobo (que mira a las sombras). No es un muro: es color sobre el lienzo, y las sombras no
+## lo cruzan. barrier_x es el pie del trazo.
+func _start_stroke() -> void:
+	barrier_x = walker.position.x - 150.0
+	print("[nivel1] %.1f s: pincelada de color en x=%d" % [_t, barrier_x])
 	_barrier_k = 0.0
 	var tw := create_tween()
-	tw.tween_property(self, "_barrier_k", 1.0, 0.8)
+	tw.tween_property(self, "_barrier_k", 1.0, 0.6)
+
+
+## Un tercio de la pincelada por cuadro activo del tajo (0 arriba, 2 abajo): tres estampas por tercio.
+func _stroke_part(part: int) -> void:
+	var foot := Vector2(barrier_x, _ground_at(barrier_x) + 50.0)
+	var dir := Vector2(cos(-STROKE_ANGLE), sin(-STROKE_ANGLE))   # hacia arriba a la derecha
+	for i in 3:
+		var k := 1.0 - (part * 3 + i + 0.5) / 9.0                  # de 1 (arriba) a 0 (pie)
+		_stamp(foot + dir * STROKE_LEN * k + Vector2(randf_range(-10, 10), 0), 520.0, -STROKE_ANGLE, [1, 4, 3][i] - 1)
 
 
 ## Avisos al llegar a la puerta, al altar o al lago (solo una vez por visita).

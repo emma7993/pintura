@@ -19,6 +19,8 @@ const JUMP_BUFFER := 0.12
 
 ## Velocidad máxima. Zona Camino: caminata lenta (120). Zona de prueba: 340.
 var max_speed := 340.0
+## Velocidad al mantener "run" (Shift). 0 = todavía no puede correr por su cuenta.
+var run_speed := 0.0
 ## El lobo empieza sin poder saltar; se desbloquea más adelante en el juego.
 var can_jump := true
 var enabled := true
@@ -57,7 +59,7 @@ func _physics_process(delta: float) -> void:
 
 	# --- horizontal
 	if absf(dir) > 0.01:
-		velocity.x = move_toward(velocity.x, dir * max_speed, (ACCEL if on_floor else AIR_ACCEL) * delta)
+		velocity.x = move_toward(velocity.x, dir * top_speed(), (ACCEL if on_floor else AIR_ACCEL) * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, (FRICTION if on_floor else AIR_FRICTION) * delta)
 
@@ -101,5 +103,12 @@ func _physics_process(delta: float) -> void:
 	_animate(delta)
 
 
+## Velocidad tope ahora: corriendo si puede y mantiene "run"; si no, la de caminar.
+func top_speed() -> float:
+	if enabled and run_speed > max_speed and Input.is_action_pressed("run"):
+		return run_speed
+	return max_speed
+
+
 func _animate(delta: float) -> void:
-	lobo.animate(delta, absf(velocity.x) / max_speed, velocity.x, not is_on_floor(), velocity.y)
+	lobo.animate(delta, absf(velocity.x) / top_speed(), velocity.x, not is_on_floor(), velocity.y)

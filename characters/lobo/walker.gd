@@ -7,7 +7,7 @@ signal moved
 
 var mask: Image
 var world_scale := 1.5           # píxeles del mundo por píxel de la imagen
-var speed := 88.0                # paso pausado: ~1.1 ciclos de caminata por segundo
+var speed := 97.0                # paso pausado: ~1.2 ciclos de caminata por segundo
 var depth_y_far := 280.0         # y (en px de imagen) más lejana
 var depth_y_near := 1290.0       # y más cercana
 var scale_far := 0.4
