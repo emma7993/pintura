@@ -10,9 +10,10 @@ static func ensure() -> void:
 	_action("move_up", [KEY_W, KEY_UP], JOY_BUTTON_DPAD_UP, JOY_AXIS_LEFT_Y, -1.0)
 	_action("move_down", [KEY_S, KEY_DOWN], JOY_BUTTON_DPAD_DOWN, JOY_AXIS_LEFT_Y, 1.0)
 	_action("jump", [KEY_SPACE], JOY_BUTTON_A, -1, 0.0)
-	_action("paint", [KEY_F, KEY_K], JOY_BUTTON_X, -1, 0.0)
+	_action("attack", [KEY_J, KEY_X], JOY_BUTTON_X, -1, 0.0)         # tajo con el pincel (arriba/abajo + J)
+	_action("dash", [KEY_SHIFT, KEY_K, KEY_C], JOY_BUTTON_B, -1, 0.0)
+	_action("paint", [KEY_F], JOY_BUTTON_RIGHT_SHOULDER, -1, 0.0)  # pintar, tomar, mojar el pincel
 	_action("interact", [KEY_E, KEY_ENTER], JOY_BUTTON_Y, -1, 0.0)
-	_action("run", [KEY_SHIFT], JOY_BUTTON_B, -1, 0.0)
 
 
 static func _action(action_name: String, keys: Array, joy_button: int, axis: int, axis_val: float) -> void:

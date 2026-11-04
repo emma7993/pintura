@@ -192,6 +192,20 @@ func _remove(h: Dictionary) -> void:
 	tw.tween_callback((h.node as Node).queue_free)
 
 
+## Tajo del pincel: deshace las manos que toque el área (coordenadas de mundo). Devuelve cuántas.
+func hit_hands(area: Rect2) -> int:
+	var n := 0
+	for h in _hands:
+		var spr: AnimatedSprite2D = h.sprite
+		if String(spr.animation).ends_with("_dissolve") or String(spr.animation).ends_with("_sink"):
+			continue
+		var p: Vector2 = (h.node as Node2D).position
+		if area.intersects(Rect2(p.x - 45.0, p.y - 190.0, 90.0, 190.0)):
+			spr.play(h.design + "_dissolve")
+			n += 1
+	return n
+
+
 ## Todas las manos se deshacen (tocan el color, o las sombras se van).
 func dissolve_hands() -> void:
 	for h in _hands:

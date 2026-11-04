@@ -107,6 +107,7 @@ var _brush_label: Label
 var _ink_icon: TextureRect
 var _ink_bar: ColorRect                   # barra del tintero: fondo; su hijo es el nivel de tinta
 var _ink_fill: ColorRect
+var _life: Array[ColorRect] = []
 var _stage := 0
 var _shadow_speed := 0.0
 var _shadow_alpha := 1.0
@@ -144,6 +145,9 @@ func _ready() -> void:
 	add_child(walker)
 	walker.lobo.action_frame.connect(_on_action_frame)
 	walker.lobo.action_finished.connect(_on_action_finished)
+	walker.attack_hit_frame.connect(_on_attack_hit)
+	walker.hurt_taken.connect(func(_v: int) -> void: _update_life_ui())
+	walker.died.connect(func() -> void: _caught("se quedó sin vida"))
 
 	_sombras = Sombras.new()
 	add_child(_sombras)
@@ -164,6 +168,7 @@ func _ready() -> void:
 	else:
 		Inventario.cargar()
 	_restore_progress()
+	_update_life_ui()
 	if Inventario.atajo >= 0:
 		_apply_shortcut(Inventario.atajo)
 		Inventario.atajo = -1
@@ -184,6 +189,7 @@ func _restore_progress() -> void:
 		has_brush = true
 		brush = "seco"
 		_brush_pickup.visible = false
+		_unlock_abilities()
 	if Inventario.hecho("n1_sombras"):
 		shadows_gone = true
 		barrier_x = Inventario.progreso.get("n1_trazo_x", BRUSH_X + 650.0)
@@ -625,6 +631,14 @@ func _build_ui() -> void:
 	_ink_fill.position = Vector2(2, 2)
 	_ink_fill.color = Color(0.03, 0.03, 0.05)
 	_ink_bar.add_child(_ink_fill)
+	for i in Player.MAX_VIDA:
+		var d := ColorRect.new()
+		d.size = Vector2(13, 13)
+		d.pivot_offset = d.size * 0.5
+		d.rotation = PI / 4.0
+		d.position = Vector2(1180 - i * 26, 24)
+		ui.add_child(d)
+		_life.append(d)
 
 
 func _set_brush(state: String) -> void:
@@ -699,12 +713,13 @@ func _physics_process(delta: float) -> void:
 	if shadow_x != -INF and not shadows_gone:
 		_update_shadows(delta, st)
 
+	_check_pogo()
 	if x < GAP.y + 60.0 and walker.position.y > GROUND_Y + 450.0:
-		_caught("cayó al hueco")
+		_hazard("cayó al hueco")
 	elif x > PIT.x and x < PIT.y and walker.position.y > PIT_FLOOR - SPIKE_H and walker.position.y < CAVE_TOP:
-		_caught("cayó en las espinas")
+		_hazard("cayó en las espinas")
 	elif walker.position.y > CHAMBER_Y + 400.0:
-		_caught("cayó fuera del mundo")
+		_hazard("cayó fuera del mundo")
 	if shadows_gone and x > PIT.x - 400.0 and x < PIT.x and absf(walker.position.y - HIGH_Y) < 8.0:
 		_checkpoint = Vector2(PIT.x - 120.0, HIGH_Y)
 	# si cruza la mitad del arco sin haber dado la pincelada, las sombras lo alcanzan
@@ -779,11 +794,24 @@ func _update_shadows(delta: float, st: Array) -> void:
 	_sombras.hand_every = [Vector2(1.4, 2.2), Vector2(0.9, 1.5), Vector2(0.6, 1.1)][_stage]
 	_sombras.chase_speed = walker.max_speed * 0.9      # casi tan rápidas como él: si se detiene, lo alcanzan
 	var grabbed := _sombras.update_hands(delta, walker.position, shadow_x, _hand_ground)
-	if (near < 30.0 or grabbed) and not _busy:
-		_caught("lo atrapó una mano" if grabbed else "lo alcanzaron las sombras")
+	if grabbed and not _busy and walker.hurt(walker.position.x - 60.0):
+		print("[nivel1] %.1f s: lo golpeó una mano (vida %d)" % [_t, walker.vida])
+	if near < 30.0 and not _busy:
+		_caught("lo alcanzaron las sombras")
 
 
-func _caught(why: String) -> void:
+## Caída al hueco o a las espinas: pierde una vida y reaparece en el último punto seguro (sin recuperarla).
+func _hazard(why: String) -> void:
+	if _busy:
+		return
+	walker.hurt(walker.position.x)
+	if walker.is_dead():
+		return                             # la animación de muerte termina en _caught (died)
+	_caught(why, false)
+
+
+## Lo alcanzaron (o murió): fundido y vuelta al punto de control. revive=true devuelve la vida completa.
+func _caught(why: String, revive := true) -> void:
 	if _busy:
 		return
 	_busy = true
@@ -794,7 +822,10 @@ func _caught(why: String) -> void:
 	await tw.finished
 	walker.position = _checkpoint
 	walker.velocity = Vector2.ZERO
-	walker.max_speed = STAGES[_stage][1]
+	walker.max_speed = RUN_SPEED if has_brush else STAGES[_stage][1]
+	if revive or walker.is_dead():
+		walker.revive()
+	_update_life_ui()
 	if shadow_x != -INF:
 		shadow_x = _checkpoint.x - (STAGES[_stage][3] as float) - 150.0
 		_shadow_speed = 0.0
@@ -805,6 +836,52 @@ func _caught(why: String) -> void:
 	await tw.finished
 	walker.enabled = true
 	_busy = false
+
+
+## Con el pincel llegan el tajo (J), el dash (Shift) y la pared (deslizarse y saltar desde ella).
+func _unlock_abilities() -> void:
+	walker.can_attack = true
+	walker.can_dash = true
+	walker.can_wall = true
+
+
+## Cuadros de golpe de un tajo: con tinta en el pincel deshace las manos que toque (gasta tinta por mano);
+## la estocada hacia abajo rebota en las manos y en las espinas.
+func _on_attack_hit(anim: StringName, area: Rect2) -> void:
+	var bounced := false
+	if Inventario.tinta >= Inventario.COSTO_GOLPE:
+		var n := _sombras.hit_hands(area)
+		if n > 0:
+			Inventario.gastar(Inventario.COSTO_GOLPE * n)
+			_update_inventory_ui()
+			print("[nivel1] %.1f s: el pincel deshizo %d mano(s) (tinta %d)" % [_t, n, Inventario.tinta])
+			bounced = true
+	var spikes := Rect2(PIT.x, PIT_FLOOR - SPIKE_H, PIT.y - PIT.x, SPIKE_H + 10.0)
+	if area.intersects(spikes):
+		bounced = true
+	if anim == &"slash_down" and bounced:
+		walker.pogo()
+
+
+## Rebote sobre las espinas: se revisa en cada cuadro de física (antes de la caída), con la estocada hacia
+## abajo alargada 60 px y desde su primer cuadro, para que el pogo sea generoso como en los metroidvania de acción.
+func _check_pogo() -> void:
+	var lobo := walker.lobo
+	if not lobo.attacking or lobo.sprite.animation != &"slash_down" or walker.velocity.y <= 0.0:
+		return
+	var f := maxi(2, lobo.sprite.frame + 1)        # el cuadro 1 (preparación) ya cuenta, como el 2
+	if f > 4:
+		return
+	var hb := lobo.hitbox_global(&"slash_down", f).grow_side(SIDE_BOTTOM, 60.0)
+	if hb.intersects(Rect2(PIT.x, PIT_FLOOR - SPIKE_H, PIT.y - PIT.x, SPIKE_H + 10.0)):
+		walker.pogo()
+		print("[nivel1] %.1f s: rebota sobre las espinas" % _t)
+
+
+## Vida: rombos arriba a la izquierda, bajo el pincel y el tintero.
+func _update_life_ui() -> void:
+	for i in _life.size():
+		_life[i].color = Color(0.96, 0.92, 0.82) if i < walker.vida else Color(0.96, 0.92, 0.82, 0.18)
 
 
 func _take_brush() -> void:
@@ -822,6 +899,7 @@ func _take_brush() -> void:
 	Inventario.pincel = true
 	Inventario.guardar()
 	_brush_pickup.visible = false
+	_unlock_abilities()
 	_set_brush("color")
 	_show_hint("El pincel. Le queda color para un trazo.  F: dar una pincelada contra las sombras", 5.0)
 

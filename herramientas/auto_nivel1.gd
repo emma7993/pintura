@@ -194,10 +194,6 @@ func _mover(dir: float, correr := false) -> void:
 		Input.action_press("move_right")
 	elif dir < 0.0:
 		Input.action_press("move_left")
-	if correr:
-		Input.action_press("run")
-	else:
-		Input.action_release("run")
 
 
 func _saltar(que: String) -> void:

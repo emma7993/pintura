@@ -2,6 +2,14 @@ class_name Player
 extends CharacterBody2D
 ## Lobo jugable en vista lateral (sprites en characters/lobo/, ver lobo_sprite.gd).
 ## Los números de abajo son el "tacto" del juego: se pueden ajustar.
+## Habilidades (las desbloquea el nivel): salto, tajos con el pincel (lado, arriba y abajo con rebote en
+## el aire), dash y pared (deslizarse y saltar desde ella). Vida: golpes con retroceso e invulnerabilidad;
+## a cero, animación de muerte y aviso al nivel (died).
+
+signal attack_started(anim: StringName)
+signal attack_hit_frame(anim: StringName, area: Rect2)   # cuadros de golpe de un tajo, en coordenadas de mundo
+signal hurt_taken(vida: int)
+signal died
 
 const SPRITE_SCALE := 0.60        # tamaño del lobo en pantalla (~130 px de alto)
 
@@ -20,20 +28,48 @@ const APEX_SPEED := 160.0         # cerca de la cima, con el botón apretado...
 const APEX_GRAVITY := 0.55        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
 const COYOTE_TIME := 0.10
 const JUMP_BUFFER := 0.12
+## Dash: impulso horizontal corto, sin gravedad; uno por salto (se recupera al tocar suelo o pared).
+const DASH_SPEED := 1000.0
+const DASH_TIME := 0.22
+const DASH_COOLDOWN := 0.35
+## Pared: al caer pegado a una pared (empujando hacia ella) resbala despacio; saltar lo despega.
+const WALL_SLIDE_SPEED := 160.0
+const WALL_JUMP := Vector2(520.0, -980.0)
+const WALL_JUMP_LOCK := 0.16      # tras saltar de la pared, un instante sin control horizontal
+## Tajos y rebote: la estocada hacia abajo que da en algo rebota hacia arriba (pogo).
+const ATTACK_COOLDOWN := 0.30
+const POGO_VELOCITY := -880.0
+## Vida
+const MAX_VIDA := 5
+const INVULNERABLE := 1.0
+const KNOCKBACK := Vector2(420.0, -420.0)
 
 ## Velocidad máxima. Zona Camino: caminata lenta (120). Zona de prueba: 340.
 var max_speed := 340.0
-## Velocidad al mantener "run" (Shift). 0 = todavía no puede correr por su cuenta.
-var run_speed := 0.0
 ## El lobo empieza sin poder saltar; se desbloquea más adelante en el juego.
 var can_jump := true
+var can_attack := false
+var can_dash := false
+var can_wall := false
 var enabled := true
+var vida := MAX_VIDA
 
 var lobo: LoboSprite
 var _coyote := 0.0
 var _buffer := 0.0
 var _drop_timer := 0.0
 var _on_one_way := false
+var _dash_t := 0.0
+var _dash_cd := 0.0
+var _dash_ready := true
+var _dash_dir := 1.0
+var _wall_lock := 0.0
+var _wall_dir := 0.0              # -1 pared a la izquierda, 1 a la derecha, 0 ninguna
+var _attack_cd := 0.0
+var _attack_anim := &""
+var _invulnerable := 0.0
+var _hurt_t := 0.0
+var _dead := false
 
 
 func _ready() -> void:
@@ -55,17 +91,46 @@ func _build_visual() -> void:
 	lobo = LoboSprite.new()
 	lobo.scale = Vector2.ONE * SPRITE_SCALE
 	add_child(lobo)
+	lobo.attack_frame.connect(_on_attack_frame)
+	lobo.sprite.animation_finished.connect(_on_body_anim_finished)
 
 
 func _physics_process(delta: float) -> void:
-	var dir := Input.get_axis("move_left", "move_right") if enabled else 0.0
+	var active := enabled and not _dead
+	var dir := Input.get_axis("move_left", "move_right") if active and _hurt_t <= 0.0 else 0.0
 	var on_floor := is_on_floor()
+	_dash_cd = maxf(0.0, _dash_cd - delta)
+	_attack_cd = maxf(0.0, _attack_cd - delta)
+	_wall_lock = maxf(0.0, _wall_lock - delta)
+	_hurt_t = maxf(0.0, _hurt_t - delta)
+	_invulnerable = maxf(0.0, _invulnerable - delta)
+	lobo.modulate.a = 0.45 if _invulnerable > 0.0 and fmod(_invulnerable, 0.16) < 0.08 else 1.0
+	if on_floor or _wall_dir != 0.0:
+		_dash_ready = true
+
+	# --- dash
+	if active and can_dash and _dash_ready and _dash_cd <= 0.0 and _dash_t <= 0.0 and Input.is_action_just_pressed("dash"):
+		_dash_t = DASH_TIME
+		_dash_cd = DASH_COOLDOWN
+		_dash_ready = on_floor
+		_dash_dir = signf(dir) if dir != 0.0 else lobo.facing
+		lobo.face(_dash_dir)
+	if _dash_t > 0.0:
+		_dash_t -= delta
+		velocity = Vector2(_dash_dir * DASH_SPEED, 0.0)
+		move_and_slide()
+		if is_on_wall():
+			_dash_t = 0.0
+		lobo.special = "dash" if _dash_t > 0.0 else ""
+		_animate(delta)
+		return
 
 	# --- horizontal
-	if absf(dir) > 0.01:
-		velocity.x = move_toward(velocity.x, dir * top_speed(), (ACCEL if on_floor else AIR_ACCEL) * delta)
-	else:
-		velocity.x = move_toward(velocity.x, 0.0, (FRICTION if on_floor else AIR_FRICTION) * delta)
+	if _wall_lock <= 0.0 and _hurt_t <= 0.0:
+		if absf(dir) > 0.01:
+			velocity.x = move_toward(velocity.x, dir * max_speed, (ACCEL if on_floor else AIR_ACCEL) * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, (FRICTION if on_floor else AIR_FRICTION) * delta)
 
 	# --- gravedad
 	var g := GRAVITY * (FALL_MULT if velocity.y > 0.0 else 1.0)
@@ -73,9 +138,17 @@ func _physics_process(delta: float) -> void:
 		g *= APEX_GRAVITY
 	velocity.y = minf(velocity.y + g * delta, MAX_FALL)
 
+	# --- pared: empujando hacia ella mientras cae, resbala despacio
+	_wall_dir = 0.0
+	if can_wall and not on_floor and is_on_wall() and velocity.y > 0.0:
+		var n := get_wall_normal().x
+		if n != 0.0 and dir == -signf(n):
+			_wall_dir = -signf(n)
+			velocity.y = minf(velocity.y, WALL_SLIDE_SPEED)
+
 	# --- salto (coyote time + buffer), solo si ya está desbloqueado
 	_coyote = COYOTE_TIME if on_floor else maxf(0.0, _coyote - delta)
-	if enabled and can_jump and Input.is_action_just_pressed("jump"):
+	if active and can_jump and Input.is_action_just_pressed("jump"):
 		_buffer = JUMP_BUFFER
 	else:
 		_buffer = maxf(0.0, _buffer - delta)
@@ -93,9 +166,28 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		_buffer = 0.0
 		_coyote = 0.0
+	elif _buffer > 0.0 and _wall_dir != 0.0:
+		velocity = Vector2(-_wall_dir * WALL_JUMP.x, WALL_JUMP.y)
+		_wall_lock = WALL_JUMP_LOCK
+		_buffer = 0.0
+		lobo.face(-_wall_dir)
+		_wall_dir = 0.0
+		lobo.special = "wall_jump"
 
-	if can_jump and Input.is_action_just_released("jump") and velocity.y < 0.0:
+	if can_jump and Input.is_action_just_released("jump") and velocity.y < 0.0 and _wall_lock <= 0.0:
 		velocity.y *= JUMP_CUT
+
+	# --- tajos: arriba + J hacia arriba, abajo + J en el aire hacia abajo, si no hacia el frente
+	if active and can_attack and _attack_cd <= 0.0 and not lobo.acting and Input.is_action_just_pressed("attack"):
+		_attack_cd = ATTACK_COOLDOWN
+		if Input.is_action_pressed("move_up"):
+			_attack_anim = &"slash_up"
+		elif not on_floor and Input.is_action_pressed("move_down"):
+			_attack_anim = &"slash_down"
+		else:
+			_attack_anim = &"slash_side"
+		lobo.play_attack(_attack_anim)
+		attack_started.emit(_attack_anim)
 
 	move_and_slide()
 
@@ -106,15 +198,71 @@ func _physics_process(delta: float) -> void:
 		if body and (body.collision_layer & 2) != 0 and c.get_normal().y < -0.5:
 			_on_one_way = true
 
+	if not _dead and _hurt_t <= 0.0:
+		if _wall_dir != 0.0:
+			lobo.special = "wall_slide"
+			lobo.face(-_wall_dir)          # de espaldas a la pared
+		elif lobo.special == "wall_slide" or (lobo.special == "wall_jump" and (on_floor or velocity.y > 0.0)):
+			lobo.special = ""
 	_animate(delta)
 
 
-## Velocidad tope ahora: corriendo si puede y mantiene "run"; si no, la de caminar.
-func top_speed() -> float:
-	if enabled and run_speed > max_speed and Input.is_action_pressed("run"):
-		return run_speed
-	return max_speed
+func _on_attack_frame(anim: StringName, frame: int) -> void:
+	var area := lobo.hitbox_global(anim, frame)
+	if area.has_area():
+		attack_hit_frame.emit(anim, area)
+
+
+## El nivel la llama cuando la estocada hacia abajo dio en algo (enemigo, espinas): rebote.
+func pogo() -> void:
+	velocity.y = POGO_VELOCITY
+	_dash_ready = true
+
+
+## Recibe un golpe desde from_x: pierde una vida, sale despedido y queda invulnerable un momento.
+## Devuelve false si estaba invulnerable (no pasó nada).
+func hurt(from_x: float, amount := 1) -> bool:
+	if _invulnerable > 0.0 or _dead:
+		return false
+	vida = maxi(0, vida - amount)
+	_invulnerable = INVULNERABLE
+	_dash_t = 0.0
+	var away := signf(global_position.x - from_x) if global_position.x != from_x else -lobo.facing
+	velocity = Vector2(away * KNOCKBACK.x, KNOCKBACK.y)
+	hurt_taken.emit(vida)
+	if vida <= 0:
+		_dead = true
+		lobo.attacking = false
+		lobo.special = "death"
+	else:
+		_hurt_t = 0.25
+		lobo.attacking = false
+		lobo.special = "hurt"
+	return true
+
+
+## Vuelve a la vida completa (al reaparecer en un punto de control).
+func revive() -> void:
+	vida = MAX_VIDA
+	_dead = false
+	_hurt_t = 0.0
+	_invulnerable = 0.0
+	_dash_t = 0.0
+	lobo.special = ""
+	lobo.modulate.a = 1.0
+
+
+func is_dead() -> bool:
+	return _dead
+
+
+func _on_body_anim_finished() -> void:
+	var anim := lobo.sprite.animation
+	if anim == &"death":
+		died.emit()
+	elif anim == &"hurt" and lobo.special == "hurt":
+		lobo.special = ""
 
 
 func _animate(delta: float) -> void:
-	lobo.animate(delta, absf(velocity.x) / top_speed(), velocity.x, not is_on_floor(), velocity.y)
+	lobo.animate(delta, absf(velocity.x) / maxf(max_speed, 1.0), velocity.x, not is_on_floor(), velocity.y)

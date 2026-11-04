@@ -1,0 +1,6 @@
+Copia de integración de Game_Assets/Wolf_Pincel_v003 (ChatGPT/Codex, 2026-11-03). Ver su INTEGRACION_CLAUDE.md.
+Pincel fino guardado en la espalda; celdas 384x384, suelo y=352 (offset -192,-352).
+Capas: body, brush_back (guardado), brush_base (en la mano), tip_color/dry/ink, smear (estela, se tiñe).
+Orden: brush_back, brush_base, punta, smear, body. 18 animaciones: idle, walk, run, jump_start, jump_up, fall,
+land, dash, wall_slide, wall_jump, slash_side, slash_up, slash_down, paint_rise, paint_up, dip, hurt, death.
+Lo usa characters/lobo/lobo_sprite.gd.

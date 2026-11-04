@@ -1,0 +1,3786 @@
+[
+  {
+    "animation": "idle",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7009,
+      217.6683
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.213,
+      322.8295
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "idle",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.9946,
+      217.9576
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.5067,
+      323.1187
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        321.5
+      ],
+      "dry": [
+        124.0,
+        321.5
+      ],
+      "ink": [
+        124.0,
+        321.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "idle",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.9729,
+      217.8978
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.485,
+      323.059
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        321.5
+      ],
+      "dry": [
+        124.0,
+        321.5
+      ],
+      "ink": [
+        124.0,
+        321.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "idle",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.4784,
+      217.9199
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.9905,
+      323.081
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        320.5
+      ],
+      "dry": [
+        125.0,
+        320.5
+      ],
+      "ink": [
+        125.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "idle",
+    "frame": 5,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1366,
+      218.0104
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.6487,
+      323.1716
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        322.0
+      ],
+      "dry": [
+        124.0,
+        322.0
+      ],
+      "ink": [
+        124.0,
+        322.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "idle",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1955,
+      217.9877
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7077,
+      323.1488
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        322.0
+      ],
+      "dry": [
+        124.0,
+        322.0
+      ],
+      "ink": [
+        124.0,
+        322.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1884,
+      217.5234
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7005,
+      322.6846
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        322.0
+      ],
+      "dry": [
+        124.0,
+        322.0
+      ],
+      "ink": [
+        124.0,
+        322.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.8215,
+      217.4872
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.3336,
+      322.6484
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5989,
+      217.5013
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.1111,
+      322.6625
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.6109,
+      217.5968
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.123,
+      322.758
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 5,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5713,
+      217.7013
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.0834,
+      322.8625
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.8846,
+      217.8485
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.3967,
+      323.0097
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        321.5
+      ],
+      "dry": [
+        124.0,
+        321.5
+      ],
+      "ink": [
+        124.0,
+        321.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5195,
+      217.5647
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.0316,
+      322.7259
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 8,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.6636,
+      217.6162
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.1757,
+      322.7774
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 9,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7794,
+      217.4545
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.2915,
+      322.6157
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 10,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.9252,
+      217.564
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.4373,
+      322.7252
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        321.5
+      ],
+      "dry": [
+        124.0,
+        321.5
+      ],
+      "ink": [
+        124.0,
+        321.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 11,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1264,
+      217.5375
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.6385,
+      322.6987
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        321.5
+      ],
+      "dry": [
+        124.0,
+        321.5
+      ],
+      "ink": [
+        124.0,
+        321.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "walk",
+    "frame": 12,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.2593,
+      217.5226
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7714,
+      322.6838
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        322.0
+      ],
+      "dry": [
+        124.0,
+        322.0
+      ],
+      "ink": [
+        125.0,
+        319.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      183.1348,
+      224.0631
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.647,
+      329.2243
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        140.0,
+        328.0
+      ],
+      "dry": [
+        140.0,
+        328.0
+      ],
+      "ink": [
+        140.0,
+        328.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      182.6069,
+      222.2312
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.119,
+      327.3924
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        140.0,
+        325.5
+      ],
+      "dry": [
+        140.0,
+        325.5
+      ],
+      "ink": [
+        140.0,
+        325.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      183.3974,
+      221.4749
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.9096,
+      326.636
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        141.0,
+        324.5
+      ],
+      "dry": [
+        141.0,
+        324.5
+      ],
+      "ink": [
+        141.0,
+        324.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      183.4266,
+      223.9571
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.9387,
+      329.1183
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        141.0,
+        326.5
+      ],
+      "dry": [
+        141.0,
+        326.5
+      ],
+      "ink": [
+        141.0,
+        326.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 5,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      183.4272,
+      222.3401
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.9393,
+      327.5013
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        141.0,
+        325.5
+      ],
+      "dry": [
+        141.0,
+        325.5
+      ],
+      "ink": [
+        141.0,
+        325.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      183.1894,
+      222.3425
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.7015,
+      327.5037
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        140.0,
+        326.0
+      ],
+      "dry": [
+        140.0,
+        326.0
+      ],
+      "ink": [
+        140.0,
+        326.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      182.7083,
+      221.7763
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.2205,
+      326.9375
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        140.0,
+        325.5
+      ],
+      "dry": [
+        140.0,
+        325.5
+      ],
+      "ink": [
+        140.0,
+        324.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "run",
+    "frame": 8,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      182.7517,
+      224.76
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      140.2639,
+      329.9212
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        140.0,
+        328.5
+      ],
+      "dry": [
+        140.0,
+        328.5
+      ],
+      "ink": [
+        140.0,
+        328.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "jump_start",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.2952,
+      231.4418
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.8073,
+      336.603
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        333.5
+      ],
+      "dry": [
+        125.0,
+        333.5
+      ],
+      "ink": [
+        125.0,
+        333.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "jump_start",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7053,
+      234.8066
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.2174,
+      339.9678
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        338.5
+      ],
+      "dry": [
+        124.0,
+        338.5
+      ],
+      "ink": [
+        124.0,
+        338.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "jump_up",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.2608,
+      212.3329
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7729,
+      317.4941
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        314.5
+      ],
+      "dry": [
+        125.0,
+        314.5
+      ],
+      "ink": [
+        125.0,
+        314.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "jump_up",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.4643,
+      204.7862
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.9764,
+      309.9474
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        307.5
+      ],
+      "dry": [
+        125.0,
+        307.5
+      ],
+      "ink": [
+        125.0,
+        307.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "fall",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5186,
+      202.6418
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.0307,
+      307.803
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        305.5
+      ],
+      "dry": [
+        124.0,
+        305.5
+      ],
+      "ink": [
+        124.0,
+        305.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "fall",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7918,
+      209.9041
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.3039,
+      315.0653
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        313.5
+      ],
+      "dry": [
+        124.0,
+        313.5
+      ],
+      "ink": [
+        124.0,
+        313.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "land",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.0437,
+      228.2107
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.5558,
+      333.3719
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        332.0
+      ],
+      "dry": [
+        124.0,
+        332.0
+      ],
+      "ink": [
+        124.0,
+        332.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "land",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5658,
+      220.3964
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.078,
+      325.5576
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        323.5
+      ],
+      "dry": [
+        124.0,
+        323.5
+      ],
+      "ink": [
+        124.0,
+        323.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dash",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.4198,
+      233.1124
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.9319,
+      338.2735
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        335.5
+      ],
+      "dry": [
+        125.0,
+        335.5
+      ],
+      "ink": [
+        125.0,
+        335.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dash",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.6774,
+      236.6441
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.1895,
+      341.8053
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        339.5
+      ],
+      "dry": [
+        124.0,
+        339.5
+      ],
+      "ink": [
+        124.0,
+        339.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dash",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.6513,
+      245
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.1634,
+      350.1612
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        348.5
+      ],
+      "dry": [
+        124.0,
+        348.5
+      ],
+      "ink": [
+        124.0,
+        348.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dash",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.3496,
+      243.535
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.8617,
+      348.6962
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        346.5
+      ],
+      "dry": [
+        125.0,
+        346.5
+      ],
+      "ink": [
+        125.0,
+        346.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dash",
+    "frame": 5,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.188,
+      231.8951
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7001,
+      337.0563
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        336.0
+      ],
+      "dry": [
+        124.0,
+        336.0
+      ],
+      "ink": [
+        124.0,
+        336.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dash",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.9212,
+      203.0122
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.4333,
+      308.1734
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        306.5
+      ],
+      "dry": [
+        124.0,
+        306.5
+      ],
+      "ink": [
+        124.0,
+        306.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_slide",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.8433,
+      229.7333
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.3554,
+      334.8945
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        333.5
+      ],
+      "dry": [
+        124.0,
+        333.5
+      ],
+      "ink": [
+        124.0,
+        333.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_slide",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.4399,
+      222.6666
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.952,
+      327.8278
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        325.5
+      ],
+      "dry": [
+        125.0,
+        325.5
+      ],
+      "ink": [
+        125.0,
+        325.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_slide",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.9053,
+      211.8912
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.4174,
+      317.0523
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        315.5
+      ],
+      "dry": [
+        124.0,
+        315.5
+      ],
+      "ink": [
+        124.0,
+        315.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_slide",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1962,
+      212.3547
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7083,
+      317.5159
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        316.0
+      ],
+      "dry": [
+        124.0,
+        316.0
+      ],
+      "ink": [
+        124.0,
+        316.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_jump",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.4329,
+      229.3463
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.9451,
+      334.5075
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        332.5
+      ],
+      "dry": [
+        125.0,
+        332.5
+      ],
+      "ink": [
+        125.0,
+        332.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_jump",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.3208,
+      230.2295
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.8329,
+      335.3906
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        332.5
+      ],
+      "dry": [
+        125.0,
+        332.5
+      ],
+      "ink": [
+        125.0,
+        332.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_jump",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7227,
+      220.8359
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.2349,
+      325.9971
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        324.5
+      ],
+      "dry": [
+        124.0,
+        324.5
+      ],
+      "ink": [
+        124.0,
+        324.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "wall_jump",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.3208,
+      196.4463
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.8329,
+      301.6075
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        298.5
+      ],
+      "dry": [
+        125.0,
+        299.5
+      ],
+      "ink": [
+        125.0,
+        298.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 1,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      171,
+      220
+    ],
+    "angle_degrees_clockwise": -35.7322,
+    "tip_xy": [
+      310.0,
+      120.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        309.0,
+        120.5
+      ],
+      "dry": [
+        309.0,
+        120.5
+      ],
+      "ink": [
+        309.0,
+        120.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 62.7662,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 2,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      189,
+      238
+    ],
+    "angle_degrees_clockwise": -23.8813,
+    "tip_xy": [
+      320.0,
+      180.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        318.5,
+        180.0
+      ],
+      "dry": [
+        318.5,
+        180.0
+      ],
+      "ink": [
+        318.5,
+        180.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 90.7345,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 3,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      263,
+      238
+    ],
+    "angle_degrees_clockwise": 0.0,
+    "tip_xy": [
+      350.0,
+      238.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        348.5,
+        238.0
+      ],
+      "dry": [
+        348.5,
+        238.0
+      ],
+      "ink": [
+        348.5,
+        238.0
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      251,
+      226,
+      111,
+      24
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 147.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 4,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      269,
+      233
+    ],
+    "angle_degrees_clockwise": 0.0,
+    "tip_xy": [
+      352.0,
+      233.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        350.5,
+        233.0
+      ],
+      "dry": [
+        350.5,
+        233.0
+      ],
+      "ink": [
+        350.5,
+        233.0
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      257,
+      221,
+      107,
+      24
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 151.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 5,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      250,
+      233
+    ],
+    "angle_degrees_clockwise": -19.1556,
+    "tip_xy": [
+      345.0,
+      200.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        343.5,
+        200.0
+      ],
+      "dry": [
+        343.5,
+        200.0
+      ],
+      "ink": [
+        343.5,
+        200.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 133.4316,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1355,
+      214.722
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.6476,
+      319.8832
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        319.0
+      ],
+      "dry": [
+        124.0,
+        319.0
+      ],
+      "ink": [
+        124.0,
+        319.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_side",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7009,
+      217.6683
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.213,
+      322.8295
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 1,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      165,
+      218
+    ],
+    "angle_degrees_clockwise": -45.7377,
+    "tip_xy": [
+      280.0,
+      100.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        279.0,
+        100.5
+      ],
+      "dry": [
+        279.0,
+        100.5
+      ],
+      "ink": [
+        279.0,
+        100.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 69.2305,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 2,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      209,
+      230
+    ],
+    "angle_degrees_clockwise": -53.6334,
+    "tip_xy": [
+      290.0,
+      120.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        289.0,
+        120.5
+      ],
+      "dry": [
+        289.0,
+        120.5
+      ],
+      "ink": [
+        288.667,
+        121.333
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 97.3947,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 3,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      256,
+      202
+    ],
+    "angle_degrees_clockwise": -90.0,
+    "tip_xy": [
+      256.0,
+      50.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        256.0,
+        50.5
+      ],
+      "dry": [
+        256.0,
+        50.5
+      ],
+      "ink": [
+        256.0,
+        50.5
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      244,
+      38,
+      24,
+      176
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 82.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 4,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      259,
+      183
+    ],
+    "angle_degrees_clockwise": -90.0,
+    "tip_xy": [
+      259.0,
+      30.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        259.0,
+        30.5
+      ],
+      "dry": [
+        259.0,
+        30.5
+      ],
+      "ink": [
+        259.0,
+        30.5
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      247,
+      18,
+      24,
+      177
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 81.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 5,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      252,
+      197
+    ],
+    "angle_degrees_clockwise": -88.5312,
+    "tip_xy": [
+      255.0,
+      80.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        255.0,
+        80.5
+      ],
+      "dry": [
+        255.0,
+        80.5
+      ],
+      "ink": [
+        255.0,
+        80.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 116.9615,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5993,
+      215.7315
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.1115,
+      320.8927
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        318.5
+      ],
+      "dry": [
+        124.0,
+        318.5
+      ],
+      "ink": [
+        124.0,
+        318.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_up",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7009,
+      217.6683
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.213,
+      322.8295
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_down",
+    "frame": 1,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      165,
+      190
+    ],
+    "angle_degrees_clockwise": -14.6209,
+    "tip_xy": [
+      280.0,
+      160.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        278.5,
+        160.0
+      ],
+      "dry": [
+        278.5,
+        160.0
+      ],
+      "ink": [
+        278.5,
+        160.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 115.1514,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_down",
+    "frame": 2,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      225,
+      274
+    ],
+    "angle_degrees_clockwise": 90.0,
+    "tip_xy": [
+      225.0,
+      375.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        224.0,
+        373.5
+      ],
+      "dry": [
+        224.0,
+        373.5
+      ],
+      "ink": [
+        224.0,
+        373.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      213,
+      262,
+      24,
+      120
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 133.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_down",
+    "frame": 3,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      224,
+      315
+    ],
+    "angle_degrees_clockwise": 90.0,
+    "tip_xy": [
+      224.0,
+      375.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        223.0,
+        373.5
+      ],
+      "dry": [
+        223.0,
+        373.5
+      ],
+      "ink": [
+        223.0,
+        373.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      212,
+      303,
+      24,
+      79
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 174.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_down",
+    "frame": 4,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      225,
+      252
+    ],
+    "angle_degrees_clockwise": 90.0,
+    "tip_xy": [
+      225.0,
+      375.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        224.0,
+        373.5
+      ],
+      "dry": [
+        224.0,
+        373.5
+      ],
+      "ink": [
+        224.0,
+        373.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      213,
+      240,
+      24,
+      142
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 111.0,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_down",
+    "frame": 5,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.5608,
+      217.4388
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.073,
+      322.5999
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "slash_down",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.2566,
+      201.05
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7687,
+      306.2112
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        305.0
+      ],
+      "dry": [
+        124.0,
+        305.0
+      ],
+      "ink": [
+        124.0,
+        305.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 1,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      166,
+      215
+    ],
+    "angle_degrees_clockwise": 43.573,
+    "tip_xy": [
+      310.0,
+      352.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        308.5,
+        351.0
+      ],
+      "dry": [
+        308.5,
+        351.0
+      ],
+      "ink": [
+        308.5,
+        351.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 35.2414,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 2,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      171,
+      231
+    ],
+    "angle_degrees_clockwise": 35.6398,
+    "tip_xy": [
+      330.0,
+      345.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        328.5,
+        344.0
+      ],
+      "dry": [
+        328.5,
+        344.0
+      ],
+      "ink": [
+        327.5,
+        344.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 38.3549,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 3,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      170,
+      244
+    ],
+    "angle_degrees_clockwise": 33.2066,
+    "tip_xy": [
+      335.0,
+      352.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        332.5,
+        351.0
+      ],
+      "dry": [
+        332.5,
+        351.0
+      ],
+      "ink": [
+        332.5,
+        351.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 36.7971,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 4,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      237,
+      322
+    ],
+    "angle_degrees_clockwise": 16.2388,
+    "tip_xy": [
+      340.0,
+      352.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        338.5,
+        352.0
+      ],
+      "dry": [
+        338.5,
+        352.0
+      ],
+      "ink": [
+        338.5,
+        352.0
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      225,
+      310,
+      127,
+      54
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 126.72,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 5,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      158,
+      213
+    ],
+    "angle_degrees_clockwise": 29.7964,
+    "tip_xy": [
+      310.0,
+      300.0385
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        309.0,
+        300.0
+      ],
+      "dry": [
+        309.0,
+        300.0
+      ],
+      "ink": [
+        307.5,
+        299.0
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      146,
+      201,
+      176,
+      112
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 58.8438,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 6,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      136,
+      181
+    ],
+    "angle_degrees_clockwise": -58.6981,
+    "tip_xy": [
+      190.0,
+      92.1924
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        189.0,
+        93.5
+      ],
+      "dry": [
+        189.0,
+        93.5
+      ],
+      "ink": [
+        189.0,
+        93.5
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      124,
+      80,
+      78,
+      113
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 130.0635,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.2163,
+      214.5162
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.7284,
+      319.6774
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        319.0
+      ],
+      "dry": [
+        124.0,
+        319.0
+      ],
+      "ink": [
+        125.0,
+        316.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_rise",
+    "frame": 8,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7009,
+      217.6683
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.213,
+      322.8295
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 1,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      170,
+      226
+    ],
+    "angle_degrees_clockwise": -36.4444,
+    "tip_xy": [
+      300.0,
+      130.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        299.0,
+        130.5
+      ],
+      "dry": [
+        299.0,
+        130.5
+      ],
+      "ink": [
+        299.0,
+        130.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 72.3955,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 2,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      190,
+      228
+    ],
+    "angle_degrees_clockwise": 34.3461,
+    "tip_xy": [
+      310.0,
+      310.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        308.5,
+        309.0
+      ],
+      "dry": [
+        308.5,
+        309.0
+      ],
+      "ink": [
+        307.5,
+        309.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 88.659,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 3,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      228,
+      227
+    ],
+    "angle_degrees_clockwise": 49.357,
+    "tip_xy": [
+      325.0,
+      340.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        323.5,
+        339.0
+      ],
+      "dry": [
+        323.5,
+        339.0
+      ],
+      "ink": [
+        323.5,
+        339.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 85.0772,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 4,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      250,
+      231
+    ],
+    "angle_degrees_clockwise": 56.529,
+    "tip_xy": [
+      330.0,
+      352.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        328.5,
+        351.0
+      ],
+      "dry": [
+        328.5,
+        351.0
+      ],
+      "ink": [
+        328.5,
+        351.0
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      238,
+      219,
+      104,
+      145
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 88.9448,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 5,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      216,
+      227
+    ],
+    "angle_degrees_clockwise": 1.5074,
+    "tip_xy": [
+      330.0,
+      230.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        328.5,
+        230.0
+      ],
+      "dry": [
+        328.5,
+        230.0
+      ],
+      "ink": [
+        328.5,
+        230.0
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      204,
+      215,
+      138,
+      27
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 119.9605,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 6,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      260,
+      232
+    ],
+    "angle_degrees_clockwise": -65.2727,
+    "tip_xy": [
+      330.0,
+      80.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        330.0,
+        80.5
+      ],
+      "dry": [
+        330.0,
+        80.0
+      ],
+      "ink": [
+        329.0,
+        81.5
+      ]
+    },
+    "paints": true,
+    "receives_ink": false,
+    "hits": true,
+    "hitbox": [
+      248,
+      68,
+      94,
+      176
+    ],
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 66.656,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.0679,
+      211.69
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.58,
+      316.8512
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        315.5
+      ],
+      "dry": [
+        124.0,
+        315.5
+      ],
+      "ink": [
+        124.0,
+        315.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "paint_up",
+    "frame": 8,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7009,
+      217.6683
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.213,
+      322.8295
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dip",
+    "frame": 1,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      172,
+      211
+    ],
+    "angle_degrees_clockwise": -19.1602,
+    "tip_xy": [
+      290.0,
+      170.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        288.5,
+        170.0
+      ],
+      "dry": [
+        288.5,
+        170.0
+      ],
+      "ink": [
+        288.5,
+        170.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 109.08,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dip",
+    "frame": 2,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      235,
+      279
+    ],
+    "angle_degrees_clockwise": 36.076,
+    "tip_xy": [
+      305.0,
+      330.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        303.5,
+        329.0
+      ],
+      "dry": [
+        303.5,
+        329.0
+      ],
+      "ink": [
+        302.5,
+        329.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 147.3917,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dip",
+    "frame": 3,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      228,
+      297
+    ],
+    "angle_degrees_clockwise": 32.8763,
+    "tip_xy": [
+      310.0,
+      350.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        307.5,
+        349.0
+      ],
+      "dry": [
+        307.5,
+        349.0
+      ],
+      "ink": [
+        307.5,
+        349.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 136.3629,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dip",
+    "frame": 4,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      225,
+      336
+    ],
+    "angle_degrees_clockwise": 10.6603,
+    "tip_xy": [
+      310.0,
+      352.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        308.5,
+        352.0
+      ],
+      "dry": [
+        308.5,
+        352.0
+      ],
+      "ink": [
+        308.5,
+        352.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": true,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 147.5072,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dip",
+    "frame": 5,
+    "weapon_location": "hand",
+    "grip_role": "hand",
+    "grip_xy": [
+      228,
+      336
+    ],
+    "angle_degrees_clockwise": 11.0409,
+    "tip_xy": [
+      310.0,
+      352.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        308.5,
+        352.0
+      ],
+      "dry": [
+        308.5,
+        352.0
+      ],
+      "ink": [
+        308.5,
+        352.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": true,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 150.4536,
+    "projection_scale": 1.0,
+    "opacity": 1.0
+  },
+  {
+    "animation": "dip",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7009,
+      217.6683
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.213,
+      322.8295
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        320.5
+      ],
+      "dry": [
+        124.0,
+        320.5
+      ],
+      "ink": [
+        124.0,
+        320.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "hurt",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1801,
+      222.3034
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.6922,
+      327.4646
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        326.0
+      ],
+      "dry": [
+        124.0,
+        326.0
+      ],
+      "ink": [
+        124.0,
+        326.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "hurt",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.7343,
+      219.2007
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.2464,
+      324.3619
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        322.5
+      ],
+      "dry": [
+        124.0,
+        322.5
+      ],
+      "ink": [
+        124.0,
+        322.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "hurt",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.3787,
+      223.7754
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.8908,
+      328.9366
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        125.0,
+        326.5
+      ],
+      "dry": [
+        125.0,
+        326.5
+      ],
+      "ink": [
+        125.0,
+        326.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1.0
+  },
+  {
+    "animation": "death",
+    "frame": 1,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1102,
+      220.2601
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.6224,
+      325.4213
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        324.0
+      ],
+      "dry": [
+        124.0,
+        324.0
+      ],
+      "ink": [
+        124.0,
+        324.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1
+  },
+  {
+    "animation": "death",
+    "frame": 2,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      166.8359,
+      235.3668
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.348,
+      340.528
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        338.5
+      ],
+      "dry": [
+        124.0,
+        338.5
+      ],
+      "ink": [
+        124.0,
+        338.5
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1
+  },
+  {
+    "animation": "death",
+    "frame": 3,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      167.1066,
+      245
+    ],
+    "angle_degrees_clockwise": 112,
+    "tip_xy": [
+      124.6188,
+      350.1612
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        124.0,
+        349.0
+      ],
+      "dry": [
+        124.0,
+        349.0
+      ],
+      "ink": [
+        124.0,
+        349.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 1
+  },
+  {
+    "animation": "death",
+    "frame": 4,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      100,
+      340
+    ],
+    "angle_degrees_clockwise": 0,
+    "tip_xy": [
+      213.42,
+      340.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        211.5,
+        340.0
+      ],
+      "dry": [
+        211.5,
+        340.0
+      ],
+      "ink": [
+        211.5,
+        340.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 0.9
+  },
+  {
+    "animation": "death",
+    "frame": 5,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      100,
+      340
+    ],
+    "angle_degrees_clockwise": 0,
+    "tip_xy": [
+      213.42,
+      340.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        211.5,
+        340.0
+      ],
+      "dry": [
+        211.5,
+        340.0
+      ],
+      "ink": [
+        211.5,
+        340.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 0.75
+  },
+  {
+    "animation": "death",
+    "frame": 6,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      100,
+      340
+    ],
+    "angle_degrees_clockwise": 0,
+    "tip_xy": [
+      213.42,
+      340.0
+    ],
+    "contact_by_state_xy": {
+      "color": [
+        210.5,
+        340.0
+      ],
+      "dry": [
+        209.5,
+        340.0
+      ],
+      "ink": [
+        209.5,
+        340.0
+      ]
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 0.45
+  },
+  {
+    "animation": "death",
+    "frame": 7,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      100,
+      340
+    ],
+    "angle_degrees_clockwise": 0,
+    "tip_xy": [
+      213.42,
+      340.0
+    ],
+    "contact_by_state_xy": {
+      "color": null,
+      "dry": null,
+      "ink": null
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 0.15
+  },
+  {
+    "animation": "death",
+    "frame": 8,
+    "weapon_location": "back",
+    "grip_role": "storage_anchor",
+    "grip_xy": [
+      100,
+      340
+    ],
+    "angle_degrees_clockwise": 0,
+    "tip_xy": [
+      213.42,
+      340.0
+    ],
+    "contact_by_state_xy": {
+      "color": null,
+      "dry": null,
+      "ink": null
+    },
+    "paints": false,
+    "receives_ink": false,
+    "hits": false,
+    "hitbox": null,
+    "brush_raster_length_px": 215,
+    "canonical_grip_x": 20,
+    "projection_scale": 0.53,
+    "opacity": 0
+  }
+]

@@ -11,6 +11,8 @@ const TINTA_MAX := 100.0
 const COSTO_PUERTA := 20.0
 ## Pensado para las peleas: con el tintero lleno alcanzan unos 8 trazos de ataque después de la puerta.
 const COSTO_TRAZO := 10.0
+## Cada mano de sombra que el pincel deshace con un tajo.
+const COSTO_GOLPE := 5.0
 
 static var pincel := false
 static var tintero := false
