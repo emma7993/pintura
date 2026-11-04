@@ -1,0 +1,68 @@
+{
+  "frames": 8,
+  "cell": [
+    384,
+    384
+  ],
+  "atlas": [
+    3072,
+    384
+  ],
+  "offset": [
+    -192,
+    -352
+  ],
+  "fps": 16,
+  "rgba": true,
+  "body_bounds": [
+    [
+      84,
+      136,
+      299,
+      352
+    ],
+    [
+      88,
+      136,
+      297,
+      352
+    ],
+    [
+      87,
+      136,
+      297,
+      352
+    ],
+    [
+      73,
+      136,
+      311,
+      352
+    ],
+    [
+      85,
+      136,
+      299,
+      352
+    ],
+    [
+      88,
+      136,
+      296,
+      352
+    ],
+    [
+      88,
+      136,
+      297,
+      352
+    ],
+    [
+      70,
+      136,
+      313,
+      352
+    ]
+  ],
+  "note": "Solo carrera. Las fases de vuelo quedan alineadas al mismo origen; revisión artística pendiente del usuario."
+}

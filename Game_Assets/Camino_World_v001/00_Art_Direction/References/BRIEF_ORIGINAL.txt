@@ -1,0 +1,417 @@
+# PROYECTO: METROIDVANIA MUSICAL DENTRO DE UNA PINTURA INACABADA
+
+Actúa como director creativo de videojuegos, director de arte, concept artist senior, diseñador de niveles, diseñador narrativo y especialista en metroidvanias 2D.
+
+Estoy desarrollando un videojuego independiente en Godot.
+
+Quiero que me ayudes a construir su universo visual, su narrativa ambiental, sus escenarios, sus enemigos, sus herramientas artísticas y sus mecánicas.
+
+El videojuego tendrá influencias generales de Hollow Knight en su estructura de exploración, atmósfera, legibilidad y diseño de niveles, pero debe desarrollar una identidad artística y narrativa propia.
+
+No copies escenarios, enemigos, personajes ni recursos específicos de Hollow Knight u otros videojuegos.
+
+## 1. CONCEPTO CENTRAL
+
+El protagonista es un pequeño lobo negro con bufanda roja.
+
+Su diseño original fue creado por mi animadora y aparece en las imágenes adjuntas.
+
+El lobo es tímido, ansioso y temeroso.
+
+La historia comienza dentro de una pintura al óleo que está incompleta.
+
+El mundo no está terminado.
+
+Existen caminos sin dibujar, lugares incompletos, espacios vacíos, figuras que todavía no tienen forma y regiones que parecen haber sido abandonadas por quien estaba pintándolas.
+
+El lobo debe explorar este mundo para descubrir herramientas artísticas que le permitan completarlo.
+
+Conforme aprende a dibujar, pintar y transformar su entorno, comienza a ganar confianza.
+
+La creación artística y el crecimiento emocional del protagonista deben estar conectados.
+
+La idea principal es:
+
+"Un pequeño lobo que tiene miedo de avanzar descubre que puede crear el camino que todavía no existe".
+
+## 2. IDENTIDAD ARTÍSTICA DEL JUEGO
+
+El juego combinará distintas técnicas artísticas.
+
+El mundo inicial está realizado principalmente al óleo.
+
+Quiero que los escenarios tengan:
+
+- Pinceladas visibles.
+- Textura de pintura sobre lienzo.
+- Capas de pigmento.
+- Profundidad atmosférica.
+- Iluminación pictórica.
+- Sombras expresivas.
+- Colores controlados.
+- Elementos incompletos.
+- Regiones donde se vea el lienzo sin pintar.
+- Transiciones entre pintura terminada y bocetos.
+
+La dirección artística debe ser melancólica, misteriosa, musical y poética.
+
+Quiero una atmósfera de fantasía oscura y exploración, con siluetas claras y composiciones adecuadas para un metroidvania lateral.
+
+No quiero que todo el juego tenga una sola técnica de dibujo.
+
+Las diferentes técnicas artísticas deben formar parte de su identidad.
+
+Por ejemplo, podremos explorar más adelante:
+
+- Óleo.
+- Grafito.
+- Carboncillo.
+- Acuarela.
+- Tinta.
+- Pastel.
+- Collage.
+- Pintura abstracta.
+
+Estas técnicas son posibilidades creativas, no niveles confirmados.
+
+No diseñes todavía todos los niveles.
+
+## 3. CONTRASTE ENTRE EL LOBO Y EL MUNDO
+
+El lobo conserva su apariencia de dibujo orgánico, negro, con contornos grisáceos y bufanda roja.
+
+No quiero convertirlo en un personaje pintado al óleo.
+
+El contraste entre el personaje y los escenarios es deliberado.
+
+El mundo puede tener pinceladas volumétricas, texturas de pigmento y fondos pictóricos, mientras el lobo conserva una silueta dibujada a mano.
+
+Sin embargo, ambos deben sentirse integrados dentro del mismo universo.
+
+Estudia cómo lograr esta integración mediante:
+
+- Iluminación.
+- Paleta cromática.
+- Contraste.
+- Texturas.
+- Escala.
+- Composición.
+- Profundidad.
+- Sombras.
+- Tratamiento de bordes.
+
+El lobo debe permanecer visualmente legible sobre los fondos.
+
+## 4. INTRODUCCIÓN: LA PINTURA INACABADA
+
+La aventura comienza dentro de un gran cuadro al óleo.
+
+La pintura está a medio terminar.
+
+Gran parte del lienzo permanece vacío o contiene solamente pinceladas preliminares.
+
+Dentro de la pintura aparece un camino principal.
+
+Este camino conecta cinco puntos de interés a los que el lobo podrá acceder durante la aventura.
+
+Al comenzar, el jugador puede observar que existen cinco destinos, pero todavía no comprende qué representan.
+
+Quiero que esta primera escena comunique misterio, soledad, curiosidad y la sensación de estar frente a una obra inconclusa.
+
+No debe parecer un menú convencional.
+
+Debe sentirse como un espacio real dentro de la pintura, donde el lobo puede caminar e interactuar.
+
+El jugador debe percibir que está explorando una obra artística viva.
+
+## 5. LOS CINCO PUNTOS
+
+El cuadro inicial contiene cinco puntos de acceso.
+
+Por ahora solamente está confirmado el primero.
+
+Punto 1: CAMINO.
+
+Los otros cuatro puntos deben permanecer indefinidos.
+
+Puedes proponer ideas para ellos más adelante, pero no los conviertas en niveles oficiales sin mi aprobación.
+
+El cuadro inicial debe permitir futuras modificaciones a medida que desarrollemos el videojuego.
+
+Los puntos pueden representarse mediante elementos pictóricos misteriosos e incompletos.
+
+La forma visual definitiva debe diseñarse conmigo.
+
+## 6. PRIMER NIVEL: CAMINO
+
+El primer nivel se llama "Camino".
+
+Este nivel introduce al jugador en el mundo de la pintura.
+
+El lobo comienza sin habilidades artísticas especiales.
+
+Es temeroso y no comprende completamente el entorno.
+
+Durante la exploración encuentra su primera herramienta:
+
+UN LÁPIZ.
+
+El lápiz le permite realizar bocetos y comenzar a completar partes del mundo.
+
+Quiero que esta herramienta tenga importancia visual, narrativa y mecánica.
+
+No debe ser solamente un objeto decorativo.
+
+Debe permitir nuevas formas de interacción con el escenario.
+
+## 7. MECÁNICA DEL LÁPIZ
+
+Propón mecánicas originales que puedan implementarse en Godot.
+
+Posibilidades iniciales:
+
+- Dibujar puentes temporales sobre espacios incompletos.
+- Completar plataformas que solamente existen como bocetos.
+- Trazar líneas que se convierten en caminos.
+- Revelar objetos ocultos mediante el dibujo.
+- Conectar elementos incompletos del escenario.
+- Dibujar formas sencillas que permitan superar obstáculos.
+
+Estas son propuestas iniciales.
+
+No implementes todas automáticamente.
+
+Analiza cuáles serían más claras, divertidas y viables para un primer nivel.
+
+Prioriza mecánicas que permitan al jugador comprender el lápiz mediante experimentación y retroalimentación visual.
+
+Evita sistemas excesivamente complejos que requieran reconocimiento libre de dibujos si existe una solución más sencilla y satisfactoria.
+
+## 8. GAME FEEL DE LA CREACIÓN ARTÍSTICA
+
+Quiero que dibujar y transformar el mundo resulte satisfactorio.
+
+Cuando el jugador utiliza una herramienta artística, debe sentir que está creando algo.
+
+Considera:
+
+- Aparición progresiva de trazos.
+- Sonidos de grafito sobre papel.
+- Partículas de pigmento.
+- Pequeñas vibraciones visuales.
+- Respuesta inmediata a la acción.
+- Animación del escenario mientras se completa.
+- Cambios de iluminación.
+- Reacciones del lobo.
+- Acompañamiento musical.
+
+El uso de herramientas debe ser intuitivo y legible.
+
+No quiero efectos visuales excesivos que dificulten la exploración.
+
+## 9. MÚSICA COMO ELEMENTO CENTRAL
+
+El videojuego será musical y artístico.
+
+La música no debe limitarse a acompañar los escenarios.
+
+Quiero explorar maneras de integrarla en:
+
+- La narrativa.
+- El diseño de niveles.
+- Las herramientas.
+- La exploración.
+- Las emociones del lobo.
+- Los descubrimientos.
+- La transformación del mundo.
+
+La música puede cambiar conforme el jugador completa partes de la pintura.
+
+Por ejemplo, un escenario incompleto podría tener una composición musical fragmentada que gana instrumentos o armonías a medida que el lobo restaura sus elementos.
+
+También quiero explorar la sincronización de animaciones y efectos con el ritmo musical.
+
+No quiero que el juego se convierta automáticamente en un juego de ritmo obligatorio.
+
+La música debe enriquecer el metroidvania sin perjudicar la libertad de exploración.
+
+## 10. ENEMIGOS: LAS SOMBRAS
+
+Los principales enemigos serán sombras.
+
+Estas sombras deben sentirse como parte de un mundo artístico incompleto.
+
+Pueden representar:
+
+- Formas que no llegaron a terminarse.
+- Errores de dibujo.
+- Pigmentos oscuros que cobraron vida.
+- Figuras borradas.
+- Manchas que invaden la pintura.
+- Vacíos que consumen las formas del mundo.
+
+No quiero enemigos genéricos sin relación con el concepto artístico.
+
+Cada enemigo debe tener una lógica visual y mecánica relacionada con el universo de la pintura.
+
+## 11. PRIMER ENEMIGO: MANOS DE SOMBRA
+
+Mi primera idea es un enemigo formado por manos oscuras que emergen del suelo.
+
+Como referencia general, me interesa la sensación de amenaza de las manos que aparecen en The Legend of Zelda: Tears of the Kingdom.
+
+No quiero copiar su diseño.
+
+Quiero desarrollar una criatura original relacionada con sombras, pintura y formas incompletas.
+
+Posibles características:
+
+- Manos formadas por pigmento negro.
+- Dedos largos, irregulares y expresivos.
+- Aparición desde manchas oscuras del suelo.
+- Siluetas que parecen pinceladas vivas.
+- Movimiento inquietante.
+- Capacidad de intentar sujetar al lobo.
+- Reacción a la luz o a las herramientas artísticas.
+- Animaciones que transmitan tensión y miedo.
+
+Diseña variantes originales y explora cómo podrían funcionar dentro de un metroidvania lateral.
+
+No generes un enemigo definitivo sin mi aprobación.
+
+## 12. MÁS ENEMIGOS
+
+Propón criaturas originales basadas en técnicas artísticas y materiales.
+
+Cada propuesta debe incluir:
+
+- Nombre provisional.
+- Concepto visual.
+- Material o técnica artística de origen.
+- Silueta.
+- Comportamiento.
+- Mecánica de combate o evasión.
+- Relación con el miedo del lobo.
+- Posible interacción con herramientas artísticas.
+- Dificultad aproximada de implementación en Godot.
+
+Evita diseñar enemigos demasiado complejos para el primer nivel.
+
+Quiero variedad visual, pero también coherencia artística.
+
+## 13. DISEÑO DE ESCENARIOS
+
+Quiero escenarios laterales de metroidvania con:
+
+- Primer plano.
+- Plano jugable.
+- Fondo intermedio.
+- Fondo lejano.
+- Profundidad mediante parallax.
+- Composiciones pictóricas.
+- Iluminación atmosférica.
+- Texturas de óleo.
+- Siluetas legibles.
+- Espacios negativos.
+- Regiones incompletas del lienzo.
+
+La arquitectura y la naturaleza pueden parecer pintadas a mano.
+
+El mundo debe sentirse bello, misterioso e inacabado.
+
+Los elementos decorativos no deben confundirse con plataformas, peligros u objetos interactivos.
+
+## 14. CONCEPT ART Y DOCUMENTACIÓN
+
+Quiero desarrollar una biblia visual del proyecto.
+
+Trabajaremos por etapas:
+
+FASE A — IDENTIDAD DEL MUNDO
+
+Definir paleta, materiales, iluminación, atmósfera y técnicas artísticas.
+
+FASE B — CUADRO INICIAL
+
+Desarrollar propuestas visuales del cuadro al óleo inacabado con el camino y los cinco puntos.
+
+FASE C — PRIMER NIVEL
+
+Desarrollar concept art del nivel Camino.
+
+FASE D — HERRAMIENTA
+
+Diseñar el lápiz y sus interacciones visuales.
+
+FASE E — ENEMIGOS
+
+Diseñar las manos de sombra y otros enemigos iniciales.
+
+FASE F — GAME FEEL
+
+Definir la respuesta audiovisual de las herramientas, el movimiento y las interacciones.
+
+FASE G — PRODUCCIÓN
+
+Convertir los conceptos aprobados en recursos gráficos organizados para Godot.
+
+No avances automáticamente a todas las fases.
+
+## 15. REGLAS PARA GENERAR CONCEPT IMAGES
+
+Cuando solicite una imagen conceptual:
+
+- Respeta el estilo artístico aprobado.
+- Mantén una paleta coherente.
+- No añadas elementos narrativos no autorizados.
+- No introduzcas personajes nuevos sin aprobación.
+- Conserva el diseño original del lobo.
+- Mantén una composición compatible con un videojuego 2D.
+- Distingue los elementos jugables de los decorativos.
+- Evita saturar la escena con detalles innecesarios.
+- Conserva la atmósfera pictórica.
+- Utiliza el formato panorámico cuando resulte adecuado para escenarios.
+
+Las imágenes conceptuales sirven para establecer dirección artística, no son automáticamente fondos listos para producción.
+
+Si más adelante necesitamos recursos separados por capas, transparencias, tiles o parallax, deberás tratarlos como entregables técnicos distintos.
+
+## 16. PRIORIDADES CREATIVAS
+
+Prioridad 1: identidad visual propia.
+
+Prioridad 2: coherencia entre narrativa, arte y mecánicas.
+
+Prioridad 3: personalidad y crecimiento emocional del lobo.
+
+Prioridad 4: exploración satisfactoria de metroidvania.
+
+Prioridad 5: integración musical.
+
+Prioridad 6: viabilidad técnica para un proyecto indie desarrollado en Godot.
+
+No quiero que el proyecto crezca de manera descontrolada.
+
+Ayúdame a priorizar y a construir una experiencia pequeña pero sólida antes de expandirla.
+
+## 17. PRIMERA TAREA
+
+Quiero comenzar exclusivamente con la dirección artística del mundo y el cuadro inicial.
+
+En tu primera respuesta:
+
+1. Analiza el concepto general.
+2. Define una propuesta de identidad artística.
+3. Explica cómo combinar el óleo del mundo con el dibujo artesanal del lobo.
+4. Propón una paleta cromática inicial.
+5. Describe la composición del cuadro inacabado con el camino y los cinco puntos.
+6. Propón tres direcciones visuales diferentes para el cuadro inicial.
+7. Explica qué elementos deben permanecer consistentes durante el proyecto.
+
+Después, espera mi aprobación antes de generar el primer concept art.
+
+No desarrolles todavía los cuatro niveles restantes.
+
+No cambies la historia central.
+
+Quiero construir este videojuego paso a paso, con una dirección artística profesional y coherente.

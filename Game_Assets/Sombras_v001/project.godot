@@ -1,0 +1,10 @@
+config_version=5
+[application]
+config/name="Pintura — Sombras v001 — revisión de arte"
+run/main_scene="res://Godot/Preview.tscn"
+[display]
+window/size/viewport_width=1100
+window/size/viewport_height=620
+[rendering]
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.91,0.89,0.85,1)

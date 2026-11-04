@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bsssuccumv082"
+
+[deps]
+
+files=["res://hand_contacts.frame.translation", "res://hand_contacts.primary.translation", "res://hand_contacts.primary.translation", "res://hand_contacts.hits.translation", "res://hand_contacts.contact.translation", "res://hand_contacts.contact.translation", "res://hand_contacts.fingertips.translation"]
+
+source_file="res://hand_contacts.csv"
+dest_files=["res://hand_contacts.frame.translation", "res://hand_contacts.primary.translation", "res://hand_contacts.primary.translation", "res://hand_contacts.hits.translation", "res://hand_contacts.contact.translation", "res://hand_contacts.contact.translation", "res://hand_contacts.fingertips.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

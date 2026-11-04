@@ -1,0 +1,20 @@
+{
+  "method": "Copy original tail pixels from latest user attachment; no new generation used",
+  "master_size": [
+    1774,
+    887
+  ],
+  "changed_pixels": 39329,
+  "changed_pixels_outside_tail_mask": 0,
+  "outside_tail_pixels_identical": true,
+  "hand_modified": false,
+  "brush_added": false,
+  "source_sha256": "3c4f38165f867046d4f4a28917a10a1ed644ea50e0c287be636bad3fb217d209",
+  "master_sha256": "e69d25c752b911830a087f5a87d366e67991b6fb304007dd4fd61eab6a7971d0",
+  "mask": "Source/mascara_cola.png",
+  "frames": 8,
+  "cell": [
+    384,
+    384
+  ]
+}

@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dajliip6qqggy"
+
+[deps]
+
+files=["res://brush_contacts.frame.translation", "res://brush_contacts.tip.translation", "res://brush_contacts.tip.translation", "res://brush_contacts.ink.translation", "res://brush_contacts.ink.translation", "res://brush_contacts.paints.translation", "res://brush_contacts.receives.translation"]
+
+source_file="res://brush_contacts.csv"
+dest_files=["res://brush_contacts.frame.translation", "res://brush_contacts.tip.translation", "res://brush_contacts.tip.translation", "res://brush_contacts.ink.translation", "res://brush_contacts.ink.translation", "res://brush_contacts.paints.translation", "res://brush_contacts.receives.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true

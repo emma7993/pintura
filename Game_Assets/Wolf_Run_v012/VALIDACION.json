@@ -1,0 +1,144 @@
+{
+  "frames": 8,
+  "unique_frames": 8,
+  "cell": [
+    384,
+    384
+  ],
+  "atlas": [
+    3072,
+    384
+  ],
+  "fps_default": 20,
+  "fps_alternative": 16,
+  "cycle_seconds": 0.4,
+  "offset": [
+    -192,
+    -352
+  ],
+  "shared_scale": 0.7526132404181185,
+  "registration": "Whole-frame translation using white-eye centroid",
+  "eye_range_xy": [
+    0.612,
+    0.131
+  ],
+  "borders_transparent": true,
+  "per_frame": [
+    {
+      "frame": 1,
+      "body_bounds": [
+        70,
+        136,
+        276,
+        353
+      ],
+      "eye_xy": [
+        242.328,
+        197.976
+      ]
+    },
+    {
+      "frame": 2,
+      "body_bounds": [
+        69,
+        136,
+        276,
+        353
+      ],
+      "eye_xy": [
+        241.737,
+        197.955
+      ]
+    },
+    {
+      "frame": 3,
+      "body_bounds": [
+        69,
+        136,
+        276,
+        356
+      ],
+      "eye_xy": [
+        242.204,
+        197.845
+      ]
+    },
+    {
+      "frame": 4,
+      "body_bounds": [
+        65,
+        136,
+        276,
+        337
+      ],
+      "eye_xy": [
+        242.3,
+        197.947
+      ]
+    },
+    {
+      "frame": 5,
+      "body_bounds": [
+        70,
+        135,
+        276,
+        351
+      ],
+      "eye_xy": [
+        242.244,
+        197.944
+      ]
+    },
+    {
+      "frame": 6,
+      "body_bounds": [
+        69,
+        135,
+        276,
+        352
+      ],
+      "eye_xy": [
+        241.716,
+        197.911
+      ]
+    },
+    {
+      "frame": 7,
+      "body_bounds": [
+        69,
+        135,
+        276,
+        354
+      ],
+      "eye_xy": [
+        242.199,
+        197.944
+      ]
+    },
+    {
+      "frame": 8,
+      "body_bounds": [
+        65,
+        135,
+        276,
+        336
+      ],
+      "eye_xy": [
+        242.227,
+        197.897
+      ]
+    }
+  ],
+  "brush": {
+    "present_in_run": false,
+    "weapon_layer_exported": false,
+    "attack_policy": "Materializes on attack only"
+  },
+  "review": "Image uniqueness and alignment do not prove fluid motion. Check normal and slow previews; game not integrated.",
+  "godot_validation": {
+    "version": "4.7.2",
+    "resources_loaded": 3,
+    "scene_loaded": true,
+    "log": "Source/godot_validation.log"
+  }
+}

@@ -1,0 +1,539 @@
+{
+  "format": "RGBA 256x256",
+  "ground_reference_y": 238,
+  "origin_offset": [
+    -128,
+    -238
+  ],
+  "scope": "walk and run, no weapon or attacks",
+  "art_method": "Complete hand-drawn generated poses, one uniform scale per sequence; whole-sprite registration only, no limb reconstruction. User atlas is motion-language reference, not known frame order.",
+  "walk": {
+    "count": 12,
+    "fps": 12,
+    "loop": true,
+    "whole_sequence_scale": 0.6687306501547987,
+    "frames": [
+      {
+        "frame": 1,
+        "torso_xy": [
+          138.29,
+          166.39
+        ],
+        "height_px": 217,
+        "bottom_y": 238,
+        "eye": {
+          "area": 66,
+          "width": 11,
+          "height": 8,
+          "bbox": [
+            170,
+            80,
+            181,
+            88
+          ]
+        },
+        "foot_centers_x": [
+          112.0,
+          187.5
+        ],
+        "registration_dx": 8
+      },
+      {
+        "frame": 2,
+        "torso_xy": [
+          138.062,
+          164.983
+        ],
+        "height_px": 216,
+        "bottom_y": 238,
+        "eye": {
+          "area": 63,
+          "width": 11,
+          "height": 7,
+          "bbox": [
+            166,
+            82,
+            177,
+            89
+          ]
+        },
+        "foot_centers_x": [
+          121.0,
+          158.0
+        ],
+        "registration_dx": 2
+      },
+      {
+        "frame": 3,
+        "torso_xy": [
+          137.798,
+          165.133
+        ],
+        "height_px": 217,
+        "bottom_y": 238,
+        "eye": {
+          "area": 64,
+          "width": 11,
+          "height": 7,
+          "bbox": [
+            164,
+            81,
+            175,
+            88
+          ]
+        },
+        "foot_centers_x": [
+          143.5
+        ],
+        "registration_dx": 0
+      },
+      {
+        "frame": 4,
+        "torso_xy": [
+          137.631,
+          162.179
+        ],
+        "height_px": 217,
+        "bottom_y": 238,
+        "eye": {
+          "area": 65,
+          "width": 11,
+          "height": 8,
+          "bbox": [
+            157,
+            80,
+            168,
+            88
+          ]
+        },
+        "foot_centers_x": [
+          129.0
+        ],
+        "registration_dx": -7
+      },
+      {
+        "frame": 5,
+        "torso_xy": [
+          137.724,
+          164.303
+        ],
+        "height_px": 215,
+        "bottom_y": 238,
+        "eye": {
+          "area": 27,
+          "width": 11,
+          "height": 4,
+          "bbox": [
+            162,
+            85,
+            173,
+            89
+          ]
+        },
+        "foot_centers_x": [
+          110.5,
+          168.5
+        ],
+        "registration_dx": -5
+      },
+      {
+        "frame": 6,
+        "torso_xy": [
+          137.637,
+          166.098
+        ],
+        "height_px": 213,
+        "bottom_y": 238,
+        "eye": {
+          "area": 28,
+          "width": 11,
+          "height": 4,
+          "bbox": [
+            165,
+            87,
+            176,
+            91
+          ]
+        },
+        "foot_centers_x": [
+          118.5,
+          166.5
+        ],
+        "registration_dx": -2
+      },
+      {
+        "frame": 7,
+        "torso_xy": [
+          142.21,
+          153.522
+        ],
+        "height_px": 216,
+        "bottom_y": 238,
+        "eye": {
+          "area": 61,
+          "width": 11,
+          "height": 7,
+          "bbox": [
+            162,
+            82,
+            173,
+            89
+          ]
+        },
+        "foot_centers_x": [
+          101.0,
+          175.5
+        ],
+        "registration_dx": -2
+      },
+      {
+        "frame": 8,
+        "torso_xy": [
+          138.227,
+          168.975
+        ],
+        "height_px": 216,
+        "bottom_y": 238,
+        "eye": {
+          "area": 63,
+          "width": 11,
+          "height": 8,
+          "bbox": [
+            163,
+            82,
+            174,
+            90
+          ]
+        },
+        "foot_centers_x": [
+          110.0,
+          151.5
+        ],
+        "registration_dx": -3
+      },
+      {
+        "frame": 9,
+        "torso_xy": [
+          138.322,
+          166.986
+        ],
+        "height_px": 215,
+        "bottom_y": 238,
+        "eye": {
+          "area": 75,
+          "width": 11,
+          "height": 9,
+          "bbox": [
+            168,
+            81,
+            179,
+            90
+          ]
+        },
+        "foot_centers_x": [
+          140.0
+        ],
+        "registration_dx": 2
+      },
+      {
+        "frame": 10,
+        "torso_xy": [
+          137.71,
+          166.312
+        ],
+        "height_px": 216,
+        "bottom_y": 238,
+        "eye": {
+          "area": 72,
+          "width": 11,
+          "height": 8,
+          "bbox": [
+            160,
+            81,
+            171,
+            89
+          ]
+        },
+        "foot_centers_x": [
+          110.0,
+          151.5
+        ],
+        "registration_dx": -6
+      },
+      {
+        "frame": 11,
+        "torso_xy": [
+          137.842,
+          161.448
+        ],
+        "height_px": 216,
+        "bottom_y": 238,
+        "eye": {
+          "area": 74,
+          "width": 11,
+          "height": 8,
+          "bbox": [
+            165,
+            81,
+            176,
+            89
+          ]
+        },
+        "foot_centers_x": [
+          110.0,
+          184.0
+        ],
+        "registration_dx": 3
+      },
+      {
+        "frame": 12,
+        "torso_xy": [
+          138.346,
+          164.638
+        ],
+        "height_px": 216,
+        "bottom_y": 238,
+        "eye": {
+          "area": 68,
+          "width": 11,
+          "height": 8,
+          "bbox": [
+            167,
+            81,
+            178,
+            89
+          ]
+        },
+        "foot_centers_x": [
+          105.5,
+          177.0
+        ],
+        "registration_dx": 3
+      }
+    ],
+    "torso_x_max_deviation_px": 3.893,
+    "stride_opening_estimate_px_per_cycle": 151.0,
+    "height_range": [
+      213,
+      217
+    ],
+    "eye_height_range": [
+      4,
+      9
+    ]
+  },
+  "run": {
+    "count": 8,
+    "fps": 16,
+    "loop": true,
+    "whole_sequence_scale": 0.6251808972503617,
+    "frames": [
+      {
+        "frame": 1,
+        "torso_xy": [
+          138.292,
+          160.496
+        ],
+        "height_px": 218,
+        "bottom_y": 238,
+        "eye": {
+          "area": 234,
+          "width": 14,
+          "height": 21,
+          "bbox": [
+            190,
+            80,
+            204,
+            101
+          ]
+        },
+        "foot_centers_x": [
+          144.0
+        ],
+        "registration_dx": 1
+      },
+      {
+        "frame": 2,
+        "torso_xy": [
+          137.734,
+          160.269
+        ],
+        "height_px": 210,
+        "bottom_y": 238,
+        "eye": {
+          "area": 225,
+          "width": 14,
+          "height": 21,
+          "bbox": [
+            198,
+            89,
+            212,
+            110
+          ]
+        },
+        "foot_centers_x": [
+          132.5
+        ],
+        "registration_dx": 6
+      },
+      {
+        "frame": 3,
+        "torso_xy": [
+          138.291,
+          163.471
+        ],
+        "height_px": 215,
+        "bottom_y": 237,
+        "eye": {
+          "area": 213,
+          "width": 13,
+          "height": 21,
+          "bbox": [
+            183,
+            78,
+            196,
+            99
+          ]
+        },
+        "foot_centers_x": [
+          60.5
+        ],
+        "registration_dx": -12
+      },
+      {
+        "frame": 4,
+        "torso_xy": [
+          137.854,
+          163.587
+        ],
+        "height_px": 196,
+        "bottom_y": 218,
+        "eye": {
+          "area": 209,
+          "width": 13,
+          "height": 20,
+          "bbox": [
+            184,
+            75,
+            197,
+            95
+          ]
+        },
+        "foot_centers_x": [],
+        "registration_dx": -12
+      },
+      {
+        "frame": 5,
+        "torso_xy": [
+          138.055,
+          162.655
+        ],
+        "height_px": 214,
+        "bottom_y": 238,
+        "eye": {
+          "area": 218,
+          "width": 13,
+          "height": 21,
+          "bbox": [
+            200,
+            80,
+            213,
+            101
+          ]
+        },
+        "foot_centers_x": [
+          157.0
+        ],
+        "registration_dx": 9
+      },
+      {
+        "frame": 6,
+        "torso_xy": [
+          137.522,
+          160.792
+        ],
+        "height_px": 204,
+        "bottom_y": 238,
+        "eye": {
+          "area": 225,
+          "width": 14,
+          "height": 21,
+          "bbox": [
+            193,
+            93,
+            207,
+            114
+          ]
+        },
+        "foot_centers_x": [
+          127.0
+        ],
+        "registration_dx": 0
+      },
+      {
+        "frame": 7,
+        "torso_xy": [
+          138.296,
+          161.461
+        ],
+        "height_px": 215,
+        "bottom_y": 237,
+        "eye": {
+          "area": 212,
+          "width": 13,
+          "height": 20,
+          "bbox": [
+            204,
+            77,
+            217,
+            97
+          ]
+        },
+        "foot_centers_x": [
+          76.0
+        ],
+        "registration_dx": 6
+      },
+      {
+        "frame": 8,
+        "torso_xy": [
+          138.267,
+          161.2
+        ],
+        "height_px": 194,
+        "bottom_y": 216,
+        "eye": {
+          "area": 200,
+          "width": 13,
+          "height": 20,
+          "bbox": [
+            201,
+            78,
+            214,
+            98
+          ]
+        },
+        "foot_centers_x": [],
+        "registration_dx": 2
+      }
+    ],
+    "torso_x_max_deviation_px": 0.517,
+    "stride_opening_estimate_px_per_cycle": null,
+    "height_range": [
+      194,
+      218
+    ],
+    "eye_height_range": [
+      20,
+      21
+    ]
+  },
+  "checks": {
+    "walk_count_12": true,
+    "run_count_8": true,
+    "torso_x_walk_within_2": false,
+    "torso_x_run_within_3": true,
+    "run_white_eye_present_all_frames": true,
+    "run_eye_more_open_than_walk": true
+  }
+}

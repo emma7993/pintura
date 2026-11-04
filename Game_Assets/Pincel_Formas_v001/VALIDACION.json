@@ -1,0 +1,55 @@
+{
+  "states": 3,
+  "transitions": 6,
+  "frames_per_transition": 4,
+  "endpoints_included": true,
+  "cell": [
+    384,
+    384
+  ],
+  "atlas": [
+    1536,
+    384
+  ],
+  "fps": 16,
+  "transition_seconds": 0.25,
+  "origin": "Ring base registered at (140,323); proposed pivot, not hand contact validation",
+  "generated_sheet_scale_shared": 0.6721248287583859,
+  "ring_target": [
+    140.0,
+    323.0
+  ],
+  "principal_existing_asset_reused": true,
+  "identical_endpoints": {
+    "lanza_a_arco": true,
+    "arco_a_arpa": true,
+    "arpa_a_lanza": true,
+    "arco_a_lanza": true,
+    "arpa_a_arco": true,
+    "lanza_a_arpa": true
+  },
+  "borders_transparent": true,
+  "state_bounds": {
+    "lanza": [
+      138,
+      154,
+      274,
+      324
+    ],
+    "arco": [
+      134,
+      137,
+      261,
+      329
+    ],
+    "arpa": [
+      127,
+      154,
+      253,
+      329
+    ]
+  },
+  "generation_calls": 1,
+  "reverse_animations": "Same frames reversed; no additional generation",
+  "status": "Design sprites for review; weapon-hand grips and use animations not integrated"
+}

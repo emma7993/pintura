@@ -1,0 +1,16 @@
+; Independent art preview. The main game is not changed.
+config_version=5
+
+[application]
+config/name="Pintura — Wolf Run v008"
+run/main_scene="res://Godot/Preview.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[display]
+window/size/viewport_width=640
+window/size/viewport_height=480
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+

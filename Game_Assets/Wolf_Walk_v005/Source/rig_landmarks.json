@@ -1,0 +1,261 @@
+{
+	"body_height": 148,
+	"cell": [
+		256,
+		256
+	],
+	"cycle_px": 175.0,
+	"frames": [
+		{
+			"frame": 1,
+			"hip": [
+				128.0,
+				166.0
+			],
+			"left_sole_center": [
+				84.5,
+				238.0
+			],
+			"phase": 0.0,
+			"right_sole_center": [
+				172.0,
+				238.0
+			],
+			"scarf_phase": 0.0,
+			"stance": "right",
+			"tail_phase": 0.0
+		},
+		{
+			"frame": 2,
+			"hip": [
+				128.0,
+				166.692825317383
+			],
+			"left_sole_center": [
+				99.0833358764648,
+				230.0
+			],
+			"phase": 0.0833333333333333,
+			"right_sole_center": [
+				157.41667175293,
+				238.0
+			],
+			"scarf_phase": 0.0833333333333333,
+			"stance": "right",
+			"tail_phase": 0.0833333333333333
+		},
+		{
+			"frame": 3,
+			"hip": [
+				128.0,
+				166.692825317383
+			],
+			"left_sole_center": [
+				113.666664123535,
+				224.143600463867
+			],
+			"phase": 0.166666666666667,
+			"right_sole_center": [
+				142.83332824707,
+				238.0
+			],
+			"scarf_phase": 0.166666666666667,
+			"stance": "right",
+			"tail_phase": 0.166666666666667
+		},
+		{
+			"frame": 4,
+			"hip": [
+				128.0,
+				166.0
+			],
+			"left_sole_center": [
+				128.25,
+				222.0
+			],
+			"phase": 0.25,
+			"right_sole_center": [
+				128.25,
+				238.0
+			],
+			"scarf_phase": 0.25,
+			"stance": "right",
+			"tail_phase": 0.25
+		},
+		{
+			"frame": 5,
+			"hip": [
+				128.0,
+				165.307174682617
+			],
+			"left_sole_center": [
+				142.83332824707,
+				224.143600463867
+			],
+			"phase": 0.333333333333333,
+			"right_sole_center": [
+				113.666664123535,
+				238.0
+			],
+			"scarf_phase": 0.333333333333333,
+			"stance": "right",
+			"tail_phase": 0.333333333333333
+		},
+		{
+			"frame": 6,
+			"hip": [
+				128.0,
+				165.307174682617
+			],
+			"left_sole_center": [
+				157.41667175293,
+				230.0
+			],
+			"phase": 0.416666666666667,
+			"right_sole_center": [
+				99.0833358764648,
+				238.0
+			],
+			"scarf_phase": 0.416666666666667,
+			"stance": "right",
+			"tail_phase": 0.416666666666667
+		},
+		{
+			"frame": 7,
+			"hip": [
+				128.0,
+				166.0
+			],
+			"left_sole_center": [
+				172.0,
+				238.0
+			],
+			"phase": 0.5,
+			"right_sole_center": [
+				84.5,
+				238.0
+			],
+			"scarf_phase": 0.5,
+			"stance": "left",
+			"tail_phase": 0.5
+		},
+		{
+			"frame": 8,
+			"hip": [
+				128.0,
+				166.692825317383
+			],
+			"left_sole_center": [
+				157.41667175293,
+				238.0
+			],
+			"phase": 0.583333333333333,
+			"right_sole_center": [
+				99.0833358764648,
+				230.0
+			],
+			"scarf_phase": 0.583333333333333,
+			"stance": "left",
+			"tail_phase": 0.583333333333333
+		},
+		{
+			"frame": 9,
+			"hip": [
+				128.0,
+				166.692825317383
+			],
+			"left_sole_center": [
+				142.83332824707,
+				238.0
+			],
+			"phase": 0.666666666666667,
+			"right_sole_center": [
+				113.666664123535,
+				224.143600463867
+			],
+			"scarf_phase": 0.666666666666667,
+			"stance": "left",
+			"tail_phase": 0.666666666666667
+		},
+		{
+			"frame": 10,
+			"hip": [
+				128.0,
+				166.0
+			],
+			"left_sole_center": [
+				128.25,
+				238.0
+			],
+			"phase": 0.75,
+			"right_sole_center": [
+				128.25,
+				222.0
+			],
+			"scarf_phase": 0.75,
+			"stance": "left",
+			"tail_phase": 0.75
+		},
+		{
+			"frame": 11,
+			"hip": [
+				128.0,
+				165.307174682617
+			],
+			"left_sole_center": [
+				113.666664123535,
+				238.0
+			],
+			"phase": 0.833333333333333,
+			"right_sole_center": [
+				142.83332824707,
+				224.143600463867
+			],
+			"scarf_phase": 0.833333333333333,
+			"stance": "left",
+			"tail_phase": 0.833333333333333
+		},
+		{
+			"frame": 12,
+			"hip": [
+				128.0,
+				165.307174682617
+			],
+			"left_sole_center": [
+				99.0833358764648,
+				238.0
+			],
+			"phase": 0.916666666666667,
+			"right_sole_center": [
+				157.41667175293,
+				230.0
+			],
+			"scarf_phase": 0.916666666666667,
+			"stance": "left",
+			"tail_phase": 0.916666666666667
+		},
+		{
+			"frame": 13,
+			"hip": [
+				128.0,
+				166.0
+			],
+			"left_sole_center": [
+				84.5,
+				238.0
+			],
+			"phase": 0.0,
+			"right_sole_center": [
+				172.0,
+				238.0
+			],
+			"scarf_phase": 0.0,
+			"stance": "right",
+			"tail_phase": 0.0
+		}
+	],
+	"ground_y": 238,
+	"stance_delta_px": 14.5833333333333,
+	"step_px": 87.5,
+	"super_sampling": 4
+}

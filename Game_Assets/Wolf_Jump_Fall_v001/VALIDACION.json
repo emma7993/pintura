@@ -1,0 +1,50 @@
+{
+  "poses": 5,
+  "unique": 5,
+  "jump_frames": 3,
+  "fall_frames": 2,
+  "cell": [
+    384,
+    384
+  ],
+  "shared_scale": 0.677115987460815,
+  "planted_ground_bottom": {
+    "impulso": 352,
+    "aterrizaje": 352
+  },
+  "borders_transparent": true,
+  "weapon": false,
+  "pose_bounds": [
+    [
+      75,
+      165,
+      277,
+      352
+    ],
+    [
+      74,
+      121,
+      259,
+      332
+    ],
+    [
+      64,
+      120,
+      261,
+      309
+    ],
+    [
+      84,
+      128,
+      268,
+      345
+    ],
+    [
+      80,
+      174,
+      271,
+      352
+    ]
+  ],
+  "note": "Flexion changes silhouette height at a shared scale. Preview displacement is illustrative, not baked into exported sprites."
+}

@@ -1,0 +1,114 @@
+[
+  {
+    "frame": 1,
+    "grip_xy": [
+      153.56,
+      267.08
+    ],
+    "angle_degrees_clockwise": 160.0,
+    "tip_xy": [
+      32.34,
+      311.2
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 2,
+    "grip_xy": [
+      153.14,
+      267.08
+    ],
+    "angle_degrees_clockwise": 161.41,
+    "tip_xy": [
+      30.87,
+      308.2
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 3,
+    "grip_xy": [
+      151.82,
+      260.42
+    ],
+    "angle_degrees_clockwise": 162.0,
+    "tip_xy": [
+      29.14,
+      300.29
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 4,
+    "grip_xy": [
+      144.57,
+      267.32
+    ],
+    "angle_degrees_clockwise": 161.41,
+    "tip_xy": [
+      22.3,
+      308.44
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 5,
+    "grip_xy": [
+      155.0,
+      266.59
+    ],
+    "angle_degrees_clockwise": 160.0,
+    "tip_xy": [
+      33.78,
+      310.71
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 6,
+    "grip_xy": [
+      152.28,
+      262.53
+    ],
+    "angle_degrees_clockwise": 158.59,
+    "tip_xy": [
+      32.18,
+      309.63
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 7,
+    "grip_xy": [
+      152.46,
+      259.64
+    ],
+    "angle_degrees_clockwise": 158.0,
+    "tip_xy": [
+      32.85,
+      307.96
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 8,
+    "grip_xy": [
+      146.0,
+      267.95
+    ],
+    "angle_degrees_clockwise": 158.59,
+    "tip_xy": [
+      25.9,
+      315.05
+    ],
+    "paints": false,
+    "receives_ink": false
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "frame": 1,
+    "grip_xy": [
+      155.08,
+      257.56
+    ],
+    "angle_degrees_clockwise": 160.0,
+    "tip_xy": [
+      33.86,
+      301.68
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 2,
+    "grip_xy": [
+      155.99,
+      256.66
+    ],
+    "angle_degrees_clockwise": 161.41,
+    "tip_xy": [
+      33.71,
+      297.77
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 3,
+    "grip_xy": [
+      151.69,
+      250.6
+    ],
+    "angle_degrees_clockwise": 162.0,
+    "tip_xy": [
+      29.0,
+      290.46
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 4,
+    "grip_xy": [
+      142.67,
+      256.07
+    ],
+    "angle_degrees_clockwise": 161.41,
+    "tip_xy": [
+      20.4,
+      297.19
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 5,
+    "grip_xy": [
+      154.94,
+      256.54
+    ],
+    "angle_degrees_clockwise": 160.0,
+    "tip_xy": [
+      33.72,
+      300.66
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 6,
+    "grip_xy": [
+      155.59,
+      251.72
+    ],
+    "angle_degrees_clockwise": 158.59,
+    "tip_xy": [
+      35.49,
+      298.82
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 7,
+    "grip_xy": [
+      153.51,
+      248.11
+    ],
+    "angle_degrees_clockwise": 158.0,
+    "tip_xy": [
+      33.91,
+      296.44
+    ],
+    "paints": false,
+    "receives_ink": false
+  },
+  {
+    "frame": 8,
+    "grip_xy": [
+      141.54,
+      256.52
+    ],
+    "angle_degrees_clockwise": 158.59,
+    "tip_xy": [
+      21.45,
+      303.62
+    ],
+    "paints": false,
+    "receives_ink": false
+  }
+]

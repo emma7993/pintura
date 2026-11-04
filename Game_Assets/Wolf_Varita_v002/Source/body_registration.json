@@ -1,0 +1,1376 @@
+{
+  "idle": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        111,
+        17,
+        400,
+        474
+      ],
+      "whole_figure_scale": 0.4726477024070022,
+      "registration_dx": 5,
+      "torso_before": [
+        132.912,
+        159.111
+      ],
+      "torso_center_xy": [
+        137.912,
+        159.111
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        143.0
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        111,
+        16,
+        400,
+        474
+      ],
+      "whole_figure_scale": 0.47161572052401746,
+      "registration_dx": 6,
+      "torso_before": [
+        132.406,
+        159.095
+      ],
+      "torso_center_xy": [
+        138.406,
+        159.095
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        143.5
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        109,
+        16,
+        400,
+        474
+      ],
+      "whole_figure_scale": 0.47161572052401746,
+      "registration_dx": 5,
+      "torso_before": [
+        133.445,
+        158.742
+      ],
+      "torso_center_xy": [
+        138.445,
+        158.742
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        143.5
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        110,
+        17,
+        399,
+        475
+      ],
+      "whole_figure_scale": 0.47161572052401746,
+      "registration_dx": 5,
+      "torso_before": [
+        132.753,
+        158.82
+      ],
+      "torso_center_xy": [
+        137.753,
+        158.82
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        111,
+        19,
+        400,
+        474
+      ],
+      "whole_figure_scale": 0.4747252747252747,
+      "registration_dx": 5,
+      "torso_before": [
+        132.97,
+        159.087
+      ],
+      "torso_center_xy": [
+        137.97,
+        159.087
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        111,
+        20,
+        400,
+        474
+      ],
+      "whole_figure_scale": 0.47577092511013214,
+      "registration_dx": 5,
+      "torso_before": [
+        133.153,
+        159.047
+      ],
+      "torso_center_xy": [
+        138.153,
+        159.047
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        143.0
+      ]
+    }
+  ],
+  "walk": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        72,
+        19,
+        288,
+        330
+      ],
+      "whole_figure_scale": 0.6945337620578779,
+      "registration_dx": 9,
+      "torso_before": [
+        128.576,
+        159.413
+      ],
+      "torso_center_xy": [
+        137.576,
+        159.413
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        119.5,
+        192.5
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        75,
+        19,
+        282,
+        325
+      ],
+      "whole_figure_scale": 0.7058823529411765,
+      "registration_dx": 4,
+      "torso_before": [
+        133.569,
+        159.79
+      ],
+      "torso_center_xy": [
+        137.569,
+        159.79
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        116.0,
+        172.0
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        73,
+        19,
+        283,
+        327
+      ],
+      "whole_figure_scale": 0.7012987012987013,
+      "registration_dx": 3,
+      "torso_before": [
+        135.437,
+        159.626
+      ],
+      "torso_center_xy": [
+        138.437,
+        159.626
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        121.0,
+        157.0
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        77,
+        18,
+        283,
+        326
+      ],
+      "whole_figure_scale": 0.7012987012987013,
+      "registration_dx": 5,
+      "torso_before": [
+        132.851,
+        159.692
+      ],
+      "torso_center_xy": [
+        137.851,
+        159.692
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.0
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        76,
+        20,
+        283,
+        327
+      ],
+      "whole_figure_scale": 0.7035830618892508,
+      "registration_dx": 7,
+      "torso_before": [
+        131.224,
+        159.452
+      ],
+      "torso_center_xy": [
+        138.224,
+        159.452
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        117.5,
+        176.5
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        298,
+        110,
+        1052,
+        1179
+      ],
+      "whole_figure_scale": 0.20205799812909261,
+      "registration_dx": 6,
+      "torso_before": [
+        131.928,
+        160.544
+      ],
+      "torso_center_xy": [
+        137.928,
+        160.544
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        112.5,
+        173.0
+      ]
+    },
+    {
+      "frame": 7,
+      "source_bbox": [
+        293,
+        107,
+        1055,
+        1181
+      ],
+      "whole_figure_scale": 0.2011173184357542,
+      "registration_dx": 5,
+      "torso_before": [
+        132.588,
+        160.843
+      ],
+      "torso_center_xy": [
+        137.588,
+        160.843
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        109.5,
+        167.5
+      ]
+    },
+    {
+      "frame": 8,
+      "source_bbox": [
+        68,
+        20,
+        283,
+        327
+      ],
+      "whole_figure_scale": 0.7035830618892508,
+      "registration_dx": 4,
+      "torso_before": [
+        133.66,
+        159.92
+      ],
+      "torso_center_xy": [
+        137.66,
+        159.92
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        109.5,
+        157.0
+      ]
+    },
+    {
+      "frame": 9,
+      "source_bbox": [
+        68,
+        21,
+        282,
+        329
+      ],
+      "whole_figure_scale": 0.7012987012987013,
+      "registration_dx": 1,
+      "torso_before": [
+        137.215,
+        160.123
+      ],
+      "torso_center_xy": [
+        138.215,
+        160.123
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.0
+      ]
+    },
+    {
+      "frame": 10,
+      "source_bbox": [
+        68,
+        20,
+        282,
+        329
+      ],
+      "whole_figure_scale": 0.6990291262135923,
+      "registration_dx": 4,
+      "torso_before": [
+        134.194,
+        159.465
+      ],
+      "torso_center_xy": [
+        138.194,
+        159.465
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.0
+      ]
+    },
+    {
+      "frame": 11,
+      "source_bbox": [
+        66,
+        21,
+        283,
+        329
+      ],
+      "whole_figure_scale": 0.7012987012987013,
+      "registration_dx": 4,
+      "torso_before": [
+        134.141,
+        159.547
+      ],
+      "torso_center_xy": [
+        138.141,
+        159.547
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        116.5,
+        168.0
+      ]
+    },
+    {
+      "frame": 12,
+      "source_bbox": [
+        291,
+        110,
+        1054,
+        1188
+      ],
+      "whole_figure_scale": 0.20037105751391465,
+      "registration_dx": 5,
+      "torso_before": [
+        132.763,
+        160.074
+      ],
+      "torso_center_xy": [
+        137.763,
+        160.074
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        111.0,
+        176.0
+      ]
+    }
+  ],
+  "run": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        59,
+        21,
+        390,
+        419
+      ],
+      "whole_figure_scale": 0.542713567839196,
+      "registration_dx": 4,
+      "torso_before": [
+        133.618,
+        164.179
+      ],
+      "torso_center_xy": [
+        137.618,
+        164.179
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        72.0,
+        201.0
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        62,
+        22,
+        358,
+        422
+      ],
+      "whole_figure_scale": 0.54,
+      "registration_dx": 2,
+      "torso_before": [
+        135.543,
+        163.321
+      ],
+      "torso_center_xy": [
+        137.543,
+        163.321
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        114.0,
+        150.0
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        62,
+        24,
+        359,
+        421
+      ],
+      "whole_figure_scale": 0.5440806045340051,
+      "registration_dx": -7,
+      "torso_before": [
+        145.243,
+        163.307
+      ],
+      "torso_center_xy": [
+        138.243,
+        163.307
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        96.5
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        62,
+        24,
+        389,
+        404
+      ],
+      "whole_figure_scale": 0.5684210526315789,
+      "registration_dx": 6,
+      "torso_before": [
+        131.921,
+        165.16
+      ],
+      "torso_center_xy": [
+        137.921,
+        165.16
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        51.5,
+        206.0
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        60,
+        23,
+        391,
+        418
+      ],
+      "whole_figure_scale": 0.5468354430379747,
+      "registration_dx": 4,
+      "torso_before": [
+        133.767,
+        164.088
+      ],
+      "torso_center_xy": [
+        137.767,
+        164.088
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        71.0,
+        202.0
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        63,
+        24,
+        358,
+        421
+      ],
+      "whole_figure_scale": 0.5440806045340051,
+      "registration_dx": 2,
+      "torso_before": [
+        136.318,
+        163.398
+      ],
+      "torso_center_xy": [
+        138.318,
+        163.398
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        114.0,
+        150.5
+      ]
+    },
+    {
+      "frame": 7,
+      "source_bbox": [
+        62,
+        24,
+        359,
+        420
+      ],
+      "whole_figure_scale": 0.5454545454545454,
+      "registration_dx": -7,
+      "torso_before": [
+        145.064,
+        163.317
+      ],
+      "torso_center_xy": [
+        138.064,
+        163.317
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        97.0
+      ]
+    },
+    {
+      "frame": 8,
+      "source_bbox": [
+        62,
+        24,
+        394,
+        399
+      ],
+      "whole_figure_scale": 0.576,
+      "registration_dx": 11,
+      "torso_before": [
+        126.8,
+        163.494
+      ],
+      "torso_center_xy": [
+        137.8,
+        163.494
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        56.5,
+        212.0
+      ]
+    }
+  ],
+  "paint_rise": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        83,
+        24,
+        329,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 1,
+      "torso_before": [
+        136.672,
+        160.407
+      ],
+      "torso_center_xy": [
+        137.672,
+        160.407
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        304,
+        111,
+        946,
+        1202
+      ],
+      "whole_figure_scale": 0.19798350137488543,
+      "registration_dx": -2,
+      "torso_before": [
+        139.831,
+        162.578
+      ],
+      "torso_center_xy": [
+        137.831,
+        162.578
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.0
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        83,
+        24,
+        330,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 2,
+      "torso_before": [
+        136.046,
+        160.023
+      ],
+      "torso_center_xy": [
+        138.046,
+        160.023
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        83,
+        24,
+        356,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 9,
+      "torso_before": [
+        129.398,
+        159.732
+      ],
+      "torso_center_xy": [
+        138.398,
+        159.732
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        143.5
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        83,
+        24,
+        341,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 4,
+      "torso_before": [
+        133.829,
+        159.635
+      ],
+      "torso_center_xy": [
+        137.829,
+        159.635
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        82,
+        24,
+        341,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 4,
+      "torso_before": [
+        133.602,
+        159.784
+      ],
+      "torso_center_xy": [
+        137.602,
+        159.784
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 7,
+      "source_bbox": [
+        83,
+        24,
+        328,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 1,
+      "torso_before": [
+        137.124,
+        159.925
+      ],
+      "torso_center_xy": [
+        138.124,
+        159.925
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    },
+    {
+      "frame": 8,
+      "source_bbox": [
+        83,
+        24,
+        329,
+        418
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 1,
+      "torso_before": [
+        136.739,
+        160.306
+      ],
+      "torso_center_xy": [
+        137.739,
+        160.306
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.5
+      ]
+    }
+  ],
+  "paint_up": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        94,
+        13,
+        319,
+        407
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": -3,
+      "torso_before": [
+        141.354,
+        160.28
+      ],
+      "torso_center_xy": [
+        138.354,
+        160.28
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        93,
+        13,
+        321,
+        407
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": -4,
+      "torso_before": [
+        141.856,
+        160.253
+      ],
+      "torso_center_xy": [
+        137.856,
+        160.253
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        94,
+        13,
+        321,
+        407
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": -3,
+      "torso_before": [
+        141.358,
+        160.297
+      ],
+      "torso_center_xy": [
+        138.358,
+        160.297
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        94,
+        13,
+        356,
+        407
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": 6,
+      "torso_before": [
+        132.133,
+        160.264
+      ],
+      "torso_center_xy": [
+        138.133,
+        160.264
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        94,
+        13,
+        319,
+        407
+      ],
+      "whole_figure_scale": 0.5482233502538071,
+      "registration_dx": -3,
+      "torso_before": [
+        140.592,
+        158.705
+      ],
+      "torso_center_xy": [
+        137.592,
+        158.705
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        93,
+        13,
+        325,
+        408
+      ],
+      "whole_figure_scale": 0.5468354430379747,
+      "registration_dx": -2,
+      "torso_before": [
+        139.648,
+        160.168
+      ],
+      "torso_center_xy": [
+        137.648,
+        160.168
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 7,
+      "source_bbox": [
+        94,
+        13,
+        319,
+        408
+      ],
+      "whole_figure_scale": 0.5468354430379747,
+      "registration_dx": -3,
+      "torso_before": [
+        141.336,
+        160.18
+      ],
+      "torso_center_xy": [
+        138.336,
+        160.18
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.0
+      ]
+    },
+    {
+      "frame": 8,
+      "source_bbox": [
+        94,
+        13,
+        319,
+        408
+      ],
+      "whole_figure_scale": 0.5468354430379747,
+      "registration_dx": -3,
+      "torso_before": [
+        141.49,
+        160.139
+      ],
+      "torso_center_xy": [
+        138.49,
+        160.139
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        141.5
+      ]
+    }
+  ],
+  "dip": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        94,
+        21,
+        358,
+        484
+      ],
+      "whole_figure_scale": 0.46652267818574517,
+      "registration_dx": -2,
+      "torso_before": [
+        139.881,
+        158.266
+      ],
+      "torso_center_xy": [
+        137.881,
+        158.266
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.5
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        94,
+        22,
+        372,
+        484
+      ],
+      "whole_figure_scale": 0.4675324675324675,
+      "registration_dx": 1,
+      "torso_before": [
+        137.107,
+        158.313
+      ],
+      "torso_center_xy": [
+        138.107,
+        158.313
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.5
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        94,
+        22,
+        374,
+        484
+      ],
+      "whole_figure_scale": 0.4675324675324675,
+      "registration_dx": 2,
+      "torso_before": [
+        136.168,
+        158.369
+      ],
+      "torso_center_xy": [
+        138.168,
+        158.369
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.5
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        94,
+        22,
+        372,
+        484
+      ],
+      "whole_figure_scale": 0.4675324675324675,
+      "registration_dx": 1,
+      "torso_before": [
+        137.076,
+        158.326
+      ],
+      "torso_center_xy": [
+        138.076,
+        158.326
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.5
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        94,
+        22,
+        372,
+        484
+      ],
+      "whole_figure_scale": 0.4675324675324675,
+      "registration_dx": 1,
+      "torso_before": [
+        137.041,
+        158.257
+      ],
+      "torso_center_xy": [
+        138.041,
+        158.257
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.5
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        94,
+        22,
+        359,
+        484
+      ],
+      "whole_figure_scale": 0.4675324675324675,
+      "registration_dx": -2,
+      "torso_before": [
+        140.119,
+        158.285
+      ],
+      "torso_center_xy": [
+        138.119,
+        158.285
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        140.5
+      ]
+    }
+  ],
+  "air_clean": [
+    {
+      "frame": 1,
+      "source_bbox": [
+        113,
+        82,
+        332,
+        413
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": 1,
+      "torso_before": [
+        136.878,
+        166.651
+      ],
+      "torso_center_xy": [
+        137.878,
+        166.651
+      ],
+      "height": 198,
+      "ground_y": 238,
+      "foot_centers_x": [
+        139.5
+      ]
+    },
+    {
+      "frame": 2,
+      "source_bbox": [
+        117,
+        54,
+        328,
+        411
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": 2,
+      "torso_before": [
+        135.561,
+        159.239
+      ],
+      "torso_center_xy": [
+        137.561,
+        159.239
+      ],
+      "height": 213,
+      "ground_y": 238,
+      "foot_centers_x": [
+        133.5
+      ]
+    },
+    {
+      "frame": 3,
+      "source_bbox": [
+        116,
+        28,
+        332,
+        381
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": 1,
+      "torso_before": [
+        136.689,
+        159.413
+      ],
+      "torso_center_xy": [
+        137.689,
+        159.413
+      ],
+      "height": 211,
+      "ground_y": 238,
+      "foot_centers_x": [
+        121.0,
+        138.0
+      ]
+    },
+    {
+      "frame": 4,
+      "source_bbox": [
+        125,
+        6,
+        333,
+        370
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": 5,
+      "torso_before": [
+        132.807,
+        158.337
+      ],
+      "torso_center_xy": [
+        137.807,
+        158.337
+      ],
+      "height": 217,
+      "ground_y": 238,
+      "foot_centers_x": [
+        133.5
+      ]
+    },
+    {
+      "frame": 5,
+      "source_bbox": [
+        104,
+        17,
+        332,
+        383
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": 0,
+      "torso_before": [
+        138.363,
+        158.546
+      ],
+      "torso_center_xy": [
+        138.363,
+        158.546
+      ],
+      "height": 218,
+      "ground_y": 238,
+      "foot_centers_x": [
+        135.5
+      ]
+    },
+    {
+      "frame": 6,
+      "source_bbox": [
+        100,
+        30,
+        331,
+        398
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": -1,
+      "torso_before": [
+        138.731,
+        158.457
+      ],
+      "torso_center_xy": [
+        137.731,
+        158.457
+      ],
+      "height": 220,
+      "ground_y": 238,
+      "foot_centers_x": [
+        135.5
+      ]
+    },
+    {
+      "frame": 7,
+      "source_bbox": [
+        95,
+        56,
+        332,
+        411
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": -4,
+      "torso_before": [
+        142.065,
+        161.131
+      ],
+      "torso_center_xy": [
+        138.065,
+        161.131
+      ],
+      "height": 212,
+      "ground_y": 238,
+      "foot_centers_x": [
+        142.0
+      ]
+    },
+    {
+      "frame": 8,
+      "source_bbox": [
+        106,
+        49,
+        332,
+        411
+      ],
+      "whole_figure_scale": 0.5966850828729282,
+      "registration_dx": -1,
+      "torso_before": [
+        139.383,
+        158.974
+      ],
+      "torso_center_xy": [
+        138.383,
+        158.974
+      ],
+      "height": 216,
+      "ground_y": 238,
+      "foot_centers_x": [
+        143.0
+      ]
+    }
+  ]
+}

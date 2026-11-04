@@ -1,0 +1,155 @@
+{
+  "character": "Lobito",
+  "package": "Wolf_Jump_Fall_v001",
+  "reference": "Wolf_Run_v013",
+  "cell": [
+    384,
+    384
+  ],
+  "origin": [
+    192,
+    352
+  ],
+  "offset": [
+    -192,
+    -352
+  ],
+  "facing": "right",
+  "weapon": false,
+  "poses": [
+    {
+      "id": 1,
+      "name": "Impulso",
+      "file": "Animations/jump/01_impulso.png",
+      "bounds": [
+        75,
+        165,
+        277,
+        352
+      ],
+      "paste_xy": [
+        3,
+        54
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Ascenso",
+      "file": "Animations/jump/02_ascenso.png",
+      "bounds": [
+        74,
+        121,
+        259,
+        332
+      ],
+      "paste_xy": [
+        3,
+        54
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Cima",
+      "file": "Animations/jump/03_cima.png",
+      "bounds": [
+        64,
+        120,
+        261,
+        309
+      ],
+      "paste_xy": [
+        3,
+        54
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Cayendo",
+      "file": "Animations/fall/01_cayendo.png",
+      "bounds": [
+        84,
+        128,
+        268,
+        345
+      ],
+      "paste_xy": [
+        7,
+        69
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Aterrizaje / rebote",
+      "file": "Animations/fall/02_aterrizaje_rebote.png",
+      "bounds": [
+        80,
+        174,
+        271,
+        352
+      ],
+      "paste_xy": [
+        7,
+        69
+      ]
+    }
+  ],
+  "animations": [
+    {
+      "name": "jump",
+      "frames": 3,
+      "fps": 12,
+      "loop": false
+    },
+    {
+      "name": "fall_and_land",
+      "frames": 2,
+      "fps": 10,
+      "loop": false
+    },
+    {
+      "name": "jump_start",
+      "frames": 1,
+      "fps": 12,
+      "loop": false
+    },
+    {
+      "name": "jump_up",
+      "frames": 1,
+      "fps": 10,
+      "loop": true
+    },
+    {
+      "name": "jump_apex",
+      "frames": 1,
+      "fps": 10,
+      "loop": true
+    },
+    {
+      "name": "fall",
+      "frames": 1,
+      "fps": 10,
+      "loop": true
+    },
+    {
+      "name": "land",
+      "frames": 1,
+      "fps": 12,
+      "loop": false
+    }
+  ],
+  "atlases": {
+    "jump": [
+      1152,
+      384
+    ],
+    "fall": [
+      768,
+      384
+    ],
+    "jump_fall": [
+      1920,
+      384
+    ]
+  },
+  "integration_notes": "Use phases by vertical velocity/ground contact. Rebound is visual only, not an automatic gameplay jump."
+}

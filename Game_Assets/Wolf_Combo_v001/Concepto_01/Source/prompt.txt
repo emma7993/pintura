@@ -1,0 +1,21 @@
+Use case: identity-preserve / original game attack storyboard.
+Make a clean TWELVE-POSE sprite design sheet in EXACTLY FOUR COLUMNS by THREE ROWS, equal square cells, transparent RGBA. Row-major. No labels, text, grid, scenery, glows or floor lines. Reference image is the user's OWN wolf identity to preserve: black graphite wolf, light gray rough fine contour, modest smallhead/twoears, tiny open white oval eye, gray-tipped tail, FLAT muted RED scarf with grayoutline and shortstraightfringe. Keep character design, proportions and line thickness, no blueglow, no white creature, no caperedesign. Original wolf movements.
+This is a connected THREE-HIT PAINTBRUSH COMBO, one attack per row, four keyposes each. Same ground and character scale in every cell, logical512x512, footanchor(256,448), standingwolfheight216 logicalpx. Body can lean/crouch naturally but head never grows. Keep feet and all weapon/effects in cell without cropping. Sideview facing RIGHT throughout, eyesopen alert determined but same smallwhiteeye.
+Weapon: very LONG THIN black wooden round paintbrush, small ovalring on butt, shortsilverferrule, fine tapered lightbeige BRISTLES dipped in black paint. It is a BRUSH not steelblade or sword. Draw length215px when carried behind waist, extending magically to roughly310px during impact, then retracting. Thickness remains5to7px, elegant slender pole, NO thick club, NO fat spearhead. Hands tiny securely gripping shaft, wrists straight and coherent.
+BLACK PAINT TRAIL: opaque deepblack with charcoal graphite gray frayed bristlemargins and a few SMALL ink droplets, follows brush TIP trajectory only. Broader paint stroke than thin handle; no luminous color, no trail through wolf face or body. Impact strokes visible on paper when composited; preserve figure readability with greyoutline.
+ROW1 risingcut from lowbackleft to highforwardright:
+1 crouchedshortanticipation drawingshortbrush frombehind waist, tip lowleft behind body, no trail.
+2 quick diagonal upward strike, brush lengthens thin toward upperright, hips turn, frontfoot planted, BLACK diagonal rising brushstroke behind TIP.
+3 followthrough tip upperright abovehead, beautiful narrowtipped blackink crescent occupying right/uppercell, blackdrops at farend, wolf balanced.
+4 recovery brush held high, poised to reverse, trail mostly fading, links to row2pose1.
+ROW2 horizontal sweep forward/right:
+1 highready fromprevious recovery, tip highright.
+2 controlled sweep across waist/chestheight toward right, thinlongbrush horizontal, frontarm extended, one BLACK horizontal paintstroke out to right with bristleedge.
+3 followthrough torso rotates slightlybutfaceprofile, black broad tapered streak stretchesright, no spinningcharacter, no floating unheldweapon.
+4 recoverbrushraised overhead to prepare laststrike, ink fades.
+ROW3 overhead diagonal finisher:
+1 bracewithbrushabovehead, knees slightlybend, smallanticipation.
+2 forceful diagonal downward strike toward lowerRIGHT, longthinbrush, BLACK diagonalstroke descendingupperrighttolowerright.
+3 tip touches ground in front right, a heavy blackbrushmark with smallink splash exactly attip, wolfloweredgrounded pose, feetlegsanatomicallysound.
+4 recoverupright to running-compatible guarded posture, brushshrinks215px and stores across behindwaist, residual smallinkdrops fading.
+Four distinct poses ineachrow, no duplicatedcharacter atdifferent scale. Original readable silhouettes inspired by fluid action-platformer motion, never trace another game's sprites. Keep redscarf shape flat with subtle followthrough, twohands twolegs onebrush exactly. Match referencewolf.

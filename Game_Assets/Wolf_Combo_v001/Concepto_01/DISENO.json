@@ -1,0 +1,117 @@
+{
+  "status": "Concepto y poses clave, no animación final para integrar",
+  "attacks": 3,
+  "keyposes_per_attack": 4,
+  "cell": [
+    512,
+    512
+  ],
+  "origin_suggested": [
+    -256,
+    -448
+  ],
+  "weapon_design": {
+    "carried_nominal_px": 215,
+    "extended_target_px": 310,
+    "shaft_width_target_px": [
+      5,
+      7
+    ],
+    "note": "Objetivos de diseño, no mediciones certificadas de la lámina generada"
+  },
+  "ink_color": "Negro profundo; cerdas visibles y pequeñas gotas",
+  "per_pose_bounds": [
+    [
+      110,
+      263,
+      348,
+      448
+    ],
+    [
+      104,
+      227,
+      406,
+      448
+    ],
+    [
+      98,
+      134,
+      402,
+      448
+    ],
+    [
+      104,
+      151,
+      401,
+      448
+    ],
+    [
+      102,
+      174,
+      350,
+      447
+    ],
+    [
+      80,
+      223,
+      404,
+      442
+    ],
+    [
+      78,
+      231,
+      421,
+      442
+    ],
+    [
+      92,
+      156,
+      363,
+      445
+    ],
+    [
+      124,
+      163,
+      328,
+      447
+    ],
+    [
+      94,
+      229,
+      416,
+      446
+    ],
+    [
+      91,
+      256,
+      407,
+      455
+    ],
+    [
+      107,
+      232,
+      370,
+      446
+    ]
+  ],
+  "not_included": [
+    "Capas cuerpo/pincel/tinta separadas",
+    "Cuadros intermedios finales",
+    "SpriteFrames",
+    "Hitboxes y contactos medidos"
+  ],
+  "times_ms_are_storyboard_only": [
+    90,
+    60,
+    80,
+    90,
+    80,
+    60,
+    80,
+    90,
+    110,
+    60,
+    120,
+    300
+  ]
+}

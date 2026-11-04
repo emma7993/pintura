@@ -1,0 +1,19 @@
+{
+  "frame_counts": {
+    "dip": 6,
+    "idle_pincel": 1,
+    "paint_slash": 8,
+    "paint_up": 8,
+    "run": 8,
+    "run_pincel": 8,
+    "walk_pincel": 12
+  },
+  "cell": [
+    256,
+    256
+  ],
+  "ground_y": 238,
+  "walk_unchanged_from_reference": true,
+  "clipped_layers": [],
+  "tip_contacts_in_cell": true
+}

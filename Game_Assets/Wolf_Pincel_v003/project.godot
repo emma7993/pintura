@@ -1,0 +1,10 @@
+config_version=5
+[application]
+config/name="Pintura — Wolf Pincel v003 — arte"
+run/main_scene="res://Godot/Preview.tscn"
+[display]
+window/size/viewport_width=900
+window/size/viewport_height=680
+[rendering]
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.91,0.89,0.85,1)

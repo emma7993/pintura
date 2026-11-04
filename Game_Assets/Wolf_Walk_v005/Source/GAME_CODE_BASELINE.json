@@ -1,0 +1,166 @@
+[
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\LEEME.txt",
+    "Hash": "FFDD2C40C5967C33F737EF9F7D07EF32FEEAF009893B4CE8E862FAEA44A5ED20"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\lobo_sprite.gd",
+    "Hash": "ED2C324FC5F5275A941EE385F6EDC8B55E322B789447ECB013E4E0BE8DA1ADB3"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\lobo_sprite.gd.uid",
+    "Hash": "4A5F6F1C5CA4C90727449EC66F453D8C887872CAE01948CE9054BE3E5F030752"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\lobo_walk_frames.tres",
+    "Hash": "62EF96B6AD9C4BF428E67973E6185B5586C8325E3BB497FE8EE568BE7A952DFF"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\lobo_walk_meta.json",
+    "Hash": "1336C5919E4BA2084491AE3A1A75E5369B1F997FE133AD9336F09DDA7D8CFF9E"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\lobo_walk_sheet.png.import",
+    "Hash": "1690552749153EECDCD340259C63D5499E2CBC9FA415E5D8EFE5B368B6D37C53"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\lobo_walk.tscn",
+    "Hash": "DACE9A5DC09D32DB6F39DA006D3F7A92C9C878F9C6F5CA8C8576E8A315E4B237"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\player.gd",
+    "Hash": "DE9A3C5F59F4449841A640CCC10D751613FD9C6B7FA11D63E2753CB35DCC88E5"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\player.gd.uid",
+    "Hash": "47ADD15A96EAF8438661D09C2FE5A52BD075E1A2FE103EAA9636EB6C9E653640"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\walker.gd",
+    "Hash": "F373F7808D6F0537635680E36522A93ED96F2795B2EA83029D80F225384AB422"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\walker.gd.uid",
+    "Hash": "30AA985E04A1FBEDA1663FB70A47F61ACBE5EBBFE96608A953F453A6CA957AF0"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\v003\\Godot\\Wolf.tres",
+    "Hash": "BB31F8628790AAC8790D4A72B2A6D65B6A899169108C0034E10F6577699BE0EA"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\v003\\SpriteSheets\\look_around_v003.png.import",
+    "Hash": "B7C18AC21C9076225243109622510C3560B8E411DAF50E04DF1ACB8E3BA50825"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\v003\\SpriteSheets\\walk_v003.png.import",
+    "Hash": "51872859FC4A4C8DA9AE316250C720DF3BB70BD741975E08CC5CA7502DAA110D"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\v004\\Godot\\Wolf.tres",
+    "Hash": "0D5C1875D8A9E0B0D5571BAD3FC37E050BA0534A5DC97A5D054E0088626FB48D"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\v004\\SpriteSheets\\look_around_v003.png.import",
+    "Hash": "22B6EFA56D0ECE8B4C4791EFBB3567054E8DC32499FCFB5288BAF689BEC4ACB5"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\characters\\lobo\\v004\\SpriteSheets\\walk_v004.png.import",
+    "Hash": "6F3692596022A895E9563A512C60FC730BE0FE319F613C529C2602D2CD94CE46"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\prueba.gd",
+    "Hash": "204B56E84AA0B95E59365925FAAC4A9D0F5750932EAB042C9E6533D2FEE3D80C"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\prueba.gd.uid",
+    "Hash": "7DE9EED9D6D0CB17BD9A47B27E758775A33681326751E4A5FA784D4BB680C821"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\prueba.tscn",
+    "Hash": "3A80686475ECDDC79C8D933E609AFECF664BB36EAA14CC9E6A7A9557AC6DCC71"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\zone_camino_lateral.gd",
+    "Hash": "232C373597DC6EFF4C97F909FBA3C66178C7FFB7415276E717A91EE9F97F8435"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\zone_camino_lateral.gd.uid",
+    "Hash": "1669F897D53BB89E62E64A412521C54FC33F49A11C417AD5942670C0A6AA5B3C"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\zone_camino.gd",
+    "Hash": "E423A04200282B89A1741FAAE3176F10590CC94C434DA3ABA064F424A8DF307D"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\zones\\zone_camino.gd.uid",
+    "Hash": "BC8E4A8F06566B37443D4D6093BA7F3065B791CE9C489E37BEFB45E2A1443488"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\core\\controls.gd",
+    "Hash": "9AFD74931300D2EE029F24103DF1957F4E3890A8CD24C3C721F464D8883D92C9"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\core\\controls.gd.uid",
+    "Hash": "89E2E6F214DBC7F9220B1CF3AF2997F202EDA311F17C99B6D051C574297EC42D"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\.gitattributes",
+    "Hash": "A4065985810EDDDC0558AA5C81F2CFAF191E29E6F9E64712D1B6C205453BBD51"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\ajustar_lobo_v003.py",
+    "Hash": "AB0B95C5038B91324C31C65E1FBF358DF7661DD128D83160EBDA95783C185C66"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\ajustar_lobo_v004.gd",
+    "Hash": "65EAD3EB57B3C69E80554CB63B350FDEC604E0AD883080638E0CC33D892FBC13"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\ajustar_lobo_v004.gd.uid",
+    "Hash": "4991426DA5AE1E1AAC4968A14DEBE49C805229679D7A31B06253C56C82A49029"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\armar_hoja_lobo.py",
+    "Hash": "E9F4BD91AD38C183ACFF7D38FE35C33D9FDE220AD624FD74071ACFC99411ED84"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\auto_prueba.gd",
+    "Hash": "83FC49658C870C6CD28E8BB5EED94D724F1FC49154A5E4FE7498ABDCBC6CC083"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\auto_prueba.gd.uid",
+    "Hash": "D441F74A68B4E975FD8E855C75FA87F0917C3556B622144B5E89BBED349E0D65"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\bajar_cambios.bat",
+    "Hash": "D3191646B33902F543FF1A13540A7536DE0BE56115567B1C88987539659CB97B"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\bajar_cambios.sh",
+    "Hash": "C25EF721ABF77B5D6D05C557B075446356B91023E60D0CEAA68568F0F721B04A"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\probar_juego.bat",
+    "Hash": "56777C1A88074C074D67E34F140B76DF7F9701A47A023961110815855F3EA3AF"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\subir_cambios.bat",
+    "Hash": "BFE16EF08F47A1D016BCF3AA095E37D16C640E81F9B92B071EBFA615DBC36594"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\herramientas\\subir_cambios.sh",
+    "Hash": "9D74685BC8BCF43EA593AE3B0083FEC3077CB7911ED4B0A32F5426667EFC5E42"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\project.godot",
+    "Hash": "354A447F110D5C815830C323300D3071666134DFA338B4FBAC9F8BCD1AD7454C"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\main.gd",
+    "Hash": "ED5AD208886BD82DD5FA04801022537B3C20AF8A308316DD7E36F62E2F76ECDB"
+  },
+  {
+    "Path": "C:\\Users\\Immix\\Documents\\NPM Game\\pintura\\main.tscn",
+    "Hash": "C376131FAE8D6D7DA8A5435CF18B6F19EDA37717138A1978C1ADE115FC7E2F2F"
+  }
+]

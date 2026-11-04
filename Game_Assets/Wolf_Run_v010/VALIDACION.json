@@ -1,0 +1,160 @@
+{
+  "frames": 8,
+  "unique_frames": 8,
+  "cell": [
+    384,
+    384
+  ],
+  "atlas": [
+    3072,
+    384
+  ],
+  "fps_default": 20,
+  "fps_alternative": 16,
+  "cycle_seconds": 0.4,
+  "offset": [
+    -192,
+    -352
+  ],
+  "shared_scale": 0.7912087912087912,
+  "registration": "Whole-frame translation using white-eye centroid",
+  "eye_range_xy": [
+    0.592,
+    0.617
+  ],
+  "borders_transparent": true,
+  "per_frame": [
+    {
+      "frame": 1,
+      "body_bounds": [
+        72,
+        136,
+        274,
+        352
+      ],
+      "eye_xy": [
+        242.409,
+        198.17
+      ]
+    },
+    {
+      "frame": 2,
+      "body_bounds": [
+        72,
+        136,
+        273,
+        353
+      ],
+      "eye_xy": [
+        241.918,
+        198.214
+      ]
+    },
+    {
+      "frame": 3,
+      "body_bounds": [
+        73,
+        136,
+        274,
+        355
+      ],
+      "eye_xy": [
+        241.817,
+        198.28
+      ]
+    },
+    {
+      "frame": 4,
+      "body_bounds": [
+        65,
+        136,
+        273,
+        338
+      ],
+      "eye_xy": [
+        241.893,
+        198.255
+      ]
+    },
+    {
+      "frame": 5,
+      "body_bounds": [
+        72,
+        136,
+        274,
+        350
+      ],
+      "eye_xy": [
+        242.336,
+        197.663
+      ]
+    },
+    {
+      "frame": 6,
+      "body_bounds": [
+        72,
+        136,
+        273,
+        350
+      ],
+      "eye_xy": [
+        241.937,
+        197.941
+      ]
+    },
+    {
+      "frame": 7,
+      "body_bounds": [
+        71,
+        136,
+        274,
+        352
+      ],
+      "eye_xy": [
+        241.961,
+        197.778
+      ]
+    },
+    {
+      "frame": 8,
+      "body_bounds": [
+        64,
+        136,
+        272,
+        334
+      ],
+      "eye_xy": [
+        241.893,
+        197.911
+      ]
+    }
+  ],
+  "brush": {
+    "draw_order": [
+      "brush_carry",
+      "body"
+    ],
+    "angle_clockwise": 20.0,
+    "rigid_layer_identical_all_frames": true,
+    "grip_xy": [
+      157.0,
+      290.0495436766623
+    ],
+    "ring_xy": [
+      77.12612723319778,
+      260.9778314939805
+    ],
+    "tip_xy": [
+      278.2203480813822,
+      334.1701421656736
+    ],
+    "nominal_length_px": 215
+  },
+  "review": "Image uniqueness and alignment do not prove fluid motion. Check normal and slow previews; game not integrated.",
+  "godot_validation": {
+    "version": "4.7.2",
+    "resources_loaded": 5,
+    "scene_loaded": true,
+    "log": "Source/godot_validation.log"
+  }
+}

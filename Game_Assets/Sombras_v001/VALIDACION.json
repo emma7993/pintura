@@ -1,0 +1,1269 @@
+{
+  "animations": {
+    "A_emerge": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "A_reach": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": true,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": "ping-pong five authored key poses, 0,1,2,3,4,3,2,1"
+    },
+    "A_grab": {
+      "count": 6,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 14,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "A_sink": {
+      "count": 6,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "A_dissolve": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        479,
+        478,
+        477,
+        476,
+        449,
+        403,
+        null
+      ],
+      "loop_playback": null
+    },
+    "B_emerge": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        64,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "B_reach": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": true,
+      "anchor_xy": [
+        64,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": "ping-pong five authored key poses, 0,1,2,3,4,3,2,1"
+    },
+    "B_grab": {
+      "count": 6,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 14,
+      "loop": false,
+      "anchor_xy": [
+        64,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "B_sink": {
+      "count": 6,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        64,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "B_dissolve": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        64,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        479,
+        478,
+        477,
+        476,
+        475,
+        473,
+        null
+      ],
+      "loop_playback": null
+    },
+    "C_emerge": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "C_reach": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": true,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": "ping-pong five authored key poses, 0,1,2,3,4,3,2,1"
+    },
+    "C_grab": {
+      "count": 6,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 14,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "C_sink": {
+      "count": 6,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        480,
+        480,
+        480,
+        480,
+        480
+      ],
+      "loop_playback": null
+    },
+    "C_dissolve": {
+      "count": 8,
+      "size": [
+        256,
+        512
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "lowest_visible_y_by_frame": [
+        480,
+        479,
+        478,
+        477,
+        476,
+        452,
+        403,
+        null
+      ],
+      "loop_playback": null
+    },
+    "puddle_loop": {
+      "count": 8,
+      "size": [
+        384,
+        96
+      ],
+      "rgba": true,
+      "fps": 8,
+      "loop": true,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75,
+        75
+      ],
+      "loop_playback": "periodic phase sampling",
+      "virtual_next_frame_equals_first": true
+    },
+    "front_loop": {
+      "count": 8,
+      "size": [
+        512,
+        1024
+      ],
+      "rgba": true,
+      "fps": 8,
+      "loop": true,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        1023,
+        1023,
+        1023,
+        1023,
+        1023,
+        1023,
+        1023,
+        1023
+      ],
+      "loop_playback": "periodic phase sampling",
+      "virtual_next_frame_equals_first": true
+    },
+    "body": {
+      "count": 1,
+      "size": [
+        512,
+        1024
+      ],
+      "rgba": true,
+      "fps": 1,
+      "loop": true,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        1023
+      ],
+      "loop_playback": null
+    },
+    "recoil": {
+      "count": 6,
+      "size": [
+        512,
+        1024
+      ],
+      "rgba": true,
+      "fps": 12,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        1023,
+        1023,
+        1023,
+        1023,
+        1023,
+        1023
+      ],
+      "loop_playback": null
+    },
+    "wisp_01": {
+      "count": 6,
+      "size": [
+        128,
+        128
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        96,
+        99,
+        102,
+        103,
+        103,
+        null
+      ],
+      "loop_playback": null
+    },
+    "wisp_02": {
+      "count": 6,
+      "size": [
+        128,
+        128
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        98,
+        102,
+        104,
+        106,
+        106,
+        null
+      ],
+      "loop_playback": null
+    },
+    "wisp_03": {
+      "count": 6,
+      "size": [
+        128,
+        128
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        96,
+        100,
+        102,
+        104,
+        104,
+        null
+      ],
+      "loop_playback": null
+    },
+    "wisp_04": {
+      "count": 6,
+      "size": [
+        128,
+        128
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        91,
+        94,
+        97,
+        98,
+        98,
+        null
+      ],
+      "loop_playback": null
+    },
+    "wisp_05": {
+      "count": 6,
+      "size": [
+        128,
+        128
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        103,
+        107,
+        109,
+        112,
+        113,
+        null
+      ],
+      "loop_playback": null
+    },
+    "wisp_06": {
+      "count": 6,
+      "size": [
+        128,
+        128
+      ],
+      "rgba": true,
+      "fps": 10,
+      "loop": false,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        93,
+        97,
+        100,
+        101,
+        101,
+        null
+      ],
+      "loop_playback": null
+    },
+    "eyes_01": {
+      "count": 4,
+      "size": [
+        128,
+        64
+      ],
+      "rgba": true,
+      "fps": 6,
+      "loop": true,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        53,
+        51,
+        47,
+        51
+      ],
+      "loop_playback": "open/half/closed/half"
+    },
+    "eyes_02": {
+      "count": 4,
+      "size": [
+        128,
+        64
+      ],
+      "rgba": true,
+      "fps": 6,
+      "loop": true,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        57,
+        55,
+        52,
+        55
+      ],
+      "loop_playback": "open/half/closed/half"
+    },
+    "eyes_03": {
+      "count": 4,
+      "size": [
+        128,
+        64
+      ],
+      "rgba": true,
+      "fps": 6,
+      "loop": true,
+      "anchor_xy": null,
+      "lowest_visible_y_by_frame": [
+        52,
+        50,
+        46,
+        50
+      ],
+      "loop_playback": "open/half/closed/half"
+    }
+  },
+  "hand_design_registration": {
+    "A": {
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "common_object_scale": 0.8941176470588236,
+      "emerge_height_last": 380,
+      "reach_key_order_0_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        3,
+        2,
+        1
+      ],
+      "sink_emerge_order_0_based": [
+        7,
+        6,
+        4,
+        3,
+        1,
+        0
+      ]
+    },
+    "B": {
+      "anchor_xy": [
+        64,
+        480
+      ],
+      "common_object_scale": 0.7972972972972973,
+      "emerge_height_last": 348,
+      "reach_key_order_0_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        3,
+        2,
+        1
+      ],
+      "sink_emerge_order_0_based": [
+        7,
+        6,
+        4,
+        3,
+        1,
+        0
+      ]
+    },
+    "C": {
+      "anchor_xy": [
+        128,
+        480
+      ],
+      "common_object_scale": 0.6904231625835189,
+      "emerge_height_last": 310,
+      "reach_key_order_0_based": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        3,
+        2,
+        1
+      ],
+      "sink_emerge_order_0_based": [
+        7,
+        6,
+        4,
+        3,
+        1,
+        0
+      ]
+    }
+  },
+  "puddle_anchor_xy": [
+    192,
+    75
+  ],
+  "hand_ground_y": 480,
+  "all_non_dissolve_hands_ground_y_480": true,
+  "dissolve_ground_policy": "Same logical ground anchor y480; visible fragments lift/erase and final frame is transparent. The separate stable puddle supplies the ground contact throughout.",
+  "body_seam_max_rgba_delta_left_right": 0,
+  "body_seam_max_rgba_delta_top_bottom": 0,
+  "front_body_join_max_rgba_delta": 0,
+  "puddle_alpha_border_fixed": true,
+  "fingertip_warning": "Points are measured leading silhouette extrema, not skeletal joint tracking. For hooked claws use contact_xy for hit testing and inspect the marked QA sheets.",
+  "hands_frame_count": 116,
+  "fog_frame_count": 63,
+  "ground_after_separate_puddle_composition_y": 480,
+  "all_composed_hands_have_ground_anchor_y480": true,
+  "composed_hand_floor_measurements": [
+    {
+      "animation": "A_emerge",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_emerge",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_reach",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_grab",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_grab",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_grab",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_grab",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_grab",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_grab",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_sink",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_sink",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_sink",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_sink",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_sink",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_sink",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "A_dissolve",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_emerge",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_reach",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_grab",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_grab",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_grab",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_grab",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_grab",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_grab",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_sink",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_sink",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_sink",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_sink",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_sink",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_sink",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "B_dissolve",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_emerge",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_reach",
+      "frame": 8,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_grab",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_grab",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_grab",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_grab",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_grab",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_grab",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_sink",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_sink",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_sink",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_sink",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_sink",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_sink",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 1,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 2,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 3,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 4,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 5,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 6,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 7,
+      "ground_y": 480
+    },
+    {
+      "animation": "C_dissolve",
+      "frame": 8,
+      "ground_y": 480
+    }
+  ],
+  "front_and_puddle_eight_distinct_frames": true,
+  "godot_validation": {
+    "version": "4.7.2",
+    "spriteframes_animations": 28,
+    "frames_loaded": 179,
+    "runtime_preview_capture": "passed",
+    "resource_or_script_errors": false,
+    "environment_notes": "Headless sandbox reported Windows certificate-store/user-preferences warnings; GPU previews rendered successfully."
+  }
+}

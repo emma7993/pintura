@@ -1,0 +1,166 @@
+[
+  {
+    "output_frame": 1,
+    "v004_original_frame": 1,
+    "whole_frame_unchanged": true
+  },
+  {
+    "output_frame": 2,
+    "source_group": 1,
+    "source_cell": 1,
+    "common_pair_scale": 0.28294573643410853,
+    "whole_drawing_translation": [
+      40,
+      20
+    ],
+    "target_torso_x": 141.16666666666666,
+    "source_bounds": [
+      150,
+      60,
+      725,
+      834
+    ],
+    "original_phase": 0.6666666666666666
+  },
+  {
+    "output_frame": 3,
+    "source_group": 1,
+    "source_cell": 2,
+    "common_pair_scale": 0.28294573643410853,
+    "whole_drawing_translation": [
+      46,
+      20
+    ],
+    "target_torso_x": 140.66666666666669,
+    "source_bounds": [
+      153,
+      63,
+      725,
+      836
+    ],
+    "original_phase": 1.3333333333333333
+  },
+  {
+    "output_frame": 4,
+    "v004_original_frame": 3,
+    "whole_frame_unchanged": true
+  },
+  {
+    "output_frame": 5,
+    "source_group": 2,
+    "source_cell": 1,
+    "common_pair_scale": 0.29161118508655126,
+    "whole_drawing_translation": [
+      51,
+      20
+    ],
+    "target_torso_x": 142.66666666666666,
+    "source_bounds": [
+      179,
+      62,
+      718,
+      812
+    ],
+    "original_phase": 2.6666666666666665
+  },
+  {
+    "output_frame": 6,
+    "source_group": 2,
+    "source_cell": 2,
+    "common_pair_scale": 0.29161118508655126,
+    "whole_drawing_translation": [
+      52,
+      20
+    ],
+    "target_torso_x": 143.33333333333334,
+    "source_bounds": [
+      179,
+      62,
+      722,
+      813
+    ],
+    "original_phase": 3.333333333333333
+  },
+  {
+    "output_frame": 7,
+    "v004_original_frame": 5,
+    "whole_frame_unchanged": true
+  },
+  {
+    "output_frame": 8,
+    "source_group": 3,
+    "source_cell": 1,
+    "common_pair_scale": 0.2908366533864542,
+    "whole_drawing_translation": [
+      52,
+      20
+    ],
+    "target_torso_x": 150.33333333333331,
+    "source_bounds": [
+      157,
+      74,
+      739,
+      826
+    ],
+    "original_phase": 4.666666666666667
+  },
+  {
+    "output_frame": 9,
+    "source_group": 3,
+    "source_cell": 2,
+    "common_pair_scale": 0.2908366533864542,
+    "whole_drawing_translation": [
+      46,
+      20
+    ],
+    "target_torso_x": 149.83333333333334,
+    "source_bounds": [
+      160,
+      73,
+      737,
+      826
+    ],
+    "original_phase": 5.333333333333333
+  },
+  {
+    "output_frame": 10,
+    "v004_original_frame": 7,
+    "whole_frame_unchanged": true
+  },
+  {
+    "output_frame": 11,
+    "source_group": 4,
+    "source_cell": 1,
+    "common_pair_scale": 0.2885375494071146,
+    "whole_drawing_translation": [
+      46,
+      20
+    ],
+    "target_torso_x": 142.5,
+    "source_bounds": [
+      157,
+      71,
+      736,
+      830
+    ],
+    "original_phase": 6.666666666666667
+  },
+  {
+    "output_frame": 12,
+    "source_group": 4,
+    "source_cell": 2,
+    "common_pair_scale": 0.2885375494071146,
+    "whole_drawing_translation": [
+      46,
+      20
+    ],
+    "target_torso_x": 142.83333333333334,
+    "source_bounds": [
+      160,
+      74,
+      736,
+      833
+    ],
+    "original_phase": 7.333333333333333
+  }
+]

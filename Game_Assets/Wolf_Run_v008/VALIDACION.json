@@ -1,0 +1,488 @@
+{
+  "frames": 16,
+  "unique_frames": 16,
+  "cell": [
+    384,
+    384
+  ],
+  "atlas": [
+    6144,
+    384
+  ],
+  "fps": 32,
+  "cycle_seconds": 0.5,
+  "offset": [
+    -192,
+    -352
+  ],
+  "rgba": true,
+  "shared_scale": 0.8780487804878049,
+  "registration": "White-eye centroid; uniform scale, whole-frame translations only.",
+  "eye_range_xy": [
+    0.898,
+    0.846
+  ],
+  "per_frame": [
+    {
+      "frame": 1,
+      "bounds": [
+        64,
+        135,
+        276,
+        352
+      ],
+      "body_bounds": [
+        64,
+        135,
+        276,
+        352
+      ],
+      "eye_xy": [
+        241.809,
+        200.377
+      ],
+      "source_eye_xy": [
+        233.254,
+        109.763
+      ],
+      "paste_xy": [
+        37,
+        104
+      ]
+    },
+    {
+      "frame": 2,
+      "bounds": [
+        63,
+        136,
+        275,
+        352
+      ],
+      "body_bounds": [
+        63,
+        136,
+        275,
+        352
+      ],
+      "eye_xy": [
+        241.627,
+        201.146
+      ],
+      "source_eye_xy": [
+        231.909,
+        109.5
+      ],
+      "paste_xy": [
+        38,
+        105
+      ]
+    },
+    {
+      "frame": 3,
+      "bounds": [
+        64,
+        136,
+        275,
+        351
+      ],
+      "body_bounds": [
+        64,
+        136,
+        275,
+        351
+      ],
+      "eye_xy": [
+        241.761,
+        200.771
+      ],
+      "source_eye_xy": [
+        229.783,
+        111.35
+      ],
+      "paste_xy": [
+        40,
+        103
+      ]
+    },
+    {
+      "frame": 4,
+      "bounds": [
+        66,
+        137,
+        276,
+        355
+      ],
+      "body_bounds": [
+        66,
+        137,
+        276,
+        355
+      ],
+      "eye_xy": [
+        242.484,
+        200.903
+      ],
+      "source_eye_xy": [
+        226.052,
+        110.362
+      ],
+      "paste_xy": [
+        44,
+        104
+      ]
+    },
+    {
+      "frame": 5,
+      "bounds": [
+        65,
+        138,
+        276,
+        353
+      ],
+      "body_bounds": [
+        65,
+        138,
+        276,
+        353
+      ],
+      "eye_xy": [
+        242.127,
+        200.693
+      ],
+      "source_eye_xy": [
+        233.617,
+        108.983
+      ],
+      "paste_xy": [
+        37,
+        105
+      ]
+    },
+    {
+      "frame": 6,
+      "bounds": [
+        66,
+        140,
+        275,
+        336
+      ],
+      "body_bounds": [
+        66,
+        140,
+        275,
+        336
+      ],
+      "eye_xy": [
+        241.748,
+        200.87
+      ],
+      "source_eye_xy": [
+        232.047,
+        108.047
+      ],
+      "paste_xy": [
+        38,
+        106
+      ]
+    },
+    {
+      "frame": 7,
+      "bounds": [
+        64,
+        139,
+        275,
+        341
+      ],
+      "body_bounds": [
+        64,
+        139,
+        275,
+        341
+      ],
+      "eye_xy": [
+        241.682,
+        200.849
+      ],
+      "source_eye_xy": [
+        229.694,
+        109.161
+      ],
+      "paste_xy": [
+        40,
+        105
+      ]
+    },
+    {
+      "frame": 8,
+      "bounds": [
+        64,
+        140,
+        276,
+        350
+      ],
+      "body_bounds": [
+        64,
+        140,
+        276,
+        350
+      ],
+      "eye_xy": [
+        241.663,
+        200.907
+      ],
+      "source_eye_xy": [
+        227.394,
+        109.227
+      ],
+      "paste_xy": [
+        42,
+        105
+      ]
+    },
+    {
+      "frame": 9,
+      "bounds": [
+        62,
+        137,
+        275,
+        351
+      ],
+      "body_bounds": [
+        62,
+        137,
+        275,
+        351
+      ],
+      "eye_xy": [
+        242.091,
+        200.931
+      ],
+      "source_eye_xy": [
+        233.576,
+        110.394
+      ],
+      "paste_xy": [
+        37,
+        104
+      ]
+    },
+    {
+      "frame": 10,
+      "bounds": [
+        63,
+        135,
+        275,
+        350
+      ],
+      "body_bounds": [
+        63,
+        135,
+        275,
+        350
+      ],
+      "eye_xy": [
+        241.666,
+        200.544
+      ],
+      "source_eye_xy": [
+        231.953,
+        109.953
+      ],
+      "paste_xy": [
+        38,
+        104
+      ]
+    },
+    {
+      "frame": 11,
+      "bounds": [
+        62,
+        136,
+        275,
+        349
+      ],
+      "body_bounds": [
+        62,
+        136,
+        275,
+        349
+      ],
+      "eye_xy": [
+        241.829,
+        201.079
+      ],
+      "source_eye_xy": [
+        231.0,
+        111.701
+      ],
+      "paste_xy": [
+        39,
+        103
+      ]
+    },
+    {
+      "frame": 12,
+      "bounds": [
+        64,
+        135,
+        276,
+        353
+      ],
+      "body_bounds": [
+        64,
+        135,
+        276,
+        353
+      ],
+      "eye_xy": [
+        242.053,
+        201.05
+      ],
+      "source_eye_xy": [
+        227.838,
+        110.529
+      ],
+      "paste_xy": [
+        42,
+        104
+      ]
+    },
+    {
+      "frame": 13,
+      "bounds": [
+        61,
+        137,
+        277,
+        354
+      ],
+      "body_bounds": [
+        61,
+        137,
+        277,
+        354
+      ],
+      "eye_xy": [
+        242.226,
+        201.223
+      ],
+      "source_eye_xy": [
+        233.73,
+        109.587
+      ],
+      "paste_xy": [
+        37,
+        105
+      ]
+    },
+    {
+      "frame": 14,
+      "bounds": [
+        63,
+        137,
+        276,
+        334
+      ],
+      "body_bounds": [
+        63,
+        137,
+        276,
+        334
+      ],
+      "eye_xy": [
+        241.707,
+        200.585
+      ],
+      "source_eye_xy": [
+        232.0,
+        110.0
+      ],
+      "paste_xy": [
+        38,
+        104
+      ]
+    },
+    {
+      "frame": 15,
+      "bounds": [
+        64,
+        134,
+        275,
+        336
+      ],
+      "body_bounds": [
+        64,
+        134,
+        275,
+        336
+      ],
+      "eye_xy": [
+        241.586,
+        201.125
+      ],
+      "source_eye_xy": [
+        229.585,
+        111.754
+      ],
+      "paste_xy": [
+        40,
+        103
+      ]
+    },
+    {
+      "frame": 16,
+      "bounds": [
+        64,
+        135,
+        276,
+        351
+      ],
+      "body_bounds": [
+        64,
+        135,
+        276,
+        351
+      ],
+      "eye_xy": [
+        241.958,
+        201.101
+      ],
+      "source_eye_xy": [
+        227.73,
+        110.587
+      ],
+      "paste_xy": [
+        42,
+        104
+      ]
+    }
+  ],
+  "brush": {
+    "placement": "Stored on back, behind body/scarf",
+    "draw_order": [
+      "brush_back",
+      "body"
+    ],
+    "projection_scale": 0.6,
+    "angle_clockwise": 110,
+    "butt_xy": [
+      181.0,
+      210.76725919801572
+    ],
+    "tip_xy": [
+      137.08461359698413,
+      331.42379170692635
+    ],
+    "used_in_run": false
+  },
+  "review": "Drawn hand consistency and cyclic continuity reviewed visually, not guaranteed by pixel metrics. Game integration not performed.",
+  "all_borders_transparent": true,
+  "godot_validation": {
+    "version": "4.7.2",
+    "resources": 3,
+    "frames_per_resource": 16,
+    "fps": 32,
+    "preview_scene_load": true,
+    "log": "Source/godot_validation.log",
+    "environment_warning": "Root certificate store unavailable in sandbox; art resources loaded successfully."
+  }
+}

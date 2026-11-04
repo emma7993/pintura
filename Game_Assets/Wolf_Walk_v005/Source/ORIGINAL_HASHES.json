@@ -1,0 +1,26 @@
+[
+  {
+    "path": "References/v004_walk_01.png",
+    "sha256": "ec85b1c28a2eda56c7d2741ec63969613ef4780ad35d4dce1a8d6b5407b15e1d"
+  },
+  {
+    "path": "References/v004_walk_original.png",
+    "sha256": "5c5c1b04b72e955b416fabb0ae8d6a77cc957326830bf1b6e3b6c3b71615351e"
+  },
+  {
+    "path": "References/Wolf_Approved_Neutral.png",
+    "sha256": "c32966113a88208cb6e8accf9e211bb25c57b396144bb403595b01299e957e2c"
+  },
+  {
+    "path": "Source/headparts_original.png",
+    "sha256": "8cb7268547af35fccb7968aa27e4d9f694fe25b1d81f9bce2d6fc50e15e71b05"
+  },
+  {
+    "path": "Source/look_original.png",
+    "sha256": "179943799244208aea5200daed089b9afb13b4d6e3e74466ccea3227a3f039bc"
+  },
+  {
+    "path": "Source/parts_original.png",
+    "sha256": "d81d94f28ea64935c70474cbb41b985c3341fbb42eef90d4b0bfab2f34b4d93b"
+  }
+]

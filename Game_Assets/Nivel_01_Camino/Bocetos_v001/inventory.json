@@ -1,0 +1,274 @@
+[
+	{
+		"bounds": [
+			31,
+			115,
+			208,
+			75
+		],
+		"id": "ground_a",
+		"marked_fraction": 0.0392303466796875,
+		"path": "Modulos/ground_a.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.930557250976563
+	},
+	{
+		"bounds": [
+			24,
+			115,
+			214,
+			75
+		],
+		"id": "ground_b",
+		"marked_fraction": 0.03973388671875,
+		"path": "Modulos/ground_b.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.936386108398438
+	},
+	{
+		"bounds": [
+			24,
+			117,
+			207,
+			63
+		],
+		"id": "ground_c",
+		"marked_fraction": 0.03228759765625,
+		"path": "Modulos/ground_c.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.941970825195313
+	},
+	{
+		"bounds": [
+			22,
+			92,
+			200,
+			90
+		],
+		"id": "ground_d",
+		"marked_fraction": 0.037841796875,
+		"path": "Modulos/ground_d.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.9256591796875
+	},
+	{
+		"bounds": [
+			62,
+			98,
+			132,
+			77
+		],
+		"id": "platform_short",
+		"marked_fraction": 0.0316619873046875,
+		"path": "Modulos/platform_short.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.942001342773438
+	},
+	{
+		"bounds": [
+			13,
+			102,
+			236,
+			68
+		],
+		"id": "platform_long",
+		"marked_fraction": 0.0458831787109375,
+		"path": "Modulos/platform_long.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.919998168945313
+	},
+	{
+		"bounds": [
+			27,
+			93,
+			205,
+			82
+		],
+		"id": "bridge",
+		"marked_fraction": 0.054931640625,
+		"path": "Modulos/bridge.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.896881103515625
+	},
+	{
+		"bounds": [
+			49,
+			26,
+			156,
+			199
+		],
+		"id": "wall",
+		"marked_fraction": 0.044342041015625,
+		"path": "Modulos/wall.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.92144775390625
+	},
+	{
+		"bounds": [
+			37,
+			24,
+			174,
+			189
+		],
+		"id": "tree_left",
+		"marked_fraction": 0.0431060791015625,
+		"path": "Modulos/tree_left.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.918014526367188
+	},
+	{
+		"bounds": [
+			55,
+			25,
+			162,
+			188
+		],
+		"id": "tree_right",
+		"marked_fraction": 0.0452728271484375,
+		"path": "Modulos/tree_right.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.9124755859375
+	},
+	{
+		"bounds": [
+			72,
+			58,
+			108,
+			148
+		],
+		"id": "reeds",
+		"marked_fraction": 0.0347900390625,
+		"path": "Modulos/reeds.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.930862426757813
+	},
+	{
+		"bounds": [
+			30,
+			129,
+			197,
+			65
+		],
+		"id": "stones",
+		"marked_fraction": 0.0326690673828125,
+		"path": "Modulos/stones.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.9375
+	},
+	{
+		"bounds": [
+			72,
+			59,
+			139,
+			132
+		],
+		"id": "pencil",
+		"marked_fraction": 0.028839111328125,
+		"path": "Modulos/pencil.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.946044921875
+	},
+	{
+		"bounds": [
+			28,
+			86,
+			196,
+			96
+		],
+		"id": "pedestal",
+		"marked_fraction": 0.0467987060546875,
+		"path": "Modulos/pedestal.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.906967163085938
+	},
+	{
+		"bounds": [
+			26,
+			29,
+			206,
+			170
+		],
+		"id": "gate",
+		"marked_fraction": 0.0542144775390625,
+		"path": "Modulos/gate.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.893051147460938
+	},
+	{
+		"bounds": [
+			58,
+			90,
+			144,
+			95
+		],
+		"id": "anchor",
+		"marked_fraction": 0.040252685546875,
+		"path": "Modulos/anchor.png",
+		"size": [
+			256,
+			256
+		],
+		"touches_border": false,
+		"transparent_fraction": 0.92742919921875
+	}
+]

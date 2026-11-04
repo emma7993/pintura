@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=3]
+
+[ext_resource type="Texture2D" path="../Layers/body/01.png" id="t1"]
+[ext_resource type="Texture2D" path="../Layers/body/02.png" id="t2"]
+[ext_resource type="Texture2D" path="../Layers/body/03.png" id="t3"]
+[ext_resource type="Texture2D" path="../Layers/body/04.png" id="t4"]
+[ext_resource type="Texture2D" path="../Layers/body/05.png" id="t5"]
+[ext_resource type="Texture2D" path="../Layers/body/06.png" id="t6"]
+[ext_resource type="Texture2D" path="../Layers/body/07.png" id="t7"]
+[ext_resource type="Texture2D" path="../Layers/body/08.png" id="t8"]
+[ext_resource type="Texture2D" path="../Layers/body/09.png" id="t9"]
+[ext_resource type="Texture2D" path="../Layers/body/10.png" id="t10"]
+[ext_resource type="Texture2D" path="../Layers/body/11.png" id="t11"]
+[ext_resource type="Texture2D" path="../Layers/body/12.png" id="t12"]
+[ext_resource type="Texture2D" path="../Layers/body/13.png" id="t13"]
+[ext_resource type="Texture2D" path="../Layers/body/14.png" id="t14"]
+[ext_resource type="Texture2D" path="../Layers/body/15.png" id="t15"]
+[ext_resource type="Texture2D" path="../Layers/body/16.png" id="t16"]
+
+[resource]
+animations = [
+{"name": &"run", "speed": 32, "loop": true, "frames": [{"duration": 1.0, "texture": ExtResource("t1")}, {"duration": 1.0, "texture": ExtResource("t2")}, {"duration": 1.0, "texture": ExtResource("t3")}, {"duration": 1.0, "texture": ExtResource("t4")}, {"duration": 1.0, "texture": ExtResource("t5")}, {"duration": 1.0, "texture": ExtResource("t6")}, {"duration": 1.0, "texture": ExtResource("t7")}, {"duration": 1.0, "texture": ExtResource("t8")}, {"duration": 1.0, "texture": ExtResource("t9")}, {"duration": 1.0, "texture": ExtResource("t10")}, {"duration": 1.0, "texture": ExtResource("t11")}, {"duration": 1.0, "texture": ExtResource("t12")}, {"duration": 1.0, "texture": ExtResource("t13")}, {"duration": 1.0, "texture": ExtResource("t14")}, {"duration": 1.0, "texture": ExtResource("t15")}, {"duration": 1.0, "texture": ExtResource("t16")}]},
+]

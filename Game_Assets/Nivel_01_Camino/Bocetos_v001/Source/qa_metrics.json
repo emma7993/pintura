@@ -1,0 +1,39 @@
+{
+	"backgrounds": [
+		{
+			"id": "01_cielo_lejano",
+			"mark_fraction_alpha_2pct": 0.0207379802712105,
+			"size": [
+				1774,
+				887
+			],
+			"transparent_fraction_alpha_1pct": 0.9718545087567
+		},
+		{
+			"id": "02_acueducto_faro",
+			"mark_fraction_alpha_2pct": 0.0297571459983807,
+			"size": [
+				1774,
+				887
+			],
+			"transparent_fraction_alpha_1pct": 0.958562170090586
+		},
+		{
+			"id": "03_bosque_orilla",
+			"mark_fraction_alpha_2pct": 0.0442900012583109,
+			"size": [
+				1774,
+				887
+			],
+			"transparent_fraction_alpha_1pct": 0.94250218297874
+		}
+	],
+	"camera_delta_x": 400,
+	"failures": 0,
+	"parallax_screen_deltas": [
+		-32.0,
+		-92.0,
+		-192.0,
+		-440.0
+	]
+}

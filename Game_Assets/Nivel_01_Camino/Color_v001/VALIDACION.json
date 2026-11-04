@@ -1,0 +1,14 @@
+{
+  "oil_count": 8,
+  "stroke_masks": 12,
+  "dabs": 4,
+  "stream_frames": 8,
+  "base_frames": 8,
+  "splash_frames": 6,
+  "barrier_frames": 8,
+  "effects_loop_period_seconds": 0.8,
+  "stream_base_virtual_frame9_equals_frame1": true,
+  "barrier_rest_equals_frame8": true,
+  "all_effect_frames_unique": true,
+  "masks_dimensions_range_pass": true
+}

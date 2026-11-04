@@ -1,0 +1,330 @@
+{
+  "method": "Visible sole center from alpha>=128 in bottom two rows; measured from final raster PNG, not target guide",
+  "walk_frames": [
+    {
+      "frame": 1,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          71,
+          96
+        ],
+        [
+          159,
+          184
+        ]
+      ],
+      "stance_sole_center_measured": 171.5,
+      "stance_sole_center_rig": 172.0,
+      "bounds": [
+        36,
+        19,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 2,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          144,
+          169
+        ]
+      ],
+      "stance_sole_center_measured": 156.5,
+      "stance_sole_center_rig": 157.41667175293,
+      "bounds": [
+        36,
+        20,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 3,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          130,
+          154
+        ]
+      ],
+      "stance_sole_center_measured": 142.0,
+      "stance_sole_center_rig": 142.83332824707,
+      "bounds": [
+        36,
+        20,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 4,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          115,
+          140
+        ]
+      ],
+      "stance_sole_center_measured": 127.5,
+      "stance_sole_center_rig": 128.25,
+      "bounds": [
+        36,
+        19,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 5,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          101,
+          125
+        ]
+      ],
+      "stance_sole_center_measured": 113.0,
+      "stance_sole_center_rig": 113.666664123535,
+      "bounds": [
+        36,
+        18,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 6,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          86,
+          111
+        ]
+      ],
+      "stance_sole_center_measured": 98.5,
+      "stance_sole_center_rig": 99.0833358764648,
+      "bounds": [
+        36,
+        18,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 7,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          71,
+          96
+        ],
+        [
+          159,
+          184
+        ]
+      ],
+      "stance_sole_center_measured": 171.5,
+      "stance_sole_center_rig": 172.0,
+      "bounds": [
+        36,
+        19,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 8,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          144,
+          169
+        ]
+      ],
+      "stance_sole_center_measured": 156.5,
+      "stance_sole_center_rig": 157.41667175293,
+      "bounds": [
+        37,
+        20,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 9,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          130,
+          154
+        ]
+      ],
+      "stance_sole_center_measured": 142.0,
+      "stance_sole_center_rig": 142.83332824707,
+      "bounds": [
+        37,
+        20,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 10,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          115,
+          140
+        ]
+      ],
+      "stance_sole_center_measured": 127.5,
+      "stance_sole_center_rig": 128.25,
+      "bounds": [
+        37,
+        19,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 11,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          101,
+          125
+        ]
+      ],
+      "stance_sole_center_measured": 113.0,
+      "stance_sole_center_rig": 113.666664123535,
+      "bounds": [
+        37,
+        18,
+        190,
+        239
+      ],
+      "transparent_border": true
+    },
+    {
+      "frame": 12,
+      "ground_y_alpha_128": 238,
+      "sole_runs": [
+        [
+          86,
+          111
+        ]
+      ],
+      "stance_sole_center_measured": 98.5,
+      "stance_sole_center_rig": 99.0833358764648,
+      "bounds": [
+        37,
+        18,
+        190,
+        239
+      ],
+      "transparent_border": true
+    }
+  ],
+  "right_stance_centers": [
+    171.5,
+    156.5,
+    142.0,
+    127.5,
+    113.0,
+    98.5,
+    83.5
+  ],
+  "left_stance_centers": [
+    171.5,
+    156.5,
+    142.0,
+    127.5,
+    113.0,
+    98.5,
+    83.5
+  ],
+  "right_frame_deltas": [
+    15.0,
+    14.5,
+    14.5,
+    14.5,
+    14.5,
+    15.0
+  ],
+  "left_frame_deltas": [
+    15.0,
+    14.5,
+    14.5,
+    14.5,
+    14.5,
+    15.0
+  ],
+  "measured_step_distances_px": [
+    88.0,
+    88.0
+  ],
+  "measured_cycle_distance_px": 176.0,
+  "rig_step_distance_px": 87.5,
+  "rig_cycle_distance_px": 175.0,
+  "virtual_frame13_equals_frame1": true,
+  "idle_equals_look_endpoints": true,
+  "gif_walk_cycle_ms": 1250,
+  "gif_walk_cycles_per_second": 0.8,
+  "result": "PASS",
+  "all_animation_floor_rows": {
+    "walk": [
+      238,
+      238,
+      238,
+      238,
+      238,
+      238,
+      238,
+      238,
+      238,
+      238,
+      238,
+      238
+    ],
+    "idle": [
+      238
+    ],
+    "look_around": [
+      238,
+      238,
+      238,
+      238,
+      238,
+      238
+    ]
+  },
+  "all_walk_frames_unique": true,
+  "gif_encoded_frames": 12,
+  "gif_frame_durations_ms": [
+    100,
+    110,
+    100,
+    110,
+    100,
+    100,
+    110,
+    100,
+    110,
+    100,
+    110,
+    100
+  ]
+}

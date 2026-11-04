@@ -1,0 +1,5687 @@
+[
+  {
+    "file": ".gitignore",
+    "bytes": 33,
+    "sha256": "55516b6e132a0d419adf7f208951dbe93e7fc4e5d0959de56bfb4830e5539fbd"
+  },
+  {
+    "file": "Animations/dip/body/01.png",
+    "bytes": 41252,
+    "sha256": "d3a1436897ca36d844e42720b8898a2aca9b337c83a224ddd4e0483390e4c18a"
+  },
+  {
+    "file": "Animations/dip/body/01.png.import",
+    "bytes": 930,
+    "sha256": "dde5d5cd5f1d0c8bf87007f98ae5b25de26459d585971a7829048391f2a174e0"
+  },
+  {
+    "file": "Animations/dip/body/02.png",
+    "bytes": 41797,
+    "sha256": "43cc6d555ef3c0005529d287f9443954bbba397dd35c9132fb90b24b45da4266"
+  },
+  {
+    "file": "Animations/dip/body/02.png.import",
+    "bytes": 930,
+    "sha256": "2c02149d6e76139cbe7d4fa7fccabaddc90045aaf340bcb4a840acf9743ccd81"
+  },
+  {
+    "file": "Animations/dip/body/03.png",
+    "bytes": 41971,
+    "sha256": "ca7b82d4d7e2cf539d32ebe316ffcb81216ad8033c642d3260fbb5e595cf7d3d"
+  },
+  {
+    "file": "Animations/dip/body/03.png.import",
+    "bytes": 930,
+    "sha256": "2d0fc95e0b93e5c486b28f9df608ff2d79dfa85655a2689f2625c1c111c03fcb"
+  },
+  {
+    "file": "Animations/dip/body/04.png",
+    "bytes": 42077,
+    "sha256": "6ee104e0d42e95b01337dbbd5d30c4a9a615e988ea31ca5d655210f5456c12ac"
+  },
+  {
+    "file": "Animations/dip/body/04.png.import",
+    "bytes": 930,
+    "sha256": "2632a6160b8214970ae957f00c233ed45cfe2e027d62c68edc3644947e5bdced"
+  },
+  {
+    "file": "Animations/dip/body/05.png",
+    "bytes": 41781,
+    "sha256": "04fbb77c306e0d9a7150b5bbb2de799ad85df748a3b3f42b406750b4824a2275"
+  },
+  {
+    "file": "Animations/dip/body/05.png.import",
+    "bytes": 930,
+    "sha256": "241d623b178331416aa7b4f59d1581e43719518f18c0bc0b182fbc393c962b24"
+  },
+  {
+    "file": "Animations/dip/body/06.png",
+    "bytes": 41036,
+    "sha256": "b34fc4cd04a73b7cc0251a5987188e07b700f6ac9d6b7f3189ee7b415ab818bb"
+  },
+  {
+    "file": "Animations/dip/body/06.png.import",
+    "bytes": 930,
+    "sha256": "c50537ec96d29285022ffb39dffee950eaae950e070e8a1c515ebffb288f75e4"
+  },
+  {
+    "file": "Animations/dip/body_atlas.png",
+    "bytes": 240675,
+    "sha256": "3a25cf2e0111f321be13249930f1c2dd1ca1f5d7595bc3007c1383bee908ca00"
+  },
+  {
+    "file": "Animations/dip/body_atlas.png.import",
+    "bytes": 949,
+    "sha256": "4d0595a107573f006f221d26fadad945f0a707d2312dca16962aa4ce2e8b09cd"
+  },
+  {
+    "file": "Animations/dip/brush_base/01.png",
+    "bytes": 6442,
+    "sha256": "20255437b69754ec4c2ac9433c75af92a6cb3997d45b2bda3b3c1a4a81526cca"
+  },
+  {
+    "file": "Animations/dip/brush_base/01.png.import",
+    "bytes": 936,
+    "sha256": "5a79f50ea77411954ff66e97d435aea48e75d2f36ac83a42e225df862d536d9f"
+  },
+  {
+    "file": "Animations/dip/brush_base/02.png",
+    "bytes": 6396,
+    "sha256": "6e9b3edfc7b453fb811323695ae71fe34e4988db5643f727383dbb51090d7874"
+  },
+  {
+    "file": "Animations/dip/brush_base/02.png.import",
+    "bytes": 936,
+    "sha256": "2dca746218b329b399636a3e40350fafafb761ffacf5e55cf220e60577216b33"
+  },
+  {
+    "file": "Animations/dip/brush_base/03.png",
+    "bytes": 6362,
+    "sha256": "22ca57382bc4b387d9bd5d900b5a94ed51fbec70e51d52292322b25ac37086ec"
+  },
+  {
+    "file": "Animations/dip/brush_base/03.png.import",
+    "bytes": 935,
+    "sha256": "d73fd33fdc686c7083cb0cf1daadf2e035de4be518f585deaa3470d328ba1f0f"
+  },
+  {
+    "file": "Animations/dip/brush_base/04.png",
+    "bytes": 6361,
+    "sha256": "778e2d1824443e82fe48a2877602f7ae5b9e6ba6f77c62251caf84acbd15e3b1"
+  },
+  {
+    "file": "Animations/dip/brush_base/04.png.import",
+    "bytes": 935,
+    "sha256": "7bd269abf7a06eb9305cd053e6df0bfebcfcdce1c80b44d07a19d3d1e08b6e5b"
+  },
+  {
+    "file": "Animations/dip/brush_base/05.png",
+    "bytes": 6361,
+    "sha256": "778e2d1824443e82fe48a2877602f7ae5b9e6ba6f77c62251caf84acbd15e3b1"
+  },
+  {
+    "file": "Animations/dip/brush_base/05.png.import",
+    "bytes": 936,
+    "sha256": "84bf2b52303c693948a7d6d1c275b6e35e0b36adfce8bcce7a9a03ea6e90433e"
+  },
+  {
+    "file": "Animations/dip/brush_base/06.png",
+    "bytes": 6406,
+    "sha256": "469517411bc45da43ea9cd886f2540dff51c0a0c3ba85fdea151ecdb164efb51"
+  },
+  {
+    "file": "Animations/dip/brush_base/06.png.import",
+    "bytes": 936,
+    "sha256": "eaa0381be078ecb2d006983f50753a99ab81f0fbbe59a32a512ac0eec937eee8"
+  },
+  {
+    "file": "Animations/dip/brush_base_atlas.png",
+    "bytes": 30859,
+    "sha256": "a5baea304fc34370aba6ba12b2b6d168c1c010b85a62b0001f1ac10cc6f228c8"
+  },
+  {
+    "file": "Animations/dip/brush_base_atlas.png.import",
+    "bytes": 967,
+    "sha256": "7012b0ff6b7e0d948226fd1fd5cd3e2a4fe35d10a3f1ca80ff0ed9c622154b4b"
+  },
+  {
+    "file": "Animations/dip/tip_color/01.png",
+    "bytes": 1870,
+    "sha256": "535a4bfb6e38f9262634162c14966d5748c457b0c759523adbbeaec9efa5dec4"
+  },
+  {
+    "file": "Animations/dip/tip_color/01.png.import",
+    "bytes": 935,
+    "sha256": "9ada1e65c181915f06984dad48406c719458ba5fa78179e24cf6365587e185ed"
+  },
+  {
+    "file": "Animations/dip/tip_color/02.png",
+    "bytes": 1979,
+    "sha256": "75d15f7fb3c5adf10e2e16bf61224275f1421c0feb11a137a34e3694975094ef"
+  },
+  {
+    "file": "Animations/dip/tip_color/02.png.import",
+    "bytes": 934,
+    "sha256": "ebaea0a90e109d970d70d23b06a7a26cc918c7215e8490326f8896556fa26eec"
+  },
+  {
+    "file": "Animations/dip/tip_color/03.png",
+    "bytes": 1961,
+    "sha256": "f4a5ed584843783a6f82593ada6521f21978f32bb20e56d602a3173778deab1c"
+  },
+  {
+    "file": "Animations/dip/tip_color/03.png.import",
+    "bytes": 935,
+    "sha256": "5be1ee95fd11a1e683bf28f5c2adeb3531c7f081029e3d70e0af41445a9c1a52"
+  },
+  {
+    "file": "Animations/dip/tip_color/04.png",
+    "bytes": 1922,
+    "sha256": "1cda28717db811deddd16f33aa96c17c44caf1619282c72ea56bb0232ebf256f"
+  },
+  {
+    "file": "Animations/dip/tip_color/04.png.import",
+    "bytes": 935,
+    "sha256": "c9dfebf4fe341214fd0d83797d1be33aa28c76de2870261b80e9a29c7908b289"
+  },
+  {
+    "file": "Animations/dip/tip_color/05.png",
+    "bytes": 1922,
+    "sha256": "1cda28717db811deddd16f33aa96c17c44caf1619282c72ea56bb0232ebf256f"
+  },
+  {
+    "file": "Animations/dip/tip_color/05.png.import",
+    "bytes": 934,
+    "sha256": "e0ab689d501aee43afd1ad5bb55b13309001ddfe586c82dc82405d9dfe2bc820"
+  },
+  {
+    "file": "Animations/dip/tip_color/06.png",
+    "bytes": 1900,
+    "sha256": "523def8d5a52c6537cf5e90567afa44f551057dfd7ba0a61d63a397bcfcf2842"
+  },
+  {
+    "file": "Animations/dip/tip_color/06.png.import",
+    "bytes": 934,
+    "sha256": "69e3121470daf14c9f913b414a3b18b366f87334a1761cd3bad63a52da2b6254"
+  },
+  {
+    "file": "Animations/dip/tip_color_atlas.png",
+    "bytes": 9269,
+    "sha256": "6160c433eea4e2c33fcbb88799d4d72399c4e3ff020a4e196a5ffbca8159145c"
+  },
+  {
+    "file": "Animations/dip/tip_color_atlas.png.import",
+    "bytes": 964,
+    "sha256": "91723c98af5b42a53c4d40e13314011407fa41f8f7bca49223ed6523e372b103"
+  },
+  {
+    "file": "Animations/dip/tip_dry/01.png",
+    "bytes": 1892,
+    "sha256": "9129afc5765fcbf0a559e313282e6088be28e1a6ae71e0893e6cb9e573672c6c"
+  },
+  {
+    "file": "Animations/dip/tip_dry/01.png.import",
+    "bytes": 933,
+    "sha256": "8aadbaf69fd7db2e858ab12ee5d4254f7cbe0d271b444b04d233f7b46361b661"
+  },
+  {
+    "file": "Animations/dip/tip_dry/02.png",
+    "bytes": 1965,
+    "sha256": "a7f487b31e144029b2512d5df7e669c92c57db87622be431a1fbf04374a14740"
+  },
+  {
+    "file": "Animations/dip/tip_dry/02.png.import",
+    "bytes": 933,
+    "sha256": "85fc5df41d98e8dc30cdecf4fbc170589e7e8688500048c70e65e3b61915fb44"
+  },
+  {
+    "file": "Animations/dip/tip_dry/03.png",
+    "bytes": 1946,
+    "sha256": "075031f141205f8afa43728a1c299fbd611498395b09bfaaea0b23a4d08e6dbc"
+  },
+  {
+    "file": "Animations/dip/tip_dry/03.png.import",
+    "bytes": 933,
+    "sha256": "1eb9d9653fadf436d158c467780172eb8122b397ae857c19e84ae25bf0a1b012"
+  },
+  {
+    "file": "Animations/dip/tip_dry/04.png",
+    "bytes": 1942,
+    "sha256": "df577a9e29e3034a8ee5d00c1c4c47ca75655539083dc95e6f80a87a8e660e82"
+  },
+  {
+    "file": "Animations/dip/tip_dry/04.png.import",
+    "bytes": 933,
+    "sha256": "c3fe288154163a3540906e1cc60883980700292659cb0a27127069ade0ff7c6b"
+  },
+  {
+    "file": "Animations/dip/tip_dry/05.png",
+    "bytes": 1942,
+    "sha256": "df577a9e29e3034a8ee5d00c1c4c47ca75655539083dc95e6f80a87a8e660e82"
+  },
+  {
+    "file": "Animations/dip/tip_dry/05.png.import",
+    "bytes": 933,
+    "sha256": "0982b87ab88fe38de04aa7bda4ef3089ef6dcb651a43789b354ba93f8cc8881e"
+  },
+  {
+    "file": "Animations/dip/tip_dry/06.png",
+    "bytes": 1938,
+    "sha256": "950589e54ea67f4360c6edf90cb864de3f589924774a9041b582c6169c3335e2"
+  },
+  {
+    "file": "Animations/dip/tip_dry/06.png.import",
+    "bytes": 932,
+    "sha256": "998f111cb4cc8dd19fa74ab04e4b20b5b0ecc396e7b49e1c079b73f568791293"
+  },
+  {
+    "file": "Animations/dip/tip_dry_atlas.png",
+    "bytes": 9305,
+    "sha256": "6f3a8dda2018990f4bcab06ca13fa00d0d795003fb6ede7163d53c7044a95bc3"
+  },
+  {
+    "file": "Animations/dip/tip_dry_atlas.png.import",
+    "bytes": 957,
+    "sha256": "91191fa26e5ffd7f60113bc963193d5b509564da5a41e9ac9e09e3b2c8a5f41d"
+  },
+  {
+    "file": "Animations/dip/tip_ink/01.png",
+    "bytes": 1706,
+    "sha256": "6e48e68dd9e36fa276a8621ad721f0af84525345783497a3dc670861819f5751"
+  },
+  {
+    "file": "Animations/dip/tip_ink/01.png.import",
+    "bytes": 933,
+    "sha256": "d0231abda3cd50fb5f617949bcf368ee9488fab6ddc62a8ee39a5dec8a12c3a0"
+  },
+  {
+    "file": "Animations/dip/tip_ink/02.png",
+    "bytes": 1798,
+    "sha256": "7b7312006276c04b548add2336e76d3a11dc711d83bf16eb5c637ab207c928dc"
+  },
+  {
+    "file": "Animations/dip/tip_ink/02.png.import",
+    "bytes": 933,
+    "sha256": "8dca0d756edc540801eba94c6609574a2c1eada43ad720bff31f481ad68c0545"
+  },
+  {
+    "file": "Animations/dip/tip_ink/03.png",
+    "bytes": 1778,
+    "sha256": "56a6805aa5eda5e8bccd52d1a10aff1697cfef5432d58912b1967a3d1e4a8576"
+  },
+  {
+    "file": "Animations/dip/tip_ink/03.png.import",
+    "bytes": 933,
+    "sha256": "a0663df49afd40c62977faa54d529a5a6415a447189dbfdf646600d92063d502"
+  },
+  {
+    "file": "Animations/dip/tip_ink/04.png",
+    "bytes": 1755,
+    "sha256": "ee983961bdba97ef3d35a38d3b312ca6b0b35fc805755ba2e23265cb0f2a30e6"
+  },
+  {
+    "file": "Animations/dip/tip_ink/04.png.import",
+    "bytes": 932,
+    "sha256": "a1cacebbb30c0ed2eee30a031826cdb8ee61befdce42d222fa708bebd124c9cc"
+  },
+  {
+    "file": "Animations/dip/tip_ink/05.png",
+    "bytes": 1755,
+    "sha256": "ee983961bdba97ef3d35a38d3b312ca6b0b35fc805755ba2e23265cb0f2a30e6"
+  },
+  {
+    "file": "Animations/dip/tip_ink/05.png.import",
+    "bytes": 933,
+    "sha256": "c2b411468abf3bb6080269591dc31285c01ecca5eed364f4345e9772cfdb3f53"
+  },
+  {
+    "file": "Animations/dip/tip_ink/06.png",
+    "bytes": 1730,
+    "sha256": "3a5c2ff18994c42c46a3864e978443930eb4dfd7b0ff1c31e0ed413f9387e9c3"
+  },
+  {
+    "file": "Animations/dip/tip_ink/06.png.import",
+    "bytes": 933,
+    "sha256": "72d4a85885c89345d4c94d613e1285421f95571a343b085a43785b5bde02e7b9"
+  },
+  {
+    "file": "Animations/dip/tip_ink_atlas.png",
+    "bytes": 8444,
+    "sha256": "ff9518793356528b9e0f4d9f7e06262620370d37e7f597691b488b2b036e5d85"
+  },
+  {
+    "file": "Animations/dip/tip_ink_atlas.png.import",
+    "bytes": 958,
+    "sha256": "9c36ff86fb9693f28ea7ed308ddeb3f1bf0bf5240c6e5d35ed6aeffd30a9f42a"
+  },
+  {
+    "file": "Animations/fall/body/01.png",
+    "bytes": 39943,
+    "sha256": "c3fd4fb6097be6a434d6ad311da8c1c0082d726e700ec8e4f5a4561f2a2aa629"
+  },
+  {
+    "file": "Animations/fall/body/01.png.import",
+    "bytes": 931,
+    "sha256": "34198ca33629d680fcc1ba703803a62e6f72d56de8d8e7389f645ae30bf55a21"
+  },
+  {
+    "file": "Animations/fall/body/02.png",
+    "bytes": 41004,
+    "sha256": "8afaf13af8e0be7b541fef223907e334f6c6555b0d72137a136c13057c31b919"
+  },
+  {
+    "file": "Animations/fall/body/02.png.import",
+    "bytes": 930,
+    "sha256": "ca0039b3a17cc07e3280cb4fb02d8c9be438768372d2321bd09d3867c7947a01"
+  },
+  {
+    "file": "Animations/fall/body_atlas.png",
+    "bytes": 80105,
+    "sha256": "4fea2fff222350b67c76fd0e6afa0918d574d8ac8164bac5e09e677ab9bacde3"
+  },
+  {
+    "file": "Animations/fall/body_atlas.png.import",
+    "bytes": 949,
+    "sha256": "c6b2e874b362ca3b873391d767bf404e3772eb7f114d1774facffd16093be904"
+  },
+  {
+    "file": "Animations/fall_varita/body/01.png",
+    "bytes": 39943,
+    "sha256": "c3fd4fb6097be6a434d6ad311da8c1c0082d726e700ec8e4f5a4561f2a2aa629"
+  },
+  {
+    "file": "Animations/fall_varita/body/01.png.import",
+    "bytes": 938,
+    "sha256": "2cea863ab9d0b10139320d54941539666a7aac414859ecf2b2dc3eb11e72515c"
+  },
+  {
+    "file": "Animations/fall_varita/body/02.png",
+    "bytes": 41004,
+    "sha256": "8afaf13af8e0be7b541fef223907e334f6c6555b0d72137a136c13057c31b919"
+  },
+  {
+    "file": "Animations/fall_varita/body/02.png.import",
+    "bytes": 938,
+    "sha256": "0db541abf62a79992f9ef10cb54ebb30ffc02d99bd75c1f5685d951a1aa04688"
+  },
+  {
+    "file": "Animations/fall_varita/body_atlas.png",
+    "bytes": 80105,
+    "sha256": "4fea2fff222350b67c76fd0e6afa0918d574d8ac8164bac5e09e677ab9bacde3"
+  },
+  {
+    "file": "Animations/fall_varita/body_atlas.png.import",
+    "bytes": 957,
+    "sha256": "b0724ab15945eb506968b2ce406d1d6656bd4f8b5abe9ae1a9ff4b7c032cd83a"
+  },
+  {
+    "file": "Animations/fall_varita/brush_base/01.png",
+    "bytes": 6460,
+    "sha256": "96b6b3620a3d3cfa09c5cba067384fb14c7f7c3eb0a021e5866655e82c60ab03"
+  },
+  {
+    "file": "Animations/fall_varita/brush_base/01.png.import",
+    "bytes": 944,
+    "sha256": "fa56c7461908fe337d790315240c7097311430fcdad903f3ce7c5553e2ad3824"
+  },
+  {
+    "file": "Animations/fall_varita/brush_base/02.png",
+    "bytes": 6462,
+    "sha256": "b5d13b7e4f68c83570f2e28bc09c99d73975d3d9fd94cda03ee2f2ee9dde735b"
+  },
+  {
+    "file": "Animations/fall_varita/brush_base/02.png.import",
+    "bytes": 944,
+    "sha256": "96a921c74c2ff1f24fb0770498734574c7f6d744caddf3f02a1a325946017ff1"
+  },
+  {
+    "file": "Animations/fall_varita/brush_base_atlas.png",
+    "bytes": 7967,
+    "sha256": "b16e46916b5ddaecce3e1fd1dc12116e2592a657b45382ba0c37fcfd8c076fe8"
+  },
+  {
+    "file": "Animations/fall_varita/brush_base_atlas.png.import",
+    "bytes": 975,
+    "sha256": "2d3bfe7df0eeef1bd40848c55c2fdaac2f3d3b852b9c0bfc4a655965e94be894"
+  },
+  {
+    "file": "Animations/fall_varita/tip_color/01.png",
+    "bytes": 1877,
+    "sha256": "d73a9e5914fcf465d389a325eb6851781e751957a67c40ccbdedc71a06410a75"
+  },
+  {
+    "file": "Animations/fall_varita/tip_color/01.png.import",
+    "bytes": 943,
+    "sha256": "94fdef62f07a536e3fd21e073a5a501f57368d677bf55ab7c27e9171a6ae86d9"
+  },
+  {
+    "file": "Animations/fall_varita/tip_color/02.png",
+    "bytes": 1877,
+    "sha256": "6dc28587cd314fc338133dc95b75ac9160e35078fe74948044033c31349c2cd6"
+  },
+  {
+    "file": "Animations/fall_varita/tip_color/02.png.import",
+    "bytes": 943,
+    "sha256": "0e10d4d59f1b79bbb55adb92953ba1dc100443fce0b569f217e439d108f77dd0"
+  },
+  {
+    "file": "Animations/fall_varita/tip_color_atlas.png",
+    "bytes": 2607,
+    "sha256": "4448233db3bbbaaf9fae1163f8391af65515c23ba401111c322ef10386534214"
+  },
+  {
+    "file": "Animations/fall_varita/tip_color_atlas.png.import",
+    "bytes": 972,
+    "sha256": "16b225e96e0b4855abfcfd10b7341512081f1de8bd3d6463118891491c6b0d98"
+  },
+  {
+    "file": "Animations/fall_varita/tip_dry/01.png",
+    "bytes": 1897,
+    "sha256": "72d6f67508b5863eda85e923a7f5a495250c98621f9f6d56fa7fa2412059dd5a"
+  },
+  {
+    "file": "Animations/fall_varita/tip_dry/01.png.import",
+    "bytes": 941,
+    "sha256": "bdad168254082a2635c7936eaa7b88fa167199c07e85539f0479c2a9d556cde3"
+  },
+  {
+    "file": "Animations/fall_varita/tip_dry/02.png",
+    "bytes": 1898,
+    "sha256": "7d8f69c58a1c8c7fcb5b54c82a4fa2e2d0bede068f41fbb2f4663b7ba2e1b5ec"
+  },
+  {
+    "file": "Animations/fall_varita/tip_dry/02.png.import",
+    "bytes": 941,
+    "sha256": "0ee4105b36959e7662606b9fcd0a8a5a646f51eac48fa22f7a60358dc69dd908"
+  },
+  {
+    "file": "Animations/fall_varita/tip_dry_atlas.png",
+    "bytes": 2467,
+    "sha256": "3879cc3a15a188567ee3d0b3269cec2e2f754c56fd7490b5e0f853dc70773cf9"
+  },
+  {
+    "file": "Animations/fall_varita/tip_dry_atlas.png.import",
+    "bytes": 966,
+    "sha256": "474b30cc82a52c69c5da8dbaeb5ca360838d60a24c5d0ae193b39dfa99e01cab"
+  },
+  {
+    "file": "Animations/fall_varita/tip_ink/01.png",
+    "bytes": 1710,
+    "sha256": "7ec54c8007b7272a392178aa4126ffc6491b49af4422bfa2db89b1d30f8f722e"
+  },
+  {
+    "file": "Animations/fall_varita/tip_ink/01.png.import",
+    "bytes": 941,
+    "sha256": "2b24c8f7301b3ca8bc7820e6c027b868ec300cafed1c8e2ccd381357915d2e2f"
+  },
+  {
+    "file": "Animations/fall_varita/tip_ink/02.png",
+    "bytes": 1711,
+    "sha256": "65e30255c5f90b8622cb7db73f82267fb00ed7774885381ce6a14152a90db188"
+  },
+  {
+    "file": "Animations/fall_varita/tip_ink/02.png.import",
+    "bytes": 940,
+    "sha256": "4ffe23d4507cf146a0d0a4ff2e064fcee29648f594322a0c421152b5984b41e1"
+  },
+  {
+    "file": "Animations/fall_varita/tip_ink_atlas.png",
+    "bytes": 2255,
+    "sha256": "8e35cd3a1e7a5cc7d9405f63d72036808d7046c410f6a3abc3a359b096ee9e71"
+  },
+  {
+    "file": "Animations/fall_varita/tip_ink_atlas.png.import",
+    "bytes": 966,
+    "sha256": "a7180d2d9224456d357549834d5e07613120789d20c3c5eeb53c86ee51c69a57"
+  },
+  {
+    "file": "Animations/idle/body/01.png",
+    "bytes": 41279,
+    "sha256": "6e32ad7b6c08df89c3c9047322014e70bbb9b5a27fd0d1864f0cdc5672225b92"
+  },
+  {
+    "file": "Animations/idle/body/01.png.import",
+    "bytes": 931,
+    "sha256": "e5c5e0db1a861a8bf8561b7c309832418dd0b5fa1069a29a463a6760e4b6219a"
+  },
+  {
+    "file": "Animations/idle/body/02.png",
+    "bytes": 41095,
+    "sha256": "56ec71997951656a60452531351f699f544e7c89ad8f4122f941475d8afc10ae"
+  },
+  {
+    "file": "Animations/idle/body/02.png.import",
+    "bytes": 931,
+    "sha256": "91e9d83a7e784a976edf4c08b09471cfc04dc57748b91ce9f65ebb016756923a"
+  },
+  {
+    "file": "Animations/idle/body/03.png",
+    "bytes": 41284,
+    "sha256": "42daa509bb75efe040396ff4fd94d92b829daff7f1addc203252549cbc7ef41b"
+  },
+  {
+    "file": "Animations/idle/body/03.png.import",
+    "bytes": 931,
+    "sha256": "5ac30987e87665a940e8193440d5f7f0362b1259ed48c3be2945f26420cecc0f"
+  },
+  {
+    "file": "Animations/idle/body/04.png",
+    "bytes": 40979,
+    "sha256": "ca7d96a4b79fc88210bc9ab510fc51c0274ca36ea6902723ae1bac29a0dc16b4"
+  },
+  {
+    "file": "Animations/idle/body/04.png.import",
+    "bytes": 931,
+    "sha256": "ca137919901f6d042b460bed5b2219e564c4b8fff00f9d34c077ea7f32db9cc3"
+  },
+  {
+    "file": "Animations/idle/body/05.png",
+    "bytes": 41588,
+    "sha256": "f5b5bf3f289236360382a997b7e5e1e81e453b65b7d95fdd05dff639ade13ba3"
+  },
+  {
+    "file": "Animations/idle/body/05.png.import",
+    "bytes": 931,
+    "sha256": "0c493213ede72f1196cac84de3262633e9d1b24f7ce3be7e77a1b6d542c360ea"
+  },
+  {
+    "file": "Animations/idle/body/06.png",
+    "bytes": 41666,
+    "sha256": "531a1be25e78174566da3461cd025df6d822f1db7255e83b08bf7ecfcdb7f729"
+  },
+  {
+    "file": "Animations/idle/body/06.png.import",
+    "bytes": 931,
+    "sha256": "6b228213fb6f2f0e17aa9c8422ac362cde150b4b6deef5e798c1b4be824c391b"
+  },
+  {
+    "file": "Animations/idle/body_atlas.png",
+    "bytes": 241125,
+    "sha256": "fcabb1df5fab7e1d479a3f9b7053c023a552d9ab780fd54e0aa73fd37fd9d090"
+  },
+  {
+    "file": "Animations/idle/body_atlas.png.import",
+    "bytes": 950,
+    "sha256": "f8112a981fbbeab278d919f40886c7a6d71b5f7e4684952f1b73cbcc52a3c624"
+  },
+  {
+    "file": "Animations/idle_varita/body/01.png",
+    "bytes": 41279,
+    "sha256": "6e32ad7b6c08df89c3c9047322014e70bbb9b5a27fd0d1864f0cdc5672225b92"
+  },
+  {
+    "file": "Animations/idle_varita/body/01.png.import",
+    "bytes": 938,
+    "sha256": "113814d858d1607615a5781964d00b5064011b2c8ba820fd3d2cae6dc8c78016"
+  },
+  {
+    "file": "Animations/idle_varita/body/02.png",
+    "bytes": 41095,
+    "sha256": "56ec71997951656a60452531351f699f544e7c89ad8f4122f941475d8afc10ae"
+  },
+  {
+    "file": "Animations/idle_varita/body/02.png.import",
+    "bytes": 937,
+    "sha256": "783b425aa3276b497aa0b1a920e8c2275bebffb194384a31b2224e74ba016d4d"
+  },
+  {
+    "file": "Animations/idle_varita/body/03.png",
+    "bytes": 41284,
+    "sha256": "42daa509bb75efe040396ff4fd94d92b829daff7f1addc203252549cbc7ef41b"
+  },
+  {
+    "file": "Animations/idle_varita/body/03.png.import",
+    "bytes": 938,
+    "sha256": "a9447ea7688a18b529cd0f9965f827e71d541f00c0b6891f6d46b9bfc821866b"
+  },
+  {
+    "file": "Animations/idle_varita/body/04.png",
+    "bytes": 40979,
+    "sha256": "ca7d96a4b79fc88210bc9ab510fc51c0274ca36ea6902723ae1bac29a0dc16b4"
+  },
+  {
+    "file": "Animations/idle_varita/body/04.png.import",
+    "bytes": 937,
+    "sha256": "cc19612fb7f5477b2d5c18351414e6ebcf08bdd0ce0d4817b5a3e42eb5c76259"
+  },
+  {
+    "file": "Animations/idle_varita/body/05.png",
+    "bytes": 41588,
+    "sha256": "f5b5bf3f289236360382a997b7e5e1e81e453b65b7d95fdd05dff639ade13ba3"
+  },
+  {
+    "file": "Animations/idle_varita/body/05.png.import",
+    "bytes": 937,
+    "sha256": "fe51234be6fe982377506a0b4e87d4bbd9bd2471965819a6aa578fdca804df04"
+  },
+  {
+    "file": "Animations/idle_varita/body/06.png",
+    "bytes": 41666,
+    "sha256": "531a1be25e78174566da3461cd025df6d822f1db7255e83b08bf7ecfcdb7f729"
+  },
+  {
+    "file": "Animations/idle_varita/body/06.png.import",
+    "bytes": 938,
+    "sha256": "a79998411aa03e7d8cf3eef57e09e240f1b1aba04f86c78a429179fc67fe488b"
+  },
+  {
+    "file": "Animations/idle_varita/body_atlas.png",
+    "bytes": 241125,
+    "sha256": "fcabb1df5fab7e1d479a3f9b7053c023a552d9ab780fd54e0aa73fd37fd9d090"
+  },
+  {
+    "file": "Animations/idle_varita/body_atlas.png.import",
+    "bytes": 956,
+    "sha256": "737f3b47d6c792705b3cc4ec4f44230bd62a363f572247aa6cfc5b36796e078d"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/01.png",
+    "bytes": 6456,
+    "sha256": "2f5f06ed702acb7c7f8999b7091facb9203b6579ffe75f1c57e83553d01fb6c2"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/01.png.import",
+    "bytes": 944,
+    "sha256": "0637b69b08f217e6288cf506491325c2b318bb12d5c75fce2ff35ac72c4c0e9f"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/02.png",
+    "bytes": 6454,
+    "sha256": "b7589ac0082323286023e2394f0bb67eab64c3597cecad856cbad44c268f17d5"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/02.png.import",
+    "bytes": 944,
+    "sha256": "82aceb3190b889cba25936487fb5d4436f03c97a487023311880a4d926b20736"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/03.png",
+    "bytes": 6475,
+    "sha256": "f86082b5120ae5e89f34e9fc7de0386d30511adc6de63f4f093b912f092d68db"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/03.png.import",
+    "bytes": 944,
+    "sha256": "7107557239d34811c56d5f142196f92a372d38903fa3efc2ca26edbfd48d3c74"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/04.png",
+    "bytes": 6457,
+    "sha256": "a2d3ab2e6463bab3245c96175506504934d45f37ec920d11f4386052d51b52de"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/04.png.import",
+    "bytes": 944,
+    "sha256": "d661452b68aad63786b33200c5fafa174c082158ec56ee47c187b1e8c0699bcc"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/05.png",
+    "bytes": 6395,
+    "sha256": "8b7fc50bfb7697fd42f368cd5ec04763981831997ce267ab561a80876b6add8e"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/05.png.import",
+    "bytes": 944,
+    "sha256": "e2dfcde0fe576c8c513a781a8d1c5a3039b4cc80b0904ae99bfebe312bab6018"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/06.png",
+    "bytes": 6395,
+    "sha256": "8b7fc50bfb7697fd42f368cd5ec04763981831997ce267ab561a80876b6add8e"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base/06.png.import",
+    "bytes": 944,
+    "sha256": "8f5a06bce63b8a0b04ee9cb510a5e1faf7e192652c50b1027bf65972ed3bb02e"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base_atlas.png",
+    "bytes": 25773,
+    "sha256": "06c15b2a11d0a6a77b343efd222193a80344c1dba0d19e4fbb9b38783a0328db"
+  },
+  {
+    "file": "Animations/idle_varita/brush_base_atlas.png.import",
+    "bytes": 975,
+    "sha256": "c36e3b4750f1cb4ebe6dcee3bea6e305aa4ea33bdbe56b76b14ba8c115b877c7"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/01.png",
+    "bytes": 1877,
+    "sha256": "19bfa77d5ee3a207e44ddf71569c4226f3b12682cff714cdc09b39f152360491"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/01.png.import",
+    "bytes": 942,
+    "sha256": "9816c06082bd1e29cd0106c27396fe4b39f535c6018c55d55c272667454743b6"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/02.png",
+    "bytes": 1855,
+    "sha256": "00c950f95d3d224aaa52c3f8816738ed874a89e345c795240e62f3ce2a1b131d"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/02.png.import",
+    "bytes": 943,
+    "sha256": "768eb66c33daa29a64e4f9f9c4532d8fc15c1dd8b895d0c91abefe4fbc978d84"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/03.png",
+    "bytes": 1893,
+    "sha256": "d36bf4e522cce78df59ed62af95b15b5598c85a9458256aaf7fd92278acb3da2"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/03.png.import",
+    "bytes": 942,
+    "sha256": "b8383b868f498f417c2093aa5874fff62d60a7af33f9664fba88a4dc3ef0d051"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/04.png",
+    "bytes": 1878,
+    "sha256": "6439651f7d83acd0f0294fb66d34581f30d8c13b65b862a5cb041b5a58a6b3a5"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/04.png.import",
+    "bytes": 943,
+    "sha256": "f9cd2adb6d0ff91928b3444cabf55f8f5ee2144158e8b3cf689617a5b4f2fdb5"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/05.png",
+    "bytes": 1908,
+    "sha256": "fa3d36762c5e3c427647a34139dfb9c81ad6dcbb5e52ab4d228a5813941c8202"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/05.png.import",
+    "bytes": 943,
+    "sha256": "c1015007773edd0d3e4f94120009033bdcf6b8ba849b9cf74931dfe788cbc8a9"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/06.png",
+    "bytes": 1908,
+    "sha256": "fa3d36762c5e3c427647a34139dfb9c81ad6dcbb5e52ab4d228a5813941c8202"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color/06.png.import",
+    "bytes": 943,
+    "sha256": "ec92b28df55af604a4f8aa01c83cd8f39e51807231db6722e66efeb7728076e1"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color_atlas.png",
+    "bytes": 7657,
+    "sha256": "4f3eaaa658724a4aa9d09f5527168d27ef349be2a065176fe44d3ddc3c8d75e7"
+  },
+  {
+    "file": "Animations/idle_varita/tip_color_atlas.png.import",
+    "bytes": 972,
+    "sha256": "d4e7f75cac6eb4ede99f827df54197e517045644e4d16275d520354fa6cf45b2"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/01.png",
+    "bytes": 1899,
+    "sha256": "b3ab5d1c5043d78202bdb8a3e2bd58bd24658cbef29bb9933b09b06ac948ae69"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/01.png.import",
+    "bytes": 940,
+    "sha256": "ee1a4a47adc9216286f3188e49fe7b736ed83540405b74c5054f617dfaddef39"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/02.png",
+    "bytes": 1875,
+    "sha256": "ba17a7937c7da71fc599c3ab4dcefa9deb2daf7765421ed700cd4481ab2e55d6"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/02.png.import",
+    "bytes": 941,
+    "sha256": "0817974134e55ba3b8cbf4d38f7d8cab3d6d1bed818f6e81cd3e998fda6fcc8c"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/03.png",
+    "bytes": 1892,
+    "sha256": "3cdb69596b400c260d922dd566dc520eb29e77fa99e83791b19bc4f9b7d95cc6"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/03.png.import",
+    "bytes": 941,
+    "sha256": "25c19fa005ecee488c9652779a877d8045a608195411eb0ba5a73e4e73b5d1eb"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/04.png",
+    "bytes": 1898,
+    "sha256": "dba5c55378f199cd2f627a4fc7edebd1078814db6e8724c96fc7b529c20e11ea"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/04.png.import",
+    "bytes": 941,
+    "sha256": "054558d52528d0ae365eca94b8253a8c8ad09b9d9671ffa3da0e60ff6093ea1b"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/05.png",
+    "bytes": 1951,
+    "sha256": "f1f5a0427c5ea13a39dd2682c6afa2ea9e0d0ee8439f5cc6c124f3787bf8d8ee"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/05.png.import",
+    "bytes": 941,
+    "sha256": "95c997be4c7cd1f26ff81685d3a04b38b31266fa5c9112cc0929bf0748f70035"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/06.png",
+    "bytes": 1951,
+    "sha256": "f1f5a0427c5ea13a39dd2682c6afa2ea9e0d0ee8439f5cc6c124f3787bf8d8ee"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry/06.png.import",
+    "bytes": 941,
+    "sha256": "986d8e6eaea4ea50e8bc07d8e111a2bbd02a165c1d7da5b0ca7cd77d1aa26ea6"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry_atlas.png",
+    "bytes": 7692,
+    "sha256": "9f0cefd808e47e043b18d4c50251c2b7cc8f96a35e3fc7033cc437466a736d29"
+  },
+  {
+    "file": "Animations/idle_varita/tip_dry_atlas.png.import",
+    "bytes": 966,
+    "sha256": "9b9a977529a12abdc4a6fec6d596eb1862aa165190b94e0ffdd7807aa23e7c62"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/01.png",
+    "bytes": 1711,
+    "sha256": "9e7c8b60d10b7d763bb62c774e8cb64c7b2feca4e30d34f07f29593ee910c403"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/01.png.import",
+    "bytes": 941,
+    "sha256": "f6e9bb43357bf6493095539c67eb7e96e7184c89a6fdf498b2c290f52818a464"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/02.png",
+    "bytes": 1695,
+    "sha256": "7da3d00c84f326f9d6fd621f41036a66b6500e0ee62e202d73b59f42f8093969"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/02.png.import",
+    "bytes": 941,
+    "sha256": "8fd9610114616500a3192e0dbc7a6c78b1b42223b913fcf6a49240fbf8db241f"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/03.png",
+    "bytes": 1722,
+    "sha256": "5980729a9b515249dacc0c635695eba69144252da28bb8da5e43e6fb36530880"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/03.png.import",
+    "bytes": 941,
+    "sha256": "549bc0b60b20027d7ced99d1544476a5c9697e62a03874fc4c015a8ce52b32ba"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/04.png",
+    "bytes": 1711,
+    "sha256": "c04add31bd48b2fdbb09da62890dd8894dd4d12444cb074eceee0550891cc3db"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/04.png.import",
+    "bytes": 941,
+    "sha256": "202ae94d36805f8f613ea8d49a5f1ece196593c4802efa4eadb4a08ac3f1a3e3"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/05.png",
+    "bytes": 1738,
+    "sha256": "0508e31a8252a6a5d15da9c21ba5054496934855e4c03ef351ecf611dcffd56b"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/05.png.import",
+    "bytes": 941,
+    "sha256": "06c43ddd1c6beae9c2d20e846f6f64c1bdad1fd5be3faa46a5b8b282805c82dc"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/06.png",
+    "bytes": 1738,
+    "sha256": "0508e31a8252a6a5d15da9c21ba5054496934855e4c03ef351ecf611dcffd56b"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink/06.png.import",
+    "bytes": 941,
+    "sha256": "e7dc42f52f01ff7c4c47785a758caaa9962cb7efc4d752ab8e4e983fe57e695f"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink_atlas.png",
+    "bytes": 7048,
+    "sha256": "813b0603c364d7c0a5db1ffda0c0213d7e03b597f6a7cab335deddb58ceb43ae"
+  },
+  {
+    "file": "Animations/idle_varita/tip_ink_atlas.png.import",
+    "bytes": 965,
+    "sha256": "4c085026817defe2cd7c096bb8843cc15c54dd2de20cbafeb69c45e480e67714"
+  },
+  {
+    "file": "Animations/jump_start/body/01.png",
+    "bytes": 39977,
+    "sha256": "b1af1abd6d9f65ae5e994d4e2bac852ebe0cd941d1fd8fd7895f8debe1f04106"
+  },
+  {
+    "file": "Animations/jump_start/body/01.png.import",
+    "bytes": 937,
+    "sha256": "61917c77bdc0329618d4d43e5134878ea47899527c528425288e56dc796948e3"
+  },
+  {
+    "file": "Animations/jump_start/body/02.png",
+    "bytes": 40674,
+    "sha256": "eb71a470a3614ed7091df59d5e44727d397cd4c839aaa84707bce4860527a125"
+  },
+  {
+    "file": "Animations/jump_start/body/02.png.import",
+    "bytes": 937,
+    "sha256": "f5a1c5f9ca4b07877ba2e00e07f05509e9dc8330c67e2a6578a2fc406cab63a3"
+  },
+  {
+    "file": "Animations/jump_start/body_atlas.png",
+    "bytes": 80603,
+    "sha256": "17e1236fef4efb27b1f290b19ab9e71f265aa421e67d1a2299173d9a3c41b8af"
+  },
+  {
+    "file": "Animations/jump_start/body_atlas.png.import",
+    "bytes": 956,
+    "sha256": "82c18b1f641332b75685c9f97872a335a7aae657dcd7739908473f542d4fcd3e"
+  },
+  {
+    "file": "Animations/jump_start_varita/body/01.png",
+    "bytes": 39977,
+    "sha256": "b1af1abd6d9f65ae5e994d4e2bac852ebe0cd941d1fd8fd7895f8debe1f04106"
+  },
+  {
+    "file": "Animations/jump_start_varita/body/01.png.import",
+    "bytes": 944,
+    "sha256": "c3edb39e35e7b80f1a2de46f65047e04a7ba9e79eb08efee745f1ff6414a3bf0"
+  },
+  {
+    "file": "Animations/jump_start_varita/body/02.png",
+    "bytes": 40674,
+    "sha256": "eb71a470a3614ed7091df59d5e44727d397cd4c839aaa84707bce4860527a125"
+  },
+  {
+    "file": "Animations/jump_start_varita/body/02.png.import",
+    "bytes": 943,
+    "sha256": "39234c2eec184860ea11d72c419afe3a4d8723dae2e5904c242d55cbeb1f8cb7"
+  },
+  {
+    "file": "Animations/jump_start_varita/body_atlas.png",
+    "bytes": 80603,
+    "sha256": "17e1236fef4efb27b1f290b19ab9e71f265aa421e67d1a2299173d9a3c41b8af"
+  },
+  {
+    "file": "Animations/jump_start_varita/body_atlas.png.import",
+    "bytes": 963,
+    "sha256": "5bf7152464050f7a6d09308b4cb5cc9b4ef93aba81a03e1c3c5e2fe5c881f016"
+  },
+  {
+    "file": "Animations/jump_start_varita/brush_base/01.png",
+    "bytes": 6459,
+    "sha256": "a35f1ea5093de3340bd0c3627011cc2697abbd616e71362f5c7d0cfddf1a5624"
+  },
+  {
+    "file": "Animations/jump_start_varita/brush_base/01.png.import",
+    "bytes": 950,
+    "sha256": "98c505de76be1f2b7efb6d9c1fa16110609e18cdcfd3a0ff5cb4a9c0ac740465"
+  },
+  {
+    "file": "Animations/jump_start_varita/brush_base/02.png",
+    "bytes": 6460,
+    "sha256": "8e99decff003feb269479f69fdc50d7fa16c6ef201a44b6b78f619ec82de7038"
+  },
+  {
+    "file": "Animations/jump_start_varita/brush_base/02.png.import",
+    "bytes": 950,
+    "sha256": "91c1301d114f161435d534cacb8cd32abf699582c87fbc324508b644fbe860e4"
+  },
+  {
+    "file": "Animations/jump_start_varita/brush_base_atlas.png",
+    "bytes": 12389,
+    "sha256": "ff3d37a04f88c60f8bf60bed5af78d36080751da0ff9d320011f2b4d42901457"
+  },
+  {
+    "file": "Animations/jump_start_varita/brush_base_atlas.png.import",
+    "bytes": 981,
+    "sha256": "f468a4b26fe0f52f8b5890447a385ba34e2c5fa7871ce4ab5e5aa88a55fa5d53"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_color/01.png",
+    "bytes": 1878,
+    "sha256": "5abe2f8e8f3fa50f58042e09537ddf44ab47003d87d297fcd3a44a5915f6d5f2"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_color/01.png.import",
+    "bytes": 949,
+    "sha256": "af5a05dedc27a67dff5daefedfa74c1a807b04071722b20366e0f809645aa1d7"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_color/02.png",
+    "bytes": 1876,
+    "sha256": "fe5d78460b81fa2216cb8532ddfddf177f633a8f85a6067a15d1491097088a82"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_color/02.png.import",
+    "bytes": 948,
+    "sha256": "2f23bdf4644fed335b13c6691b8962116f0f548a3213b9a3f6f513436f569195"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_color_atlas.png",
+    "bytes": 3644,
+    "sha256": "2dd3f2723c8dea8078492bca8ac66b7b5f5d980f012a52a3d4a6aae7a60fb493"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_color_atlas.png.import",
+    "bytes": 978,
+    "sha256": "f5b782aa27ddacdd9c5f7102eeded2f3d56506c31eb534734a49d731950897e4"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_dry/01.png",
+    "bytes": 1898,
+    "sha256": "a258bde12b9c2d0e831a6c973f73807c876502d342c13e6b0cbcb530f442b720"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_dry/01.png.import",
+    "bytes": 947,
+    "sha256": "37c1697c758a73c55e7ef240049dfb2164cbca71a7685ecb158dc601d04e5674"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_dry/02.png",
+    "bytes": 1895,
+    "sha256": "322887c6ae63c6324c7cdfe288462816c7ae3a34607bbf5108aa91156c549c1a"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_dry/02.png.import",
+    "bytes": 947,
+    "sha256": "11b704204fb8c123a9f6424951829bf675af0a69ccd03bbd95567aa1e61416cd"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_dry_atlas.png",
+    "bytes": 3693,
+    "sha256": "56e3c6198d11845f87e61448418a40c5ee33c1e61065fdf576e249049e9b1ea5"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_dry_atlas.png.import",
+    "bytes": 971,
+    "sha256": "f5e3eed5321b21173acf8bcbed2e0e5e25ac9192d8f4f42d6706e76b851d98ae"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_ink/01.png",
+    "bytes": 1711,
+    "sha256": "2c4fb488b6314c31ebac877058d40a66c5bd82337ad5ac50f23f7ebbfc2869a2"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_ink/01.png.import",
+    "bytes": 947,
+    "sha256": "c66f2199820191c5a03a99a94988bc64e994e4975596802fcc7f177fd745ad02"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_ink/02.png",
+    "bytes": 1709,
+    "sha256": "2239273bd206be5ea4dc1f5ca5e08f91614df6e8916f5ccd98dc464bb45735b4"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_ink/02.png.import",
+    "bytes": 947,
+    "sha256": "6316b68aa5aef80eadb79da3a874f4f5f1388b9db96f5524cd088ec75c377b7d"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_ink_atlas.png",
+    "bytes": 3348,
+    "sha256": "7c4181ed590ad2dc19e4b8df6e340c89640f3e49d0bd9f0b8d98159d9696ccf7"
+  },
+  {
+    "file": "Animations/jump_start_varita/tip_ink_atlas.png.import",
+    "bytes": 972,
+    "sha256": "5fa3fbe2a358e1c004d26cd04ef20bae725d3b609c07fe948fb8add8a9f93239"
+  },
+  {
+    "file": "Animations/jump_up/body/01.png",
+    "bytes": 39560,
+    "sha256": "36cdbee34ddf9dcb4b8e62f4ea7eb493307e873b589d2ab9bd2565b96a8ca0ec"
+  },
+  {
+    "file": "Animations/jump_up/body/01.png.import",
+    "bytes": 934,
+    "sha256": "9b895077a5c66feb8b611201c466c96fbac110ff552022d43fa1cca09a49de2f"
+  },
+  {
+    "file": "Animations/jump_up/body/02.png",
+    "bytes": 37890,
+    "sha256": "09baedbd99f7aed75b9e1f1e76dffb9426eb76de8b022a0e2073f952042fd1bd"
+  },
+  {
+    "file": "Animations/jump_up/body/02.png.import",
+    "bytes": 934,
+    "sha256": "861da11bf46487915e66432ee821c01ab714d91ed7d93e67f646ca3e203604db"
+  },
+  {
+    "file": "Animations/jump_up/body_atlas.png",
+    "bytes": 76788,
+    "sha256": "446fb5b3f24302eba9dda6a618ec12712b600a6a48787a03004e20365dd2ea1a"
+  },
+  {
+    "file": "Animations/jump_up/body_atlas.png.import",
+    "bytes": 953,
+    "sha256": "55f2c39ae14ab810f39aff879e237aca4ddcad0a9ca69172dd1e1a33a738b91c"
+  },
+  {
+    "file": "Animations/jump_up_varita/body/01.png",
+    "bytes": 39560,
+    "sha256": "36cdbee34ddf9dcb4b8e62f4ea7eb493307e873b589d2ab9bd2565b96a8ca0ec"
+  },
+  {
+    "file": "Animations/jump_up_varita/body/01.png.import",
+    "bytes": 941,
+    "sha256": "2aca12f828ad5d114953888a272159e9a19658d1e989601a4b85a71cdc2ceb63"
+  },
+  {
+    "file": "Animations/jump_up_varita/body/02.png",
+    "bytes": 37890,
+    "sha256": "09baedbd99f7aed75b9e1f1e76dffb9426eb76de8b022a0e2073f952042fd1bd"
+  },
+  {
+    "file": "Animations/jump_up_varita/body/02.png.import",
+    "bytes": 941,
+    "sha256": "bf703bf68997a1ced2791922c9fd02bc4985ab8ccedf2c10f54b92573abfede5"
+  },
+  {
+    "file": "Animations/jump_up_varita/body_atlas.png",
+    "bytes": 76788,
+    "sha256": "446fb5b3f24302eba9dda6a618ec12712b600a6a48787a03004e20365dd2ea1a"
+  },
+  {
+    "file": "Animations/jump_up_varita/body_atlas.png.import",
+    "bytes": 960,
+    "sha256": "d4ddbc40b16b15c4024683e37a60cf7ca079b655aec72530bbe2b73d5dae34d8"
+  },
+  {
+    "file": "Animations/jump_up_varita/brush_base/01.png",
+    "bytes": 6459,
+    "sha256": "f395ae2def46217fb6640a065af4cb1fdd37b77fba6f59d2843b767c1517118a"
+  },
+  {
+    "file": "Animations/jump_up_varita/brush_base/01.png.import",
+    "bytes": 946,
+    "sha256": "50c0593749db81fa539a34f461dea2eacdb4dff10a3400b8f5f5508cd2775e46"
+  },
+  {
+    "file": "Animations/jump_up_varita/brush_base/02.png",
+    "bytes": 6453,
+    "sha256": "7dd8f5f2e52c3b961adbdf104ae389c715f6694f8615fb47f01ad0649be8d651"
+  },
+  {
+    "file": "Animations/jump_up_varita/brush_base/02.png.import",
+    "bytes": 947,
+    "sha256": "6c49f683f966dbfcfa691c8c6fac0ed787f4bef56f717a0106ce150314624478"
+  },
+  {
+    "file": "Animations/jump_up_varita/brush_base_atlas.png",
+    "bytes": 8024,
+    "sha256": "31598a5de86dfb4541240d2ed5a522b05e225195182c3a11bf565e171b75e856"
+  },
+  {
+    "file": "Animations/jump_up_varita/brush_base_atlas.png.import",
+    "bytes": 978,
+    "sha256": "1aef2bb1dc20f292e72799bb1e40631a537569d9af48511d39bceb5e29256fc5"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_color/01.png",
+    "bytes": 1876,
+    "sha256": "048b985a85ae101268c0bef46784f52ab1343721ac5443141155a49dc2949c38"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_color/01.png.import",
+    "bytes": 946,
+    "sha256": "b98aade1009b3c90bbef158d7e6af051190bb7e323f270cbe29b6291bcf35c4b"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_color/02.png",
+    "bytes": 1874,
+    "sha256": "26e05ba2934f8a2f56fd7a2f8b50d3cd61fcaefc012e80993b8494d24d724c84"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_color/02.png.import",
+    "bytes": 945,
+    "sha256": "a5233a02b6a1f5fc0fbcfc2fe2b61919f00dc93f94c8d72559c0b92f26246a34"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_color_atlas.png",
+    "bytes": 2699,
+    "sha256": "9941ac1b1a9fa70043271e39450e37ad11687a913293d55d5c0fd4dd8e89e851"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_color_atlas.png.import",
+    "bytes": 975,
+    "sha256": "c7c3f9a1c65e04d3c6fcf5437ff3e9263ac1d46cdfee82bcf047fcd1bdbdc68b"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_dry/01.png",
+    "bytes": 1897,
+    "sha256": "46dcba07954f854cca85c267c111eebe804bde7ca9f09c3114749b7950986cf7"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_dry/01.png.import",
+    "bytes": 944,
+    "sha256": "4618b8e898a34c8424b27213903d2f1f5f790111f3c882a048177b05ad9e163f"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_dry/02.png",
+    "bytes": 1895,
+    "sha256": "d23e4c826b19a08cae1e5feb4882d1667a394c9ac8d666a695c435b05409f504"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_dry/02.png.import",
+    "bytes": 944,
+    "sha256": "8c1c8a1b653fc5d4c6355112cd14dd832ee01b61a9cb52b5df15d41556d7d68c"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_dry_atlas.png",
+    "bytes": 2613,
+    "sha256": "edba4b8b6476ef0b8280653cd99b091596d58a48797c6daf13d98f292ee39d19"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_dry_atlas.png.import",
+    "bytes": 968,
+    "sha256": "001b06dc5ba4010d9c4a85f42e42d91a1e34b16276e4adeb97c68c3cfc901ed0"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_ink/01.png",
+    "bytes": 1710,
+    "sha256": "2bbffa50c8305ac51e1e8ad26e973d09b4b9e6cc41c719779df9fb40db959cc8"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_ink/01.png.import",
+    "bytes": 944,
+    "sha256": "71f9ee2c799cb40b5ea2479a9119029cc13909efcda7109e560dc8bf6006a4be"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_ink/02.png",
+    "bytes": 1708,
+    "sha256": "70e9c273d17be8c448f852ea71c1a3b4587e69a27e50b91d9b9adc9194ba898d"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_ink/02.png.import",
+    "bytes": 944,
+    "sha256": "cdb7397810882541fc42867eb7231ef1ffde3b3b75d54baa646350b9047809f8"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_ink_atlas.png",
+    "bytes": 2361,
+    "sha256": "2266b46a0f01646b57f7db59443065b95f51f5cc48cd37cf479dde039c1bfe2f"
+  },
+  {
+    "file": "Animations/jump_up_varita/tip_ink_atlas.png.import",
+    "bytes": 969,
+    "sha256": "3582c4f8400aba34372fa022ae5750e2f70a2bf5cf70d402cc4c254533dd042b"
+  },
+  {
+    "file": "Animations/land/body/01.png",
+    "bytes": 41706,
+    "sha256": "0464b1675217659aaef8a9066e4fa21120ef3e7f0fc83bc8d7058bc5463eb946"
+  },
+  {
+    "file": "Animations/land/body/01.png.import",
+    "bytes": 931,
+    "sha256": "45250b229c9458b15ec63402d2c960097bbbb0652aad84d3768d22366b27cf44"
+  },
+  {
+    "file": "Animations/land/body/02.png",
+    "bytes": 41103,
+    "sha256": "fbd3b1ba6e371d8b65e6da677c6bb6ed42ac1e8b9b4d9804738dd922d6f2dbe3"
+  },
+  {
+    "file": "Animations/land/body/02.png.import",
+    "bytes": 931,
+    "sha256": "e6eab87a167ba82ae5de0c28f89107ccf7c4f4fd2d45d39a785af00281b2bcb2"
+  },
+  {
+    "file": "Animations/land/body_atlas.png",
+    "bytes": 82428,
+    "sha256": "511447c301ff23d7d0e2747d83fa0ef9d0cf0f4186e23c1c8be2f5e357ee565a"
+  },
+  {
+    "file": "Animations/land/body_atlas.png.import",
+    "bytes": 950,
+    "sha256": "42c46cee9ea06c7cb110d893f1f185109dc61a7df3da6e833a0fc90dbadd8bf0"
+  },
+  {
+    "file": "Animations/land_varita/body/01.png",
+    "bytes": 41706,
+    "sha256": "0464b1675217659aaef8a9066e4fa21120ef3e7f0fc83bc8d7058bc5463eb946"
+  },
+  {
+    "file": "Animations/land_varita/body/01.png.import",
+    "bytes": 938,
+    "sha256": "08fac00c0d4615875572b1a10b37b5eb3672b710110d6e5498fd5b54d178a2f2"
+  },
+  {
+    "file": "Animations/land_varita/body/02.png",
+    "bytes": 41103,
+    "sha256": "fbd3b1ba6e371d8b65e6da677c6bb6ed42ac1e8b9b4d9804738dd922d6f2dbe3"
+  },
+  {
+    "file": "Animations/land_varita/body/02.png.import",
+    "bytes": 937,
+    "sha256": "03dfd5d03468902515e6a82808c6b9eb3a7b636a219a26fb7e6363585a94f418"
+  },
+  {
+    "file": "Animations/land_varita/body_atlas.png",
+    "bytes": 82428,
+    "sha256": "511447c301ff23d7d0e2747d83fa0ef9d0cf0f4186e23c1c8be2f5e357ee565a"
+  },
+  {
+    "file": "Animations/land_varita/body_atlas.png.import",
+    "bytes": 957,
+    "sha256": "b92be8d34b78c5880b1b4cd5534958b790f9768194ae3b6335fcc12a1e6d3065"
+  },
+  {
+    "file": "Animations/land_varita/brush_base/01.png",
+    "bytes": 6456,
+    "sha256": "a85c7dacf595a536e34c735c6475ac269a1d6138b55a2e18d9977acc53e16a69"
+  },
+  {
+    "file": "Animations/land_varita/brush_base/01.png.import",
+    "bytes": 944,
+    "sha256": "ec08f9188e6aa54cd91625716fef8743d388a3beeaad1aeb333cd41a653bc7d2"
+  },
+  {
+    "file": "Animations/land_varita/brush_base/02.png",
+    "bytes": 6464,
+    "sha256": "cf703bc47209727e1efb5daca9d9be1d50956c92f154cbc19eb955f380e81bf8"
+  },
+  {
+    "file": "Animations/land_varita/brush_base/02.png.import",
+    "bytes": 944,
+    "sha256": "a0a3c3402c449a8be10612d26f898bf8c81feefcfaab9ad4dce3b3ded485fa8b"
+  },
+  {
+    "file": "Animations/land_varita/brush_base_atlas.png",
+    "bytes": 8101,
+    "sha256": "02d121cad5fefdc1ac15347c3c2b9e057bd448e7f4848cac6dce2d6db81b0de6"
+  },
+  {
+    "file": "Animations/land_varita/brush_base_atlas.png.import",
+    "bytes": 975,
+    "sha256": "10447e05c53fdf1566f279aa16fa67f44e0ff64e57298f73d95bac56563781dc"
+  },
+  {
+    "file": "Animations/land_varita/tip_color/01.png",
+    "bytes": 1876,
+    "sha256": "888c047b4b7eb5052c976c31afe2d3006e285169b48a428ee2b9d369731a97df"
+  },
+  {
+    "file": "Animations/land_varita/tip_color/01.png.import",
+    "bytes": 943,
+    "sha256": "3cf9523476df272bdbdc5b10f4a95c2402dcf6051850997927b7236e81b1bd05"
+  },
+  {
+    "file": "Animations/land_varita/tip_color/02.png",
+    "bytes": 1876,
+    "sha256": "f9f459c3939d89488e48be23193db37a6fd447e4a048fbbb24d565ef929c033d"
+  },
+  {
+    "file": "Animations/land_varita/tip_color/02.png.import",
+    "bytes": 943,
+    "sha256": "56ea7c41197dbe7e6e611ba47924803154d94a17fda8b607427cc96e363afa18"
+  },
+  {
+    "file": "Animations/land_varita/tip_color_atlas.png",
+    "bytes": 2597,
+    "sha256": "a4bd2246c01e3dcf6fc593b492f5171bb2390aa2e1ec016b11111b35c6c9cca9"
+  },
+  {
+    "file": "Animations/land_varita/tip_color_atlas.png.import",
+    "bytes": 972,
+    "sha256": "35fe9aa531d1cc06d93737628bf919fbe88f8f65d0be4b20a9c1fc3ead6cc815"
+  },
+  {
+    "file": "Animations/land_varita/tip_dry/01.png",
+    "bytes": 1897,
+    "sha256": "d4f9799cd26c9fee9f511d7d6ccb11ce657b08633b5fcb693745abec36536b53"
+  },
+  {
+    "file": "Animations/land_varita/tip_dry/01.png.import",
+    "bytes": 941,
+    "sha256": "3461d1febb9c472a48ac511fd368a2b2dcaae82ec28d39710842b7f57af53cfb"
+  },
+  {
+    "file": "Animations/land_varita/tip_dry/02.png",
+    "bytes": 1895,
+    "sha256": "b658fd796e89a395f06d54a119b2e04625d294d8d3da2d0d1bb4ab4dbf9a0aac"
+  },
+  {
+    "file": "Animations/land_varita/tip_dry/02.png.import",
+    "bytes": 941,
+    "sha256": "c8335fb7c2b7eb708277fe3eb55e2f1820bdf5e6fcd4d5f94035c7e2bf829c37"
+  },
+  {
+    "file": "Animations/land_varita/tip_dry_atlas.png",
+    "bytes": 2558,
+    "sha256": "b05b5a9375f3043efb13e41c2495b5fa0c1527a27e59b58a6fde80353c137c61"
+  },
+  {
+    "file": "Animations/land_varita/tip_dry_atlas.png.import",
+    "bytes": 966,
+    "sha256": "d4116222d5c3e5e8cafeaf3793ca271f0593838412bb76566db323d4fefdee4b"
+  },
+  {
+    "file": "Animations/land_varita/tip_ink/01.png",
+    "bytes": 1710,
+    "sha256": "1e0e7c0560c8e961cf4ea3f60427d156c635750cfec0d727f463b38577975c07"
+  },
+  {
+    "file": "Animations/land_varita/tip_ink/01.png.import",
+    "bytes": 941,
+    "sha256": "83c3a6b8f25e6b9fd86812b480b37a12211fa327ab66cc0da3728c4e8d0d362b"
+  },
+  {
+    "file": "Animations/land_varita/tip_ink/02.png",
+    "bytes": 1710,
+    "sha256": "f0d1e596e48036d181988b8ec03bf9e81370ddad12d1ec5db33677aef5712234"
+  },
+  {
+    "file": "Animations/land_varita/tip_ink/02.png.import",
+    "bytes": 940,
+    "sha256": "379945600f53618f1f79f2f0ece6cd01defb6908308e3883b287aefc394dd9ed"
+  },
+  {
+    "file": "Animations/land_varita/tip_ink_atlas.png",
+    "bytes": 2461,
+    "sha256": "9a51912d59b2cb1155ab58e81912db411a7b82ec38a16e03b3b30702f20df46c"
+  },
+  {
+    "file": "Animations/land_varita/tip_ink_atlas.png.import",
+    "bytes": 966,
+    "sha256": "7cbc3fcb04171e663499474612b15523fa4bbba508d402514c311625449980fc"
+  },
+  {
+    "file": "Animations/paint_rise/body/01.png",
+    "bytes": 42491,
+    "sha256": "bed854dd118bbf37cf310ec46835f826528e084ebf01e5975f3ba8afca11688a"
+  },
+  {
+    "file": "Animations/paint_rise/body/01.png.import",
+    "bytes": 936,
+    "sha256": "74947f4fa2fbcb4d433f55fcc300d86a3266cf937dbc2f4f30ef1ef7b943410f"
+  },
+  {
+    "file": "Animations/paint_rise/body/02.png",
+    "bytes": 43976,
+    "sha256": "e1a9deffb72641577177ec174ac1b660d2513ae8cc237bed790fa4807deffb15"
+  },
+  {
+    "file": "Animations/paint_rise/body/02.png.import",
+    "bytes": 937,
+    "sha256": "956ac3b17aa03b532e54a7d3c1e718129d3120709284d224e1df3281fa7d4f84"
+  },
+  {
+    "file": "Animations/paint_rise/body/03.png",
+    "bytes": 42714,
+    "sha256": "e575f561fd763149e1b9aa1fbb26fefedbd7b601e4272c6cdee9f4d33d75a5d1"
+  },
+  {
+    "file": "Animations/paint_rise/body/03.png.import",
+    "bytes": 936,
+    "sha256": "f1fb39ae0823f52af65f4342b1ad359ec66662e0c21588013234d61392200dcf"
+  },
+  {
+    "file": "Animations/paint_rise/body/04.png",
+    "bytes": 42995,
+    "sha256": "3234ac31dfc08243256352c075a07126729698f40ee094f12383c1a950865623"
+  },
+  {
+    "file": "Animations/paint_rise/body/04.png.import",
+    "bytes": 937,
+    "sha256": "7b3ef9e3d83ed8a97ac99c4d4357065c0feda8c48b786b8daa506d74eb18b952"
+  },
+  {
+    "file": "Animations/paint_rise/body/05.png",
+    "bytes": 42384,
+    "sha256": "fa3513b6833a479c5c4ae0f1ac10050762a98a31ecba207074c0ea32e557d739"
+  },
+  {
+    "file": "Animations/paint_rise/body/05.png.import",
+    "bytes": 937,
+    "sha256": "88dc25f8278d950afd30b9703f739d27d139d3cb24f8e68b50ef4308d1625c56"
+  },
+  {
+    "file": "Animations/paint_rise/body/06.png",
+    "bytes": 42841,
+    "sha256": "c906b15dc47ffbe31a0edb37c06aef5f51d141f379617c1ab97c5e9bfa3c0d7b"
+  },
+  {
+    "file": "Animations/paint_rise/body/06.png.import",
+    "bytes": 935,
+    "sha256": "2103939eb2fc06b2bfb27e763674361e41005bb752d324bcd1cbd0310eaa7e21"
+  },
+  {
+    "file": "Animations/paint_rise/body/07.png",
+    "bytes": 42279,
+    "sha256": "4aa6b1b1e1ebb6104840022e1e0440f18c0947a0242dc7b77bee2467e5e29414"
+  },
+  {
+    "file": "Animations/paint_rise/body/07.png.import",
+    "bytes": 937,
+    "sha256": "b15ef4c06ab09710ea14760711c7b03c6b62b6b7168cd10bb123c2950e9b5600"
+  },
+  {
+    "file": "Animations/paint_rise/body/08.png",
+    "bytes": 42214,
+    "sha256": "bcac6eaacc8ad1877700a8631dd367e7a5f3a7c349b83c53c9d7c7f3e0469541"
+  },
+  {
+    "file": "Animations/paint_rise/body/08.png.import",
+    "bytes": 937,
+    "sha256": "a6981d49be58e4be23283b451252bc3ca07f58923a22c4731cd103f42d100cc8"
+  },
+  {
+    "file": "Animations/paint_rise/body_atlas.png",
+    "bytes": 332002,
+    "sha256": "2a323fe5657cc9fc99fcd44bded9140918646d5f7d8205e76fac22b2af20bf2c"
+  },
+  {
+    "file": "Animations/paint_rise/body_atlas.png.import",
+    "bytes": 956,
+    "sha256": "3412706b4d1d0ea70fccc4b2a3ff22cc820b825f3a7b68efd0f2a5c5f0613462"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/01.png",
+    "bytes": 6649,
+    "sha256": "66da15b5deea72c3dc8a47002b6c6cd7781652ce52d89f8a85a5811969038e92"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/01.png.import",
+    "bytes": 943,
+    "sha256": "0b5ef652f992b3190d5ceb4e12286c562fec42155ac5658575203b63c31944e1"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/02.png",
+    "bytes": 6535,
+    "sha256": "5b8af7fcdc3cb420837f4655a8e3a9687f10e066a51503e7e2449ceccded0658"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/02.png.import",
+    "bytes": 943,
+    "sha256": "5e500a683b7298d601ecfc0f6b0b996147300db94d62bfd3913b94cbf4403dda"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/03.png",
+    "bytes": 6492,
+    "sha256": "53a4eb34e0eff51462b160e5f1d47599bf49b64425a40f6dbe629a576e4751f6"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/03.png.import",
+    "bytes": 943,
+    "sha256": "d752197143afe83cd0be0815ed251ef9569c2b045585465dd2fab2f372f2093f"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/04.png",
+    "bytes": 6144,
+    "sha256": "95d00de91f2718fa24fc60f5f46adcdddac9b674a55e325b6643f70a2d32ea21"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/04.png.import",
+    "bytes": 943,
+    "sha256": "3f3c5130fa4ad5825bb76cad03b145c466846b636e121ebc048064e82fe2ed0d"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/05.png",
+    "bytes": 5739,
+    "sha256": "8756e9def01c0eedb3e34dd8f962ad84d8736bbbe02129e34b46c2095b443226"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/05.png.import",
+    "bytes": 943,
+    "sha256": "d86533707f72e0fbb1c448802477011cd29abbb45a5eb080dabc5e96cd80c1ed"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/06.png",
+    "bytes": 6762,
+    "sha256": "1cb4ab9e019e0022ac0db4046eebe372dbd6619ef2c3a31352485a3258374947"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/06.png.import",
+    "bytes": 941,
+    "sha256": "326c2ffcc4ebec79ab692aeb295b8a208b25d4dc9815a02a6537051e18692787"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/07.png",
+    "bytes": 6393,
+    "sha256": "020621d0dc5fca254451fa41b66c5b2db4be069fe588c3b183a3e83829b36d10"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/07.png.import",
+    "bytes": 943,
+    "sha256": "967ec6fba4dbad5956c1895072381616b3cea0ca5bfd97ecdfe80d49c9263500"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/08.png",
+    "bytes": 6421,
+    "sha256": "e74802df476ccdfedee33eed77bfdc9035de15a1273cbe451a7a466b3ff9a2f0"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base/08.png.import",
+    "bytes": 943,
+    "sha256": "310f4c26867b53a6874b0cca61a81e9e513704305b080ea83eb588404f5dad24"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base_atlas.png",
+    "bytes": 48451,
+    "sha256": "2aec24cd07b4231d641ceaef2eb978941513d1b03e4be0ed8870df7d2ed70eaf"
+  },
+  {
+    "file": "Animations/paint_rise/brush_base_atlas.png.import",
+    "bytes": 974,
+    "sha256": "3a2c4e9e588472bf00dd2a1b18b9233cbcfd98cb69ae29709eeac2addedd8cb0"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/01.png",
+    "bytes": 1983,
+    "sha256": "ade74bfd92a42281b1859a841cccdc0de5d8851d2b6d9a7c7920440d8bdd8e22"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/01.png.import",
+    "bytes": 941,
+    "sha256": "ccca928fae65382b73e4fb0e0b8f32115747a3f25ef76155af26550297a0f8a9"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/02.png",
+    "bytes": 1955,
+    "sha256": "5b954a466daf65c6c9a9e7f347cf0f5564996f2ea61ed275421a0c8a4c9afeae"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/02.png.import",
+    "bytes": 942,
+    "sha256": "72a49ba5449604e9404c221c2c78af514b8012be73598a8c8a6722bcd53c2691"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/03.png",
+    "bytes": 1975,
+    "sha256": "7091dc8017f9cdf0fe3aa1d3286ed87e0e1bbe7d41daa04e58df22cd23640ca8"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/03.png.import",
+    "bytes": 942,
+    "sha256": "f68da4ce0654c1514e16f821219dc24df26ca10b8fb5913d937ae700618e3e4b"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/04.png",
+    "bytes": 1915,
+    "sha256": "2c579c4588bab1135359d8f4a1b1dbd0c57748581901b01e5867cf90be744c93"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/04.png.import",
+    "bytes": 942,
+    "sha256": "42fe54e2363266db49c04615bde0624d89d3cfca20599eab859c27fbfa404fce"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/05.png",
+    "bytes": 1900,
+    "sha256": "fbe7090435c86f8e8a062d9e0bb6a244e0ca122352f85ebe103b7632e26dd174"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/05.png.import",
+    "bytes": 942,
+    "sha256": "d97beb39f7f33b8f4c396855edd769c54896d21cdd3469e3a2971036a29fd67f"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/06.png",
+    "bytes": 2024,
+    "sha256": "1118281938096ea63ec3a1389cb620455f3f4b3e9aca07ceece5f3962cbb602c"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/06.png.import",
+    "bytes": 942,
+    "sha256": "f117104d56691ee76569e28e567b1d74acd3fc6df2442e3e2afcf2e2e19e1465"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/07.png",
+    "bytes": 1887,
+    "sha256": "8383966591d293f564e9811efc27ea92d331f7dcadd5c7c72725b94d67ff198a"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/07.png.import",
+    "bytes": 941,
+    "sha256": "a22286457da11156dca2623661da397136bc0db87007577fcb167e7584e4ff88"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/08.png",
+    "bytes": 1894,
+    "sha256": "5b844111235b44c4f421e5aae3d029880dab4901a240b06282065df30146a844"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color/08.png.import",
+    "bytes": 942,
+    "sha256": "498e2c3cea9a0e55c17b4eec9b07e7f5de72ea69bc39bc99ba40ee9872d4e036"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color_atlas.png",
+    "bytes": 14494,
+    "sha256": "a180c31642702de8e3deb6e8dd4e0eabbd184c4237341c95088799d6819e4358"
+  },
+  {
+    "file": "Animations/paint_rise/tip_color_atlas.png.import",
+    "bytes": 971,
+    "sha256": "60936350f1408de62fb508d5077f85e837376a970edf73a4f3f66c6306547fed"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/01.png",
+    "bytes": 2010,
+    "sha256": "29f60fac0ec754588a6b2e0ee2e2e8a33f2f344c176f59940b423f589e90e405"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/01.png.import",
+    "bytes": 939,
+    "sha256": "8a6fad3c8bd170acaf1e5a2a5f7da717381d4ae4b3387b717f77afe83a1e0629"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/02.png",
+    "bytes": 1976,
+    "sha256": "403a29a9f198f0cfa33532992408c300eba0f4f8a5994a8d374b8e53d62c1030"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/02.png.import",
+    "bytes": 940,
+    "sha256": "c7a035862ceca28fcfe6cc3acd634c6a352e2b46d6f3f0972b4f8f08be9c2656"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/03.png",
+    "bytes": 1982,
+    "sha256": "7765e2696210e3c856cfc1836767311cefba0bb751cd092860e69092f87831a8"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/03.png.import",
+    "bytes": 940,
+    "sha256": "122389a764e8fb93e5f85df544dc9fb41adebb8005c86170425569b7f7bdbf27"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/04.png",
+    "bytes": 1930,
+    "sha256": "2d063d6daa29ddabd9bc4b537eaf696434544d5adc25ccc8ff4d5e8bf003b797"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/04.png.import",
+    "bytes": 940,
+    "sha256": "7b66fe616c5b8667ce3dd35a04fe6e18280862d684d1f80ee7c98ca27ea642cd"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/05.png",
+    "bytes": 1885,
+    "sha256": "5c9fd3f09709ff757947a725fec8d403e877ded390f642c8919bc50fa508469b"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/05.png.import",
+    "bytes": 940,
+    "sha256": "4b900d036e3065b0324a295a6b152f13578b2efed1ecc5dfff4860e70c540ff7"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/06.png",
+    "bytes": 2043,
+    "sha256": "04ff882af9af67912a11aefc00f363a5952eaab22af2e03598c88d1c308d5d93"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/06.png.import",
+    "bytes": 940,
+    "sha256": "68882c14aca30782c69a0522fbad69d988081bdc567fb1ba2ea8235d9a48395c"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/07.png",
+    "bytes": 1918,
+    "sha256": "e0a57b85947d596ca26e679ac3c764dec9a34d759740f748742b106c557cc85d"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/07.png.import",
+    "bytes": 940,
+    "sha256": "85816083f14c0eac588e94e9da2786e3860d23d90994b7012eb4bc5c10a6d2cb"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/08.png",
+    "bytes": 1945,
+    "sha256": "63fdb13e71fa9ad66213ea6ed74e2b23fb0943a4be2c8e4cc46c2df0de0146e8"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry/08.png.import",
+    "bytes": 940,
+    "sha256": "8eb2d694a3436221e60c040c9319041df65b604f429360aecf13ddb3816d5336"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry_atlas.png",
+    "bytes": 14614,
+    "sha256": "5f647bcf473841d1e3bc82c30ef589688d16d8ccc2c0ad2442b357659a6472a0"
+  },
+  {
+    "file": "Animations/paint_rise/tip_dry_atlas.png.import",
+    "bytes": 965,
+    "sha256": "3a622262b3e7e088d27c7960315b3a38bf6a1bb7eef628c66f67a0fb94e77770"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/01.png",
+    "bytes": 1830,
+    "sha256": "4520290d689f0a68dc7f6277a29116916fb06a82f9a26f17b71ea67d691d1321"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/01.png.import",
+    "bytes": 939,
+    "sha256": "f44840c40e06debdbc0f56317e4587a9d3663f3d1e4a2f9b5d1e81088d4e1150"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/02.png",
+    "bytes": 1811,
+    "sha256": "6bc120dee6bb9cdb267e95bf7b72556dcddeab4f0b990f3ab3530598a41d4e5d"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/02.png.import",
+    "bytes": 939,
+    "sha256": "ad85897fa1b7b303af4e3016b3ef31a0e22f79369d6e8b863dce966a15067485"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/03.png",
+    "bytes": 1817,
+    "sha256": "ceb6114acfe7f8746c3ce089c2a1451c74fd41a4477c2b4faa920151c7a1c396"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/03.png.import",
+    "bytes": 940,
+    "sha256": "cb9d1e03ed8b28c9f54472ca8d7b3b5482ec8200b011562991a77c4227b7fae6"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/04.png",
+    "bytes": 1758,
+    "sha256": "76158ca28dad435d894dbc0098d33a0505f90d210eb498e50fb1923f61630797"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/04.png.import",
+    "bytes": 940,
+    "sha256": "37fe868d8775b560d6b8fb60691d6adf5c52e9128cb80635f911b2473c02722c"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/05.png",
+    "bytes": 1722,
+    "sha256": "463a0a5d93245e7e2b981aa578fbb99fc0117847be01cf7b61f361f7f48d975e"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/05.png.import",
+    "bytes": 940,
+    "sha256": "6a86586fbb9b6669f3200be06d546542cab18d58a0b922cf81fb9a01dc9299e5"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/06.png",
+    "bytes": 1843,
+    "sha256": "a4f52282bfa069eddbf9b566c7ac28a65d0369013946cb83f1bf4c8a30ed65ef"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/06.png.import",
+    "bytes": 940,
+    "sha256": "8269ba0354fa4bc47b76679d179351860bc04fa1977d5995edbfeb10f3a4cd38"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/07.png",
+    "bytes": 1722,
+    "sha256": "e1af92d07e38f0bc3ece0d43beb513280c6397f04f4fd671b79ee4a9ba193cb1"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/07.png.import",
+    "bytes": 940,
+    "sha256": "40a86dae27b25d57bc98236ce75c93eab9c818bdc8a1568ac068cb45ae4968d8"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/08.png",
+    "bytes": 1755,
+    "sha256": "2295d140d3e64158e0fdc7d97d74e9ed1e3150f2123063834fad9bd225632939"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink/08.png.import",
+    "bytes": 940,
+    "sha256": "f710efcb6b4e749b50105cb73d4bec30d07c44e8fbd006041dd584b2b8c944db"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink_atlas.png",
+    "bytes": 13249,
+    "sha256": "a3e0a70382e9acaf9d206df59914471e37e3fae291850292bb371cacccdd4b55"
+  },
+  {
+    "file": "Animations/paint_rise/tip_ink_atlas.png.import",
+    "bytes": 965,
+    "sha256": "03ecb1f7d7f8480ebe8a90265a231c878c5baedb1c80c1fa31b42f87f24e46dc"
+  },
+  {
+    "file": "Animations/paint_slash/body/01.png",
+    "bytes": 42214,
+    "sha256": "bcac6eaacc8ad1877700a8631dd367e7a5f3a7c349b83c53c9d7c7f3e0469541"
+  },
+  {
+    "file": "Animations/paint_slash/body/01.png.import",
+    "bytes": 938,
+    "sha256": "1b3f3ea82dab3aa4b6bfaf853593354506c0aeacd4c38260b49f163c0838edbd"
+  },
+  {
+    "file": "Animations/paint_slash/body/02.png",
+    "bytes": 42279,
+    "sha256": "4aa6b1b1e1ebb6104840022e1e0440f18c0947a0242dc7b77bee2467e5e29414"
+  },
+  {
+    "file": "Animations/paint_slash/body/02.png.import",
+    "bytes": 938,
+    "sha256": "d800350a15337737b96572632134f23bed60ce59109aa3ad2c466d93489a6b98"
+  },
+  {
+    "file": "Animations/paint_slash/body/03.png",
+    "bytes": 42841,
+    "sha256": "c906b15dc47ffbe31a0edb37c06aef5f51d141f379617c1ab97c5e9bfa3c0d7b"
+  },
+  {
+    "file": "Animations/paint_slash/body/03.png.import",
+    "bytes": 938,
+    "sha256": "7238879a079aaaf8595befcf877b411695e61f7bf1b5e46290ba79e48760109f"
+  },
+  {
+    "file": "Animations/paint_slash/body/04.png",
+    "bytes": 42841,
+    "sha256": "c906b15dc47ffbe31a0edb37c06aef5f51d141f379617c1ab97c5e9bfa3c0d7b"
+  },
+  {
+    "file": "Animations/paint_slash/body/04.png.import",
+    "bytes": 938,
+    "sha256": "1213b4e7d69a312e72888e7178d1d02b211c2ff1d77ff4f8de47525262a2dd23"
+  },
+  {
+    "file": "Animations/paint_slash/body/05.png",
+    "bytes": 42384,
+    "sha256": "fa3513b6833a479c5c4ae0f1ac10050762a98a31ecba207074c0ea32e557d739"
+  },
+  {
+    "file": "Animations/paint_slash/body/05.png.import",
+    "bytes": 938,
+    "sha256": "8b002e2c6c5ec64ec0cbf5d62f8e8b6d0624dad5d8bff1956e67c9dde112a6e8"
+  },
+  {
+    "file": "Animations/paint_slash/body/06.png",
+    "bytes": 42995,
+    "sha256": "3234ac31dfc08243256352c075a07126729698f40ee094f12383c1a950865623"
+  },
+  {
+    "file": "Animations/paint_slash/body/06.png.import",
+    "bytes": 937,
+    "sha256": "07a38b76662a2159d3d055da0f4a6693b02fc3a5702853edb24befde5e72433a"
+  },
+  {
+    "file": "Animations/paint_slash/body/07.png",
+    "bytes": 42714,
+    "sha256": "e575f561fd763149e1b9aa1fbb26fefedbd7b601e4272c6cdee9f4d33d75a5d1"
+  },
+  {
+    "file": "Animations/paint_slash/body/07.png.import",
+    "bytes": 937,
+    "sha256": "5942b273e1261d7c4257fc5d4dc65d2d864744f6d0521641e6c107d4be5c0964"
+  },
+  {
+    "file": "Animations/paint_slash/body/08.png",
+    "bytes": 42491,
+    "sha256": "bed854dd118bbf37cf310ec46835f826528e084ebf01e5975f3ba8afca11688a"
+  },
+  {
+    "file": "Animations/paint_slash/body/08.png.import",
+    "bytes": 938,
+    "sha256": "115ba0bc74176d4630d63f710de7d9e68451d52238b1462d893066213b844cd5"
+  },
+  {
+    "file": "Animations/paint_slash/body_atlas.png",
+    "bytes": 291708,
+    "sha256": "742f27109e82f0df556eb8ea0cf715123852664273ad5b41323295ee67a189dc"
+  },
+  {
+    "file": "Animations/paint_slash/body_atlas.png.import",
+    "bytes": 957,
+    "sha256": "d790a081a7ca2b357053c3d51b849b5ed15667d32e0d8a3a6bfacbcda402dcb9"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/01.png",
+    "bytes": 6456,
+    "sha256": "d86a5c3313aebccad1f1b97588e0d6201818713390887f93ac891d2767e2c39a"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/01.png.import",
+    "bytes": 943,
+    "sha256": "5ee5b2df20a0759da87066a550671f66ea261ed5e38c4388a7137731ca208362"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/02.png",
+    "bytes": 5519,
+    "sha256": "47f92430fb7168dcf4579f8b9234d9d8dc47136140aabde7cf4ab5f231af767b"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/02.png.import",
+    "bytes": 943,
+    "sha256": "c0f0fe7198ce8e01e82c0fe8e5c1a1dd6674b4c5dd930aed09a861c5f5975727"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/03.png",
+    "bytes": 6675,
+    "sha256": "e30c2fe17b64ab849f03d6e0c31c40a3a2a9ef572005a9cffd45e5e932ae3027"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/03.png.import",
+    "bytes": 943,
+    "sha256": "78d9f07452d17e1e102004b93d61c33f1cc6f57d75499b828edc9a11fabf8b41"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/04.png",
+    "bytes": 6762,
+    "sha256": "1cb4ab9e019e0022ac0db4046eebe372dbd6619ef2c3a31352485a3258374947"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/04.png.import",
+    "bytes": 944,
+    "sha256": "27d770d7fe016da9c34c96e47c691d3a8895f9310f5f371574dfb984831deb70"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/05.png",
+    "bytes": 5739,
+    "sha256": "8756e9def01c0eedb3e34dd8f962ad84d8736bbbe02129e34b46c2095b443226"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/05.png.import",
+    "bytes": 944,
+    "sha256": "d1e6fbbebd38ccd78a1234581d4e1d1592a26cc6e00b3edfa05c7bf9b91236a8"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/06.png",
+    "bytes": 6144,
+    "sha256": "95d00de91f2718fa24fc60f5f46adcdddac9b674a55e325b6643f70a2d32ea21"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/06.png.import",
+    "bytes": 943,
+    "sha256": "35762e7879ac5b17a12b5ec87a6732c4c9a048230bba619ef88d057137779c53"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/07.png",
+    "bytes": 6395,
+    "sha256": "e5f4831306725c4e0c132e3040e431893197c1a7a62348325b46f20b28f9e04a"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/07.png.import",
+    "bytes": 944,
+    "sha256": "57c1969bea8440334ba2c5041178bc35cf13a28445cce299eedf412f55916e30"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/08.png",
+    "bytes": 6421,
+    "sha256": "e74802df476ccdfedee33eed77bfdc9035de15a1273cbe451a7a466b3ff9a2f0"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base/08.png.import",
+    "bytes": 943,
+    "sha256": "3279fa598d34eee6d039f39f3243694c3291eeca25bf93a2d010ed81fa569e69"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base_atlas.png",
+    "bytes": 47484,
+    "sha256": "1b1257f90642b016aa9252bee2f1f532d8f10cb067b0531fb0204eb8e5a24de8"
+  },
+  {
+    "file": "Animations/paint_slash/brush_base_atlas.png.import",
+    "bytes": 975,
+    "sha256": "2128979eb98d0d01c23bae1adba292550aee593a736caf944cf7e81b441a97a4"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/01.png",
+    "bytes": 1878,
+    "sha256": "e1564b466bb9c9eea1c20dbc2f56ca2f1d750f241333a2dda67f9dbbb203da0d"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/01.png.import",
+    "bytes": 943,
+    "sha256": "82839cb5fe76ddbfa7a4a66e005fe3bdd0481885173d5c9aadcebfdf5c7c685f"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/02.png",
+    "bytes": 1834,
+    "sha256": "77243bd019cfd8527df8ff827f57483326542d27f33c0ecf9fc8f581620eb197"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/02.png.import",
+    "bytes": 943,
+    "sha256": "9db0d1437bc8627cafa4a97121330ddcadf43093a3cd7c11d907c8a39012ff00"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/03.png",
+    "bytes": 1988,
+    "sha256": "8f987a2be2241d79dd812186fae190f7eeffdc51e673f68f55615521d68fbd50"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/03.png.import",
+    "bytes": 943,
+    "sha256": "5dce7220067f0df03564ac3de23cc5dafa9f018c2f3688bc0d3022543e06ad2b"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/04.png",
+    "bytes": 2024,
+    "sha256": "1118281938096ea63ec3a1389cb620455f3f4b3e9aca07ceece5f3962cbb602c"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/04.png.import",
+    "bytes": 943,
+    "sha256": "c1f71ed1380e4cc95cb82af7ccdd32255e7a1fe738ee15ab75d24f3cc0fb4f31"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/05.png",
+    "bytes": 1900,
+    "sha256": "fbe7090435c86f8e8a062d9e0bb6a244e0ca122352f85ebe103b7632e26dd174"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/05.png.import",
+    "bytes": 942,
+    "sha256": "2393a6064819fab2c4ec4f350ad033e0fefa9748acb73202f8060800ae9e38b3"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/06.png",
+    "bytes": 1915,
+    "sha256": "2c579c4588bab1135359d8f4a1b1dbd0c57748581901b01e5867cf90be744c93"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/06.png.import",
+    "bytes": 943,
+    "sha256": "eb7899a45a228bc9465e7762d73cdec53b82a3c3ae6e84bc1f65d6b52ea8dae1"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/07.png",
+    "bytes": 1886,
+    "sha256": "0af9d20ef2ff3a6b5b7faed7956bff9b617c741d45fcd1f01bc0b77b91ae0ab7"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/07.png.import",
+    "bytes": 942,
+    "sha256": "d0cf8ea276958159d5560fb020a4ba43a19b9ff2fd940dfa1ba7a3407c205c96"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/08.png",
+    "bytes": 1894,
+    "sha256": "5b844111235b44c4f421e5aae3d029880dab4901a240b06282065df30146a844"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color/08.png.import",
+    "bytes": 943,
+    "sha256": "aebd378eafa7adb81780ff9eed219eaaa6f3396b5d4ed10a56ba611178e09b81"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color_atlas.png",
+    "bytes": 14319,
+    "sha256": "9321479ec2890a4ca9d5009199eabc3ad1c860ce339cb7356fa025c250c2e2f0"
+  },
+  {
+    "file": "Animations/paint_slash/tip_color_atlas.png.import",
+    "bytes": 972,
+    "sha256": "a99be8098b85c6348c002d0dd9b6c483ab40ce2c49da49dde8a265745e663bfb"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/01.png",
+    "bytes": 1897,
+    "sha256": "58894c70a5784c48289cc9ee46fb914db739a7d33f3df5162586b64bcbb4e723"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/01.png.import",
+    "bytes": 941,
+    "sha256": "8b0790193f4aef25493de85ed02cff441b501632e8d5d3e76ea8a7e8a766cae3"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/02.png",
+    "bytes": 1837,
+    "sha256": "629177d1e014c36dee8317d764e3d58316c05ec710c2a12b608c7105d902d67c"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/02.png.import",
+    "bytes": 940,
+    "sha256": "df3ab50fbbf324df3633ac63df87b8c62e7e2c2a7dfdaf61c64258fa015a6307"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/03.png",
+    "bytes": 1994,
+    "sha256": "b2a59c16af4dd6e8cec222e8cb88fe9b589a3f675f5214c00ddfd5f67664779d"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/03.png.import",
+    "bytes": 940,
+    "sha256": "a8d7b481f1b5e78faf2f02a5e1772f314b10a1d431f7000245e12b931d86c336"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/04.png",
+    "bytes": 2043,
+    "sha256": "04ff882af9af67912a11aefc00f363a5952eaab22af2e03598c88d1c308d5d93"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/04.png.import",
+    "bytes": 941,
+    "sha256": "d017cb70f0221f73b3343d5bb1b9161003d85b8177a1089075337471ec6ef027"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/05.png",
+    "bytes": 1885,
+    "sha256": "5c9fd3f09709ff757947a725fec8d403e877ded390f642c8919bc50fa508469b"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/05.png.import",
+    "bytes": 940,
+    "sha256": "d0bfb2ec364cb84a0e0f05667cf343b1c62f544447e1f14ca0240aef92d4f30a"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/06.png",
+    "bytes": 1930,
+    "sha256": "2d063d6daa29ddabd9bc4b537eaf696434544d5adc25ccc8ff4d5e8bf003b797"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/06.png.import",
+    "bytes": 941,
+    "sha256": "1c63fb05ad5c56443b5f7a8f22decc8ccee4ae0b93735d4ef7390a4bed992ee8"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/07.png",
+    "bytes": 1917,
+    "sha256": "b6bc83423b64e00ace215c1ce61f6c0a7f0cdf104ff4e7201f36eb15a7c02b85"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/07.png.import",
+    "bytes": 940,
+    "sha256": "28530ae08a6ca22b66a2ab111da748bbeee693052a5473f0274c7a513bc038ff"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/08.png",
+    "bytes": 1945,
+    "sha256": "63fdb13e71fa9ad66213ea6ed74e2b23fb0943a4be2c8e4cc46c2df0de0146e8"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry/08.png.import",
+    "bytes": 941,
+    "sha256": "42383582fb752700ba68e6c588e740acd6b82bc9486b5ea8c73df65110155cac"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry_atlas.png",
+    "bytes": 14391,
+    "sha256": "8036e5e2fd470ab1a144d9e10b073e634d3a0b9179ff64c68ae0890c3cd6a35b"
+  },
+  {
+    "file": "Animations/paint_slash/tip_dry_atlas.png.import",
+    "bytes": 966,
+    "sha256": "f23b406213426cac39fd43dad8b85b3bd26911d9cfb3602999a6b391be3080ff"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/01.png",
+    "bytes": 1711,
+    "sha256": "d9cd64ea47963df313178a0db94c8822d0e6ed2beede2a97714b4b9ba9685c9e"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/01.png.import",
+    "bytes": 941,
+    "sha256": "8855c3df0a14d2a8bafd61c89ea224016b74a9955f6996c0d39349de6610e27b"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/02.png",
+    "bytes": 1716,
+    "sha256": "5b40f9d3d20a62d7ce09db366029bdd986d09e18ade052ff218e479317297cf0"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/02.png.import",
+    "bytes": 941,
+    "sha256": "e373e1ebfdd1d2bf490f32e1b686c2b44092de3d1a07ec0deb12aca91825401d"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/03.png",
+    "bytes": 1803,
+    "sha256": "1c3723fd6655c207dedd40ef9463040274c1926570e88166d747cedb95f80c41"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/03.png.import",
+    "bytes": 940,
+    "sha256": "40e93fae3c30e94fef8a2b98749b73ac1a837f4ecf37065c81940484a14a0acf"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/04.png",
+    "bytes": 1843,
+    "sha256": "a4f52282bfa069eddbf9b566c7ac28a65d0369013946cb83f1bf4c8a30ed65ef"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/04.png.import",
+    "bytes": 940,
+    "sha256": "30401c01f0b2bab9aa464a437cbb87c89a040f256831c5217bb620718661eba3"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/05.png",
+    "bytes": 1722,
+    "sha256": "463a0a5d93245e7e2b981aa578fbb99fc0117847be01cf7b61f361f7f48d975e"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/05.png.import",
+    "bytes": 941,
+    "sha256": "b68c3e187d79b4105996df5453a5e0c3495d7824a8a275dac31e356656abd447"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/06.png",
+    "bytes": 1758,
+    "sha256": "76158ca28dad435d894dbc0098d33a0505f90d210eb498e50fb1923f61630797"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/06.png.import",
+    "bytes": 941,
+    "sha256": "588ee67f3162a59e255b457f71ad0e4f4896f42737a15ee6330132274cf4d15e"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/07.png",
+    "bytes": 1721,
+    "sha256": "a856c6faff95f1bb9081eeefa2f359c6403c4a8742cb55ca80f4db58eb2d2c03"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/07.png.import",
+    "bytes": 941,
+    "sha256": "bf41cea40ae0a64fbc60e39c81582d1c4f7f4cbb78fc30f437dcd0d596dc9f3f"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/08.png",
+    "bytes": 1755,
+    "sha256": "2295d140d3e64158e0fdc7d97d74e9ed1e3150f2123063834fad9bd225632939"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink/08.png.import",
+    "bytes": 941,
+    "sha256": "769a4008106705f98fb20248b0ef8da98333a773dd8e43f6ca73fad4b440686a"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink_atlas.png",
+    "bytes": 13049,
+    "sha256": "f5e1c61aa77557731da9b82ac7c67ef35d0ee99d0399973968597d99a1cec227"
+  },
+  {
+    "file": "Animations/paint_slash/tip_ink_atlas.png.import",
+    "bytes": 966,
+    "sha256": "ce92234d59f8245bad76b5ce7da7841553b71afc5387ae78fc61225c7211196e"
+  },
+  {
+    "file": "Animations/paint_up/body/01.png",
+    "bytes": 40434,
+    "sha256": "59f161db7791c027ac69bdb5777decc3c09175732ddeedcc51a44858eef6fba3"
+  },
+  {
+    "file": "Animations/paint_up/body/01.png.import",
+    "bytes": 935,
+    "sha256": "aecb860f05c2ff4ccb9358fc222581c3f25b10e98f20fd29364fa5a139da2073"
+  },
+  {
+    "file": "Animations/paint_up/body/02.png",
+    "bytes": 40998,
+    "sha256": "c8c0049b30911700d0820fcc539c45acfbfde29cd42d203ecea2ffda522ea166"
+  },
+  {
+    "file": "Animations/paint_up/body/02.png.import",
+    "bytes": 935,
+    "sha256": "4d749597c77d02025ed7320b8ce03d133420dee2fabfc27c71c419073bb534f0"
+  },
+  {
+    "file": "Animations/paint_up/body/03.png",
+    "bytes": 41028,
+    "sha256": "229e90eb27d9b98cbc3678d54acf00d5810156b0cc37ba9531a8300fcaec1e0c"
+  },
+  {
+    "file": "Animations/paint_up/body/03.png.import",
+    "bytes": 935,
+    "sha256": "36610f49fb2135ed3d368fca601eb806f90e3a3005d6e078b5ac45f02effc0ee"
+  },
+  {
+    "file": "Animations/paint_up/body/04.png",
+    "bytes": 41942,
+    "sha256": "19b24fc1ff5fa5edae2c4451a6bcee148e4a45352993a349e3b291ec990bad83"
+  },
+  {
+    "file": "Animations/paint_up/body/04.png.import",
+    "bytes": 935,
+    "sha256": "c2e9db7d28c9644f8f51aa6e80d67f59d829ef352f6bf12daa8fc6125b392c54"
+  },
+  {
+    "file": "Animations/paint_up/body/05.png",
+    "bytes": 40805,
+    "sha256": "f612f34f8e10c2c80cbc5bea83f5faa115182600d03ba8305ad1e1da11d28de7"
+  },
+  {
+    "file": "Animations/paint_up/body/05.png.import",
+    "bytes": 935,
+    "sha256": "259cd6fb23fac221c74f1075f4f3d0e26cde2fabbd199ba30df5d5eac61ab5bc"
+  },
+  {
+    "file": "Animations/paint_up/body/06.png",
+    "bytes": 41114,
+    "sha256": "6e92e32a0fee37ffd1f8195299c94cb1fe83c0f20f8991333bb23c3349a1bde7"
+  },
+  {
+    "file": "Animations/paint_up/body/06.png.import",
+    "bytes": 935,
+    "sha256": "7cc74def30d4ff6b2d3d4d7c5e8c80a5b4e25bdd3fa84bceecdb1a5f8fabc484"
+  },
+  {
+    "file": "Animations/paint_up/body/07.png",
+    "bytes": 40342,
+    "sha256": "6b47ae30b6bc2404fbd0b8ac21529fd94868e3bafacf70e70a4a2fa8b042f77d"
+  },
+  {
+    "file": "Animations/paint_up/body/07.png.import",
+    "bytes": 935,
+    "sha256": "c78fca9e1fd525ce9a820c742c23645eadc30b51c4d2e3736720196022ec2141"
+  },
+  {
+    "file": "Animations/paint_up/body/08.png",
+    "bytes": 40308,
+    "sha256": "0201b676b6c066c2f08edecefaaefeca97d101d7d1e79368bbf1753c51484b52"
+  },
+  {
+    "file": "Animations/paint_up/body/08.png.import",
+    "bytes": 935,
+    "sha256": "6f18f02d641fea948a21866d57393f1711682215fae1393da77ee7c473ba0c38"
+  },
+  {
+    "file": "Animations/paint_up/body_atlas.png",
+    "bytes": 315636,
+    "sha256": "35752da58cacdd81aeabf0e8aee7d5dd508f50f42617e6492cbac9b57748a493"
+  },
+  {
+    "file": "Animations/paint_up/body_atlas.png.import",
+    "bytes": 954,
+    "sha256": "745258f5c46510a828cac3322d0fe1970e953b9517a4f68994960a906f226c02"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/01.png",
+    "bytes": 6441,
+    "sha256": "63c538f271a7360a8addd0f687945d1523d58e1bec99a5549d1c2d3187e924f7"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/01.png.import",
+    "bytes": 941,
+    "sha256": "b98261563886c17a6d6c98cea9bbf89b2949a33452c96cc7df24d0f0031ff1e1"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/02.png",
+    "bytes": 6653,
+    "sha256": "e7b4f2c539261151a97f59d67840c70b3a73d1e3bc31b2fc0f4a16be5375d440"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/02.png.import",
+    "bytes": 941,
+    "sha256": "c97470fbf18b87c12d0f9e3aeef7b46f07d290587a5088d38fa01a02a1095810"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/03.png",
+    "bytes": 6466,
+    "sha256": "6d962a57d8aa5b2cdc51a7dc47c3e031ca7f21a7cce138595e8ee4998626cb0a"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/03.png.import",
+    "bytes": 941,
+    "sha256": "d4db45b52ce0691d6cf05ed0b006a8b044f59bdcf2718699f61f309e57afd3fd"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/04.png",
+    "bytes": 6051,
+    "sha256": "80cd7fe4b30fdeea31f0adbf66881dbec3cca5aedad4f2e07eb6eac453b449ae"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/04.png.import",
+    "bytes": 940,
+    "sha256": "9f47f4015334a211858fd8e336a6886634b087e4c87a74d43586d4f221737643"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/05.png",
+    "bytes": 5222,
+    "sha256": "ae3adae992f23f65d8084b7d2b01311d42c55faf1115416cf18ec52436a21e63"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/05.png.import",
+    "bytes": 941,
+    "sha256": "cd181cae7ed9e3e571960fce743997816deeb03e5dbcb302672beff4acdd718f"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/06.png",
+    "bytes": 6494,
+    "sha256": "4193bac7eff5ae4cd0b961228e6832478ab21bcbf539a54134bd016797a9be87"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/06.png.import",
+    "bytes": 941,
+    "sha256": "29a33e203d33abe87db3491918c2239dcc8a0b6522daab46055a5eb189e43c46"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/07.png",
+    "bytes": 6391,
+    "sha256": "d52349b0469e4c704da726b406c01d4663949706694d943a44372517f2446fa9"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/07.png.import",
+    "bytes": 941,
+    "sha256": "0e4dc67031a0a2d046aa688ccfb3b996d5e3fecd0e62f13bdbd6df81f3148ce2"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/08.png",
+    "bytes": 6407,
+    "sha256": "4ba407b55b61f983ab6c5ade2adc4a991ec4ba6a0423f826db74d138d0e50c3a"
+  },
+  {
+    "file": "Animations/paint_up/brush_base/08.png.import",
+    "bytes": 940,
+    "sha256": "5d64c6bd55964b49a14cdeee195f1bc2674b127673045650478f541b23627c2e"
+  },
+  {
+    "file": "Animations/paint_up/brush_base_atlas.png",
+    "bytes": 48237,
+    "sha256": "34d48eb1bf8c1ea37591276e4c5a17a565985d12d42c3c901d428de8b0876e3b"
+  },
+  {
+    "file": "Animations/paint_up/brush_base_atlas.png.import",
+    "bytes": 971,
+    "sha256": "231f510ba668dd5ddf7280fcc1edcf4c539550d6a7384a6512e106a5c8c7939a"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/01.png",
+    "bytes": 1878,
+    "sha256": "5eebc58e126d1515fe2cb08a2b1efed343efcef27475dfe1eeba3ee7189abb08"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/01.png.import",
+    "bytes": 940,
+    "sha256": "ddedfb3f5295b28308c65505162200a55529dc9fa1b319bf3d0e88a595d2d66a"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/02.png",
+    "bytes": 1976,
+    "sha256": "0fd68be9e7be22e092235a0f7fa7f4b26286c34279c0d8b4348143dc5a9caadf"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/02.png.import",
+    "bytes": 940,
+    "sha256": "e8e69376f948356577c67b4c074aeca08a2cfdfd674e2712a5641bddd3b99aaf"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/03.png",
+    "bytes": 1955,
+    "sha256": "ef45a4e1fc7aebcf8d2c8dfaa081c26fb93222d301d61e21ebfd4fdf6eac9333"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/03.png.import",
+    "bytes": 940,
+    "sha256": "9e5676252f4c498e48796194f698f5e6a0884278562ad710657d5d2e4b245c23"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/04.png",
+    "bytes": 1905,
+    "sha256": "e7414a74f75f9c4b43c03d8726ac6e1ce3deb2c982e55b108813ebb94408b85c"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/04.png.import",
+    "bytes": 940,
+    "sha256": "217bcf721bf5418f0808043741499886dd68f95516af6988800a15374077a22c"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/05.png",
+    "bytes": 1837,
+    "sha256": "e83a93e3c481ac6009ada635c64b51b825a2ed8fa768068c6599c230f6e3b42d"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/05.png.import",
+    "bytes": 940,
+    "sha256": "c55b8649d65e94538783e257f4cd2b71510c3aa99574a544d52265205866a7f2"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/06.png",
+    "bytes": 1912,
+    "sha256": "20116aaaa82d0506b7f5e329d63d0b5a84db12f3b8200ebeb9dd76439ea2ef24"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/06.png.import",
+    "bytes": 940,
+    "sha256": "1262ad89e16cc4e4e139628c91709ed9ca437dd7cacab23cc839c4242b0b17ef"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/07.png",
+    "bytes": 1882,
+    "sha256": "05751ed2542a4141a42cbc3d66b93ae93b7fb78bdc7f18d7c0b0dde201b3da26"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/07.png.import",
+    "bytes": 940,
+    "sha256": "ba85e41350f8a4e1e712954234691ad98f21b6b91800aa0a6877b744678fd023"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/08.png",
+    "bytes": 1892,
+    "sha256": "7c7939549ac90cba50d9fcb85ad1d24c120e53de4322e26c832e63611e5ae317"
+  },
+  {
+    "file": "Animations/paint_up/tip_color/08.png.import",
+    "bytes": 940,
+    "sha256": "976e8f8ed43537447355e752e84fc4f71914ffaa1062dd7afed7b14913a2b7b3"
+  },
+  {
+    "file": "Animations/paint_up/tip_color_atlas.png",
+    "bytes": 14280,
+    "sha256": "7557e73a1b806adafc3c354db2e19dd5cd6fe0fd04e9056b55f9c26a072f3c29"
+  },
+  {
+    "file": "Animations/paint_up/tip_color_atlas.png.import",
+    "bytes": 969,
+    "sha256": "7e1683571d2b10788fc03db6c74c6493f7276367aac15b8e8c19c796bf7c8bc1"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/01.png",
+    "bytes": 1896,
+    "sha256": "c378904ef813efa149d868dfa0e0f081731b66290b798e20dabf67c94f199aef"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/01.png.import",
+    "bytes": 938,
+    "sha256": "d953235f8912b3d1e22247ce03de39c6927ed8be1c1cf302760ccb7b2968361e"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/02.png",
+    "bytes": 1998,
+    "sha256": "3412a43c057afa023ac224c054690425836ab294fdcfd19d6f88df734a9828a2"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/02.png.import",
+    "bytes": 938,
+    "sha256": "f20f67c7826cd114b999f4f519a74f26d5b822ce214a6171444e64f74dfe6cc5"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/03.png",
+    "bytes": 1957,
+    "sha256": "70323c913182877a6dd00bcefeb20cece33afce0381dd549c3f9377df2c660d3"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/03.png.import",
+    "bytes": 938,
+    "sha256": "0ddefeab2e52458d83b6147b96e78c8d29237bbd57662068c1137ad481a156d2"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/04.png",
+    "bytes": 1937,
+    "sha256": "d8c22dc7228512cf5bcd800c2a9d5b5f2b16e19ff68cb803aacf34c940110266"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/04.png.import",
+    "bytes": 937,
+    "sha256": "b5b9d880a3b260b2d518614552d8ad485a042ad522ce1e9bd5d19f9b003424c2"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/05.png",
+    "bytes": 1826,
+    "sha256": "afce6ad105ac3307f760af50a8cdbec05b363bc2432e31473d97d1f97f0f3b49"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/05.png.import",
+    "bytes": 938,
+    "sha256": "bb68fd4c46f7b10141630ca507a47707535f2e6378013abbb7ae33b6d44c5227"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/06.png",
+    "bytes": 1928,
+    "sha256": "87461850cac88289f364dca453e917418907d230ccf6f32366ab0cb1deccc2f9"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/06.png.import",
+    "bytes": 937,
+    "sha256": "6d8b9390f7f9d4081f136baef77ed590d64b129bd73044d5405a5475298bd8a8"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/07.png",
+    "bytes": 1929,
+    "sha256": "688c6194b5ed4896ae3b87e97b8730817b9b4c2810e0d637cfccaa2320f0d93d"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/07.png.import",
+    "bytes": 937,
+    "sha256": "973c03af6f58e01d5f396ee44294075afdbcd71fe96ba1367610491c6503ed43"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/08.png",
+    "bytes": 1943,
+    "sha256": "d5e61987c481975ce413b10af61a8254edb1402aed3fc9a66764644be905d6ef"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry/08.png.import",
+    "bytes": 937,
+    "sha256": "bcfed8b05b564944ceea21ea182d9042c73ebe103c6978284c50cbc62aa30c12"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry_atlas.png",
+    "bytes": 14372,
+    "sha256": "1c75013bc3399aef682708b1a51ecd8961e72b88dcc4aaffc89655cc2a1418e0"
+  },
+  {
+    "file": "Animations/paint_up/tip_dry_atlas.png.import",
+    "bytes": 963,
+    "sha256": "e0a51bc67968699f0c7b231e7e9b97ea0886be3ed0421911055b0aba039f7a5e"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/01.png",
+    "bytes": 1721,
+    "sha256": "b159071d59de81e39b884fbb802bdd56016a94d795dff6f1512447a1a4b42bc2"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/01.png.import",
+    "bytes": 938,
+    "sha256": "42ab78641a37ef2e7c44556a626861fbf7e172f3de1e1d59312fef8e98fb45da"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/02.png",
+    "bytes": 1802,
+    "sha256": "e6d64a130b1dd9cfa25fc98bf9444993d768503b20383c18c3e19ebf564b0d7e"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/02.png.import",
+    "bytes": 938,
+    "sha256": "1269608dc5ac596bd60da33dbf3d89dd893a14e683b58e3467b40e3f8b87e2ee"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/03.png",
+    "bytes": 1776,
+    "sha256": "e7dbb5efbce0fe0cb362087a8b7fc814e31ee3ee5068f29ed5937ef0f3eea7c4"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/03.png.import",
+    "bytes": 938,
+    "sha256": "7a5f618a37439a1740b9ff057217adddb2c975266dfd765115d64cdfa164196e"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/04.png",
+    "bytes": 1775,
+    "sha256": "76cb0c998bf19bf615e9225e052ab1a5a5919864eb3977e1ed0dfb6454970fd7"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/04.png.import",
+    "bytes": 938,
+    "sha256": "b228e659d413f87824fca98d5ee089aecb25d4e579a79947d7dc743dba3d6d56"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/05.png",
+    "bytes": 1643,
+    "sha256": "b4fb7ec26e39ee65bfe98bea6fbf37ade0c640510a26eecfdf049cac74e693df"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/05.png.import",
+    "bytes": 938,
+    "sha256": "6eec7965a41930efab01dbada2adc5f40631890228b5a57965f3f463ae957adc"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/06.png",
+    "bytes": 1746,
+    "sha256": "f809b57f2c6403af51791589c55af0c2e6e93141cb38160cc9a4adf88e2033f8"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/06.png.import",
+    "bytes": 938,
+    "sha256": "8479fcaaa5ad08e7f901e77f7aefdeb371314a158a711c0d5d4a4510d8602b3b"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/07.png",
+    "bytes": 1726,
+    "sha256": "fe8ea1e8cdc0f5daf12bce39ddca6d7d36309931f0fafc57771786d1d54cf8b5"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/07.png.import",
+    "bytes": 938,
+    "sha256": "6eb5585b9137588d495e6437ae1dc57a08120d5bae7b1485ceb0208f16007cf2"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/08.png",
+    "bytes": 1754,
+    "sha256": "b34bcaa3279922c742b7205a5d652844aa918b8b2dfbf67d1ff63b126609d244"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink/08.png.import",
+    "bytes": 937,
+    "sha256": "31001f961dbb76dafa03fa1a8653b99273b193f183886ca424de45f3d7d0017c"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink_atlas.png",
+    "bytes": 13009,
+    "sha256": "652cb204babb8a1f21c0a747defa4e4518f6af93064be863844db5373bcd27c6"
+  },
+  {
+    "file": "Animations/paint_up/tip_ink_atlas.png.import",
+    "bytes": 963,
+    "sha256": "96de4dfef990d788d334a195a7f1d91aedce4d97d36ffa2485f0a96b4d654c77"
+  },
+  {
+    "file": "Animations/run/body/01.png",
+    "bytes": 48809,
+    "sha256": "36d5469d2e1f22366a944cc6482ed3a348b7afd10230bd88ccec2b2cb1b05619"
+  },
+  {
+    "file": "Animations/run/body/01.png.import",
+    "bytes": 930,
+    "sha256": "caf3f9a5eecc63e7e31b89c63186d81725d5292007a8a618c9e9f68c4045e3ff"
+  },
+  {
+    "file": "Animations/run/body/02.png",
+    "bytes": 46182,
+    "sha256": "b1dadec73ca550174bde0afc86e2465fd6b32d0862174e97743c4c7c699b6f3e"
+  },
+  {
+    "file": "Animations/run/body/02.png.import",
+    "bytes": 930,
+    "sha256": "d2454b5b3c0560e501edba7b50d56f503374ecec33a2eb93167d01dfc9f0c7d8"
+  },
+  {
+    "file": "Animations/run/body/03.png",
+    "bytes": 46163,
+    "sha256": "01e0fb9c77f34f6e02c9cb54cd1175b6f0b94f4dded6501e62aad8c0b4e3e4ba"
+  },
+  {
+    "file": "Animations/run/body/03.png.import",
+    "bytes": 930,
+    "sha256": "fcf64f9cff6bc51a0f8bea9eb53576f8254724add5421f222c31cebbf2c90cb6"
+  },
+  {
+    "file": "Animations/run/body/04.png",
+    "bytes": 50333,
+    "sha256": "8c613781dbdf04e2ed237329a7841f898a7319f1f65c344c9343cf2195119507"
+  },
+  {
+    "file": "Animations/run/body/04.png.import",
+    "bytes": 929,
+    "sha256": "560a378310da67e911d1ab788a9b61d89cfd801edc9608f35446432cf03877d8"
+  },
+  {
+    "file": "Animations/run/body/05.png",
+    "bytes": 49396,
+    "sha256": "9619aa794f0e3a202ef919d562f5e39c6b92dcfe90357231a600d94897c64adc"
+  },
+  {
+    "file": "Animations/run/body/05.png.import",
+    "bytes": 930,
+    "sha256": "c14077e3afe06df19d309e006237232072c71cb178595b954a4cec0819105958"
+  },
+  {
+    "file": "Animations/run/body/06.png",
+    "bytes": 46941,
+    "sha256": "2db7d625f1e4f91a6e1deb691539ca603badeccaf89983223ef6cd055883e54d"
+  },
+  {
+    "file": "Animations/run/body/06.png.import",
+    "bytes": 929,
+    "sha256": "fd0fe620b793dec82d23142211d47db3caa6001a937d8be41585044eb8641c98"
+  },
+  {
+    "file": "Animations/run/body/07.png",
+    "bytes": 46154,
+    "sha256": "b1611f6d743a1bb19ac8ff85d98ac18e32f084e34413b863fb47d433e75490db"
+  },
+  {
+    "file": "Animations/run/body/07.png.import",
+    "bytes": 929,
+    "sha256": "9e593a1262620f705d4b145bbdb16495232d1e70acfbb1e7b06dbbeaecd49918"
+  },
+  {
+    "file": "Animations/run/body/08.png",
+    "bytes": 51221,
+    "sha256": "53e5a2836b19f7cdc4817a9f025e4880510f0f8593686d85e89ecd83f2e1c65a"
+  },
+  {
+    "file": "Animations/run/body/08.png.import",
+    "bytes": 930,
+    "sha256": "b92d633025d80a733196b1b05b0ff3eca1751978cd17255faf9d286e13b34b05"
+  },
+  {
+    "file": "Animations/run/body_atlas.png",
+    "bytes": 375955,
+    "sha256": "bb599b2aa92869bf509c27d211b7d18d628ffa0038b62f79fd702e9b094f069a"
+  },
+  {
+    "file": "Animations/run/body_atlas.png.import",
+    "bytes": 948,
+    "sha256": "40be041ccdd6b7f82a3bb753c8fd181b759dbbe3b50b1f0682f25e5e69b9ce59"
+  },
+  {
+    "file": "Animations/run_varita/body/01.png",
+    "bytes": 48809,
+    "sha256": "36d5469d2e1f22366a944cc6482ed3a348b7afd10230bd88ccec2b2cb1b05619"
+  },
+  {
+    "file": "Animations/run_varita/body/01.png.import",
+    "bytes": 936,
+    "sha256": "469c6133f17cfc8e54ec81154eb01cb6027c8afbe61e84a17371e5c820a0c2e3"
+  },
+  {
+    "file": "Animations/run_varita/body/02.png",
+    "bytes": 46182,
+    "sha256": "b1dadec73ca550174bde0afc86e2465fd6b32d0862174e97743c4c7c699b6f3e"
+  },
+  {
+    "file": "Animations/run_varita/body/02.png.import",
+    "bytes": 937,
+    "sha256": "c20db19385b1279da7c5655fc0147d565dfd27ed57674c62f928ea3a96c0e6f0"
+  },
+  {
+    "file": "Animations/run_varita/body/03.png",
+    "bytes": 46163,
+    "sha256": "01e0fb9c77f34f6e02c9cb54cd1175b6f0b94f4dded6501e62aad8c0b4e3e4ba"
+  },
+  {
+    "file": "Animations/run_varita/body/03.png.import",
+    "bytes": 936,
+    "sha256": "210f2e18c764b7627b3aca97840d8a233ca457d3b091f071f8b60cd3a0ff61a0"
+  },
+  {
+    "file": "Animations/run_varita/body/04.png",
+    "bytes": 50333,
+    "sha256": "8c613781dbdf04e2ed237329a7841f898a7319f1f65c344c9343cf2195119507"
+  },
+  {
+    "file": "Animations/run_varita/body/04.png.import",
+    "bytes": 937,
+    "sha256": "a78ce4c101e2374cc3ebcab81c96e5704611130b63a47f7f4bb51b9dc51de967"
+  },
+  {
+    "file": "Animations/run_varita/body/05.png",
+    "bytes": 49396,
+    "sha256": "9619aa794f0e3a202ef919d562f5e39c6b92dcfe90357231a600d94897c64adc"
+  },
+  {
+    "file": "Animations/run_varita/body/05.png.import",
+    "bytes": 937,
+    "sha256": "b12663a2df9356b46c9c0a4557adba3146b7c3be0f52836f5259f2ee142552b1"
+  },
+  {
+    "file": "Animations/run_varita/body/06.png",
+    "bytes": 46941,
+    "sha256": "2db7d625f1e4f91a6e1deb691539ca603badeccaf89983223ef6cd055883e54d"
+  },
+  {
+    "file": "Animations/run_varita/body/06.png.import",
+    "bytes": 936,
+    "sha256": "f4e364765d82a1de48c47562629e5319d32e69764ecb115108cdb12564c4eb21"
+  },
+  {
+    "file": "Animations/run_varita/body/07.png",
+    "bytes": 46154,
+    "sha256": "b1611f6d743a1bb19ac8ff85d98ac18e32f084e34413b863fb47d433e75490db"
+  },
+  {
+    "file": "Animations/run_varita/body/07.png.import",
+    "bytes": 937,
+    "sha256": "9cb0e4a35dd60608a3c1aed0c450742c21164ec1c06ecfde186792d5bb697857"
+  },
+  {
+    "file": "Animations/run_varita/body/08.png",
+    "bytes": 51221,
+    "sha256": "53e5a2836b19f7cdc4817a9f025e4880510f0f8593686d85e89ecd83f2e1c65a"
+  },
+  {
+    "file": "Animations/run_varita/body/08.png.import",
+    "bytes": 937,
+    "sha256": "9255e1a706feb313513c58c72c1c2be3f0463d293b8e21286d7cc774ace8461a"
+  },
+  {
+    "file": "Animations/run_varita/body_atlas.png",
+    "bytes": 375955,
+    "sha256": "bb599b2aa92869bf509c27d211b7d18d628ffa0038b62f79fd702e9b094f069a"
+  },
+  {
+    "file": "Animations/run_varita/body_atlas.png.import",
+    "bytes": 956,
+    "sha256": "38dcdb9acd01038a16bc567a8739cc216ebad9f9d4e503be0aa0dc0815df6362"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/01.png",
+    "bytes": 6465,
+    "sha256": "1738a911b311d4938e692fe12bee290ae0630fdd55881663d8b47fbe96a025ec"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/01.png.import",
+    "bytes": 943,
+    "sha256": "ca62d873238bdcbd70b31af5dad04ebfcae54cb89e4f202b7cbbc2802cabaaf8"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/02.png",
+    "bytes": 6433,
+    "sha256": "6a55a0622408fe9e035889f8cca7b776731e3f2712d1327ba79c3937e72306d8"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/02.png.import",
+    "bytes": 943,
+    "sha256": "dd008fc8f848c55e5367150eeef6ecad8872fdf4b00c3e0d86fd9edf875164fb"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/03.png",
+    "bytes": 6458,
+    "sha256": "260e864c9ce44b2529f07e67421beb8a98985863785c0d458f93d95677e84fe0"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/03.png.import",
+    "bytes": 943,
+    "sha256": "e4965be20178fd1a4b3e856cb87179bf28a7f7e486d3547ca62fb54001c2aead"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/04.png",
+    "bytes": 6434,
+    "sha256": "12baeb8bf152311f6c25b08613a6024df6394a8d0ab83d9dcd6491d6103f4a05"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/04.png.import",
+    "bytes": 942,
+    "sha256": "1a41d2e4ad682fb6579a90edad7acec44ca45751f3d563975a48070723d9987a"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/05.png",
+    "bytes": 6465,
+    "sha256": "1738a911b311d4938e692fe12bee290ae0630fdd55881663d8b47fbe96a025ec"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/05.png.import",
+    "bytes": 943,
+    "sha256": "e103976e6a6d73f82dfa9960f2c5e3227092947cd2218455b1db2bbb569bbbe4"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/06.png",
+    "bytes": 6415,
+    "sha256": "0c1ebb25ef7d3fb76b1e1418e4b49060e4ce31da4b64d2a1e9483c9042c9b0ae"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/06.png.import",
+    "bytes": 943,
+    "sha256": "9b62758a92e82746f4909d77aae7f5e1b7c34f50dd1eb3f3806b4fe571a03b81"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/07.png",
+    "bytes": 6404,
+    "sha256": "65ac9f93e4202a135455f386704137891fd3d0510e5ae5c871e0a11b46df65e7"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/07.png.import",
+    "bytes": 942,
+    "sha256": "049f3be684dfc0d11c32996ad70ab7839a70d729e160252a2a138217e61c5dde"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/08.png",
+    "bytes": 6384,
+    "sha256": "9270511237265e6e686359259d04ed8bf112a39da29b7920b88acb8e12b1b7cc"
+  },
+  {
+    "file": "Animations/run_varita/brush_base/08.png.import",
+    "bytes": 943,
+    "sha256": "04803768cb7ddbac53d56aa3ac7367dbc57761fc3a889ec763c90d3a40ef7921"
+  },
+  {
+    "file": "Animations/run_varita/brush_base_atlas.png",
+    "bytes": 41828,
+    "sha256": "df917ff06ed3283cc4414da0471a9531e8c248cf310b0f42a55f31b830cc5d64"
+  },
+  {
+    "file": "Animations/run_varita/brush_base_atlas.png.import",
+    "bytes": 974,
+    "sha256": "d1409862921ddd9de857653cea33728c8e3b5defb4bc54bfedc296c6325a4a60"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/01.png",
+    "bytes": 1879,
+    "sha256": "5083da2df01dac125d656ec0367b80dae8301533b4cafcbd90100d1a5488fd88"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/01.png.import",
+    "bytes": 942,
+    "sha256": "6893af672cf2f78a1b3f149ba8308919bd331a305e464bd8443e6bb5fd562f3d"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/02.png",
+    "bytes": 1885,
+    "sha256": "a74420050fcd54dbd862595a70989ffdb47b30c46ee33740beb7bca9f659c94e"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/02.png.import",
+    "bytes": 942,
+    "sha256": "dbb9b1b3464bf5a23c38f760450aa41c16a2aacca49b78543b1486dc0eeb0a36"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/03.png",
+    "bytes": 1886,
+    "sha256": "58c9dfc88075adfb981c3fec4a61a4c36d694484f3164779984f87fea3df431c"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/03.png.import",
+    "bytes": 942,
+    "sha256": "403ee51cbf052e8ac8fefe1bbfc2d3d10f91dea9de399ba3524350c59824039b"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/04.png",
+    "bytes": 1886,
+    "sha256": "516cc45e3bb5d1319d255aab5251399f2003a860329a4e71629539cd62b8f344"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/04.png.import",
+    "bytes": 941,
+    "sha256": "023b88a8c9115bdd1d4196e86452fec14151f277b7225cc04e371e14d68d278f"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/05.png",
+    "bytes": 1879,
+    "sha256": "5083da2df01dac125d656ec0367b80dae8301533b4cafcbd90100d1a5488fd88"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/05.png.import",
+    "bytes": 941,
+    "sha256": "ff8dcca0a89cf67af7f33ea1ff6c5c2e224246552a1a1bf176a8c907db6f75e3"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/06.png",
+    "bytes": 1890,
+    "sha256": "de44250235c195cf64f54a37385b819093163485fbb07dd50cfa46c805425f46"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/06.png.import",
+    "bytes": 942,
+    "sha256": "6d97f6e381169c316b7507080efe1dbaa403ce08f43f815d7f30bcd17109b05e"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/07.png",
+    "bytes": 1884,
+    "sha256": "e3639c28981b586a2ae90476629f536d522d609cea9df4edc40d08c25cd0e27f"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/07.png.import",
+    "bytes": 942,
+    "sha256": "92ae0b98c7fb9714927dd772653399c4bbeaf79513d6331ba13fdc8b06ebd655"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/08.png",
+    "bytes": 1887,
+    "sha256": "fa1ff57cee0f0627f65dfda1545fde66bab0eb060c7f4dd07d0e74a2947d9d96"
+  },
+  {
+    "file": "Animations/run_varita/tip_color/08.png.import",
+    "bytes": 941,
+    "sha256": "8d1bb246c88348db280cb78b58accc1ef9eec3709f424c7d96dde9f0856bf8d7"
+  },
+  {
+    "file": "Animations/run_varita/tip_color_atlas.png",
+    "bytes": 12506,
+    "sha256": "cafac0d698cd06fa2827d575b587a0e87fb372cb779de142237e88d5b91f3cdd"
+  },
+  {
+    "file": "Animations/run_varita/tip_color_atlas.png.import",
+    "bytes": 971,
+    "sha256": "2a2ed8a15e47b99f3815f8fdc829711756598e54fa125979cc249fb8bb06ab33"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/01.png",
+    "bytes": 1898,
+    "sha256": "6c02108ffc9bdcf7e408c92be4c4f01fb23cbb7ac95fdde30759feaf00334334"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/01.png.import",
+    "bytes": 940,
+    "sha256": "1102a1c53ca949199bbd4672bbb96c5bd69170f4a052dc2a20e2aad58d57cbb1"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/02.png",
+    "bytes": 1893,
+    "sha256": "f4d110ddda09019c8e0723d94795bd1e8d3eb620c9722b95ab8f9b304bf45fd1"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/02.png.import",
+    "bytes": 940,
+    "sha256": "e351e71192410da6bec4a5048a0564d6552b09d8dd53feddc649f0f23886d787"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/03.png",
+    "bytes": 1893,
+    "sha256": "b619016fc186fa9e28a1cd24c48c106def6b5e1cf1ce4dd99c57a93f9678e321"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/03.png.import",
+    "bytes": 940,
+    "sha256": "d46948a927d2ce5fa5121f3b103abd9ad76de3611e906af8c49cb6ccf8799aaf"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/04.png",
+    "bytes": 1897,
+    "sha256": "1546d61fb4ff4fac4360cfdaede75fb5a8bb674e84c34e8644e9336fd6a64c30"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/04.png.import",
+    "bytes": 939,
+    "sha256": "917fdc842376c301087f69b95ab0c4a8e2dcc193721540a479845556d63024e6"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/05.png",
+    "bytes": 1898,
+    "sha256": "6c02108ffc9bdcf7e408c92be4c4f01fb23cbb7ac95fdde30759feaf00334334"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/05.png.import",
+    "bytes": 940,
+    "sha256": "474cc4efcad8e762b94727b27aff41468957ba45b6dce4a7d8c0b5c945880944"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/06.png",
+    "bytes": 1947,
+    "sha256": "7d3f7e74e3cd591fe4b687c5d8f7908e374333296a109756e2868e6a63029bbf"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/06.png.import",
+    "bytes": 940,
+    "sha256": "4655de64df41069128ade979151919bac87c8dbeb3495382e97b7303c94fe70b"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/07.png",
+    "bytes": 1918,
+    "sha256": "86effe307b41bef595f597cae969dc7b91411c644d9768cc66d48da8faf7b8d9"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/07.png.import",
+    "bytes": 939,
+    "sha256": "f55415f7a25533d089b49183b069cefa9d358d02c4f19e94e0ec42aefdd2fab8"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/08.png",
+    "bytes": 1906,
+    "sha256": "7ee5b1acc10f8b7a1cb6c9bb3d47c3efa0af61d5fe6aa2e1bc55e63bb7026efd"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry/08.png.import",
+    "bytes": 940,
+    "sha256": "acece5e578b7e7fd536eee7c495dd26356e729c4fefc2f1cafc03f4351860286"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry_atlas.png",
+    "bytes": 12547,
+    "sha256": "7f64d0b0d98d153e0046d3b90bdccb0c7e69f1520d896921794b830753c2d832"
+  },
+  {
+    "file": "Animations/run_varita/tip_dry_atlas.png.import",
+    "bytes": 965,
+    "sha256": "97e3b6b2c6069c61f7229ae721d67402ba959d6dd0b9efda975be42ce4e52ff8"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/01.png",
+    "bytes": 1714,
+    "sha256": "d597ec5b54b22dc50a74b5ab9ba0332cb8828532819e39352a4e4a859d772f73"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/01.png.import",
+    "bytes": 940,
+    "sha256": "f6ac711859e49d0bb63ee08edde7a739b3fc563b46bc6989f3ed76453a8790e8"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/02.png",
+    "bytes": 1714,
+    "sha256": "5d03b50b8fc384fcd5826e635eb6a75922a8c5bab32cd49fe81335427f4a7ee5"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/02.png.import",
+    "bytes": 940,
+    "sha256": "973dff5d517fbdf228ced7e106b84a4098f7fbeb11b9e6572453aa8587cf8d9d"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/03.png",
+    "bytes": 1719,
+    "sha256": "0a669e5caaaec6ce8fb766d741e61d92f0f538476715a156781744ba01fe29d2"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/03.png.import",
+    "bytes": 940,
+    "sha256": "a0e2126f2e1deb434a7362a83283280711698f73e22dd5fe69ac5d1d513bea6f"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/04.png",
+    "bytes": 1718,
+    "sha256": "afdaee86cd7a707fca3949f1ef8bdee9197da1d8e4ef0ad4e51e30d030f25aa6"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/04.png.import",
+    "bytes": 940,
+    "sha256": "fabf166d9da8e6fdcafc451871304fd89d419ab6166f9489beebc038b1471ab5"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/05.png",
+    "bytes": 1714,
+    "sha256": "d597ec5b54b22dc50a74b5ab9ba0332cb8828532819e39352a4e4a859d772f73"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/05.png.import",
+    "bytes": 939,
+    "sha256": "f369cf61198ae029b3dcdb54c3abfe45fc1948af161009def92bf37ca6a98ce7"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/06.png",
+    "bytes": 1755,
+    "sha256": "88a0d08846aca13eaf7456cec0fe7af4b642593495f6da0b974980eff1210aae"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/06.png.import",
+    "bytes": 940,
+    "sha256": "4913590029d42c3d2231c01ab4dba0afe63ecb049d7a4ea1d84975f43115b666"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/07.png",
+    "bytes": 1724,
+    "sha256": "175733829accf8e3cbf60e5b1f398a0c4f3e59a773e46dced441be60060858fd"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/07.png.import",
+    "bytes": 939,
+    "sha256": "6111f9a449a0c8397baf5bc343a02d40c7ffca3114f7b03368b4ef1ce3fadce6"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/08.png",
+    "bytes": 1726,
+    "sha256": "d8f4982f64d742c508358ec57693861146ca6e1e18b158b70c3d29e323f7413b"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink/08.png.import",
+    "bytes": 939,
+    "sha256": "c070f60401cd1dc28d453049ea0bb0fb1e13337aec529ce35d240dd6f3245c83"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink_atlas.png",
+    "bytes": 11402,
+    "sha256": "77626a2ca5723013c43801833f13f072c8790f035dfd946bb26c7c6b76922d2c"
+  },
+  {
+    "file": "Animations/run_varita/tip_ink_atlas.png.import",
+    "bytes": 964,
+    "sha256": "8a0a283892ae27e802a801f041e4094fb82d9a02fff6d4b24a08985fe3454805"
+  },
+  {
+    "file": "Animations/walk/body/01.png",
+    "bytes": 44891,
+    "sha256": "0b2c6425ca9c041ffce4850189d07459091467fa768031c8ae8ebd61ad4704f0"
+  },
+  {
+    "file": "Animations/walk/body/01.png.import",
+    "bytes": 930,
+    "sha256": "bb4ea10ce15a5ccea463948fd2a60b45102a9a0bde74e2e1216db444c73a5238"
+  },
+  {
+    "file": "Animations/walk/body/02.png",
+    "bytes": 44801,
+    "sha256": "754abb9e132bbc789a793cc79a1b74e0d00fe214a4a28d715aef9fd9546298a2"
+  },
+  {
+    "file": "Animations/walk/body/02.png.import",
+    "bytes": 931,
+    "sha256": "252e70bd778e5f8a72e5f33c8d64f0c80e5dc5ef2fff325f450ea653aa6ae9d2"
+  },
+  {
+    "file": "Animations/walk/body/03.png",
+    "bytes": 42843,
+    "sha256": "a4dbdb4c84d7eeefbb111653bf57a95c8d6d5baa70052441f03bbc186ce7bd17"
+  },
+  {
+    "file": "Animations/walk/body/03.png.import",
+    "bytes": 931,
+    "sha256": "0fcb6868a29306fc54a36043d8af94ffc373630baffe5a8982fad5f9056d86f2"
+  },
+  {
+    "file": "Animations/walk/body/04.png",
+    "bytes": 41535,
+    "sha256": "def6f9bef97a40f1dbd3897f91df75dc48b8bce61813835156ca5a088939233a"
+  },
+  {
+    "file": "Animations/walk/body/04.png.import",
+    "bytes": 931,
+    "sha256": "bb1d084bb7fdf026a2c924422c9da820bdc61ba02cc18d0ac72045f77e98e8f4"
+  },
+  {
+    "file": "Animations/walk/body/05.png",
+    "bytes": 44596,
+    "sha256": "64db2e12e1f92d70bf93bea27eb854fbaae273baac3246f63ffec8fa9b4d0303"
+  },
+  {
+    "file": "Animations/walk/body/05.png.import",
+    "bytes": 931,
+    "sha256": "bef1be99337ac6dd4d35387c9503f577d75d62767c5edaf2cdc7538947a8f653"
+  },
+  {
+    "file": "Animations/walk/body/06.png",
+    "bytes": 45693,
+    "sha256": "62a7fc252d828cdb1083081100faecb8a2e3729b74e56d545454c8438013c8da"
+  },
+  {
+    "file": "Animations/walk/body/06.png.import",
+    "bytes": 930,
+    "sha256": "ed9389cd1771649d2dd30da90963e09135828d5b4292c202cbf79382d902c664"
+  },
+  {
+    "file": "Animations/walk/body/07.png",
+    "bytes": 45806,
+    "sha256": "2ed29f41904102abfe1df7ddd8f22e6135fe5a6b67f3d9c8ee40a1cb656aba2c"
+  },
+  {
+    "file": "Animations/walk/body/07.png.import",
+    "bytes": 931,
+    "sha256": "b907d7fb29b6267db27d712d531d555147566f08e16d5282f68b6556d4511ee2"
+  },
+  {
+    "file": "Animations/walk/body/08.png",
+    "bytes": 44915,
+    "sha256": "e7838ee3a3f682d266284e40ce48cb8845ef04ea3c0b2954122e838955c542a6"
+  },
+  {
+    "file": "Animations/walk/body/08.png.import",
+    "bytes": 931,
+    "sha256": "99a832b91ce39025c0f1ed48b0853c102941811ea4148a5e9771883c9aa0d4de"
+  },
+  {
+    "file": "Animations/walk/body/09.png",
+    "bytes": 43148,
+    "sha256": "811926e97fed6075575c8910d5f774774143affb3fffd64ef3cb4608720b7095"
+  },
+  {
+    "file": "Animations/walk/body/09.png.import",
+    "bytes": 931,
+    "sha256": "5d43f676616803883517aa35fd52c4b435702f37bb501b4d2008f0a8a62c80b4"
+  },
+  {
+    "file": "Animations/walk/body/10.png",
+    "bytes": 43849,
+    "sha256": "b67a05578d9da73ae845738e872eeb80ddd2827fbbf36b9c521319787f4154f0"
+  },
+  {
+    "file": "Animations/walk/body/10.png.import",
+    "bytes": 931,
+    "sha256": "a28ea2a16d164649a2070c1ec43f7b1236ea0d78d5e98e263193d83ade663214"
+  },
+  {
+    "file": "Animations/walk/body/11.png",
+    "bytes": 45401,
+    "sha256": "ff93aaf2f40af061dda165153d88cfd8e46ce1243b8f98b51a7c3332aa73c797"
+  },
+  {
+    "file": "Animations/walk/body/11.png.import",
+    "bytes": 931,
+    "sha256": "2beec058cf995d716a7b8879f870cf2438c4fa98ea2a1293570bc5c7abc03fed"
+  },
+  {
+    "file": "Animations/walk/body/12.png",
+    "bytes": 46448,
+    "sha256": "018d53915257afa5177564e1d036f2f4dc94f3d93305fd10dd11cb468d25cb51"
+  },
+  {
+    "file": "Animations/walk/body/12.png.import",
+    "bytes": 931,
+    "sha256": "90fe4ba572aa6e60d4576074d1746516b10bb09369cdea2da5816503c3b8551e"
+  },
+  {
+    "file": "Animations/walk/body_atlas.png",
+    "bytes": 521688,
+    "sha256": "e7bc3f03fecc419e38e8e5b22246b0d19f3f7a65f0d44b8df372095e5466c27b"
+  },
+  {
+    "file": "Animations/walk/body_atlas.png.import",
+    "bytes": 950,
+    "sha256": "8ed2cdcbdb08008e43d41fb17f0601b29c75ee75a16a4ca32abc4f7f48d26615"
+  },
+  {
+    "file": "Animations/walk_varita/body/01.png",
+    "bytes": 44891,
+    "sha256": "0b2c6425ca9c041ffce4850189d07459091467fa768031c8ae8ebd61ad4704f0"
+  },
+  {
+    "file": "Animations/walk_varita/body/01.png.import",
+    "bytes": 937,
+    "sha256": "daf0a3c2be79329b83a328ca2a04f8197f3454c1f17de3561562d9cf0d474fe2"
+  },
+  {
+    "file": "Animations/walk_varita/body/02.png",
+    "bytes": 44801,
+    "sha256": "754abb9e132bbc789a793cc79a1b74e0d00fe214a4a28d715aef9fd9546298a2"
+  },
+  {
+    "file": "Animations/walk_varita/body/02.png.import",
+    "bytes": 938,
+    "sha256": "d026c47385cc8f22a9c3cbd1edb9d78b4124e97009812616ab323ff3ebbbfe6f"
+  },
+  {
+    "file": "Animations/walk_varita/body/03.png",
+    "bytes": 42843,
+    "sha256": "a4dbdb4c84d7eeefbb111653bf57a95c8d6d5baa70052441f03bbc186ce7bd17"
+  },
+  {
+    "file": "Animations/walk_varita/body/03.png.import",
+    "bytes": 938,
+    "sha256": "297c70070606abe14c0dac46f3538ae59d5c6c73ebbc6cc0f22130943524f972"
+  },
+  {
+    "file": "Animations/walk_varita/body/04.png",
+    "bytes": 41535,
+    "sha256": "def6f9bef97a40f1dbd3897f91df75dc48b8bce61813835156ca5a088939233a"
+  },
+  {
+    "file": "Animations/walk_varita/body/04.png.import",
+    "bytes": 938,
+    "sha256": "51a59f4bfe2f33b5daa65e07eac10ae156f552ab5df5d1b17652dabc30aed3e6"
+  },
+  {
+    "file": "Animations/walk_varita/body/05.png",
+    "bytes": 44596,
+    "sha256": "64db2e12e1f92d70bf93bea27eb854fbaae273baac3246f63ffec8fa9b4d0303"
+  },
+  {
+    "file": "Animations/walk_varita/body/05.png.import",
+    "bytes": 937,
+    "sha256": "3430b82fd17615797ffe96de1ad265cefdd46cdbd1e1b701dd4f50c651a5b6c4"
+  },
+  {
+    "file": "Animations/walk_varita/body/06.png",
+    "bytes": 45693,
+    "sha256": "62a7fc252d828cdb1083081100faecb8a2e3729b74e56d545454c8438013c8da"
+  },
+  {
+    "file": "Animations/walk_varita/body/06.png.import",
+    "bytes": 937,
+    "sha256": "85d45e1a52d93d52235583ceb63e27a54017acf205f3ce1bb217ee418aa21ebc"
+  },
+  {
+    "file": "Animations/walk_varita/body/07.png",
+    "bytes": 45806,
+    "sha256": "2ed29f41904102abfe1df7ddd8f22e6135fe5a6b67f3d9c8ee40a1cb656aba2c"
+  },
+  {
+    "file": "Animations/walk_varita/body/07.png.import",
+    "bytes": 938,
+    "sha256": "4dd46c5cbff92023c045a55d5cfe53886eeebb8d643d60550a75cb291cd667ef"
+  },
+  {
+    "file": "Animations/walk_varita/body/08.png",
+    "bytes": 44915,
+    "sha256": "e7838ee3a3f682d266284e40ce48cb8845ef04ea3c0b2954122e838955c542a6"
+  },
+  {
+    "file": "Animations/walk_varita/body/08.png.import",
+    "bytes": 938,
+    "sha256": "6c1b6fd777da819436506bd8076b6c802d703c29d9f53c888babb11fb4165c35"
+  },
+  {
+    "file": "Animations/walk_varita/body/09.png",
+    "bytes": 43148,
+    "sha256": "811926e97fed6075575c8910d5f774774143affb3fffd64ef3cb4608720b7095"
+  },
+  {
+    "file": "Animations/walk_varita/body/09.png.import",
+    "bytes": 938,
+    "sha256": "27c11780747e85b21a5a5efcf738c13f1fc7c81b1fa23ec7a61651b3fb89614e"
+  },
+  {
+    "file": "Animations/walk_varita/body/10.png",
+    "bytes": 43849,
+    "sha256": "b67a05578d9da73ae845738e872eeb80ddd2827fbbf36b9c521319787f4154f0"
+  },
+  {
+    "file": "Animations/walk_varita/body/10.png.import",
+    "bytes": 938,
+    "sha256": "c2ba72f8eea0848327d945ef47a85099613d90bb2bed25009f79b31b363c787a"
+  },
+  {
+    "file": "Animations/walk_varita/body/11.png",
+    "bytes": 45401,
+    "sha256": "ff93aaf2f40af061dda165153d88cfd8e46ce1243b8f98b51a7c3332aa73c797"
+  },
+  {
+    "file": "Animations/walk_varita/body/11.png.import",
+    "bytes": 938,
+    "sha256": "84f049f41dd99f0d44efbbf1535e9afdc56c4eea3fea072a92bae2f652f334da"
+  },
+  {
+    "file": "Animations/walk_varita/body/12.png",
+    "bytes": 46448,
+    "sha256": "018d53915257afa5177564e1d036f2f4dc94f3d93305fd10dd11cb468d25cb51"
+  },
+  {
+    "file": "Animations/walk_varita/body/12.png.import",
+    "bytes": 937,
+    "sha256": "a6896363cb1249ba48c87dc4c79556c77c28af7e75d389d525e8fe60cef1aac1"
+  },
+  {
+    "file": "Animations/walk_varita/body_atlas.png",
+    "bytes": 521688,
+    "sha256": "e7bc3f03fecc419e38e8e5b22246b0d19f3f7a65f0d44b8df372095e5466c27b"
+  },
+  {
+    "file": "Animations/walk_varita/body_atlas.png.import",
+    "bytes": 957,
+    "sha256": "27901222453814818c4dcdd564a9dba35f9feffaf6d264b87e377979133e4f87"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/01.png",
+    "bytes": 6417,
+    "sha256": "52a5dd4b835655bf7a1a0e4dc4aff134af4824360b821e54114897809d047801"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/01.png.import",
+    "bytes": 944,
+    "sha256": "bb5db5dcbb3a362c302b45daf58f928da4b7026f723e5b924de5a2b7bdff2291"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/02.png",
+    "bytes": 6455,
+    "sha256": "0cf78560cc871dd332fedb496e670ab8488fe0d95608362ebfaf181507ea492b"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/02.png.import",
+    "bytes": 943,
+    "sha256": "9d32a5e3c768128b393f415e0c8f2ccdea7a29ceb16a101f74d1ed47a87ace17"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/03.png",
+    "bytes": 6452,
+    "sha256": "388f3d01ee8bc19b6b01efc3c185ab480f1b5985776682e9cd8607ed6b7a309e"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/03.png.import",
+    "bytes": 943,
+    "sha256": "c662ad4329e3be43b36076f7040193879caa0e603d2ef0dd1165a2f75b5adeba"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/04.png",
+    "bytes": 6459,
+    "sha256": "988c8b6b3a51f7473e4a7d3be2237f56c2fde956b7eb892946f340d1b2528e99"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/04.png.import",
+    "bytes": 944,
+    "sha256": "6217f5b22757e0eb6fee3530f4a2e956d2aa7c002292ce08ad9e4b5b5dac6207"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/05.png",
+    "bytes": 6464,
+    "sha256": "ae90a2da131642cf981b68dd1ae646bf0c0e641263fe4b307e2b8b376294021e"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/05.png.import",
+    "bytes": 944,
+    "sha256": "9e4f1101774f3516a59d472adaef634269b73ec70c93000e25543a9d9592e17c"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/06.png",
+    "bytes": 6423,
+    "sha256": "45493e6880040bc56cedc64ea5519ded283bba0e86169cdfefec1f77ff8ce752"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/06.png.import",
+    "bytes": 944,
+    "sha256": "9ba11b602802daebb0c9dfe54f84ecd60ca88b8f36bc5365b747ceaf1038df37"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/07.png",
+    "bytes": 6460,
+    "sha256": "9ddbcfa1a7671221590560a9c6dc9bd5c3b488922ff8fec376a67c5b0cf3b855"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/07.png.import",
+    "bytes": 943,
+    "sha256": "f904496c46a7167e513df8c8cca742711f1336433bf97354da703a94bf38b726"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/08.png",
+    "bytes": 6440,
+    "sha256": "701ce19d81ee4e50652872473359a265de67ae4b7e1c4eb5e9f7e88318e5703a"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/08.png.import",
+    "bytes": 943,
+    "sha256": "f94edf9b63109adc5af844fe7310138be54926767044746e8c0e2bbad4895275"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/09.png",
+    "bytes": 6405,
+    "sha256": "87984e719c6653da57c5d393d816b2ad74f907dd3832487bc30fcb92eceb7680"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/09.png.import",
+    "bytes": 944,
+    "sha256": "a0cea7db83fc925e4ac140b46dcf68eba670a8658c9a740409a4fc1ec1f7d7c0"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/10.png",
+    "bytes": 6406,
+    "sha256": "bb41163a6da83a7262413af766210b6779002fb31fd5961e8f69c0cfef9ab1cb"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/10.png.import",
+    "bytes": 944,
+    "sha256": "b7ea073bcb090ce06b80a7d41082d56d69e04000c36be658b6d9d491e1b6bcff"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/11.png",
+    "bytes": 6397,
+    "sha256": "82fe072cc5e4acf1c142b96e5d27163d1551d3eda58e61102cf8d38cb5e3df79"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/11.png.import",
+    "bytes": 944,
+    "sha256": "87f90f8ca20fc401de3464b343039b3992ad34c93ed4310d3423216bf005a2e1"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/12.png",
+    "bytes": 6442,
+    "sha256": "90d1cfcd220b881b102803155480e9538b7864fb489791cb9b20058ef31f2758"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base/12.png.import",
+    "bytes": 943,
+    "sha256": "d0630a2dd52b4d5662bad807bfc4da404dc832a7a506ca4d7f25413fc4fe8798"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base_atlas.png",
+    "bytes": 55594,
+    "sha256": "95e651f5816a12f4bd6e040a2075fa24d01ce5ec5971fa6bcd4ece625f984ee8"
+  },
+  {
+    "file": "Animations/walk_varita/brush_base_atlas.png.import",
+    "bytes": 972,
+    "sha256": "c15b2410981acd5dc0722e6518d2df9ca56e62abbca0930f733c0526b4fab027"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/01.png",
+    "bytes": 1894,
+    "sha256": "df31d510f089e7cc2f20d8a1d73537461962d1ac2bd37a81a88f425b4f782d57"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/01.png.import",
+    "bytes": 943,
+    "sha256": "5c7acb3c0b7a0591b880874866a6541c2e3ae6c499099e892986b12dc1a341e3"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/02.png",
+    "bytes": 1896,
+    "sha256": "b26300f0d58120a1f48492c449224915b178fc08ea5b2065266169fa04a34a7c"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/02.png.import",
+    "bytes": 943,
+    "sha256": "881a24377c71db4023b9acede2e529450ff625155038261413e1dd3ee34afb16"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/03.png",
+    "bytes": 1853,
+    "sha256": "c697384e01ec799d18c58626123a74a36ae5bec7910530b1294fad1d3f0b9af0"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/03.png.import",
+    "bytes": 943,
+    "sha256": "09ec37511aebb22f527a17a309b2821e13ce7c01be020ba405e622ad91fc3202"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/04.png",
+    "bytes": 1887,
+    "sha256": "dd436efc46b18514ab8c29ad8b0ebca650c89d578dd5cb0a45598d2dea842b86"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/04.png.import",
+    "bytes": 943,
+    "sha256": "47a4e6fa5783eadb81957d787f407896ac32049f4a6ed669331e900c9c975002"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/05.png",
+    "bytes": 1850,
+    "sha256": "752aeb316b2ad3b53cfebab855c35feaf133480199d8432b5b9eaf12121d79e2"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/05.png.import",
+    "bytes": 943,
+    "sha256": "be005e9755441515cf0e51166d6581583e19e6d0e51d30ac163632dbb5406120"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/06.png",
+    "bytes": 1882,
+    "sha256": "117758251c5e5d8f606326a8605f9b78fd9e5887feb8d48ba6120d44e76b9199"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/06.png.import",
+    "bytes": 943,
+    "sha256": "d4ce6c7a79bac775091850bf194f507c7518a528beb49dbc7f5711b490deee5d"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/07.png",
+    "bytes": 1872,
+    "sha256": "c104e1b44aabeb2732adbba3c3b791e9f4818e0ca48f77f0fde8bdc58e78ea7e"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/07.png.import",
+    "bytes": 942,
+    "sha256": "a7fc99621323e70016a9c04ece6a2a32dc9dc887fc3d53a5a1232cc92c732248"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/08.png",
+    "bytes": 1901,
+    "sha256": "fe08dd07b52ab9e3a94c8ab20655290a0a9ae3d0dae0a0a437021ecb85c08d50"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/08.png.import",
+    "bytes": 942,
+    "sha256": "27333ca7eb47775f36b99136961c73a360351ce869e64dd3e5ea2f37c0ad9dd4"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/09.png",
+    "bytes": 1907,
+    "sha256": "f736dbdec717260aef3ef6154ce47f330286e8525020e197e2934d1027e8c22f"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/09.png.import",
+    "bytes": 943,
+    "sha256": "da0452a3609308b3e108e3eb768585d880dce0f35068bb3aac0d01145f38a2e4"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/10.png",
+    "bytes": 1889,
+    "sha256": "0f3b19157ff093944fcb7d9e75270f5ff5c782e98b9177a85308557bfe7f97d3"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/10.png.import",
+    "bytes": 942,
+    "sha256": "24e761cc8a415991a6270cdf2d6cbdb078e5c187b62d808b265f9b2f7154b811"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/11.png",
+    "bytes": 1909,
+    "sha256": "bf89481af453cea0c2228c5ac13d1810809baa7bd1488ae1bb5d38df05a0584c"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/11.png.import",
+    "bytes": 943,
+    "sha256": "bcecbf94f294cf6a8c58a3eedbacc3ee809a9821883986a590771af83b352e4a"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/12.png",
+    "bytes": 1898,
+    "sha256": "7937f1707542ce1b9c6e5e1c6d5d3f5be4723d35ed180f4c3361f961ca85e670"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color/12.png.import",
+    "bytes": 942,
+    "sha256": "1da6ce01519c890818ea6497e38f73ddb9bb7fc7e36201c38caa8e601556ef7a"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color_atlas.png",
+    "bytes": 16830,
+    "sha256": "695bd8915b9ceb8d27d99533ae620ab775800b997d26d4dd8524272bc0c25448"
+  },
+  {
+    "file": "Animations/walk_varita/tip_color_atlas.png.import",
+    "bytes": 972,
+    "sha256": "7143ce7b97bedccdc6e6f06f6a0a21d5f8f2ed0c1fcd0d96fcb2a4450bfe6aa7"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/01.png",
+    "bytes": 1925,
+    "sha256": "400520e7a39dd23691ffe556c42c0fdfb5efe729a55eab6916676dfd6830ebff"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/01.png.import",
+    "bytes": 941,
+    "sha256": "776e2ce9e06205a4010a6964f6d029b0e253aa7305aaf518b4be5983c911f983"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/02.png",
+    "bytes": 1964,
+    "sha256": "d7bcb6be517cf7f64918506aec726c9dd1550885edacca983cfbb3166bdaa397"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/02.png.import",
+    "bytes": 941,
+    "sha256": "4ac9d84a41bf785f8828a67eef9678acde36521e095d1671945d3173a32af072"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/03.png",
+    "bytes": 1877,
+    "sha256": "bf96d54d7f2c1557da1df18b66d89ec2e6800871321d959dcd62a121932b8425"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/03.png.import",
+    "bytes": 940,
+    "sha256": "7900d76b3dd53816bf043a5e2ee871c737665dd861c6d3f9a78018ca86b8efdc"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/04.png",
+    "bytes": 1895,
+    "sha256": "c34de63b3fa0ba778cab04e3d717da618fc0888549cc3bbc711b685b65c971b8"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/04.png.import",
+    "bytes": 941,
+    "sha256": "c55d719f8d78e16816561b0483b40109870fef7878dfb04399e3d67db93717ad"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/05.png",
+    "bytes": 1872,
+    "sha256": "f9f47269899a0d13da71cc8947719cb23c9cd986cbdc858b4e5a944c9162b38c"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/05.png.import",
+    "bytes": 941,
+    "sha256": "303146f4bb8762312421a215491bbdadb280345852971b8de608298dd41adfe3"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/06.png",
+    "bytes": 1906,
+    "sha256": "931d6280a25483d7a2a4427c73283fa3e3bf6f899bd6e3c40531d27dd0d17ff7"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/06.png.import",
+    "bytes": 941,
+    "sha256": "f084d5c57a7451b71960d019a8fad4bd75f859cd36da052c2b2bff5dfe39ed6b"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/07.png",
+    "bytes": 1895,
+    "sha256": "5c8f5406255361911d38e937fefd0a7f2f0d17b65c98ca87896a31e342cdfe45"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/07.png.import",
+    "bytes": 940,
+    "sha256": "c1830559c019eec528f470d3ba6f416fd1460caf29b2d2011d6e2074f60cc914"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/08.png",
+    "bytes": 1899,
+    "sha256": "c3415c7c1e656d60a340c8d22bcd68a5fed361de6a671f9206d84e64cde95a57"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/08.png.import",
+    "bytes": 940,
+    "sha256": "4fdf9759703ec36959f5615946b105d487c4ffe404a8f0e41e0fa351890c1e16"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/09.png",
+    "bytes": 1951,
+    "sha256": "e85e79bba30602c76652b51c1c9b5f1bd6dc623d53e22150fb984cdb5eef14c4"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/09.png.import",
+    "bytes": 941,
+    "sha256": "91f3dde97bc5a41e27c46bdac975764aae95ce2fb8de95eda82c0275f25b30b9"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/10.png",
+    "bytes": 1893,
+    "sha256": "e345531a871a07172b6bb379f4fb08bc20d2f2daf8fdf7462a366fd5df0af05c"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/10.png.import",
+    "bytes": 941,
+    "sha256": "62470fac36116a1a8f69114c0c7e0b264e2abd88ee8c2df2ec43208686c4890e"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/11.png",
+    "bytes": 1950,
+    "sha256": "714b954a2addb5f3ed4bb9bd2d35a40a0d460f9be3384481c5c6705f483a4c30"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/11.png.import",
+    "bytes": 941,
+    "sha256": "ccb335bfc2a3a2a56b31eb8af782ac5960a209e413ecbdf7cdd78e9a38400fad"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/12.png",
+    "bytes": 1896,
+    "sha256": "b0a804b0e2bae5196e01b8880965422655cbb719a4711709779e113445666bd1"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry/12.png.import",
+    "bytes": 941,
+    "sha256": "b07fb5edeb23be2e16ec922a12833f4e637d7bfd9cc29bd5501fd431b006aeb5"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry_atlas.png",
+    "bytes": 16908,
+    "sha256": "70201bf9ee800a01734e02903ef6de186db21afd212857fbb95f1706b6508847"
+  },
+  {
+    "file": "Animations/walk_varita/tip_dry_atlas.png.import",
+    "bytes": 966,
+    "sha256": "6681d358a397fc26f86b4277e1c8af4cd3cf089e62588ca48f13d757e910aba7"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/01.png",
+    "bytes": 1725,
+    "sha256": "52f6e7a4f2720b1b794ef2aa7482bdb77d3cf6d180c1bfb470056d794662279a"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/01.png.import",
+    "bytes": 941,
+    "sha256": "e264065523aadef1eff8ef47a0db162eb1274a85a81325734a993b90085602df"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/02.png",
+    "bytes": 1767,
+    "sha256": "feb0d70350bbb97a39f0c19f5d05a3121f4e4d61e5b9e535d5c36c4594cdb3ad"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/02.png.import",
+    "bytes": 941,
+    "sha256": "73bae4c74a5d1a54fbed7454bcd6a2747ffe8f8341e841770542bf667b7ca6a4"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/03.png",
+    "bytes": 1696,
+    "sha256": "e8cf666ad9d2f0c718d94544f4016ef16ed25fdae07d3d1e073cd39e3da6604b"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/03.png.import",
+    "bytes": 941,
+    "sha256": "e550673d7228f4deb2a96e96a14ab58ed8d303d8600e526f8e8ecc3ddbd5c354"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/04.png",
+    "bytes": 1722,
+    "sha256": "9cdee1719cec70fda6f69762de4f684304b8249df4f2b0d57737d9672dbfb99e"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/04.png.import",
+    "bytes": 941,
+    "sha256": "36cec20292c98edf31bbb96ea7e67b96525bff345282f7d974de1a621955d1a9"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/05.png",
+    "bytes": 1693,
+    "sha256": "ffbee5d8718c5cc1975c949f7318acf5531298fc08596e4ed9dc86f35aa72139"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/05.png.import",
+    "bytes": 941,
+    "sha256": "5aab59a784eca378802d7f14a9c33e4007184ef09c92694927ec06d455c13eb3"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/06.png",
+    "bytes": 1700,
+    "sha256": "32c1fa78a8edcbedab297852d9008f2ff5f951fb4feb67478b36707eae646eda"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/06.png.import",
+    "bytes": 941,
+    "sha256": "18427bd98fbd2f53ed3b5e39f480b341684f93b012f72d0a215496713b4a6fc6"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/07.png",
+    "bytes": 1708,
+    "sha256": "5b4d54aa5a15869ede7baa770834857daa519c8ef91065590caebaf4c1683d54"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/07.png.import",
+    "bytes": 940,
+    "sha256": "cf0a8b2fc737a13fdc3af93ac98e8a691be2639cc723a864c580b1d6e8f94a10"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/08.png",
+    "bytes": 1717,
+    "sha256": "c555e24bed71bb2755524c84074a96a5af744ada6a626436a0057dda03c54c77"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/08.png.import",
+    "bytes": 940,
+    "sha256": "8940c3818649fcfe94d257ae62ad6c97016f7d624d8b1cbfe8accc871a2fa1db"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/09.png",
+    "bytes": 1739,
+    "sha256": "2a61f9d8cd87a53dd528aedd7e89379d99cd4ffbf86931b0af39bc7d9b4dcc12"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/09.png.import",
+    "bytes": 941,
+    "sha256": "fd7eaf43bebce1b9a191ee8b02beaf5539b0ab094fa993d049e34bea1ff58e50"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/10.png",
+    "bytes": 1724,
+    "sha256": "d4a2be3346107c853cee50f0b656d05c3fcfcfec379661dc2048bc17610d3278"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/10.png.import",
+    "bytes": 941,
+    "sha256": "220b832a6cc781b608e1fd8f1be692aee28224f68c4bda1de5ed20b8c9e40f62"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/11.png",
+    "bytes": 1740,
+    "sha256": "cd80317edd83b2ad38c483056d1e2e5cc284eb38018dc1514890c3b9a64a9529"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/11.png.import",
+    "bytes": 940,
+    "sha256": "ba89fffefae3267ed7ad2c1d07c6368bb61049348380e7c15fed3d0f6cfbb933"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/12.png",
+    "bytes": 1714,
+    "sha256": "46ee1ef2f386a7a30f9a278904bfcd5d6ff8c415eca2833a8897e58eceee1783"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink/12.png.import",
+    "bytes": 941,
+    "sha256": "107088e8d57f8735c9b185966765b49082b9c17e193cecba83bc5c687328f6ca"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink_atlas.png",
+    "bytes": 15248,
+    "sha256": "ccd32572dc879e104eb2206b040b6fece021a60375198b3edeee2a8bd20b718b"
+  },
+  {
+    "file": "Animations/walk_varita/tip_ink_atlas.png.import",
+    "bytes": 965,
+    "sha256": "7b328a92b20bb580250f7805aeaf93d6cb7087bfb2048090138e37bea397b4b7"
+  },
+  {
+    "file": "Brush/brush_base.png",
+    "bytes": 5706,
+    "sha256": "3a3ca06d8ae815811f81b33252dc27eb40ecd390034d702fbd4e94d6fcbff612"
+  },
+  {
+    "file": "Brush/brush_base.png.import",
+    "bytes": 939,
+    "sha256": "c3d0612e140310abebaf119d482e5f99f11c62b2e72d0549e0cc6ce50d53ff9a"
+  },
+  {
+    "file": "Brush/Tips/tip_color.png",
+    "bytes": 2138,
+    "sha256": "6a7b46200b7dd481dd8daaafda7e5be02753631d02343c0601970f805a0f2edf"
+  },
+  {
+    "file": "Brush/Tips/tip_color.png.import",
+    "bytes": 942,
+    "sha256": "e262392e7a54f3d428efde40656b45b9695c74ac4d09aaed7fb576749f8b9827"
+  },
+  {
+    "file": "Brush/Tips/tip_dry.png",
+    "bytes": 2120,
+    "sha256": "c1f54d1f8b93592a84e361630e99a024d88b3341daf3efa29317f66ba25c4e11"
+  },
+  {
+    "file": "Brush/Tips/tip_dry.png.import",
+    "bytes": 936,
+    "sha256": "55513442a4305674c80af5b78024d07082e37e1ac985965e0ca0b93e89714cf4"
+  },
+  {
+    "file": "Brush/Tips/tip_ink.png",
+    "bytes": 1847,
+    "sha256": "23488b9a5cd73bd9b97add126ea589123b77a918d13afa8d7a1d3040e2f23358"
+  },
+  {
+    "file": "Brush/Tips/tip_ink.png.import",
+    "bytes": 935,
+    "sha256": "894565df2e2501a3c10b5fa93be04b8c64ea6ac191cc6caf4e5c2c29ff421933"
+  },
+  {
+    "file": "brush_contacts.angle.translation",
+    "bytes": 802,
+    "sha256": "bbbfcaeac9c45b28ab966178e2bf7d312cd80d51edc213c71088fba4e2e4441a"
+  },
+  {
+    "file": "brush_contacts.color.translation",
+    "bytes": 770,
+    "sha256": "12571831911d61a6542427ee7d6a91657cab92c0e4775bedc3f5471eee94c86d"
+  },
+  {
+    "file": "brush_contacts.csv",
+    "bytes": 6489,
+    "sha256": "ccb4804f111a34d2be7646f86386bc290e43e42b952706dc35f6941a01468293"
+  },
+  {
+    "file": "brush_contacts.csv.import",
+    "bytes": 1468,
+    "sha256": "fc85916e37a360b20dd57bbfd7a5ca2213daa5bfe0cea0c6f442295ad8651a8f"
+  },
+  {
+    "file": "brush_contacts.dry.translation",
+    "bytes": 768,
+    "sha256": "08b45d70a3d50b03d0f6bdfbf79343e76befc2b93f4439f7720f75350c8cfcf8"
+  },
+  {
+    "file": "brush_contacts.frame.translation",
+    "bytes": 742,
+    "sha256": "40e6cd15afde60e5127d58e5a107c750560ef5bc248f8aec44676042af25b306"
+  },
+  {
+    "file": "brush_contacts.grip.translation",
+    "bytes": 797,
+    "sha256": "eaabbb62d2a1a3d43de5f1c6eca858b6afa6a494b2ff7012df2e2569b6bae023"
+  },
+  {
+    "file": "brush_contacts.ink.translation",
+    "bytes": 768,
+    "sha256": "286c17a32f5c7cb1ca11097c1732330e644875a8e483e4528ebba5cef5139db1"
+  },
+  {
+    "file": "brush_contacts.json",
+    "bytes": 36582,
+    "sha256": "c320182afaee4d9b0b9cd9914ced21536215961d9f68b0c4b36fde7a40447d39"
+  },
+  {
+    "file": "brush_contacts.paints.translation",
+    "bytes": 787,
+    "sha256": "1c0375970502729f06b2969271de427e0fa4f69ffb1cdd44dffb9321ae69a812"
+  },
+  {
+    "file": "brush_contacts.receives.translation",
+    "bytes": 789,
+    "sha256": "c587da1a1dcf725ad8a839b1ccd18ddcecb43d3747a6fbaa14f93e4aca5cf779"
+  },
+  {
+    "file": "brush_contacts.tip.translation",
+    "bytes": 800,
+    "sha256": "af654d8cd4dc515c5a88c40c99f0e0187a92e55249b979e60fd4ef8ad6de0624"
+  },
+  {
+    "file": "Godot/capture.gd",
+    "bytes": 356,
+    "sha256": "4fcc991e7eeb02b88a8c972f3cb8ac10c34a15fc5a7832de39cf949e6cc800d5"
+  },
+  {
+    "file": "Godot/preview.gd",
+    "bytes": 1634,
+    "sha256": "d35d8b6916b93dbded03d5cdc3817b1103faa203a0e68f04025cca14117ee88c"
+  },
+  {
+    "file": "Godot/preview.gd.uid",
+    "bytes": 20,
+    "sha256": "ba9d252eafbe31541f0e0da21d0f20d96180d9196362a7450f1cebdace38fed7"
+  },
+  {
+    "file": "Godot/Preview.tscn",
+    "bytes": 164,
+    "sha256": "10de0793181e9004d8e76e3e640c3c0e94b35e7749a7ba04bbb7f214fb08eb5d"
+  },
+  {
+    "file": "Godot/validate.gd",
+    "bytes": 940,
+    "sha256": "ed42193d9c1e2f1b850a8182862e24afb90f8c85aa5e9080970add90741c4a2f"
+  },
+  {
+    "file": "Godot/Wolf_body.tres",
+    "bytes": 14352,
+    "sha256": "5a3df000e929907476b79ce35b7d058cfa89e777e76dec1be1f9fd9760858435"
+  },
+  {
+    "file": "Godot/Wolf_brush_base.tres",
+    "bytes": 9884,
+    "sha256": "562b904893fee35a6b788e907a7fbcf8940871cee5e560eefe662067f14fd6ec"
+  },
+  {
+    "file": "Godot/Wolf_tip_color.tres",
+    "bytes": 9820,
+    "sha256": "cfe3d6af444e9afc029879bdcfaf439fb031633591af4e2c0794af973a97bb43"
+  },
+  {
+    "file": "Godot/Wolf_tip_dry.tres",
+    "bytes": 9692,
+    "sha256": "fd65ea30029890302518df006940463d3ac38fed50e53e90794d6a744f64e9a6"
+  },
+  {
+    "file": "Godot/Wolf_tip_ink.tres",
+    "bytes": 9692,
+    "sha256": "1ce8e1ae098d2a35f06bf8afd8f25b2c78fc4994538dd3174378f4c986e46fe9"
+  },
+  {
+    "file": "INTEGRACION_CLAUDE.md",
+    "bytes": 6974,
+    "sha256": "237f1b19a1894dc24b86a0485571a44f9cefb460f553f5147623130e75dd92a8"
+  },
+  {
+    "file": "Previews/air_clean_body.gif",
+    "bytes": 109028,
+    "sha256": "503a109abacd8fa9dc8613e515ee6a0a3fbd245ef0010c68fe69321887b316bd"
+  },
+  {
+    "file": "Previews/air_clean_body_contact.png",
+    "bytes": 261690,
+    "sha256": "895e5686c90bacdc5f4bac1813c0ddbff7794fad5f9d1f1147e549e8edd87cd3"
+  },
+  {
+    "file": "Previews/air_clean_body_contact.png.import",
+    "bytes": 979,
+    "sha256": "abecade61333285419b90590b74adfd5a87ba5bdc094e811704291ac28fc30dd"
+  },
+  {
+    "file": "Previews/air_clean_torso_QA.gif",
+    "bytes": 107550,
+    "sha256": "016636dfdd596ea6cbe1b2bea3636d44135d028aa4997ae848ebd2bf8a47402d"
+  },
+  {
+    "file": "Previews/air_clean_torso_QA.png",
+    "bytes": 259348,
+    "sha256": "c351afe1221c6d92c18ec66e872c126bf9c51463162dc28e6c9f3a4ac7526af8"
+  },
+  {
+    "file": "Previews/air_clean_torso_QA.png.import",
+    "bytes": 967,
+    "sha256": "5843e09a397f09a80d21dc24711d735957f739e0440e9713e205d985c70a9de4"
+  },
+  {
+    "file": "Previews/dip.gif",
+    "bytes": 97540,
+    "sha256": "9c5e2a4667ed383a4f71e5f389e637f5a3b1b9ea51e66febf540a017b984444d"
+  },
+  {
+    "file": "Previews/dip_body.gif",
+    "bytes": 87589,
+    "sha256": "5bf3be9536acd4fc303192c2358629360ad4a056f3cbced32fadbbcada2716a1"
+  },
+  {
+    "file": "Previews/dip_body_contact.png",
+    "bytes": 213068,
+    "sha256": "06c308014bc5ba977f35796df0b093930bc177aa43c8214f95b618945b089006"
+  },
+  {
+    "file": "Previews/dip_body_contact.png.import",
+    "bytes": 960,
+    "sha256": "963df665588a9c90e9311f4971fb23e2599d8dec4038f2cdd97dca5d84ddb2cf"
+  },
+  {
+    "file": "Previews/dip_contact.png",
+    "bytes": 239685,
+    "sha256": "84c534c81043a08822fe2a677823b481d0e122bd22c8d9a265101248a52e922a"
+  },
+  {
+    "file": "Previews/dip_contact.png.import",
+    "bytes": 946,
+    "sha256": "a4b6415031b444218f2d1337d58001ebc31548b56804d0a9acda22d98304657d"
+  },
+  {
+    "file": "Previews/dip_torso_QA.gif",
+    "bytes": 86151,
+    "sha256": "22ae228c8632e4063e2b7b79f8dd5350dae487358206cfad10ea038deb1d9811"
+  },
+  {
+    "file": "Previews/dip_torso_QA.png",
+    "bytes": 211442,
+    "sha256": "dafcbae3aff820be1216c8ae38c2298673ddb4d1bd42555c82da9fef82345a55"
+  },
+  {
+    "file": "Previews/dip_torso_QA.png.import",
+    "bytes": 948,
+    "sha256": "9f72c3a64af44e9fc0c98bd995e693ce6642e176495e443a047080c23c3c7522"
+  },
+  {
+    "file": "Previews/fall.gif",
+    "bytes": 27295,
+    "sha256": "f46178e9efed669d74470cd86906428f4670424d8a9ba27591eda4a04e26dc97"
+  },
+  {
+    "file": "Previews/fall_contact.png",
+    "bytes": 65883,
+    "sha256": "39600a00f517decb63cbdf056cf38c3ca75b888b707a1b74be623d9188455825"
+  },
+  {
+    "file": "Previews/fall_contact.png.import",
+    "bytes": 949,
+    "sha256": "287408cebcdf07a4deaff49bb2cf67e7197fda78d6ada67d1b88d841d1795821"
+  },
+  {
+    "file": "Previews/fall_varita.gif",
+    "bytes": 31405,
+    "sha256": "3fd3a5420f8e408a625be11b31cb76e4935201373339027adee1be7d301b6ee3"
+  },
+  {
+    "file": "Previews/fall_varita_contact.png",
+    "bytes": 72375,
+    "sha256": "694cf75adc96b20c9590d20f6cb55af937ef56d8ed10df19e792c3e326a92863"
+  },
+  {
+    "file": "Previews/fall_varita_contact.png.import",
+    "bytes": 970,
+    "sha256": "47c8f7bc8fa80766dcca464801d75b0c88ab4e5c8da5621f202d72f9d4089a59"
+  },
+  {
+    "file": "Previews/godot_preview.png",
+    "bytes": 138011,
+    "sha256": "5d1c2a8be50a79c6c0a2069dfd6b6303f95f315d7b0e08d135f921ba036e4311"
+  },
+  {
+    "file": "Previews/idle.gif",
+    "bytes": 88673,
+    "sha256": "7ea2883abd330612e79f8fecdfc26832cb65719e8f639b195675d68b70e0d918"
+  },
+  {
+    "file": "Previews/idle_body.gif",
+    "bytes": 88673,
+    "sha256": "b679efd525eeaa400089c90e6bd66ca3a131976b6306d1fe1bb2a5cf658a739c"
+  },
+  {
+    "file": "Previews/idle_body_contact.png",
+    "bytes": 208640,
+    "sha256": "6f6de31f0db51bf9e44a65122683a84f0517756fea94203a8c1a58d5c0515cdd"
+  },
+  {
+    "file": "Previews/idle_body_contact.png.import",
+    "bytes": 964,
+    "sha256": "db5f0ca84ac4e8ff34812b8120e719342d61c796ba7b9a5c7f76cd6bc0c4b488"
+  },
+  {
+    "file": "Previews/idle_contact.png",
+    "bytes": 208640,
+    "sha256": "6f6de31f0db51bf9e44a65122683a84f0517756fea94203a8c1a58d5c0515cdd"
+  },
+  {
+    "file": "Previews/idle_contact.png.import",
+    "bytes": 949,
+    "sha256": "9f0a53a830753a5133a540b20117e8e1520710c5835a758a3b89a1660d9ae882"
+  },
+  {
+    "file": "Previews/idle_torso_QA.gif",
+    "bytes": 86743,
+    "sha256": "c4d333dcdabfbc0199eb14d359b3223eac151ad204c11d097a4e45fd5b55a5cc"
+  },
+  {
+    "file": "Previews/idle_torso_QA.png",
+    "bytes": 206941,
+    "sha256": "b036a244cfedc51249556197e3f22bbc47b4cbab2011ebbdeaa07936a027025a"
+  },
+  {
+    "file": "Previews/idle_torso_QA.png.import",
+    "bytes": 952,
+    "sha256": "fbe51db0cbf0d5951ea27c338c4193e8ecac7e42dc1f2b2dca2f72d5a68353ab"
+  },
+  {
+    "file": "Previews/idle_varita.gif",
+    "bytes": 98816,
+    "sha256": "e3a5f3a6b495288207517f8d9056090656e13e95cebd3f597a68bb53174b91d5"
+  },
+  {
+    "file": "Previews/idle_varita_contact.png",
+    "bytes": 228510,
+    "sha256": "25fff0a5e76a84a4e622357b0b99c78ec929edbf0266e89756e3cb701d8ac7a7"
+  },
+  {
+    "file": "Previews/idle_varita_contact.png.import",
+    "bytes": 970,
+    "sha256": "1efdc7d77b0d0da2f21fabe08ffa72768aa6d13d65ff96f0cfdff9d5a8025c8c"
+  },
+  {
+    "file": "Previews/jump_start.gif",
+    "bytes": 26955,
+    "sha256": "113a0899368462715d35de4b2f2692794525f090c1a2dfe82fa5431e98a68a1e"
+  },
+  {
+    "file": "Previews/jump_start_contact.png",
+    "bytes": 66300,
+    "sha256": "865b9e5bc47e65ea6a0b947806741ceaae666c1432a504920eb9e3e0ff6fab1a"
+  },
+  {
+    "file": "Previews/jump_start_contact.png.import",
+    "bytes": 967,
+    "sha256": "e1d3c61c7b21876511e561018cce4832f816b7cf2b96cbe99531cec770eaee5a"
+  },
+  {
+    "file": "Previews/jump_start_varita.gif",
+    "bytes": 30701,
+    "sha256": "34d30c0332c7018caa98b841301c6b9e43e6f7a8e90194adf93d40c60d8ef7c7"
+  },
+  {
+    "file": "Previews/jump_start_varita_contact.png",
+    "bytes": 75825,
+    "sha256": "dad4a23f013f478251edfa66e7e7ea023d7019038972f5998421035e76bca214"
+  },
+  {
+    "file": "Previews/jump_start_varita_contact.png.import",
+    "bytes": 987,
+    "sha256": "8802f71bfd95c668076e284c2ef0c15f78e470aefe3ccf5c11b51524667f38b0"
+  },
+  {
+    "file": "Previews/jump_up.gif",
+    "bytes": 26404,
+    "sha256": "06754745967eebd6d8d017ee70236f20d4dbb99461013c210f8116288e238bc1"
+  },
+  {
+    "file": "Previews/jump_up_contact.png",
+    "bytes": 63200,
+    "sha256": "da3e605f299877a3154644c2e17ca298c516497d723a223fa8afa732eb3111ff"
+  },
+  {
+    "file": "Previews/jump_up_contact.png.import",
+    "bytes": 957,
+    "sha256": "3eface13e7541b9b88cec7cab76917d7d8e699cc80f267fba75d1de34f46f080"
+  },
+  {
+    "file": "Previews/jump_up_varita.gif",
+    "bytes": 30020,
+    "sha256": "7de6965392f850bc147b8b5edd22a866354f6131f91a4960c907f5d26c3fe3ef"
+  },
+  {
+    "file": "Previews/jump_up_varita_contact.png",
+    "bytes": 69239,
+    "sha256": "3440b91d6a95f214b86af452b1d71913213a20d6cc7340c44c350a974423aac2"
+  },
+  {
+    "file": "Previews/jump_up_varita_contact.png.import",
+    "bytes": 979,
+    "sha256": "6617a4c69702fbbe7c18772368ae7c4e94db5777bebdf0d2628d0cdf8930f1f8"
+  },
+  {
+    "file": "Previews/land.gif",
+    "bytes": 28221,
+    "sha256": "5f71a81692506fc31fe872f21ef6a39ba8d17dcabcb04095402db998bbad3361"
+  },
+  {
+    "file": "Previews/land_contact.png",
+    "bytes": 67737,
+    "sha256": "bda5dc1f0620d2efdf142897c1afba10f21c3175295ad4212b9ff50760b2abab"
+  },
+  {
+    "file": "Previews/land_contact.png.import",
+    "bytes": 949,
+    "sha256": "e3f8c6dd29bafc40f6b4252acba89bb18ed9fc82f16b2a7092c9f34775a4fa3d"
+  },
+  {
+    "file": "Previews/land_varita.gif",
+    "bytes": 32063,
+    "sha256": "b2a3bb1b04e33abf54aa671e8d4d96597e5854518a560b2fcdefd3abcdfe3a7c"
+  },
+  {
+    "file": "Previews/land_varita_contact.png",
+    "bytes": 74290,
+    "sha256": "78e7292c9a53803fd77a7dd63d14941ab26ab6c531a454a73d76002cf5d08532"
+  },
+  {
+    "file": "Previews/land_varita_contact.png.import",
+    "bytes": 970,
+    "sha256": "23af25c7cef548c6d21340375092f4d6624fe804374546f4708ded1fb0450a08"
+  },
+  {
+    "file": "Previews/paint_rise.gif",
+    "bytes": 128821,
+    "sha256": "9b29687779bbaf1e018437bc2da1d32cc6cd1bab349ce7b2460018d7fa196c7d"
+  },
+  {
+    "file": "Previews/paint_rise_body.gif",
+    "bytes": 114628,
+    "sha256": "1ecaf9e6c8f99bdeded5262cb5fc950ff16e9640f6632863d9f5835096b20787"
+  },
+  {
+    "file": "Previews/paint_rise_body_contact.png",
+    "bytes": 280143,
+    "sha256": "5c17c0f68d1bc2712718fe8e84aae04c5893e92beaf462d7e86619d753a33108"
+  },
+  {
+    "file": "Previews/paint_rise_body_contact.png.import",
+    "bytes": 982,
+    "sha256": "0d3bbe315a4501d9670106bd49c00f97ee6b7a9dd4180f179bc67e9aec7e05da"
+  },
+  {
+    "file": "Previews/paint_rise_contact.png",
+    "bytes": 314660,
+    "sha256": "2d58c585cdaedef972213e4130d18b0897227ee4bdc030b7053a03eed4c5b4be"
+  },
+  {
+    "file": "Previews/paint_rise_contact.png.import",
+    "bytes": 966,
+    "sha256": "f9644b99f4b88493d759671dca4b8d6c92139227b6f891f208794f7837c6127f"
+  },
+  {
+    "file": "Previews/paint_rise_torso_QA.gif",
+    "bytes": 113306,
+    "sha256": "e5f3d2963280824a1e33e3f28c2d862d76380e87a742f600f9a8b01720c027ef"
+  },
+  {
+    "file": "Previews/paint_rise_torso_QA.png",
+    "bytes": 277587,
+    "sha256": "074fbe9ac45e9dbe28cc4e7f0aedbfcc6211b2df4ad4e6b3940fb785ecd4eb74"
+  },
+  {
+    "file": "Previews/paint_rise_torso_QA.png.import",
+    "bytes": 970,
+    "sha256": "cb2c6db658d74000b8c336b41872bc477fe57559e4bcb5490455a20f0381f5fc"
+  },
+  {
+    "file": "Previews/paint_slash.gif",
+    "bytes": 127567,
+    "sha256": "4c23e94995d35293322d8f71c96e0b81d6f59c41564e2bf577f893565bfc4971"
+  },
+  {
+    "file": "Previews/paint_slash_contact.png",
+    "bytes": 279203,
+    "sha256": "98df8f9e5bed4eb1dc24d5f394d3b678b3fc9c8cd5f89653fdf9a6035d28d3a3"
+  },
+  {
+    "file": "Previews/paint_slash_contact.png.import",
+    "bytes": 969,
+    "sha256": "2587256c9ffda6a9ff980be221fbe6759b00edd509f834d7c1bc43783c0ff5d9"
+  },
+  {
+    "file": "Previews/paint_up.gif",
+    "bytes": 125357,
+    "sha256": "fa126c83513289c8514c62b9dcc015d71c456f4a782f48abff37c016dc74b422"
+  },
+  {
+    "file": "Previews/paint_up_body.gif",
+    "bytes": 111351,
+    "sha256": "17a1b22632735d9681a4fdcaec030bd8efb3b05b55d5703e9a73aac08eb30884"
+  },
+  {
+    "file": "Previews/paint_up_body_contact.png",
+    "bytes": 266891,
+    "sha256": "c89e4d9b45c74b1ef00b8ad0800a3feb98c0470eceea84f29942f00162840473"
+  },
+  {
+    "file": "Previews/paint_up_body_contact.png.import",
+    "bytes": 976,
+    "sha256": "180c29f7dac114376819cf1373e261159cf849c082ce8aa512a1db429e3e30b6"
+  },
+  {
+    "file": "Previews/paint_up_contact.png",
+    "bytes": 300527,
+    "sha256": "a1d77b88f8ccb865e72c571b2f8640fe6a36548b0543abdbe828b783de9d486d"
+  },
+  {
+    "file": "Previews/paint_up_contact.png.import",
+    "bytes": 960,
+    "sha256": "9eb9fbff13ab9b173fba3a7650a7ce7654eb1d9d746349c830e484dc527bc589"
+  },
+  {
+    "file": "Previews/paint_up_torso_QA.gif",
+    "bytes": 109960,
+    "sha256": "2eb3041ade0c3a06a10edd5eda50656e9084b93daa9fc985eb3874ffc75e9494"
+  },
+  {
+    "file": "Previews/paint_up_torso_QA.png",
+    "bytes": 264546,
+    "sha256": "0756bd531c0a74365e8ae887d4e17f9ae4e599dadf1c67a21c3e3a11aada23fe"
+  },
+  {
+    "file": "Previews/paint_up_torso_QA.png.import",
+    "bytes": 964,
+    "sha256": "6409c79f686c539c07de2e8b54bb30a9d0ec5085077a1c00525f2d24f0243ad9"
+  },
+  {
+    "file": "Previews/run.gif",
+    "bytes": 127980,
+    "sha256": "58ac645bd054e888059e00b942b481c3f3dfbdc64e373233de9d2cc228da56ee"
+  },
+  {
+    "file": "Previews/run_body.gif",
+    "bytes": 127980,
+    "sha256": "05f67656b3469316ff5276fe101024ffd5651dc41483cdacd5344536fa46a948"
+  },
+  {
+    "file": "Previews/run_body_contact.png",
+    "bytes": 314551,
+    "sha256": "c7f755fec3adb8fbd6be0ff4f81043d8d9e00f9957857ede3a8d4c918f77ea54"
+  },
+  {
+    "file": "Previews/run_body_contact.png.import",
+    "bytes": 961,
+    "sha256": "db0b411afc9499edf413ad43d71a147c7df5f71fa981bbad7d68d42aa766454b"
+  },
+  {
+    "file": "Previews/run_contact.png",
+    "bytes": 314551,
+    "sha256": "c7f755fec3adb8fbd6be0ff4f81043d8d9e00f9957857ede3a8d4c918f77ea54"
+  },
+  {
+    "file": "Previews/run_contact.png.import",
+    "bytes": 945,
+    "sha256": "71f6d8e0e6fe36798caa74536a7f7dee47cb1656d184efa56e603c317d7e81da"
+  },
+  {
+    "file": "Previews/run_torso_QA.gif",
+    "bytes": 125978,
+    "sha256": "0133d78ef3b35c5d498e21cf0aa8c0b5e201fbe17b9675bc96f099fb6bde6cdb"
+  },
+  {
+    "file": "Previews/run_torso_QA.png",
+    "bytes": 312178,
+    "sha256": "064d29f4b8f6ebd5c9a298cb4a6c75f7a57bfb5bd849d0d870bc7d30bdf30915"
+  },
+  {
+    "file": "Previews/run_torso_QA.png.import",
+    "bytes": 949,
+    "sha256": "4dd5ec9e961de8a4604d7169047ef9c1ab21a3e4488eaaf57787ae8a1fb5f1df"
+  },
+  {
+    "file": "Previews/run_varita.gif",
+    "bytes": 142859,
+    "sha256": "235094daeec70000bf805119a232fe417d9d2095081f65b21eca39a11ae50e7e"
+  },
+  {
+    "file": "Previews/run_varita_contact.png",
+    "bytes": 349018,
+    "sha256": "91679dea18ac042e2de2eb3f1f975536b3dc9af8580fb134e73bbdb44639548c"
+  },
+  {
+    "file": "Previews/run_varita_contact.png.import",
+    "bytes": 966,
+    "sha256": "35e5217ac8122f61fc24ff9823812c71e1e298d23bedb2e2a328ce03acd94bc0"
+  },
+  {
+    "file": "Previews/walk.gif",
+    "bytes": 178231,
+    "sha256": "c2d0b9cbd980adaa68588bd2db9b9cc9437849080b920501b626b1fbefb807fe"
+  },
+  {
+    "file": "Previews/walk_body.gif",
+    "bytes": 178231,
+    "sha256": "eb9c83c3de3a19d2ba9c1a6f82efcf0a51c0b50a2799568f319521e7e511ee78"
+  },
+  {
+    "file": "Previews/walk_body_contact.png",
+    "bytes": 435102,
+    "sha256": "b7a25ff278b12c0053b9a3f4609bd4629c820b45863227458b858b1662c080d5"
+  },
+  {
+    "file": "Previews/walk_body_contact.png.import",
+    "bytes": 964,
+    "sha256": "c6c2fe13d420c175647f6d1e9d5e9984f10b78a3673f1f7d60315b1a3c009ff2"
+  },
+  {
+    "file": "Previews/walk_contact.png",
+    "bytes": 435102,
+    "sha256": "b7a25ff278b12c0053b9a3f4609bd4629c820b45863227458b858b1662c080d5"
+  },
+  {
+    "file": "Previews/walk_contact.png.import",
+    "bytes": 949,
+    "sha256": "dabc827af34c10aa7e2c5d683713c521f56ebaaa468319a5ca7194bdfb27778e"
+  },
+  {
+    "file": "Previews/walk_torso_QA.gif",
+    "bytes": 176693,
+    "sha256": "510fa051c8bece1352f6a3c6f71b5bad4953da3d0bf8072bef830c3ca79eddee"
+  },
+  {
+    "file": "Previews/walk_torso_QA.png",
+    "bytes": 431264,
+    "sha256": "67879b6715631b1e101053c004218d0e6428683f724fe34d2eefe411e02ce6b8"
+  },
+  {
+    "file": "Previews/walk_torso_QA.png.import",
+    "bytes": 952,
+    "sha256": "e700d1af97003f11b71e3619c89f0c37c4a818699c6697e30087bd44080f8b89"
+  },
+  {
+    "file": "Previews/walk_varita.gif",
+    "bytes": 198993,
+    "sha256": "8f3a3548923b33721ac7e12df7d05c5fbabe25052856ad2d5a3610ba4dc8abf6"
+  },
+  {
+    "file": "Previews/walk_varita_contact.png",
+    "bytes": 487480,
+    "sha256": "814b53cff76ddce8f7eb0ba411ed1382472707cac7ead23ad99af3e8bf60c018"
+  },
+  {
+    "file": "Previews/walk_varita_contact.png.import",
+    "bytes": 970,
+    "sha256": "692e2510cf5d85a59392af8fdac39c628ce7812759334ee30aafe9d83fab782c"
+  },
+  {
+    "file": "project.godot",
+    "bytes": 320,
+    "sha256": "e2497f90f0dd9be1e5957d011fd3da2d22ad3476e9bce424f503e37c08518a8c"
+  },
+  {
+    "file": "References/brush_base_original.png",
+    "bytes": 5706,
+    "sha256": "3a3ca06d8ae815811f81b33252dc27eb40ecd390034d702fbd4e94d6fcbff612"
+  },
+  {
+    "file": "References/brush_base_original.png.import",
+    "bytes": 971,
+    "sha256": "35f0c46be4ac57d845a44d8525858813ba0ace61da65c33f9d8741f5bd4f9a3b"
+  },
+  {
+    "file": "References/identity.png",
+    "bytes": 41417,
+    "sha256": "6a6a335a82ac893466ba41007dee27ec7e44195c82021310fe5bea3f5e5c2781"
+  },
+  {
+    "file": "References/identity.png.import",
+    "bytes": 939,
+    "sha256": "133e0c12be13f282e60661e5dbbc93e5d2e2b1f58541cffa3425cd4e50e13fab"
+  },
+  {
+    "file": "References/tip_color_original.png",
+    "bytes": 2138,
+    "sha256": "6a7b46200b7dd481dd8daaafda7e5be02753631d02343c0601970f805a0f2edf"
+  },
+  {
+    "file": "References/tip_color_original.png.import",
+    "bytes": 968,
+    "sha256": "f844dd9721b3576fc4d6b04178115c38b4bfeed5a0dfe1174abb5f5f00d536cf"
+  },
+  {
+    "file": "References/tip_dry_original.png",
+    "bytes": 2120,
+    "sha256": "c1f54d1f8b93592a84e361630e99a024d88b3341daf3efa29317f66ba25c4e11"
+  },
+  {
+    "file": "References/tip_dry_original.png.import",
+    "bytes": 963,
+    "sha256": "04cd6098d2f07d500db862e30ea076053e34950bd9f419389b999c857582f7d2"
+  },
+  {
+    "file": "References/tip_ink_original.png",
+    "bytes": 1847,
+    "sha256": "23488b9a5cd73bd9b97add126ea589123b77a918d13afa8d7a1d3040e2f23358"
+  },
+  {
+    "file": "References/tip_ink_original.png.import",
+    "bytes": 962,
+    "sha256": "f04b706d9fb7e94c3b3c2bdfe6b45d6e0bd8e102c13823459f85a1f9f593aaaa"
+  },
+  {
+    "file": "References/walk_revision03.png",
+    "bytes": 603441,
+    "sha256": "bc3e513fbfac1579d356fb68e40e03c0090cb531812be35351b768c55b66b909"
+  },
+  {
+    "file": "References/walk_revision03.png.import",
+    "bytes": 960,
+    "sha256": "cac7cbfc5e9526032d6625c8d7f44ee66449100b2d9e3e7ac11319c4aa9cce39"
+  },
+  {
+    "file": "Source/air_clean_original.png",
+    "bytes": 866794,
+    "sha256": "be3c83cc6497078456584c66a874322fb287ba4c482106c88d97584e6d2c4af0"
+  },
+  {
+    "file": "Source/air_clean_original.png.import",
+    "bytes": 965,
+    "sha256": "6907b82c244b50f423c7540d78e09fbd68fd05c2ccc79b1304d5c9b6c5ad7675"
+  },
+  {
+    "file": "Source/air_clean_PROMPT.txt",
+    "bytes": 457,
+    "sha256": "6dae9f16d8b018415df2ef1ae1c854f9a6f4e11ea98d9ba60489c7b177ad1083"
+  },
+  {
+    "file": "Source/air_original.png",
+    "bytes": 2158466,
+    "sha256": "ce34b266089413e70e2f3c48b7a60f2d82a33cc421aea7d0bb71f4f8caf776a6"
+  },
+  {
+    "file": "Source/air_original.png.import",
+    "bytes": 946,
+    "sha256": "b496c4932dd13f7d2ddc72c297d48cda51230af4776f0175fb056bee96769666"
+  },
+  {
+    "file": "Source/air_PROMPT.txt",
+    "bytes": 1133,
+    "sha256": "5953d39f7ab9b26f23071d73d44c4f2b6435dff7ad33f63a46ce34ff60350641"
+  },
+  {
+    "file": "Source/animation_metrics.json",
+    "bytes": 19256,
+    "sha256": "44f928cccada663593ddcc830dd4827261a01fd4cc6cbca2a25e020033edb5e3"
+  },
+  {
+    "file": "Source/body_registration.json",
+    "bytes": 24980,
+    "sha256": "ac718a80cf3311a17b4fe3970c5251f25d0e045f5e7d81036296079d02d037f8"
+  },
+  {
+    "file": "Source/build_delivery.py",
+    "bytes": 8439,
+    "sha256": "ebbeb71ff8f358a8c0e58f67b893ef4235b70d53d77659042bfb5304efd8195c"
+  },
+  {
+    "file": "Source/clipping_report.json",
+    "bytes": 2,
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "file": "Source/common.py",
+    "bytes": 3448,
+    "sha256": "9e206707287b326a6f76234ffaa1c612378085fe2a3b87f3dc1c56b6614db791"
+  },
+  {
+    "file": "Source/dip_original.png",
+    "bytes": 1907001,
+    "sha256": "2606f11814d4a50e027b16f8f2278fcb629188c6c0dc0f1ac1c4af07ff715e86"
+  },
+  {
+    "file": "Source/dip_original.png.import",
+    "bytes": 946,
+    "sha256": "39842a56c2e8c63f8bd42386470141947229f4defe38a14c6726e3b743fe6f0e"
+  },
+  {
+    "file": "Source/dip_PROMPT.txt",
+    "bytes": 984,
+    "sha256": "29b6b37441c412a18ac986b6cd2a9622f597ab368e983b723fc571ee1ad3bced"
+  },
+  {
+    "file": "Source/generation_jobs_01.json",
+    "bytes": 7836,
+    "sha256": "b18a776d338599a4232c3690ac91dd7579de1c2fbc59de0b9eb09627942aecc3"
+  },
+  {
+    "file": "Source/generation_jobs_02.json",
+    "bytes": 3979,
+    "sha256": "d4cdb5cb417dcd513d6d05e8228221e6b867434ee9e0139457fec0e5f7b3c84d"
+  },
+  {
+    "file": "Source/generation_jobs_03.json",
+    "bytes": 2711,
+    "sha256": "8f67fb6c2517f1fc11132bf375a8fb4f67d99b6d6c951f59489694362959c2b3"
+  },
+  {
+    "file": "Source/grips_actions.json",
+    "bytes": 1226,
+    "sha256": "459a0f9d37c14367e9eb6b6838df0b0dfe271b57978c81a569eebca8ff597e91"
+  },
+  {
+    "file": "Source/idle_original.png",
+    "bytes": 1926272,
+    "sha256": "bdb68878e4e6f77bc932f9000456d3a9e7fe923f47f887ab1614dccfdec3994b"
+  },
+  {
+    "file": "Source/idle_original.png.import",
+    "bytes": 950,
+    "sha256": "26d554d3933bd13a0c6fb2df1232313d62fc8eee43442b404b3e7bc5db35e37d"
+  },
+  {
+    "file": "Source/idle_PROMPT.txt",
+    "bytes": 1429,
+    "sha256": "af92972b41f43ecf35de180697924657718a04e8a17036444e92c66196216bd0"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/01.png",
+    "bytes": 39977,
+    "sha256": "b1af1abd6d9f65ae5e994d4e2bac852ebe0cd941d1fd8fd7895f8debe1f04106"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/01.png.import",
+    "bytes": 941,
+    "sha256": "0b62f3c9ee2876ef0d8cac60cddb99410aed52c09fe2f10e96a257f6fd6eeee5"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/02.png",
+    "bytes": 40674,
+    "sha256": "eb71a470a3614ed7091df59d5e44727d397cd4c839aaa84707bce4860527a125"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/02.png.import",
+    "bytes": 941,
+    "sha256": "d37f67f7cd5ab254c87a33c1105a81a565cca9b6044f3f16d8579017169ec7d2"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/03.png",
+    "bytes": 39560,
+    "sha256": "36cdbee34ddf9dcb4b8e62f4ea7eb493307e873b589d2ab9bd2565b96a8ca0ec"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/03.png.import",
+    "bytes": 941,
+    "sha256": "eac2fabf9d48bc4d9c09486c69c172cf50a10236f420a408b1af82a3378f3f62"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/04.png",
+    "bytes": 37890,
+    "sha256": "09baedbd99f7aed75b9e1f1e76dffb9426eb76de8b022a0e2073f952042fd1bd"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/04.png.import",
+    "bytes": 941,
+    "sha256": "fa5f228f1e2c2dd404c021b81b3f03bf6bff260112e3a10e1b56c577884f1100"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/05.png",
+    "bytes": 39943,
+    "sha256": "c3fd4fb6097be6a434d6ad311da8c1c0082d726e700ec8e4f5a4561f2a2aa629"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/05.png.import",
+    "bytes": 941,
+    "sha256": "efb6b6b4993722d08b11cf3a25aa4a80ad3bd0689d3b6f4b193f95e84561df60"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/06.png",
+    "bytes": 41004,
+    "sha256": "8afaf13af8e0be7b541fef223907e334f6c6555b0d72137a136c13057c31b919"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/06.png.import",
+    "bytes": 941,
+    "sha256": "3502be199e9d8bc0198455a1f8c9fa6af75e92aefcec4b9b411e2346ebd4ae3a"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/07.png",
+    "bytes": 41706,
+    "sha256": "0464b1675217659aaef8a9066e4fa21120ef3e7f0fc83bc8d7058bc5463eb946"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/07.png.import",
+    "bytes": 941,
+    "sha256": "7396f7ebfd295c339e4ba636f557c2c77b33ee7f403fc975d0d300c71ef6d276"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/08.png",
+    "bytes": 41103,
+    "sha256": "fbd3b1ba6e371d8b65e6da677c6bb6ed42ac1e8b9b4d9804738dd922d6f2dbe3"
+  },
+  {
+    "file": "Source/Packed_Bodies/air_clean/08.png.import",
+    "bytes": 941,
+    "sha256": "8c3681dac5ce5a68d43ef90b7b7c33e117e339b5fde23f30c71dea79ed8aaca0"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/01.png",
+    "bytes": 41252,
+    "sha256": "d3a1436897ca36d844e42720b8898a2aca9b337c83a224ddd4e0483390e4c18a"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/01.png.import",
+    "bytes": 935,
+    "sha256": "c671bb1873aa84a31068b1118d0131598f5960fc9a03e42cfef378a8d85a79e8"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/02.png",
+    "bytes": 41797,
+    "sha256": "43cc6d555ef3c0005529d287f9443954bbba397dd35c9132fb90b24b45da4266"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/02.png.import",
+    "bytes": 935,
+    "sha256": "056dc9b50a6862a9deb123f08d0b45bbfe4255048562580c23e88597e7c3d2f3"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/03.png",
+    "bytes": 41971,
+    "sha256": "ca7b82d4d7e2cf539d32ebe316ffcb81216ad8033c642d3260fbb5e595cf7d3d"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/03.png.import",
+    "bytes": 935,
+    "sha256": "d8f04c6c2b83a5be250ad88bcb55f7369995a88cf575771bd714cff1eb5cae6d"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/04.png",
+    "bytes": 42077,
+    "sha256": "6ee104e0d42e95b01337dbbd5d30c4a9a615e988ea31ca5d655210f5456c12ac"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/04.png.import",
+    "bytes": 935,
+    "sha256": "29ae5377560e5e51d51a21373f9ab0ca8ee2bc0604f0b9260166789c2ab03895"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/05.png",
+    "bytes": 41781,
+    "sha256": "04fbb77c306e0d9a7150b5bbb2de799ad85df748a3b3f42b406750b4824a2275"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/05.png.import",
+    "bytes": 935,
+    "sha256": "9dcf6fb660afb7489128f579ecc2ad040e30129f2ffce401e6e398e55f56a0d2"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/06.png",
+    "bytes": 41036,
+    "sha256": "b34fc4cd04a73b7cc0251a5987188e07b700f6ac9d6b7f3189ee7b415ab818bb"
+  },
+  {
+    "file": "Source/Packed_Bodies/dip/06.png.import",
+    "bytes": 933,
+    "sha256": "b9c6861f780382673f65facb953b496734ae57fff8361a76f5e263383997361b"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/01.png",
+    "bytes": 41279,
+    "sha256": "6e32ad7b6c08df89c3c9047322014e70bbb9b5a27fd0d1864f0cdc5672225b92"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/01.png.import",
+    "bytes": 936,
+    "sha256": "75d24703328d7ab1402c62b31acaf425c8f1e3927b2e431a06ebb5f464059abc"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/02.png",
+    "bytes": 41095,
+    "sha256": "56ec71997951656a60452531351f699f544e7c89ad8f4122f941475d8afc10ae"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/02.png.import",
+    "bytes": 936,
+    "sha256": "13583ebfe73028e78e6a4fecec51dce4b78e8903a1332ed877c39ae9e4f66ea0"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/03.png",
+    "bytes": 41284,
+    "sha256": "42daa509bb75efe040396ff4fd94d92b829daff7f1addc203252549cbc7ef41b"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/03.png.import",
+    "bytes": 936,
+    "sha256": "9870999a2055a7d183fdc35443479db328233d531719eb4d4fbe643152987396"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/04.png",
+    "bytes": 40979,
+    "sha256": "ca7d96a4b79fc88210bc9ab510fc51c0274ca36ea6902723ae1bac29a0dc16b4"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/04.png.import",
+    "bytes": 936,
+    "sha256": "1a8e39d2ca9eb15fb5206b4289cea9b1a255693f42953cd139e880c6d2d6e89b"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/05.png",
+    "bytes": 41588,
+    "sha256": "f5b5bf3f289236360382a997b7e5e1e81e453b65b7d95fdd05dff639ade13ba3"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/05.png.import",
+    "bytes": 936,
+    "sha256": "d50d193db55a96441c290a58c7ef03272ffab1bb5abc1e7135b8281a3641915f"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/06.png",
+    "bytes": 41666,
+    "sha256": "531a1be25e78174566da3461cd025df6d822f1db7255e83b08bf7ecfcdb7f729"
+  },
+  {
+    "file": "Source/Packed_Bodies/idle/06.png.import",
+    "bytes": 936,
+    "sha256": "d1d01b688de7673a5e9f1cea425fc3f86555a9bd90555af2b6d7d1cedaf72bc5"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/01.png",
+    "bytes": 42491,
+    "sha256": "bed854dd118bbf37cf310ec46835f826528e084ebf01e5975f3ba8afca11688a"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/01.png.import",
+    "bytes": 942,
+    "sha256": "d6a1a78024fb711662e96dcde1e4d37ff53f038a8474b397ec3a7656a7405cff"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/02.png",
+    "bytes": 43976,
+    "sha256": "e1a9deffb72641577177ec174ac1b660d2513ae8cc237bed790fa4807deffb15"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/02.png.import",
+    "bytes": 942,
+    "sha256": "976db57add971198d2db5c9170ec7ffa38c8871ef1e0d89296ced49fe19a966a"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/03.png",
+    "bytes": 42714,
+    "sha256": "e575f561fd763149e1b9aa1fbb26fefedbd7b601e4272c6cdee9f4d33d75a5d1"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/03.png.import",
+    "bytes": 942,
+    "sha256": "0dd05ad788210b3eb1b0c97d4e23308123496911c9c9372a5046cdadd89c80bc"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/04.png",
+    "bytes": 42995,
+    "sha256": "3234ac31dfc08243256352c075a07126729698f40ee094f12383c1a950865623"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/04.png.import",
+    "bytes": 942,
+    "sha256": "8fe513f65c33221707bbb3af16b5168d61fec411e15bebf63ae9b338dd5e530b"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/05.png",
+    "bytes": 42384,
+    "sha256": "fa3513b6833a479c5c4ae0f1ac10050762a98a31ecba207074c0ea32e557d739"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/05.png.import",
+    "bytes": 942,
+    "sha256": "97593e4d628eab1f24986c343806344fd21717756303181f5899d99dcc95c0aa"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/06.png",
+    "bytes": 42841,
+    "sha256": "c906b15dc47ffbe31a0edb37c06aef5f51d141f379617c1ab97c5e9bfa3c0d7b"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/06.png.import",
+    "bytes": 942,
+    "sha256": "d7ace92ffc30d09858df63c3b52551eae5f7730a4dc5f8f31e125f12bceff967"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/07.png",
+    "bytes": 42279,
+    "sha256": "4aa6b1b1e1ebb6104840022e1e0440f18c0947a0242dc7b77bee2467e5e29414"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/07.png.import",
+    "bytes": 942,
+    "sha256": "60bc36d1cbe7586583784e619edcffe9c29a6c0ee874cd47ed3a0c25550cb7f9"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/08.png",
+    "bytes": 42214,
+    "sha256": "bcac6eaacc8ad1877700a8631dd367e7a5f3a7c349b83c53c9d7c7f3e0469541"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_rise/08.png.import",
+    "bytes": 942,
+    "sha256": "764118bf9a55a21188b2131fbdb7f89b41746b5bf97f75895493227313cd3ca6"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/01.png",
+    "bytes": 40434,
+    "sha256": "59f161db7791c027ac69bdb5777decc3c09175732ddeedcc51a44858eef6fba3"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/01.png.import",
+    "bytes": 940,
+    "sha256": "778877e922001c31b38156429c075f1267ac3d9d964d1ff3fd557b5808567438"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/02.png",
+    "bytes": 40998,
+    "sha256": "c8c0049b30911700d0820fcc539c45acfbfde29cd42d203ecea2ffda522ea166"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/02.png.import",
+    "bytes": 940,
+    "sha256": "f2a5179c83eb7f1acdc5f7e61572063e720f3d3e0c26ba31ee7ba472d292136a"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/03.png",
+    "bytes": 41028,
+    "sha256": "229e90eb27d9b98cbc3678d54acf00d5810156b0cc37ba9531a8300fcaec1e0c"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/03.png.import",
+    "bytes": 940,
+    "sha256": "d5c765dc016565055f932f17fe56dfad9ff2b3384ec3f80cbe01deeaf78e14a8"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/04.png",
+    "bytes": 41942,
+    "sha256": "19b24fc1ff5fa5edae2c4451a6bcee148e4a45352993a349e3b291ec990bad83"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/04.png.import",
+    "bytes": 940,
+    "sha256": "2d69f229c1987a87a72096fb75f11109387fbd9457f8537dd64279108f64b467"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/05.png",
+    "bytes": 40805,
+    "sha256": "f612f34f8e10c2c80cbc5bea83f5faa115182600d03ba8305ad1e1da11d28de7"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/05.png.import",
+    "bytes": 940,
+    "sha256": "d883c2a36222932306efdfe3f51711e4c8a7dd8c122ca08d543fefcb2889aa26"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/06.png",
+    "bytes": 41114,
+    "sha256": "6e92e32a0fee37ffd1f8195299c94cb1fe83c0f20f8991333bb23c3349a1bde7"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/06.png.import",
+    "bytes": 939,
+    "sha256": "a96adc88f6dc4bf77aea0d03a1d95eb400df5e302cc36efcb355f17ba3011306"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/07.png",
+    "bytes": 40342,
+    "sha256": "6b47ae30b6bc2404fbd0b8ac21529fd94868e3bafacf70e70a4a2fa8b042f77d"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/07.png.import",
+    "bytes": 939,
+    "sha256": "209cc431abe63fbdaa849243d6c5ab9c689d3892a173f9bfaf1577e1f7f03db5"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/08.png",
+    "bytes": 40308,
+    "sha256": "0201b676b6c066c2f08edecefaaefeca97d101d7d1e79368bbf1753c51484b52"
+  },
+  {
+    "file": "Source/Packed_Bodies/paint_up/08.png.import",
+    "bytes": 940,
+    "sha256": "cbe9199349f23d9346e7cb61c7d4164220553db5f5e6f78a170842c7325d768a"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/01.png",
+    "bytes": 48809,
+    "sha256": "36d5469d2e1f22366a944cc6482ed3a348b7afd10230bd88ccec2b2cb1b05619"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/01.png.import",
+    "bytes": 935,
+    "sha256": "585d7cc08eb89b8db2e46c1631a1eb9fbc40f6c50150d82c885e81bc85761698"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/02.png",
+    "bytes": 46182,
+    "sha256": "b1dadec73ca550174bde0afc86e2465fd6b32d0862174e97743c4c7c699b6f3e"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/02.png.import",
+    "bytes": 935,
+    "sha256": "b88f1bbab4c7e384826b5a63dafa0a4bbe01576ae87636a92eb78d4abd600c96"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/03.png",
+    "bytes": 46163,
+    "sha256": "01e0fb9c77f34f6e02c9cb54cd1175b6f0b94f4dded6501e62aad8c0b4e3e4ba"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/03.png.import",
+    "bytes": 935,
+    "sha256": "394f6e021f1a9aefbccc4cfb27800e4943dd29b81fb2ee1c36de8a89a913a507"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/04.png",
+    "bytes": 50333,
+    "sha256": "8c613781dbdf04e2ed237329a7841f898a7319f1f65c344c9343cf2195119507"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/04.png.import",
+    "bytes": 935,
+    "sha256": "37a6e86e94256d48833317849254cd8d80245abfef819bb72d2cf95180911562"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/05.png",
+    "bytes": 49396,
+    "sha256": "9619aa794f0e3a202ef919d562f5e39c6b92dcfe90357231a600d94897c64adc"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/05.png.import",
+    "bytes": 935,
+    "sha256": "23e21fbe686c8130deac9426d446915fa4cbe9303b1913b4c82f6df8d4bd19a6"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/06.png",
+    "bytes": 46941,
+    "sha256": "2db7d625f1e4f91a6e1deb691539ca603badeccaf89983223ef6cd055883e54d"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/06.png.import",
+    "bytes": 934,
+    "sha256": "e4deaa121b8da82fe4b7dfa5eff71ea65ebcf2d1d210714a073d7ce6cabc6f62"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/07.png",
+    "bytes": 46154,
+    "sha256": "b1611f6d743a1bb19ac8ff85d98ac18e32f084e34413b863fb47d433e75490db"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/07.png.import",
+    "bytes": 935,
+    "sha256": "712ebd42bf973ed6512144e58b10644f3af6f5ffa05208364d493bcfea0cd794"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/08.png",
+    "bytes": 51221,
+    "sha256": "53e5a2836b19f7cdc4817a9f025e4880510f0f8593686d85e89ecd83f2e1c65a"
+  },
+  {
+    "file": "Source/Packed_Bodies/run/08.png.import",
+    "bytes": 935,
+    "sha256": "d8e9f536c330ce751d5ea0c9f67346bcd5932e21c6069472bd05400f42af418e"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/01.png",
+    "bytes": 44891,
+    "sha256": "0b2c6425ca9c041ffce4850189d07459091467fa768031c8ae8ebd61ad4704f0"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/01.png.import",
+    "bytes": 936,
+    "sha256": "a586596ae80e20e144f2dc86c4851a710917a56651bc38e2b69c19c3a8e6c53b"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/02.png",
+    "bytes": 44801,
+    "sha256": "754abb9e132bbc789a793cc79a1b74e0d00fe214a4a28d715aef9fd9546298a2"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/02.png.import",
+    "bytes": 936,
+    "sha256": "4a3ee239ce45319339d3dc787cc116dce9b0ff167b9ca07e68bd2d4e46e70378"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/03.png",
+    "bytes": 42843,
+    "sha256": "a4dbdb4c84d7eeefbb111653bf57a95c8d6d5baa70052441f03bbc186ce7bd17"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/03.png.import",
+    "bytes": 936,
+    "sha256": "06e2affa7044cfeedd44573add5bb76b8813e451856db4581c6a8bf89b9127da"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/04.png",
+    "bytes": 41535,
+    "sha256": "def6f9bef97a40f1dbd3897f91df75dc48b8bce61813835156ca5a088939233a"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/04.png.import",
+    "bytes": 935,
+    "sha256": "ec62a94df714dd2451119cbf89b4bb844d0dd28fd8b0df46e29864ccb4da032a"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/05.png",
+    "bytes": 44596,
+    "sha256": "64db2e12e1f92d70bf93bea27eb854fbaae273baac3246f63ffec8fa9b4d0303"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/05.png.import",
+    "bytes": 936,
+    "sha256": "4b00d8d49a67620c75a8d7eb27866673e23d51a69dbdfb7cd1751119962037e8"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/06.png",
+    "bytes": 45693,
+    "sha256": "62a7fc252d828cdb1083081100faecb8a2e3729b74e56d545454c8438013c8da"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/06.png.import",
+    "bytes": 935,
+    "sha256": "5688d174947a4de4dc1035bf9c06bb1a8252f9b21bf82cfd4bc00eb34ba7362a"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/07.png",
+    "bytes": 45806,
+    "sha256": "2ed29f41904102abfe1df7ddd8f22e6135fe5a6b67f3d9c8ee40a1cb656aba2c"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/07.png.import",
+    "bytes": 936,
+    "sha256": "76a301aad88c9259a53e667c428dd46683c8da17618b9a237d29e16b6ef35efa"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/08.png",
+    "bytes": 44915,
+    "sha256": "e7838ee3a3f682d266284e40ce48cb8845ef04ea3c0b2954122e838955c542a6"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/08.png.import",
+    "bytes": 936,
+    "sha256": "493935a2ca2bcd2ac7bb92619dba6dc0060ca2d105cac39f74ca23039eb4a2eb"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/09.png",
+    "bytes": 43148,
+    "sha256": "811926e97fed6075575c8910d5f774774143affb3fffd64ef3cb4608720b7095"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/09.png.import",
+    "bytes": 936,
+    "sha256": "07d587b7fab1a00abfab251de0816de96b6c024dd26068c6ea12829150728c99"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/10.png",
+    "bytes": 43849,
+    "sha256": "b67a05578d9da73ae845738e872eeb80ddd2827fbbf36b9c521319787f4154f0"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/10.png.import",
+    "bytes": 936,
+    "sha256": "9c852dd805685d95cacdba0e19320af39a022430d880d7b47267b9860fadc203"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/11.png",
+    "bytes": 45401,
+    "sha256": "ff93aaf2f40af061dda165153d88cfd8e46ce1243b8f98b51a7c3332aa73c797"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/11.png.import",
+    "bytes": 935,
+    "sha256": "d28e0b8aed2147cfb743656e57b3a2134529ae4406c5e34f0132bfd317af0516"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/12.png",
+    "bytes": 46448,
+    "sha256": "018d53915257afa5177564e1d036f2f4dc94f3d93305fd10dd11cb468d25cb51"
+  },
+  {
+    "file": "Source/Packed_Bodies/walk/12.png.import",
+    "bytes": 936,
+    "sha256": "267d3a1c278dac540263957c204345a3ba2d9790efa7a0f74a0d83011dc88c3a"
+  },
+  {
+    "file": "Source/paint_rise_original.png",
+    "bytes": 1121797,
+    "sha256": "1168342e1d8c952ddeb513321e5f06bbafd4c36de64e0361860747513d485314"
+  },
+  {
+    "file": "Source/paint_rise_original.png.import",
+    "bytes": 967,
+    "sha256": "b06936db225e7a63c842cc093e8b5e8f686de0a1f602d49afc579f8dc40d51ba"
+  },
+  {
+    "file": "Source/paint_rise_PROMPT.txt",
+    "bytes": 1929,
+    "sha256": "8ed28bdfc882b1611d2561cb288f9b4e33b36206f7e13abbca3c0299e92760cc"
+  },
+  {
+    "file": "Source/paint_up_original.png",
+    "bytes": 1128312,
+    "sha256": "ff5fc11c459b5c1d08cac07a27a6d864d7e2b51e217cc511e602e8f24a944125"
+  },
+  {
+    "file": "Source/paint_up_original.png.import",
+    "bytes": 962,
+    "sha256": "3cc36f23188098abe0d20f25bb6c232ead2e6002944365b5ac0603462babccc0"
+  },
+  {
+    "file": "Source/paint_up_PROMPT.txt",
+    "bytes": 1105,
+    "sha256": "791f3f65f41e99d2d71a9df544ae459be3bdd094b07bf81b06f9d15a84aad059"
+  },
+  {
+    "file": "Source/prep_fix_original.png",
+    "bytes": 831018,
+    "sha256": "bb72384a85a775ac831537c0a743750c999274aef14781b9b9c145253d4c2107"
+  },
+  {
+    "file": "Source/prep_fix_original.png.import",
+    "bytes": 962,
+    "sha256": "7fa357b5fedfee7f0eb1be5271d98b32ea45324a8e3cdec69fa7c71687f3387a"
+  },
+  {
+    "file": "Source/prep_fix_PROMPT.txt",
+    "bytes": 403,
+    "sha256": "03b9b23beae497ea2e7fc6afb82b0064a76747554254ebdc459f9f8a5d96176e"
+  },
+  {
+    "file": "Source/prepare_bodies.py",
+    "bytes": 4532,
+    "sha256": "5765d2ec6283f21ceb9d5fb4ab7d46caccf3fbabb35f0259b736ad944f479781"
+  },
+  {
+    "file": "Source/run_original.png",
+    "bytes": 1198768,
+    "sha256": "99f68b3f0f82092a7b0760feae725ec7bcf9a267b411923df26ecafb4333a944"
+  },
+  {
+    "file": "Source/run_original.png.import",
+    "bytes": 947,
+    "sha256": "00b684e7c8e3f2546a9c015f83eb638f98d87a8e3f499c4e45d0fa4cc77f1902"
+  },
+  {
+    "file": "Source/run_PROMPT.txt",
+    "bytes": 1695,
+    "sha256": "eefdf64564cfd33f6273f3915fe866485b272c82b1ceeeaae691e218cd0774ea"
+  },
+  {
+    "file": "Source/run_refined_original.png",
+    "bytes": 1195712,
+    "sha256": "2cb8492754d5eb72f0a6f02107e174f576b4726e363047ebd06077f156e80218"
+  },
+  {
+    "file": "Source/run_refined_original.png.import",
+    "bytes": 969,
+    "sha256": "3fb387f1601b1d5229aa47e4d62d95083a962cf91362a698b118c94d5fa518f3"
+  },
+  {
+    "file": "Source/run_refined_PROMPT.txt",
+    "bytes": 1052,
+    "sha256": "4b8c6b040ed41538f4a5d2ad7eb6bc3882ab9f9f589e87da9129639d04f64f5e"
+  },
+  {
+    "file": "Source/validate_delivery.py",
+    "bytes": 4030,
+    "sha256": "d46ce2c5e0f5f1b79a1a9e704a80c045c36169c7d3401a284d5718daa219be66"
+  },
+  {
+    "file": "Source/walk_fix_06_original.png",
+    "bytes": 745603,
+    "sha256": "048a6f192a18bdcd6f93117f8e02f46c4a2d35b707aa225ef391a4c6076085a0"
+  },
+  {
+    "file": "Source/walk_fix_06_original.png.import",
+    "bytes": 971,
+    "sha256": "cbe1606fbb1020388d139d68fe6f5e1dacc22a43f1eead5671cee81c3eda4405"
+  },
+  {
+    "file": "Source/walk_fix_06_PROMPT.txt",
+    "bytes": 645,
+    "sha256": "fda6a4518b447c275466a0e72f3e0aca81df55d7b9e53ba0897b93c1e9b4aba3"
+  },
+  {
+    "file": "Source/walk_fix_07_original.png",
+    "bytes": 761701,
+    "sha256": "faad354e894a6271f298cb83f9472654c1480381e092460c06c29039f6db1ffb"
+  },
+  {
+    "file": "Source/walk_fix_07_original.png.import",
+    "bytes": 971,
+    "sha256": "9f7a47b38b8c47838d4cfbf551cd28d736d58dd73bf1de649b5364eaeb965841"
+  },
+  {
+    "file": "Source/walk_fix_07_PROMPT.txt",
+    "bytes": 645,
+    "sha256": "fda6a4518b447c275466a0e72f3e0aca81df55d7b9e53ba0897b93c1e9b4aba3"
+  },
+  {
+    "file": "Source/walk_fix_12_original.png",
+    "bytes": 748456,
+    "sha256": "7d9ee6024f35499a9e80101c8daf8f42199b8aa1c40bffc87717079f9e1617ea"
+  },
+  {
+    "file": "Source/walk_fix_12_original.png.import",
+    "bytes": 971,
+    "sha256": "c7734f7b7782770fcbd7620e3cb4a5d6c472f12d5fdd1c91b4d2e6e161944899"
+  },
+  {
+    "file": "Source/walk_fix_12_PROMPT.txt",
+    "bytes": 645,
+    "sha256": "fda6a4518b447c275466a0e72f3e0aca81df55d7b9e53ba0897b93c1e9b4aba3"
+  },
+  {
+    "file": "Source/walk_original.png",
+    "bytes": 1232260,
+    "sha256": "3a07cfdec132db3d80edff2628acf8e7e5b02a4cfeeb49a9a704638a920887a8"
+  },
+  {
+    "file": "Source/walk_original.png.import",
+    "bytes": 950,
+    "sha256": "0d49d83945a4a0cfd410c6adea2f9d63e04232ca840db2fb2bbf07a138970e17"
+  },
+  {
+    "file": "Source/walk_PROMPT.txt",
+    "bytes": 1772,
+    "sha256": "add5048aa9566cb6a18938f6a67b9969dd93ae527d2d2d91826d4668ab9e16a9"
+  },
+  {
+    "file": "VALIDACION.json",
+    "bytes": 26367,
+    "sha256": "17b907911501be895ed64298224dc1e09358732974785b4297fb3f5d09b4d80d"
+  }
+]

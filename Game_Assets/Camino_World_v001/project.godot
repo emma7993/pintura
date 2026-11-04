@@ -1,0 +1,10 @@
+config_version=5
+[application]
+config/name="Camino — kit de arte v001"
+run/main_scene="res://Godot/Preview.tscn"
+[display]
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+[rendering]
+renderer/rendering_method="gl_compatibility"

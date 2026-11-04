@@ -1,0 +1,213 @@
+[
+  {
+    "name": "ground_a_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      31,
+      115,
+      239,
+      191
+    ],
+    "source_bbox": [
+      146,
+      469,
+      1196,
+      836
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 1196,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "ground_b_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      23,
+      115,
+      238,
+      190
+    ],
+    "source_bbox": [
+      73,
+      449,
+      1190,
+      854
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 118,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "ground_c_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      23,
+      116,
+      232,
+      180
+    ],
+    "source_bbox": [
+      85,
+      480,
+      1176,
+      829
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 24,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "reeds_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      71,
+      53,
+      184,
+      206
+    ],
+    "source_bbox": [
+      314,
+      166,
+      943,
+      1024
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 18,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "stones_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      30,
+      128,
+      227,
+      194
+    ],
+    "source_bbox": [
+      113,
+      484,
+      1173,
+      850
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 399,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "tree_left_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      36,
+      22,
+      213,
+      214
+    ],
+    "source_bbox": [
+      99,
+      65,
+      1190,
+      1188
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 113,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "tree_right_oleo",
+    "size": [
+      256,
+      256
+    ],
+    "original_bbox": [
+      52,
+      24,
+      221,
+      213
+    ],
+    "source_bbox": [
+      164,
+      54,
+      1156,
+      1151
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 78,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "03_bosque_orilla_oleo",
+    "size": [
+      1774,
+      887
+    ],
+    "original_bbox": [
+      86,
+      128,
+      1722,
+      766
+    ],
+    "source_bbox": [
+      68,
+      121,
+      1746,
+      779
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "filled_interiors": true,
+    "pixel_contour_match_certified": true,
+    "filled_interior_pixels": 10762,
+    "review": "Original alpha silhouette retained pixel-for-pixel; enclosed cavities filled. Open contours remain open. Generated impasto RGB registered by bounds, internal paint details may differ."
+  },
+  {
+    "name": "gate_tinta",
+    "size": [
+      256,
+      256
+    ],
+    "canvas_match": true,
+    "bounding_box_registration": true,
+    "pixel_contour_match_certified": false,
+    "review": "Arch opening and stone contours need overlay review; no claim of pixel-perfect tracing."
+  }
+]

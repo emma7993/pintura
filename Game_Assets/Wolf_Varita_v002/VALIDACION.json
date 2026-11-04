@@ -1,0 +1,1309 @@
+{
+  "cell_rgba": [
+    256,
+    256
+  ],
+  "origin_offset": [
+    -128,
+    -238
+  ],
+  "ground_reference_y": 238,
+  "animations": {
+    "idle": {
+      "frames": 6,
+      "has_wand": false,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.912,
+          159.111
+        ],
+        [
+          138.406,
+          159.095
+        ],
+        [
+          138.445,
+          158.742
+        ],
+        [
+          137.753,
+          158.82
+        ],
+        [
+          137.97,
+          159.087
+        ],
+        [
+          138.153,
+          159.047
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.354,
+      "torso_x_max_adjacent_delta_including_loop": 0.692,
+      "torso_y_range": 0.369,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          143.0
+        ],
+        [
+          143.5
+        ],
+        [
+          143.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          143.0
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 1.6605,
+      "loop_alpha_mae_max_internal": 4.2504
+    },
+    "idle_varita": {
+      "frames": 6,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.912,
+          159.111
+        ],
+        [
+          138.406,
+          159.095
+        ],
+        [
+          138.445,
+          158.742
+        ],
+        [
+          137.753,
+          158.82
+        ],
+        [
+          137.97,
+          159.087
+        ],
+        [
+          138.153,
+          159.047
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.354,
+      "torso_x_max_adjacent_delta_including_loop": 0.692,
+      "torso_y_range": 0.369,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          143.0
+        ],
+        [
+          143.5
+        ],
+        [
+          143.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          143.0
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 1.6605,
+      "loop_alpha_mae_max_internal": 4.2504
+    },
+    "walk": {
+      "frames": 12,
+      "has_wand": false,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.576,
+          159.413
+        ],
+        [
+          137.569,
+          159.79
+        ],
+        [
+          138.437,
+          159.626
+        ],
+        [
+          137.851,
+          159.692
+        ],
+        [
+          138.224,
+          159.452
+        ],
+        [
+          137.928,
+          160.544
+        ],
+        [
+          137.588,
+          160.843
+        ],
+        [
+          137.66,
+          159.92
+        ],
+        [
+          138.215,
+          160.123
+        ],
+        [
+          138.194,
+          159.465
+        ],
+        [
+          138.141,
+          159.547
+        ],
+        [
+          137.763,
+          160.074
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.508,
+      "torso_x_max_adjacent_delta_including_loop": 0.868,
+      "torso_y_range": 1.43,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          119.5,
+          192.5
+        ],
+        [
+          116.0,
+          172.0
+        ],
+        [
+          121.0,
+          157.0
+        ],
+        [
+          140.0
+        ],
+        [
+          117.5,
+          176.5
+        ],
+        [
+          112.5,
+          173.0
+        ],
+        [
+          109.5,
+          167.5
+        ],
+        [
+          109.5,
+          157.0
+        ],
+        [
+          142.0
+        ],
+        [
+          142.0
+        ],
+        [
+          116.5,
+          168.0
+        ],
+        [
+          111.0,
+          176.0
+        ]
+      ],
+      "max_foot_center_separation_px": 73.0,
+      "stride_estimate_two_steps_px": 146.0,
+      "loop_alpha_mae_last_to_first": 13.7063,
+      "loop_alpha_mae_max_internal": 17.1893
+    },
+    "walk_varita": {
+      "frames": 12,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.576,
+          159.413
+        ],
+        [
+          137.569,
+          159.79
+        ],
+        [
+          138.437,
+          159.626
+        ],
+        [
+          137.851,
+          159.692
+        ],
+        [
+          138.224,
+          159.452
+        ],
+        [
+          137.928,
+          160.544
+        ],
+        [
+          137.588,
+          160.843
+        ],
+        [
+          137.66,
+          159.92
+        ],
+        [
+          138.215,
+          160.123
+        ],
+        [
+          138.194,
+          159.465
+        ],
+        [
+          138.141,
+          159.547
+        ],
+        [
+          137.763,
+          160.074
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.508,
+      "torso_x_max_adjacent_delta_including_loop": 0.868,
+      "torso_y_range": 1.43,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          119.5,
+          192.5
+        ],
+        [
+          116.0,
+          172.0
+        ],
+        [
+          121.0,
+          157.0
+        ],
+        [
+          140.0
+        ],
+        [
+          117.5,
+          176.5
+        ],
+        [
+          112.5,
+          173.0
+        ],
+        [
+          109.5,
+          167.5
+        ],
+        [
+          109.5,
+          157.0
+        ],
+        [
+          142.0
+        ],
+        [
+          142.0
+        ],
+        [
+          116.5,
+          168.0
+        ],
+        [
+          111.0,
+          176.0
+        ]
+      ],
+      "max_foot_center_separation_px": 73.0,
+      "stride_estimate_two_steps_px": 146.0,
+      "loop_alpha_mae_last_to_first": 13.7063,
+      "loop_alpha_mae_max_internal": 17.1893
+    },
+    "run": {
+      "frames": 8,
+      "has_wand": false,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.618,
+          164.179
+        ],
+        [
+          137.543,
+          163.321
+        ],
+        [
+          138.243,
+          163.307
+        ],
+        [
+          137.921,
+          165.16
+        ],
+        [
+          137.767,
+          164.088
+        ],
+        [
+          138.318,
+          163.398
+        ],
+        [
+          138.064,
+          163.317
+        ],
+        [
+          137.8,
+          163.494
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.409,
+      "torso_x_max_adjacent_delta_including_loop": 0.7,
+      "torso_y_range": 1.853,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          72.0,
+          201.0
+        ],
+        [
+          114.0,
+          150.0
+        ],
+        [
+          96.5
+        ],
+        [
+          51.5,
+          206.0
+        ],
+        [
+          71.0,
+          202.0
+        ],
+        [
+          114.0,
+          150.5
+        ],
+        [
+          97.0
+        ],
+        [
+          56.5,
+          212.0
+        ]
+      ],
+      "max_foot_center_separation_px": 155.5,
+      "stride_estimate_two_steps_px": 311.0,
+      "loop_alpha_mae_last_to_first": 21.5281,
+      "loop_alpha_mae_max_internal": 31.7676
+    },
+    "run_varita": {
+      "frames": 8,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.618,
+          164.179
+        ],
+        [
+          137.543,
+          163.321
+        ],
+        [
+          138.243,
+          163.307
+        ],
+        [
+          137.921,
+          165.16
+        ],
+        [
+          137.767,
+          164.088
+        ],
+        [
+          138.318,
+          163.398
+        ],
+        [
+          138.064,
+          163.317
+        ],
+        [
+          137.8,
+          163.494
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.409,
+      "torso_x_max_adjacent_delta_including_loop": 0.7,
+      "torso_y_range": 1.853,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          72.0,
+          201.0
+        ],
+        [
+          114.0,
+          150.0
+        ],
+        [
+          96.5
+        ],
+        [
+          51.5,
+          206.0
+        ],
+        [
+          71.0,
+          202.0
+        ],
+        [
+          114.0,
+          150.5
+        ],
+        [
+          97.0
+        ],
+        [
+          56.5,
+          212.0
+        ]
+      ],
+      "max_foot_center_separation_px": 155.5,
+      "stride_estimate_two_steps_px": 311.0,
+      "loop_alpha_mae_last_to_first": 21.5281,
+      "loop_alpha_mae_max_internal": 31.7676
+    },
+    "jump_start": {
+      "frames": 2,
+      "has_wand": false,
+      "height_px_by_frame": [
+        198,
+        213
+      ],
+      "height_min": 198,
+      "height_max": 213,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          137.878,
+          166.651
+        ],
+        [
+          137.561,
+          159.239
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.159,
+      "torso_x_max_adjacent_delta_including_loop": 0.317,
+      "torso_y_range": 7.412,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          139.5
+        ],
+        [
+          133.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 25.5955,
+      "loop_alpha_mae_max_internal": 25.5955
+    },
+    "jump_start_varita": {
+      "frames": 2,
+      "has_wand": true,
+      "height_px_by_frame": [
+        198,
+        213
+      ],
+      "height_min": 198,
+      "height_max": 213,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          137.878,
+          166.651
+        ],
+        [
+          137.561,
+          159.239
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.159,
+      "torso_x_max_adjacent_delta_including_loop": 0.317,
+      "torso_y_range": 7.412,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          139.5
+        ],
+        [
+          133.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 25.5955,
+      "loop_alpha_mae_max_internal": 25.5955
+    },
+    "jump_up": {
+      "frames": 2,
+      "has_wand": false,
+      "height_px_by_frame": [
+        211,
+        217
+      ],
+      "height_min": 211,
+      "height_max": 217,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          137.689,
+          159.413
+        ],
+        [
+          137.807,
+          158.337
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.059,
+      "torso_x_max_adjacent_delta_including_loop": 0.118,
+      "torso_y_range": 1.076,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          121.0,
+          138.0
+        ],
+        [
+          133.5
+        ]
+      ],
+      "max_foot_center_separation_px": 17.0,
+      "stride_estimate_two_steps_px": 34.0,
+      "loop_alpha_mae_last_to_first": 12.6847,
+      "loop_alpha_mae_max_internal": 12.6847
+    },
+    "jump_up_varita": {
+      "frames": 2,
+      "has_wand": true,
+      "height_px_by_frame": [
+        211,
+        217
+      ],
+      "height_min": 211,
+      "height_max": 217,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          137.689,
+          159.413
+        ],
+        [
+          137.807,
+          158.337
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.059,
+      "torso_x_max_adjacent_delta_including_loop": 0.118,
+      "torso_y_range": 1.076,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          121.0,
+          138.0
+        ],
+        [
+          133.5
+        ]
+      ],
+      "max_foot_center_separation_px": 17.0,
+      "stride_estimate_two_steps_px": 34.0,
+      "loop_alpha_mae_last_to_first": 12.6847,
+      "loop_alpha_mae_max_internal": 12.6847
+    },
+    "fall": {
+      "frames": 2,
+      "has_wand": false,
+      "height_px_by_frame": [
+        218,
+        220
+      ],
+      "height_min": 218,
+      "height_max": 220,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          138.363,
+          158.546
+        ],
+        [
+          137.731,
+          158.457
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.316,
+      "torso_x_max_adjacent_delta_including_loop": 0.632,
+      "torso_y_range": 0.089,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          135.5
+        ],
+        [
+          135.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 11.7616,
+      "loop_alpha_mae_max_internal": 11.7616
+    },
+    "fall_varita": {
+      "frames": 2,
+      "has_wand": true,
+      "height_px_by_frame": [
+        218,
+        220
+      ],
+      "height_min": 218,
+      "height_max": 220,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          138.363,
+          158.546
+        ],
+        [
+          137.731,
+          158.457
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.316,
+      "torso_x_max_adjacent_delta_including_loop": 0.632,
+      "torso_y_range": 0.089,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          135.5
+        ],
+        [
+          135.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 11.7616,
+      "loop_alpha_mae_max_internal": 11.7616
+    },
+    "land": {
+      "frames": 2,
+      "has_wand": false,
+      "height_px_by_frame": [
+        212,
+        216
+      ],
+      "height_min": 212,
+      "height_max": 216,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          138.065,
+          161.131
+        ],
+        [
+          138.383,
+          158.974
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.159,
+      "torso_x_max_adjacent_delta_including_loop": 0.318,
+      "torso_y_range": 2.157,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          142.0
+        ],
+        [
+          143.0
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 19.6576,
+      "loop_alpha_mae_max_internal": 19.6576
+    },
+    "land_varita": {
+      "frames": 2,
+      "has_wand": true,
+      "height_px_by_frame": [
+        212,
+        216
+      ],
+      "height_min": 212,
+      "height_max": 216,
+      "height_216_plusminus3_pass": false,
+      "torso_center_xy_by_frame": [
+        [
+          138.065,
+          161.131
+        ],
+        [
+          138.383,
+          158.974
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.159,
+      "torso_x_max_adjacent_delta_including_loop": 0.318,
+      "torso_y_range": 2.157,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          142.0
+        ],
+        [
+          143.0
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 19.6576,
+      "loop_alpha_mae_max_internal": 19.6576
+    },
+    "paint_rise": {
+      "frames": 8,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.672,
+          160.407
+        ],
+        [
+          137.831,
+          162.578
+        ],
+        [
+          138.046,
+          160.023
+        ],
+        [
+          138.398,
+          159.732
+        ],
+        [
+          137.829,
+          159.635
+        ],
+        [
+          137.602,
+          159.784
+        ],
+        [
+          138.124,
+          159.925
+        ],
+        [
+          137.739,
+          160.306
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.493,
+      "torso_x_max_adjacent_delta_including_loop": 0.569,
+      "torso_y_range": 2.943,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          142.5
+        ],
+        [
+          142.0
+        ],
+        [
+          142.5
+        ],
+        [
+          143.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 1.3492,
+      "loop_alpha_mae_max_internal": 7.9796
+    },
+    "paint_up": {
+      "frames": 8,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          138.354,
+          160.28
+        ],
+        [
+          137.856,
+          160.253
+        ],
+        [
+          138.358,
+          160.297
+        ],
+        [
+          138.133,
+          160.264
+        ],
+        [
+          137.592,
+          158.705
+        ],
+        [
+          137.648,
+          160.168
+        ],
+        [
+          138.336,
+          160.18
+        ],
+        [
+          138.49,
+          160.139
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.504,
+      "torso_x_max_adjacent_delta_including_loop": 0.688,
+      "torso_y_range": 1.592,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          141.0
+        ],
+        [
+          141.0
+        ],
+        [
+          141.0
+        ],
+        [
+          141.0
+        ],
+        [
+          141.0
+        ],
+        [
+          141.0
+        ],
+        [
+          141.0
+        ],
+        [
+          141.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 1.2848,
+      "loop_alpha_mae_max_internal": 6.5802
+    },
+    "dip": {
+      "frames": 6,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.881,
+          158.266
+        ],
+        [
+          138.107,
+          158.313
+        ],
+        [
+          138.168,
+          158.369
+        ],
+        [
+          138.076,
+          158.326
+        ],
+        [
+          138.041,
+          158.257
+        ],
+        [
+          138.119,
+          158.285
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.184,
+      "torso_x_max_adjacent_delta_including_loop": 0.238,
+      "torso_y_range": 0.112,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          140.5
+        ],
+        [
+          140.5
+        ],
+        [
+          140.5
+        ],
+        [
+          140.5
+        ],
+        [
+          140.5
+        ],
+        [
+          140.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 1.5089,
+      "loop_alpha_mae_max_internal": 4.222
+    },
+    "paint_slash": {
+      "frames": 8,
+      "has_wand": true,
+      "height_px_by_frame": [
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216,
+        216
+      ],
+      "height_min": 216,
+      "height_max": 216,
+      "height_216_plusminus3_pass": true,
+      "torso_center_xy_by_frame": [
+        [
+          137.739,
+          160.306
+        ],
+        [
+          138.124,
+          159.925
+        ],
+        [
+          137.602,
+          159.784
+        ],
+        [
+          137.602,
+          159.784
+        ],
+        [
+          137.829,
+          159.635
+        ],
+        [
+          138.398,
+          159.732
+        ],
+        [
+          138.046,
+          160.023
+        ],
+        [
+          137.672,
+          160.407
+        ]
+      ],
+      "torso_x_max_deviation_from_mean": 0.522,
+      "torso_x_max_adjacent_delta_including_loop": 0.569,
+      "torso_y_range": 0.772,
+      "foot_centers_bottom_band_by_frame": [
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ],
+        [
+          143.5
+        ],
+        [
+          142.5
+        ],
+        [
+          142.5
+        ]
+      ],
+      "max_foot_center_separation_px": 0,
+      "stride_estimate_two_steps_px": 0,
+      "loop_alpha_mae_last_to_first": 1.3492,
+      "loop_alpha_mae_max_internal": 7.2398
+    }
+  },
+  "measurement_method": "Torso: connected black core, RGB max<115 and alpha>=128, ROI x90..189,y143..179; excludes grey outline, scarf and tail. Height: alpha>16. Stride: twice maximum separation of two foot groups in y224..238, an opening-based estimate, not a certified planted-foot velocity.",
+  "air_pose_height_policy": "User approved preserving head/torso scale and allowing natural flexion on jump/landing. Shared source scale for all eight air poses, no per-frame height normalization.",
+  "checks": {
+    "all_dimensions_and_counts": true,
+    "locomotion_torso_limits": true,
+    "idle_walk_registration": true,
+    "wand_length_176_17px_ratio_to_216": 0.8156018518518517,
+    "grip_in_lower_third_all_frames": true,
+    "no_clipped_weapon_layer": true,
+    "contacts_inside_cell": true,
+    "paint_contact_frames": [
+      4,
+      5,
+      6
+    ],
+    "dip_receives_ink_frames": [
+      4,
+      5
+    ],
+    "walk_stride_measured_estimate_px": 146.0,
+    "run_stride_measured_estimate_px": 311.0,
+    "standing_animation_heights_216px": true
+  },
+  "idle_to_passing_walk": {
+    "4": {
+      "idle_center": [
+        138.1065,
+        158.98366666666666
+      ],
+      "walk_center": [
+        137.851,
+        159.692
+      ],
+      "delta_xy": [
+        -0.2555,
+        0.7083
+      ],
+      "pass": true
+    },
+    "10": {
+      "idle_center": [
+        138.1065,
+        158.98366666666666
+      ],
+      "walk_center": [
+        138.194,
+        159.465
+      ],
+      "delta_xy": [
+        0.0875,
+        0.4813
+      ],
+      "pass": true
+    }
+  },
+  "paint_paths": {
+    "paint_rise": {
+      "tip_xy_frames_4_5_6": [
+        [
+          239.0,
+          236.0
+        ],
+        [
+          215.0,
+          194.4308
+        ],
+        [
+          119.0,
+          28.1539
+        ]
+      ],
+      "screen_direction_degrees": -120.0,
+      "collinearity_error_px": 1e-05
+    },
+    "paint_slash": {
+      "tip_xy_frames_4_5_6": [
+        [
+          119.0,
+          28.1539
+        ],
+        [
+          215.0,
+          194.4308
+        ],
+        [
+          239.0,
+          236.0
+        ]
+      ],
+      "screen_direction_degrees": 60.0,
+      "collinearity_error_px": 1e-05
+    },
+    "paint_up": {
+      "tip_xy_frames_4_5_6": [
+        [
+          233.0,
+          236.0
+        ],
+        [
+          233.0,
+          125.0
+        ],
+        [
+          233.0,
+          24.0
+        ]
+      ],
+      "screen_direction_degrees": -90.0,
+      "collinearity_error_px": 0.0
+    }
+  },
+  "godot_validation": {
+    "version": "4.7.2",
+    "body_animations": 18,
+    "body_frames_loaded": 98,
+    "weapon_layer_frames_loaded": 256,
+    "runtime_preview_capture": "passed",
+    "resource_or_script_errors": false,
+    "environment_notes": "Headless sandbox Windows certificate-store/user-preference warnings; GPU preview rendered."
+  }
+}

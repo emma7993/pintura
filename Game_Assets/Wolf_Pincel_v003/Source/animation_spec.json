@@ -1,0 +1,236 @@
+{
+  "idle": {
+    "frames": 6,
+    "fps": 6,
+    "loop": true,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "walk": {
+    "frames": 12,
+    "fps": 12,
+    "loop": true,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "run": {
+    "frames": 8,
+    "fps": 16,
+    "loop": true,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "jump_start": {
+    "frames": 2,
+    "fps": 12,
+    "loop": false,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "jump_up": {
+    "frames": 2,
+    "fps": 10,
+    "loop": true,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "fall": {
+    "frames": 2,
+    "fps": 10,
+    "loop": true,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "land": {
+    "frames": 2,
+    "fps": 12,
+    "loop": false,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "dash": {
+    "frames": 6,
+    "fps": 24,
+    "loop": false,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "wall_slide": {
+    "frames": 4,
+    "fps": 8,
+    "loop": true,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "wall_jump": {
+    "frames": 4,
+    "fps": 16,
+    "loop": false,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "slash_side": {
+    "frames": 7,
+    "fps": 20,
+    "loop": false,
+    "hand_frames": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "paint_frames": [
+      3,
+      4
+    ],
+    "hit_frames": [
+      3,
+      4
+    ],
+    "ink_frames": []
+  },
+  "slash_up": {
+    "frames": 7,
+    "fps": 20,
+    "loop": false,
+    "hand_frames": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "paint_frames": [
+      3,
+      4
+    ],
+    "hit_frames": [
+      3,
+      4
+    ],
+    "ink_frames": []
+  },
+  "slash_down": {
+    "frames": 6,
+    "fps": 20,
+    "loop": false,
+    "hand_frames": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "paint_frames": [],
+    "hit_frames": [
+      2,
+      3,
+      4
+    ],
+    "ink_frames": []
+  },
+  "paint_rise": {
+    "frames": 8,
+    "fps": 12,
+    "loop": false,
+    "hand_frames": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "paint_frames": [
+      4,
+      5,
+      6
+    ],
+    "hit_frames": [
+      4,
+      5,
+      6
+    ],
+    "ink_frames": []
+  },
+  "paint_up": {
+    "frames": 8,
+    "fps": 12,
+    "loop": false,
+    "hand_frames": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "paint_frames": [
+      4,
+      5,
+      6
+    ],
+    "hit_frames": [
+      4,
+      5,
+      6
+    ],
+    "ink_frames": []
+  },
+  "dip": {
+    "frames": 6,
+    "fps": 10,
+    "loop": false,
+    "hand_frames": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": [
+      4,
+      5
+    ]
+  },
+  "hurt": {
+    "frames": 3,
+    "fps": 14,
+    "loop": false,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  },
+  "death": {
+    "frames": 8,
+    "fps": 10,
+    "loop": false,
+    "hand_frames": [],
+    "paint_frames": [],
+    "hit_frames": [],
+    "ink_frames": []
+  }
+}

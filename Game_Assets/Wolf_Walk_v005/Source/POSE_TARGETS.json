@@ -1,0 +1,155 @@
+{
+  "cell": [
+    256,
+    256
+  ],
+  "step_distance_px": 87.5,
+  "cycle_distance_px": 175.0,
+  "stance_delta_px_per_frame": 14.583333333333334,
+  "poses": [
+    {
+      "frame": 1,
+      "right_sole_center": [
+        172.0,
+        238
+      ],
+      "left_sole_center": [
+        84.5,
+        238.0
+      ],
+      "stance": "right"
+    },
+    {
+      "frame": 2,
+      "right_sole_center": [
+        157.41666666666666,
+        238
+      ],
+      "left_sole_center": [
+        99.08333333333333,
+        230.0
+      ],
+      "stance": "right"
+    },
+    {
+      "frame": 3,
+      "right_sole_center": [
+        142.83333333333334,
+        238
+      ],
+      "left_sole_center": [
+        113.66666666666666,
+        224.14359353944897
+      ],
+      "stance": "right"
+    },
+    {
+      "frame": 4,
+      "right_sole_center": [
+        128.25,
+        238
+      ],
+      "left_sole_center": [
+        128.25,
+        222.0
+      ],
+      "stance": "right"
+    },
+    {
+      "frame": 5,
+      "right_sole_center": [
+        113.66666666666667,
+        238
+      ],
+      "left_sole_center": [
+        142.83333333333331,
+        224.14359353944897
+      ],
+      "stance": "right"
+    },
+    {
+      "frame": 6,
+      "right_sole_center": [
+        99.08333333333333,
+        238
+      ],
+      "left_sole_center": [
+        157.41666666666669,
+        230.0
+      ],
+      "stance": "right"
+    },
+    {
+      "frame": 7,
+      "right_sole_center": [
+        84.5,
+        238.0
+      ],
+      "left_sole_center": [
+        172.0,
+        238
+      ],
+      "stance": "left"
+    },
+    {
+      "frame": 8,
+      "right_sole_center": [
+        99.08333333333333,
+        230.0
+      ],
+      "left_sole_center": [
+        157.41666666666666,
+        238
+      ],
+      "stance": "left"
+    },
+    {
+      "frame": 9,
+      "right_sole_center": [
+        113.66666666666666,
+        224.14359353944897
+      ],
+      "left_sole_center": [
+        142.83333333333334,
+        238
+      ],
+      "stance": "left"
+    },
+    {
+      "frame": 10,
+      "right_sole_center": [
+        128.25,
+        222.0
+      ],
+      "left_sole_center": [
+        128.25,
+        238
+      ],
+      "stance": "left"
+    },
+    {
+      "frame": 11,
+      "right_sole_center": [
+        142.83333333333331,
+        224.14359353944897
+      ],
+      "left_sole_center": [
+        113.66666666666667,
+        238
+      ],
+      "stance": "left"
+    },
+    {
+      "frame": 12,
+      "right_sole_center": [
+        157.41666666666669,
+        230.0
+      ],
+      "left_sole_center": [
+        99.08333333333333,
+        238
+      ],
+      "stance": "left"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "cell": [
+    384,
+    384
+  ],
+  "facing": "right",
+  "palette_rgb": {
+    "negro": [
+      40,
+      38,
+      42
+    ],
+    "blanco": [
+      242,
+      238,
+      226
+    ],
+    "amarillo": [
+      231,
+      184,
+      47
+    ],
+    "azul": [
+      54,
+      117,
+      196
+    ],
+    "verde": [
+      72,
+      151,
+      92
+    ],
+    "rojo": [
+      186,
+      43,
+      52
+    ]
+  },
+  "animations": {
+    "normal_negro": {
+      "files": [
+        "Sprites/normal_negro/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_negro": {
+      "files": [
+        "Sprites/estela_negro/01.png",
+        "Sprites/estela_negro/02.png",
+        "Sprites/estela_negro/03.png",
+        "Sprites/estela_negro/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "normal_blanco": {
+      "files": [
+        "Sprites/normal_blanco/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_blanco": {
+      "files": [
+        "Sprites/estela_blanco/01.png",
+        "Sprites/estela_blanco/02.png",
+        "Sprites/estela_blanco/03.png",
+        "Sprites/estela_blanco/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "normal_amarillo": {
+      "files": [
+        "Sprites/normal_amarillo/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_amarillo": {
+      "files": [
+        "Sprites/estela_amarillo/01.png",
+        "Sprites/estela_amarillo/02.png",
+        "Sprites/estela_amarillo/03.png",
+        "Sprites/estela_amarillo/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "normal_azul": {
+      "files": [
+        "Sprites/normal_azul/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_azul": {
+      "files": [
+        "Sprites/estela_azul/01.png",
+        "Sprites/estela_azul/02.png",
+        "Sprites/estela_azul/03.png",
+        "Sprites/estela_azul/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "normal_verde": {
+      "files": [
+        "Sprites/normal_verde/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_verde": {
+      "files": [
+        "Sprites/estela_verde/01.png",
+        "Sprites/estela_verde/02.png",
+        "Sprites/estela_verde/03.png",
+        "Sprites/estela_verde/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "normal_rojo": {
+      "files": [
+        "Sprites/normal_rojo/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_rojo": {
+      "files": [
+        "Sprites/estela_rojo/01.png",
+        "Sprites/estela_rojo/02.png",
+        "Sprites/estela_rojo/03.png",
+        "Sprites/estela_rojo/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "critica_roja": {
+      "files": [
+        "Sprites/critica_roja/01.png"
+      ],
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "estela_critica": {
+      "files": [
+        "Sprites/estela_critica/01.png",
+        "Sprites/estela_critica/02.png",
+        "Sprites/estela_critica/03.png",
+        "Sprites/estela_critica/04.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        352,
+        192
+      ]
+    },
+    "impacto_critico": {
+      "files": [
+        "Sprites/impacto_critico/01.png",
+        "Sprites/impacto_critico/02.png",
+        "Sprites/impacto_critico/03.png",
+        "Sprites/impacto_critico/04.png",
+        "Sprites/impacto_critico/05.png"
+      ],
+      "fps": 20,
+      "loop": false,
+      "anchor": [
+        192,
+        192
+      ]
+    }
+  }
+}

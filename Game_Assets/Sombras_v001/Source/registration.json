@@ -1,0 +1,80 @@
+{
+  "A": {
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "common_object_scale": 0.8941176470588236,
+    "emerge_height_last": 380,
+    "reach_key_order_0_based": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      3,
+      2,
+      1
+    ],
+    "sink_emerge_order_0_based": [
+      7,
+      6,
+      4,
+      3,
+      1,
+      0
+    ]
+  },
+  "B": {
+    "anchor_xy": [
+      64,
+      480
+    ],
+    "common_object_scale": 0.7972972972972973,
+    "emerge_height_last": 348,
+    "reach_key_order_0_based": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      3,
+      2,
+      1
+    ],
+    "sink_emerge_order_0_based": [
+      7,
+      6,
+      4,
+      3,
+      1,
+      0
+    ]
+  },
+  "C": {
+    "anchor_xy": [
+      128,
+      480
+    ],
+    "common_object_scale": 0.6904231625835189,
+    "emerge_height_last": 310,
+    "reach_key_order_0_based": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      3,
+      2,
+      1
+    ],
+    "sink_emerge_order_0_based": [
+      7,
+      6,
+      4,
+      3,
+      1,
+      0
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "oil_count": 8,
+  "stroke_masks": 12,
+  "dabs": 4,
+  "stream_frames": 8,
+  "base_frames": 8,
+  "splash_frames": 6,
+  "barrier_frames": 8,
+  "effects_loop_period_seconds": 0.8,
+  "stream_base_virtual_frame9_equals_frame1": true,
+  "barrier_rest_equals_frame8": true,
+  "all_effect_frames_unique": true,
+  "masks_dimensions_range_pass": true,
+  "godot_import_and_preview": "Godot 4.7.2: imports and runtime previews passed; sandbox certificate/user preference warnings only",
+  "delivery_checks": {
+    "oil_original_coverage_and_transparent_exterior": true,
+    "props_rgba_transparent_exterior": true,
+    "wolf_gifs_counts_and_walk_1250ms": true
+  }
+}

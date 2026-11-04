@@ -1,0 +1,23 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3]
+
+[ext_resource type="Texture2D" path="../Animations/jump/01_impulso.png" id="t1"]
+[ext_resource type="Texture2D" path="../Animations/jump/02_ascenso.png" id="t2"]
+[ext_resource type="Texture2D" path="../Animations/jump/03_cima.png" id="t3"]
+[ext_resource type="Texture2D" path="../Animations/fall/01_cayendo.png" id="t4"]
+[ext_resource type="Texture2D" path="../Animations/fall/02_aterrizaje_rebote.png" id="t5"]
+[ext_resource type="Texture2D" path="../Animations/jump/01_impulso.png" id="t6"]
+[ext_resource type="Texture2D" path="../Animations/jump/02_ascenso.png" id="t7"]
+[ext_resource type="Texture2D" path="../Animations/jump/03_cima.png" id="t8"]
+[ext_resource type="Texture2D" path="../Animations/fall/01_cayendo.png" id="t9"]
+[ext_resource type="Texture2D" path="../Animations/fall/02_aterrizaje_rebote.png" id="t10"]
+
+[resource]
+animations = [
+{"name": &"jump", "speed": 12, "loop": false, "frames": [{"duration": 1.0, "texture": ExtResource("t1")}, {"duration": 1.0, "texture": ExtResource("t2")}, {"duration": 1.0, "texture": ExtResource("t3")}]},
+{"name": &"fall_and_land", "speed": 10, "loop": false, "frames": [{"duration": 1.0, "texture": ExtResource("t4")}, {"duration": 1.0, "texture": ExtResource("t5")}]},
+{"name": &"jump_start", "speed": 12, "loop": false, "frames": [{"duration": 1.0, "texture": ExtResource("t6")}]},
+{"name": &"jump_up", "speed": 10, "loop": true, "frames": [{"duration": 1.0, "texture": ExtResource("t7")}]},
+{"name": &"jump_apex", "speed": 10, "loop": true, "frames": [{"duration": 1.0, "texture": ExtResource("t8")}]},
+{"name": &"fall", "speed": 10, "loop": true, "frames": [{"duration": 1.0, "texture": ExtResource("t9")}]},
+{"name": &"land", "speed": 12, "loop": false, "frames": [{"duration": 1.0, "texture": ExtResource("t10")}]},
+]
