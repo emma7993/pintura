@@ -136,3 +136,55 @@ const PORTALES := [
 ]
 
 const INICIO := "ca_despertar"
+
+## Tamaño de una celda de la cuadrícula (una sala) en px de mundo.
+const CW := 1920.0
+const CH := 1080.0
+
+## Salas de Camino que ya son el Nivel 1 jugable (zones/nivel_01_camino.gd): el mundo en bloques no las
+## arma; al entrar en ellas se pasa al Nivel 1.
+const NIVEL1 := ["ca_despertar", "ca_barranco", "ca_altar", "ca_arco", "ca_cueva", "ca_cascada", "ca_pozo"]
+
+
+static func sala(id: String) -> Dictionary:
+	for d in SALAS:
+		if d.id == id:
+			return d
+	return {}
+
+
+## Rectángulo de la sala en la cuadrícula del mundo.
+static func rect(id: String) -> Rect2:
+	var d := sala(id)
+	var cell: Vector2i = ZONAS[d.zona].origen + Vector2i(d.c, d.f)
+	return Rect2(cell.x * CW, cell.y * CH, CW * float(d.get("ancho", 1)), CH)
+
+
+## Tramos del Nivel 1 (x en px del nivel) que corresponden a cada sala, arriba y en la cueva.
+const NIVEL1_TRAMOS := [
+	# [sala, x desde, x hasta, en la cueva]
+	["ca_despertar", -200.0, 2600.0, false], ["ca_barranco", 2600.0, 4300.0, false],
+	["ca_altar", 4300.0, 5300.0, false], ["ca_arco", 5300.0, 10200.0, false],
+	["ca_cascada", 4600.0, 5800.0, true], ["ca_pozo", 5800.0, 6200.0, true], ["ca_cueva", 6200.0, 9200.0, true],
+]
+
+
+## Sala del mapa en la que está el lobo dentro del Nivel 1 (la cueva empieza bajo y = 800).
+static func nivel1_sala(p: Vector2) -> String:
+	return String(_nivel1_tramo(p)[0])
+
+
+## Punto del mapa que corresponde a una posición del Nivel 1.
+static func nivel1_mapa(p: Vector2) -> Vector2:
+	var t := _nivel1_tramo(p)
+	var r := rect(t[0])
+	var k := clampf((p.x - float(t[1])) / (float(t[2]) - float(t[1])), 0.05, 0.95)
+	return Vector2(r.position.x + r.size.x * k, r.position.y + r.size.y * 0.8)
+
+
+static func _nivel1_tramo(p: Vector2) -> Array:
+	var cave := p.y > 800.0
+	for t in NIVEL1_TRAMOS:
+		if t[3] == cave and p.x >= t[1] and p.x < t[2]:
+			return t
+	return NIVEL1_TRAMOS[6] if cave else NIVEL1_TRAMOS[3]

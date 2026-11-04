@@ -11,6 +11,9 @@ extends Node2D
 ## y se sube por él hasta el arco, que se pinta con tinta para volver al lienzo. La tinta se gasta.
 ## Las sombras (bruma y manos que brotan del suelo) son zones/sombras.gd.
 ## Se corre solo con F6 (zones/nivel_01_camino.tscn) o entrando desde el camino de la pintura (main.gd).
+## En el juego es el principio de Camino (MapaDatos.NIVEL1): al inicio hay una puerta de vuelta a la pintura;
+## por el extremo derecho, por el fondo izquierdo de la cueva y por la puerta del copista se sigue al resto
+## de Camino (mundo/mundo.gd); «entrada» dice por dónde se vuelve de ahí.
 
 signal exit_requested(next_zone: String)
 signal near_exit_changed(is_near: bool)
@@ -64,10 +67,21 @@ const RUN_SPEED := 400.0                  # con el pincel el lobo ya no camina: 
 const INK := Color(0.07, 0.06, 0.07)
 const STROKE_ANGLE := PI / 3.0            # pincelada de color: 60° sobre la horizontal
 const STROKE_LEN := 1000.0                # largo de la pincelada (del suelo hasta arriba de la pantalla)
+const HOME_X := 110.0                     # puerta de vuelta a la pintura, al principio
+const COPISTA_X := 6480.0                 # puerta al taller del copista, en la cueva
+## Por dónde se llega al volver del resto de Camino (main.gd pone «entrada»).
+const ENTRADAS := {
+	"fin": Vector2(WIDTH - 200.0, HIGH_Y), "arco": Vector2(EXIT_X + 120.0, HIGH_Y),
+	"pozo": Vector2(WELL_X + 220.0, CAVE_Y), "cueva": Vector2(CAVE_X.x + 130.0, CAVE_Y),
+	"copista": Vector2(COPISTA_X, CAVE_Y),
+}
 
 var walker: Player
 var cur_exit := ""
+var exit_hint := ""
 var near_exit := false
+var entrada := ""                         # punto de llegada (ENTRADAS); vacío = desde la pintura
+var _leaving := false
 var shadow_x := -INF                      # frente de las sombras (px de mundo); -INF = aún no aparecen
 var has_brush := false
 var brush := ""                           # restos del pincel: "color" (un trazo) o "seco"; la tinta sale del tintero
@@ -168,6 +182,11 @@ func _ready() -> void:
 	else:
 		Inventario.cargar()
 	_restore_progress()
+	if ENTRADAS.has(entrada):
+		walker.position = ENTRADAS[entrada]
+		_checkpoint = walker.position
+		if entrada == "fin":
+			walker.lobo.face(-1)
 	_update_life_ui()
 	if Inventario.atajo >= 0:
 		_apply_shortcut(Inventario.atajo)
@@ -1103,23 +1122,56 @@ func _update_camera(delta: float) -> void:
 
 
 func _update_exits() -> void:
-	# única salida: la puerta pintada, que lleva de vuelta al lienzo principal
+	# puertas (con E): al principio y el arco pintado llevan a la pintura; en la cueva, el taller del copista
+	var p := walker.position
+	var above := p.y < CAVE_TOP
 	var found := ""
-	if gate_open and absf(walker.position.x - EXIT_X) < 90.0:
+	var h := ""
+	if above and p.x < HOME_X + 90.0:
 		found = "camino"
+		h = "E: volver a la pintura"
+	elif above and gate_open and absf(p.x - EXIT_X) < 90.0:
+		found = "camino"
+		h = "E: cruzar el arco hacia la pintura"
+	elif not above and absf(p.x - COPISTA_X) < 80.0 and p.y > CAVE_Y - 60.0:
+		found = "mundo:ca_copista"
+		h = "E: entrar al taller del copista"
 	cur_exit = found
 	var now_near := found != "" and _moved
-	if now_near != near_exit:
+	if now_near != near_exit or h != exit_hint:
+		exit_hint = h
 		near_exit = now_near
 		near_exit_changed.emit(near_exit)
 		if near_exit and exit_requested.get_connections().is_empty():
-			_show_hint("E: volver al lienzo  (en el juego completo)")
+			_show_hint(h + "  (en el juego completo)")
+	# pasos sin puerta hacia el resto de Camino: el extremo derecho y el fondo izquierdo de la cueva
+	if above and p.x > WIDTH - 70.0:
+		_leave("mundo:ca_sello")
+	elif not above and p.x < CAVE_X.x + 50.0:
+		_leave("mundo:ca_enemigos")
 
 
 func _check_exit() -> void:
 	if near_exit and not _busy and InputMap.has_action("interact") and Input.is_action_just_pressed("interact"):
-		print("[nivel1] %.1f s: entra por la puerta hacia «%s»" % [_t, cur_exit])
-		exit_requested.emit(cur_exit)
+		_leave(cur_exit)
+
+
+func _leave(to: String) -> void:
+	if _leaving or _busy or exit_requested.get_connections().is_empty():
+		return
+	_leaving = true
+	Inventario.guardar()
+	print("[nivel1] %.1f s: sale hacia «%s»" % [_t, to])
+	exit_requested.emit(to)
+
+
+## Sala del mapa en la que está el lobo (main.gd la marca como recorrida).
+func map_room() -> String:
+	return MapaDatos.nivel1_sala(walker.position)
+
+
+func map_pos() -> Vector2:
+	return MapaDatos.nivel1_mapa(walker.position)
 
 
 # --- dibujo -----------------------------------------------------------------------------------------
@@ -1196,6 +1248,15 @@ func _draw_cave_back(ci: CanvasItem) -> void:
 func _draw_terrain() -> void:
 	var line := Color(0.30, 0.28, 0.26, 0.85)
 	var stone := Color(0.80, 0.78, 0.74)
+	# puerta de vuelta a la pintura (marco de cuadro) y puerta del copista en la cueva (provisional)
+	var frame := Rect2(HOME_X - 60.0, GROUND_Y - 190.0, 120.0, 190.0)
+	_terrain.draw_rect(frame, Color(0.55, 0.42, 0.28))
+	_terrain.draw_rect(frame.grow(-14.0), Color(0.93, 0.89, 0.80))
+	_terrain.draw_rect(frame, line, false, 2.0)
+	var door := Rect2(COPISTA_X - 50.0, CAVE_Y - 170.0, 100.0, 170.0)
+	_terrain.draw_rect(door, Color(0.22, 0.18, 0.15))
+	_terrain.draw_rect(door, line, false, 2.5)
+	_terrain.draw_circle(Vector2(door.end.x - 18.0, CAVE_Y - 85.0), 5.0, stone)
 	# brocal del pozo (sobre el suelo alto)
 	var l := WELL_X - WELL_HALF - 14.0
 	var r := WELL_X + WELL_HALF + 14.0

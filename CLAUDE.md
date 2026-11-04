@@ -11,6 +11,7 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 - Fase 1: movimiento lateral. El lobo (negro, bufanda roja, temeroso) solo CAMINA al inicio; `can_jump=false` en `zones/zone_camino_lateral.gd`. Salto solo con Espacio.
 - Interfaz de animación: `LoboSprite.animate(delta, speed01, vel_x, air, vy)` en `characters/lobo/lobo_sprite.gd`. Lo usan `player.gd` (zonas laterales) y `walker.gd` (zona de la pintura).
 - Zonas: `main.gd` (ZONES), `zones/zone_camino.gd` (pintura), `zones/zone_camino_lateral.gd`, `zones/prueba.tscn` (F6).
+- Mundo: `mundo/mapa_datos.gd` es el mapa completo (salas, conexiones, portales). En el juego, la pintura (`zone_camino.gd`) es el centro; Camino = Nivel 1 (`zones/nivel_01_camino.gd`, salas `MapaDatos.NIVEL1`) + resto en bloques (`mundo/mundo.gd` con `en_juego`). Las salidas usan `"zona:entrada"` (p. ej. `mundo:ca_sello`, `z_camino:fin`). M = mapa (main.gd, pausa). Prueba: `herramientas/prueba_camino.gd`.
 
 ## Pruebas
 - Windows: `herramientas/probar_juego.bat` ejecuta el juego unos segundos, guarda capturas en `pruebas/` y el log en `pruebas/godot_log.txt`. Revisar el log y las capturas antes de pedirle nada a Emma.

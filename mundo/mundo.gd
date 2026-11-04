@@ -4,15 +4,40 @@ extends Node2D
 ## por una puerta lateral o por un hueco en el piso (con repisas para subir). Las salas cerradas tienen una
 ## barrera con lo que las abre; las puertas del hub y los atajos son portales (E).
 ## Teclas: M mapa (clic en una sala para ir), G modo libre (cruzar barreras), E portal, R última banca.
-## Se corre solo con F6 (mundo/mundo.tscn). El lobo tiene todas sus habilidades.
+## Se corre solo con F6 (mundo/mundo.tscn): todo el mapa y el lobo con todas sus habilidades.
+## En el juego (main.gd, en_juego = true) solo arma el resto de Camino: las salas que ya son el Nivel 1
+## (MapaDatos.NIVEL1) no se arman, y al entrar en ellas se vuelve al Nivel 1 por el lugar que toca. Desde
+## una banca se vuelve a la pintura; los atajos a otras zonas aún llevan a «continuará».
 
-const CW := 1920.0                        # una sala = una celda de la cuadrícula
-const CH := 1080.0
+signal exit_requested(next_zone: String)
+signal near_exit_changed(is_near: bool)
+
+const CW := MapaDatos.CW                  # una sala = una celda de la cuadrícula
+const CH := MapaDatos.CH
 const WALL := 40.0
 const DOOR_H := 300.0
 const HOLE_W := 300.0
 const LADDER_STEP := 150.0                # repisas para subir por un hueco del techo (salto ~225 px)
 const INK := Color(0.12, 0.11, 0.12)
+const TRACK := 5                          # canción: Camino
+## Dónde aparece el lobo al llegar desde el Nivel 1 (sala -> fracción del ancho).
+const ENTRADAS := {"ca_sello": 0.06, "ca_enemigos": 0.94, "ca_copista": 0.25}
+## Al pasar de una sala de aquí a una del Nivel 1: a qué punto del Nivel 1 se llega.
+const SALIDAS := {
+	"ca_sello>ca_arco": "z_camino:fin", "ca_copista>ca_arco": "z_camino:arco",
+	"ca_copista>ca_pozo": "z_camino:pozo", "ca_paleta>ca_cueva": "z_camino:cueva",
+	"ca_enemigos>ca_cascada": "z_camino:cueva",
+}
+## Zona del juego (main.gd) a la que lleva un portal hacia otra zona.
+const ZONA_JUEGO := {"pintura": "camino", "sueno": "z_sueno", "miedo": "z_miedo", "cambio": "z_cambio", "final": "z_final"}
+
+var en_juego := false                     # lo pone main.gd antes de agregarlo
+var entrada := ""                         # sala por la que se llega (ENTRADAS)
+var cur_exit := ""
+var exit_hint := ""
+var near_exit := false
+var _leaving := false
+var _last_room := ""                      # última sala armada en la que estuvo (no se borra al teletransportar)
 
 var walker: Player
 var free_mode := true                     # las barreras de salas cerradas no frenan (para recorrer el diseño)
@@ -33,23 +58,31 @@ var _near_portal := {}
 func _ready() -> void:
 	Controls.ensure()
 	for d in MapaDatos.SALAS:
-		var z: Dictionary = MapaDatos.ZONAS[d.zona]
-		var cell: Vector2i = z.origen + Vector2i(d.c, d.f)
-		var w := float(d.get("ancho", 1))
-		_rooms[d.id] = {"d": d, "rect": Rect2(cell.x * CW, cell.y * CH, CW * w, CH), "solid": [], "plat": [], "gates": [], "doors": []}
+		if en_juego and d.zona != "camino":
+			continue
+		var fuera: bool = en_juego and d.id in MapaDatos.NIVEL1
+		_rooms[d.id] = {"d": d, "rect": MapaDatos.rect(d.id), "solid": [], "plat": [], "gates": [], "doors": [], "fuera": fuera}
 	var links := _links()
 	for id in _rooms:
-		_build_room(id, links.get(id, {}))
+		if not _rooms[id].fuera:
+			_build_room(id, links.get(id, {}))
 	_build_portals()
 
 	walker = Player.new()
 	walker.max_speed = 400.0
-	walker.can_attack = true
-	walker.can_dash = true
-	walker.can_wall = true
+	var all := not en_juego or Inventario.pincel
+	walker.can_attack = all
+	walker.can_dash = all
+	walker.can_wall = all
 	add_child(walker)
-	walker.lobo.set_brush("ink")
-	walker.position = _floor_point(MapaDatos.INICIO, 0.3) + Vector2(0, -4)
+	walker.lobo.set_brush("ink" if not en_juego or Inventario.tinta > 0.0 else ("dry" if Inventario.pincel else ""))
+	if en_juego:
+		var e := entrada if ENTRADAS.has(entrada) else "ca_sello"
+		walker.position = _floor_point(e, ENTRADAS[e]) + Vector2(0, -4)
+		if ENTRADAS[e] > 0.5:
+			walker.lobo.face(-1)
+	else:
+		walker.position = _floor_point(MapaDatos.INICIO, 0.3) + Vector2(0, -4)
 
 	_cam = Camera2D.new()
 	_cam.position_smoothing_enabled = true
@@ -58,11 +91,11 @@ func _ready() -> void:
 	walker.add_child(_cam)
 	_build_ui()
 	_cam.reset_smoothing()
-	if "--ver-mapa" in OS.get_cmdline_user_args():      # para capturas de revisión
+	if "--ver-mapa" in OS.get_cmdline_user_args() and not en_juego:      # para capturas de revisión
 		for id in _rooms:
 			if _rooms[id].d.zona in ["camino", "pintura"]:
 				visited[id] = true
-		_map.visible = true
+		_open_map(true)
 
 
 # --- construcción ------------------------------------------------------------------------------------
@@ -71,6 +104,8 @@ func _ready() -> void:
 func _links() -> Dictionary:
 	var out := {}
 	for pair in MapaDatos.CONEXIONES:
+		if not _rooms.has(pair[0]) or not _rooms.has(pair[1]):
+			continue
 		var a: Dictionary = _rooms[pair[0]]
 		var b: Dictionary = _rooms[pair[1]]
 		var ra: Rect2 = a.rect
@@ -176,13 +211,19 @@ func _build_portals() -> void:
 		for i in 2:
 			var here: String = p[i]
 			var there: String = p[1 - i]
+			if not _rooms.has(here) or _rooms[here].fuera:
+				continue
 			var n: int = count.get(here, 0)
 			count[here] = n + 1
 			var r: Rect2 = _rooms[here].rect
 			var x := r.position.x + (0.15 + 0.17 * n) * r.size.x if here == "pintura" else r.end.x - 360.0
 			var rect := Rect2(x, r.end.y - WALL - 260.0, 150, 260)
-			var label := String(p[2]) if here == "pintura" else "→ " + String(_rooms[there].d.nombre) + " (" + String(MapaDatos.ZONAS[_rooms[there].d.zona].nombre) + ")"
-			_portals.append({"rect": rect, "room": here, "to": there, "label": label, "req": p[3]})
+			var td := MapaDatos.sala(there)
+			var label := String(p[2]) if here == "pintura" else "→ " + String(td.nombre) + " (" + String(MapaDatos.ZONAS[td.zona].nombre) + ")"
+			var exit := ""                    # portal hacia algo que aquí no está armado: se sale a esa zona
+			if not _rooms.has(there) or _rooms[there].fuera:
+				exit = ZONA_JUEGO.get(td.zona, "camino")
+			_portals.append({"rect": rect, "room": here, "to": there, "label": label, "req": p[3], "exit": exit})
 			var l := _label("%s\n%s" % [label, p[3]], 20, Color(INK, 0.85))
 			l.position = rect.position + Vector2(-40, -70)
 			l.size.x = 260
@@ -249,8 +290,10 @@ func _build_ui() -> void:
 	_hint.add_theme_color_override("font_outline_color", Color(0.08, 0.06, 0.05))
 	_hint.add_theme_constant_override("outline_size", 5)
 	ui.add_child(_hint)
+	if en_juego:
+		return                                # en el juego, el mapa (M) y los avisos los pone main.gd
 	_map = MapaUI.new()
-	_map.mundo = self
+	_map.viajar = true
 	_map.visible = false
 	_map.room_clicked.connect(func(id: String) -> void:
 		_go_to(id, 0.5)
@@ -264,6 +307,7 @@ func _physics_process(_delta: float) -> void:
 	var id := room_at(walker.position + Vector2(0, -40))
 	if id != "" and id != _cur:
 		_cur = id
+		_last_room = id
 		visited[id] = true
 		var r: Rect2 = _rooms[id].rect
 		_cam.limit_left = int(r.position.x)
@@ -272,28 +316,84 @@ func _physics_process(_delta: float) -> void:
 		_cam.limit_bottom = int(r.end.y)
 		if _rooms[id].d.get("banca", false):
 			_bench = id
+	if en_juego and not _leaving:
+		# entró en una sala que es del Nivel 1: se pasa al Nivel 1 por el lugar que toca
+		for fid in _rooms:
+			if _rooms[fid].fuera and (_rooms[fid].rect as Rect2).has_point(walker.position + Vector2(0, -40)):
+				_leave(String(SALIDAS.get(_last_room + ">" + fid, "z_camino")))
+				break
 	_near_portal = {}
 	for p in _portals:
 		if (p.rect as Rect2).grow(30).has_point(walker.position + Vector2(0, -30)):
 			_near_portal = p
-	if not _near_portal.is_empty() and Input.is_action_just_pressed("interact"):
-		var p := _near_portal
-		var dest: Dictionary = {}
-		for q in _portals:
-			if q.room == p.to and q.to == p.room:
-				dest = q
-		_teleport((dest.rect as Rect2).get_center() + Vector2(0, 130) if not dest.is_empty() else _floor_point(p.to, 0.5))
+	var at_bench: bool = en_juego and _cur != "" and _rooms[_cur].d.get("banca", false) \
+		and absf(walker.position.x - ((_rooms[_cur].rect as Rect2).position.x + 330.0)) < 110.0
+	if Input.is_action_just_pressed("interact") and not _leaving:
+		if at_bench:
+			Inventario.guardar()
+			_leave("camino")
+		elif not _near_portal.is_empty():
+			var p := _near_portal
+			if p.exit != "":
+				_leave(String(p.exit))
+			else:
+				var dest: Dictionary = {}
+				for q in _portals:
+					if q.room == p.to and q.to == p.room:
+						dest = q
+				_teleport((dest.rect as Rect2).get_center() + Vector2(0, 130) if not dest.is_empty() else _floor_point(p.to, 0.5))
+	if en_juego:
+		var h := ""
+		if at_bench:
+			h = "E: descansar y volver a la pintura"
+		elif not _near_portal.is_empty():
+			h = "E: %s   ·   se abre con: %s" % [_near_portal.label, _near_portal.req]
+		if h != exit_hint:
+			exit_hint = h
+			near_exit = h != ""
+			near_exit_changed.emit(near_exit)
 	_update_ui()
+
+
+func _leave(to: String) -> void:
+	if not en_juego or exit_requested.get_connections().is_empty():
+		return
+	_leaving = true
+	cur_exit = to
+	print("[mundo] sale de «%s» hacia «%s»" % [_last_room, to])
+	exit_requested.emit(to)
+
+
+func track() -> int:
+	return TRACK
+
+
+## Sala en la que está el lobo (para el mapa de main.gd).
+func map_room() -> String:
+	return _cur
+
+
+## Posición del lobo en la cuadrícula del mapa.
+func map_pos() -> Vector2:
+	return walker.position
+
+
+func _open_map(show: bool) -> void:
+	_map.visitadas = visited
+	_map.pos = walker.position
+	_map.visible = show
+	_map.queue_redraw()
 
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	var k := event as InputEventKey
 	if k == null or not k.pressed or k.echo:
 		return
+	if en_juego and k.keycode != KEY_G:
+		return
 	match k.keycode:
 		KEY_M, KEY_TAB:
-			_map.visible = not _map.visible
-			_map.queue_redraw()
+			_open_map(not _map.visible)
 		KEY_G:
 			free_mode = not free_mode
 			for g in _gates:
@@ -317,7 +417,7 @@ func _teleport(p: Vector2) -> void:
 
 func room_at(p: Vector2) -> String:
 	for id in _rooms:
-		if (_rooms[id].rect as Rect2).has_point(p):
+		if not _rooms[id].fuera and (_rooms[id].rect as Rect2).has_point(p):
 			return id
 	return ""
 
@@ -330,6 +430,9 @@ func _update_ui() -> void:
 	if _cur == "":
 		return
 	var d: Dictionary = _rooms[_cur].d
+	if en_juego:
+		_title.text = "%s · %s" % [MapaDatos.ZONAS[d.zona].nombre, d.nombre]
+		return
 	_title.text = "%s · %s   (%d de %d salas visitadas)" % [MapaDatos.ZONAS[d.zona].nombre, d.nombre, visited.size(), _rooms.size()]
 	var h := "M: mapa (clic para ir)   ·   G: modo libre %s   ·   R: última banca" % ("SÍ (las barreras no frenan)" if free_mode else "NO (las barreras frenan)")
 	if not _near_portal.is_empty():

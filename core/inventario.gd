@@ -19,6 +19,8 @@ static var tintero := false
 static var tinta := 0.0
 ## Marcas de lo ya resuelto, p. ej. "n1_sombras", "n1_puerta"; también valores como "n1_trazo_x".
 static var progreso := {}
+## Salas del mapa ya recorridas (id -> true), para el mapa (M).
+static var visitadas := {}
 ## Atajo de prueba pendiente (teclas 1–5 en el Nivel 1); -1 = ninguno. No se guarda.
 static var atajo := -1
 static var _cargado := false
@@ -35,6 +37,7 @@ static func cargar() -> void:
 	tintero = c.get_value("inventario", "tintero", false)
 	tinta = c.get_value("inventario", "tinta", 0.0)
 	progreso = c.get_value("progreso", "marcas", {})
+	visitadas = c.get_value("mapa", "visitadas", {})
 
 
 static func guardar() -> void:
@@ -43,6 +46,7 @@ static func guardar() -> void:
 	c.set_value("inventario", "tintero", tintero)
 	c.set_value("inventario", "tinta", tinta)
 	c.set_value("progreso", "marcas", progreso)
+	c.set_value("mapa", "visitadas", visitadas)
 	c.save(ARCHIVO)
 
 
@@ -53,6 +57,7 @@ static func reiniciar() -> void:
 	tintero = false
 	tinta = 0.0
 	progreso = {}
+	visitadas = {}
 	guardar()
 
 
@@ -77,3 +82,10 @@ static func gastar(cantidad: float) -> bool:
 	tinta -= cantidad
 	guardar()
 	return true
+
+
+## Marca una sala del mapa como recorrida (y guarda si es nueva).
+static func visitar(id: String) -> void:
+	if id != "" and not visitadas.has(id):
+		visitadas[id] = true
+		guardar()

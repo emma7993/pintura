@@ -2,27 +2,41 @@ class_name MapaUI
 extends Control
 ## Mapa en pantalla (M), al estilo de un mapa de metroidvania: todas las salas en su lugar, con el color de
 ## su zona; las visitadas van rellenas, las demás solo en contorno. Marca bancas, jefes, objetos clave,
-## salas cerradas, portales (líneas punteadas) y dónde está el lobo. Clic en una sala: ir ahí.
+## salas cerradas, portales (líneas punteadas) y dónde está el lobo. Lo usan main.gd (en el juego) y
+## mundo/mundo.gd (corrido solo, F6), con todo armado desde mundo/mapa_datos.gd.
 
 signal room_clicked(id: String)
 
-var mundo: Node2D                         # mundo/mundo.gd
+var zonas: Array = []                     # zonas que se muestran; vacío = todas
+var visitadas: Dictionary = {}            # id -> true
+var pos := Vector2.INF                    # el lobo, en coordenadas de la cuadrícula; INF = no se marca
+var viajar := false                       # clic en una sala para ir (solo en pruebas)
 
 var _scale := 1.0
 var _offset := Vector2.ZERO
+var _rects := {}                          # id -> Rect2
 
 
 func _ready() -> void:
-	set_anchors_preset(Control.PRESET_FULL_RECT)
+	position = Vector2.ZERO
 	size = get_viewport_rect().size
 	mouse_filter = Control.MOUSE_FILTER_STOP
 
 
+func _shown(id: String) -> bool:
+	return zonas.is_empty() or MapaDatos.sala(id).zona in zonas
+
+
 func _fit() -> void:
+	_rects.clear()
 	var bounds := Rect2()
 	var first := true
-	for room in mundo.rooms().values():
-		bounds = room.rect if first else bounds.merge(room.rect)
+	for d in MapaDatos.SALAS:
+		if not _shown(d.id):
+			continue
+		var r := MapaDatos.rect(d.id)
+		_rects[d.id] = r
+		bounds = r if first else bounds.merge(r)
 		first = false
 	var area := Rect2(60, 90, 1160, 560)
 	_scale = minf(area.size.x / bounds.size.x, area.size.y / bounds.size.y)
@@ -34,27 +48,27 @@ func _to_map(p: Vector2) -> Vector2:
 
 
 func _draw() -> void:
-	if mundo == null:
-		return
 	_fit()
 	var font := ThemeDB.fallback_font
 	draw_rect(Rect2(Vector2.ZERO, get_viewport_rect().size), Color(0.03, 0.03, 0.04, 0.94))
-	draw_string(font, Vector2(560, 50), "Mapa", HORIZONTAL_ALIGNMENT_LEFT, -1, 34, Color(0.95, 0.93, 0.88))
-	var rooms: Dictionary = mundo.rooms()
+	var heading := "Mapa"
+	if zonas.size() == 1:
+		heading = "Mapa · " + String(MapaDatos.ZONAS[zonas[0]].nombre)
+	draw_string(font, Vector2(0, 50), heading, HORIZONTAL_ALIGNMENT_CENTER, size.x, 34, Color(0.95, 0.93, 0.88))
 	# portales: líneas punteadas entre las salas que unen
 	for p in MapaDatos.PORTALES:
-		var a := _to_map((rooms[p[0]].rect as Rect2).get_center())
-		var b := _to_map((rooms[p[1]].rect as Rect2).get_center())
-		draw_dashed_line(a, b, Color(0.8, 0.8, 0.8, 0.35), 1.5, 6.0)
+		if _rects.has(p[0]) and _rects.has(p[1]):
+			draw_dashed_line(_to_map((_rects[p[0]] as Rect2).get_center()), _to_map((_rects[p[1]] as Rect2).get_center()), Color(0.8, 0.8, 0.8, 0.35), 1.5, 6.0)
 	# conexiones internas
 	for c in MapaDatos.CONEXIONES:
-		draw_line(_to_map((rooms[c[0]].rect as Rect2).get_center()), _to_map((rooms[c[1]].rect as Rect2).get_center()), Color(0.9, 0.9, 0.85, 0.5), 2.0)
-	for id in rooms:
-		var room: Dictionary = rooms[id]
-		var d: Dictionary = room.d
-		var r := Rect2(_to_map(room.rect.position), room.rect.size * _scale).grow(-3)
+		if _rects.has(c[0]) and _rects.has(c[1]):
+			draw_line(_to_map((_rects[c[0]] as Rect2).get_center()), _to_map((_rects[c[1]] as Rect2).get_center()), Color(0.9, 0.9, 0.85, 0.5), 2.0)
+	for id in _rects:
+		var d := MapaDatos.sala(id)
+		var rr: Rect2 = _rects[id]
+		var r := Rect2(_to_map(rr.position), rr.size * _scale).grow(-3)
 		var zc: Color = MapaDatos.ZONAS[d.zona].color
-		var seen: bool = mundo.visited.has(id)
+		var seen := visitadas.has(id)
 		draw_rect(r, Color(zc, 0.85 if seen else 0.12))
 		var border := zc.lightened(0.3)
 		if d.tipo == "jefe":
@@ -68,17 +82,25 @@ func _draw() -> void:
 		if d.get("banca", false):
 			draw_circle(r.position + Vector2(r.size.x - 9, 9), 4.5, Color(0.98, 0.95, 0.88))
 		var name_color := Color(0.05, 0.05, 0.05) if seen else Color(0.85, 0.85, 0.82)
-		draw_string(font, r.position + Vector2(4, r.size.y * 0.5 + 4), String(d.nombre), HORIZONTAL_ALIGNMENT_LEFT, r.size.x - 6, 10, name_color)
-	# zonas
-	for z in MapaDatos.ZONAS:
-		var zd: Dictionary = MapaDatos.ZONAS[z]
-		var o: Vector2i = zd.origen
-		draw_string(font, _to_map(Vector2(o.x * mundo.CW, o.y * mundo.CH)) + Vector2(0, -6), String(zd.nombre), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, zd.color.lightened(0.25))
+		var fs := 10 if zonas.size() != 1 else 16
+		draw_string(font, r.position + Vector2(6, r.size.y * 0.5 + 5), String(d.nombre), HORIZONTAL_ALIGNMENT_LEFT, r.size.x - 8, fs, name_color)
+	# nombres de las zonas (solo con varias)
+	if zonas.size() != 1:
+		for z in MapaDatos.ZONAS:
+			if not zonas.is_empty() and not z in zonas:
+				continue
+			var zd: Dictionary = MapaDatos.ZONAS[z]
+			var o: Vector2i = zd.origen
+			draw_string(font, _to_map(Vector2(o.x * MapaDatos.CW, o.y * MapaDatos.CH)) + Vector2(0, -6), String(zd.nombre), HORIZONTAL_ALIGNMENT_LEFT, -1, 14, zd.color.lightened(0.25))
 	# el lobo
-	var w := _to_map(mundo.walker.position)
-	draw_circle(w, 6, Color(0.95, 0.2, 0.2))
-	draw_circle(w, 3, Color(1, 1, 1))
-	draw_string(font, Vector2(60, 690), "● banca   azul: objeto clave   rojo: jefe   punteado: cerrada al inicio   línea punteada: portal o atajo   ·   clic en una sala para ir   ·   M para cerrar", HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color(0.85, 0.85, 0.82))
+	if pos != Vector2.INF:
+		var w := _to_map(pos)
+		draw_circle(w, 7, Color(0.95, 0.2, 0.2))
+		draw_circle(w, 3.5, Color(1, 1, 1))
+	var legend := "● banca   azul: objeto clave   rojo: jefe   punteado: cerrada al inicio   línea punteada: portal o atajo   ·   M para cerrar"
+	if viajar:
+		legend += "   ·   clic en una sala para ir"
+	draw_string(font, Vector2(0, 690), legend, HORIZONTAL_ALIGNMENT_CENTER, size.x, 14, Color(0.85, 0.85, 0.82))
 
 
 func _dashed_rect(r: Rect2, c: Color) -> void:
@@ -89,9 +111,10 @@ func _dashed_rect(r: Rect2, c: Color) -> void:
 
 func _gui_input(event: InputEvent) -> void:
 	var mb := event as InputEventMouseButton
-	if mb == null or not mb.pressed or mb.button_index != MOUSE_BUTTON_LEFT:
+	if not viajar or mb == null or not mb.pressed or mb.button_index != MOUSE_BUTTON_LEFT:
 		return
 	var p := (mb.position - _offset) / _scale
-	var id: String = mundo.room_at(p)
-	if id != "":
-		room_clicked.emit(id)
+	for id in _rects:
+		if (_rects[id] as Rect2).has_point(p):
+			room_clicked.emit(id)
+			return

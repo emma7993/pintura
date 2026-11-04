@@ -1,11 +1,14 @@
 extends Node
 ## Director del juego: carga zonas, entrada, grano de papel, títulos y transiciones.
 
-const NAMES := {"camino": "El camino", "z_camino": "Camino", "z_sueno": "Un sueño y muchos momentos", "z_miedo": "Miedo", "z_cambio": "Cambio", "z_final": "Al final"}
+const NAMES := {"camino": "El camino", "mundo": "Camino", "z_camino": "Camino", "z_sueno": "Un sueño y muchos momentos", "z_miedo": "Miedo", "z_cambio": "Cambio", "z_final": "Al final"}
 const ZONES := {
 	"camino": "res://zones/zone_camino.gd",
 	"z_camino": "res://zones/nivel_01_camino.gd",
+	"mundo": "res://mundo/mundo.gd",       # el resto de Camino, en bloques, hasta que tenga arte
 }
+## Zonas del mapa (M) que se muestran por ahora.
+const MAP_ZONES := ["camino"]
 
 var zone: Node
 var title: Label
@@ -15,11 +18,13 @@ var music: AudioStreamPlayer
 var _busy := false
 var _first := true
 var _choosing := false            # esperando "continuar" o "nueva partida" al arrancar
+var map: MapaUI
 const LEGEND := "No es para mí, es para ti…"
 
 
 func _ready() -> void:
-	_setup_input()
+	process_mode = Node.PROCESS_MODE_ALWAYS   # el mapa pausa el juego, pero main sigue atendiendo teclas
+	Controls.ensure()
 	_build_ui()
 	music = AudioStreamPlayer.new()
 	add_child(music)
@@ -55,7 +60,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	var k := event as InputEventKey
 	if k == null or not k.pressed or k.echo:
 		return
-	if k.keycode == KEY_0 or (_choosing and k.keycode == KEY_N):
+	if k.keycode in [KEY_M, KEY_TAB] and not _choosing and not _busy:
+		_toggle_map()
+	elif map.visible:
+		if k.keycode == KEY_ESCAPE:
+			_toggle_map()
+	elif k.keycode == KEY_0 or (_choosing and k.keycode == KEY_N):
 		_new_game()
 	elif _choosing and k.keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_E, KEY_SPACE]:
 		_choosing = false
@@ -63,16 +73,39 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		zone.walker.enabled = true
 
 
+## Mapa (M): pausa el juego y muestra lo recorrido; el lobo se marca si la zona sabe dónde está.
+func _toggle_map() -> void:
+	map.visible = not map.visible
+	get_tree().paused = map.visible
+	if map.visible:
+		map.visitadas = Inventario.visitadas
+		map.pos = zone.map_pos() if zone and zone.has_method("map_pos") else Vector2.INF
+		map.queue_redraw()
+
+
+func _process(_delta: float) -> void:
+	if zone and zone.has_method("map_room") and not get_tree().paused:
+		Inventario.visitar(zone.map_room())
+
+
+## id puede traer el punto de llegada: "z_camino:fin", "mundo:ca_sello".
 func _load_zone(id: String) -> void:
+	var parts := id.split(":")
 	if zone:
 		zone.queue_free()
-	zone = (load(ZONES[id]) as GDScript).new()
+	zone = (load(ZONES[parts[0]]) as GDScript).new()
+	zone.process_mode = Node.PROCESS_MODE_PAUSABLE
+	if "en_juego" in zone:
+		zone.en_juego = true
+	if "entrada" in zone and parts.size() > 1:
+		zone.entrada = parts[1]
 	add_child(zone)
 	move_child(zone, 0)
 	zone.exit_requested.connect(_on_exit_requested)
 	zone.near_exit_changed.connect(func(n: bool) -> void:
 		if n:
-			hint.text = "Entrar a «%s»   ·   E" % NAMES.get(zone.cur_exit, "")
+			var custom: String = zone.exit_hint if "exit_hint" in zone else ""
+			hint.text = custom if custom != "" else "Entrar a «%s»   ·   E" % NAMES.get(String(zone.cur_exit).split(":")[0], "")
 		hint.modulate.a = 1.0 if n else 0.0)
 	if _first:
 		_first = false
@@ -88,7 +121,7 @@ func _on_exit_requested(next_zone: String) -> void:
 	if zone and "walker" in zone:
 		zone.walker.enabled = false
 	await _fade_to(1.0, 0.9)
-	if ZONES.has(next_zone):
+	if ZONES.has(next_zone.split(":")[0]):
 		_load_zone(next_zone)
 		await _fade_to(0.0, 0.9)
 	else:
@@ -172,33 +205,13 @@ func _build_ui() -> void:
 	hint.modulate.a = 0.0
 	ui_top.add_child(hint)
 
+	map = MapaUI.new()
+	map.zonas = MAP_ZONES
+	map.visible = false
+	ui_top.add_child(map)
+
 	fade = ColorRect.new()
 	fade.set_anchors_preset(Control.PRESET_FULL_RECT)
 	fade.color = Color(0.06, 0.05, 0.05, 1.0)
 	fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ui.add_child(fade)
-
-
-func _setup_input() -> void:
-	_action("move_left", [KEY_A, KEY_LEFT], JOY_BUTTON_DPAD_LEFT, JOY_AXIS_LEFT_X, -1.0)
-	_action("move_right", [KEY_D, KEY_RIGHT], JOY_BUTTON_DPAD_RIGHT, JOY_AXIS_LEFT_X, 1.0)
-	_action("move_up", [KEY_W, KEY_UP], JOY_BUTTON_DPAD_UP, JOY_AXIS_LEFT_Y, -1.0)
-	_action("move_down", [KEY_S, KEY_DOWN], JOY_BUTTON_DPAD_DOWN, JOY_AXIS_LEFT_Y, 1.0)
-	_action("interact", [KEY_E, KEY_ENTER, KEY_SPACE], JOY_BUTTON_A, -1, 0.0)
-
-
-func _action(action_name: String, keys: Array, joy_button: int, axis: int, axis_val: float) -> void:
-	if not InputMap.has_action(action_name):
-		InputMap.add_action(action_name, 0.3)
-	for k in keys:
-		var e := InputEventKey.new()
-		e.physical_keycode = k
-		InputMap.action_add_event(action_name, e)
-	var b := InputEventJoypadButton.new()
-	b.button_index = joy_button
-	InputMap.action_add_event(action_name, b)
-	if axis >= 0:
-		var m := InputEventJoypadMotion.new()
-		m.axis = axis
-		m.axis_value = axis_val
-		InputMap.action_add_event(action_name, m)
