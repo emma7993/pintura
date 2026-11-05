@@ -83,3 +83,29 @@ Medidas en el juego: salto completo ~240 px, carrera 360 px/s; el lobo mide unos
 
 Cuando propongas, da 2 o 3 opciones con una recomendada. Cuando generes arte, sigue las reglas de la
 sección 2 y entrega cada pieza o capa por separado.
+
+## 8. Cómo entregar cada imagen (obligatorio)
+Emma descarga tus imágenes y un script las guarda en el proyecto según las rutas que tú indiques; Claude
+las toma de ahí y las integra al juego. Por eso, en **cada respuesta donde generes imágenes**:
+
+1. Debajo de cada imagen escribe su ruta: `Ruta: Game_Assets/...png`.
+2. Al final de la respuesta, un bloque de código titulado **LISTA DE ENTREGA** con todas las rutas de esa
+   respuesta, una por línea, **en el mismo orden en que aparecen las imágenes** (es el orden de descarga).
+3. Después, un bloque **NOTAS PARA CLAUDE** con lo que Claude necesita para integrarlas: qué es cada pieza,
+   cuál es su versión grafito y cuál su óleo, qué parte se pisa, qué debe repetirse y qué se anima.
+
+Reglas de las rutas:
+- Carpeta base: `Game_Assets/Camino/<tema>_v001/`, donde `<tema>` es la sala o el tipo de pieza
+  (`despertar`, `barranco`, `zona_enemigos`, `enemigo_manchon`, `fondo_lejano`...). Si rehaces una pieza ya
+  entregada, sube la versión (`_v002`) en lugar de reemplazar la anterior.
+- Excepción: la entrega de cueva, pozo, foso y puertas en curso usa `Game_Assets/Nivel_01_Camino/Cueva_v002/`
+  con los nombres de su pedido (`01_roca_corte.png` ... `06_puertas.png`).
+- Nombres en minúsculas, sin espacios, acentos ni ñ, con guion bajo y terminados en `.png`.
+- Las versiones pareja llevan el mismo nombre con sufijo: `..._grafito.png` y `..._oleo.png`.
+
+Ejemplo:
+```
+LISTA DE ENTREGA
+Game_Assets/Camino/zona_enemigos_v001/fondo_cueva_grafito.png
+Game_Assets/Camino/zona_enemigos_v001/fondo_cueva_oleo.png
+```
