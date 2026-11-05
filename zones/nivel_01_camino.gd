@@ -63,7 +63,7 @@ const STAGES := [
 	[2200.0, 360.0, 320.0, 430.0],        # corre
 ]
 const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
-const RUN_SPEED := 400.0                  # con el pincel el lobo ya no camina: siempre corre
+const RUN_SPEED := 360.0                  # con el pincel el lobo ya no camina: siempre corre
 const INK := Color(0.07, 0.06, 0.07)
 const STROKE_ANGLE := PI / 3.0            # pincelada de color: 60° sobre la horizontal
 const STROKE_LEN := 1000.0                # largo de la pincelada (del suelo hasta arriba de la pantalla)

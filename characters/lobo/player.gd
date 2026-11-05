@@ -15,17 +15,23 @@ const SPRITE_SCALE := 0.60        # tamaño del lobo en pantalla (~130 px de alt
 
 ## Tacto de metroidvania de acción precisa: arranca y frena casi al instante (sin patinar), control total
 ## en el aire, salto alto y vivo con un instante de "flote" en la cima y caída rápida con tope.
-const ACCEL := 7000.0             # llega a la velocidad tope en ~0.06 s
+## Salto medido de una grabación de Silksong (nov 2026), escalado por altura del personaje (Hornet ~70 px
+## en el video, el lobo ~130 px): sube a velocidad constante mientras se mantiene el botón (~0.15 s),
+## frena hasta la cima (~0.42 s en total), flota un instante y cae acelerando hasta el tope (~0.52 s).
+## Salto completo ~1.8 veces el lobo (~240 px, ~0.95 s en el aire); con un toque, ~0.5 veces (~70 px).
+const ACCEL := 7000.0             # llega a la velocidad tope en ~0.05 s (en el video: casi instantáneo)
 const AIR_ACCEL := 5500.0
 const FRICTION := 8000.0          # se detiene casi en seco al soltar
 const AIR_FRICTION := 4000.0
-const GRAVITY := 2700.0
-const FALL_MULT := 1.5            # cae más rápido de lo que sube
-const MAX_FALL := 1300.0
-const JUMP_VELOCITY := -1080.0    # altura máxima del salto ~210 px (1.6 veces el lobo)
-const JUMP_CUT := 0.3             # soltar el botón en el ascenso corta el salto (saltos cortos precisos)
-const APEX_SPEED := 160.0         # cerca de la cima, con el botón apretado...
-const APEX_GRAVITY := 0.55        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
+const RISE_GRAVITY := 3000.0      # al subir, cuando ya no se sostiene el impulso
+const FALL_GRAVITY := 2700.0      # al caer
+const MAX_FALL := 1150.0
+const JUMP_VELOCITY := -780.0
+const JUMP_HOLD := 0.15           # con el botón apretado, sube sin gravedad este tiempo
+const JUMP_MIN := 0.07            # un toque sube al menos esto antes de cortarse
+const JUMP_CUT := 0.15            # al soltar en el ascenso queda esta fracción de la velocidad
+const APEX_SPEED := 110.0         # cerca de la cima, con el botón apretado...
+const APEX_GRAVITY := 0.45        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
 const COYOTE_TIME := 0.10
 const JUMP_BUFFER := 0.12
 ## Dash: impulso horizontal corto, sin gravedad; uno por salto (se recupera al tocar suelo o pared).
@@ -44,8 +50,8 @@ const MAX_VIDA := 5
 const INVULNERABLE := 1.0
 const KNOCKBACK := Vector2(420.0, -420.0)
 
-## Velocidad máxima. Zona Camino: caminata lenta (120). Zona de prueba: 340.
-var max_speed := 340.0
+## Velocidad máxima. Zona Camino: caminata lenta (120). Carrera: 360 (medida de Silksong, escalada al lobo).
+var max_speed := 360.0
 ## El lobo empieza sin poder saltar; se desbloquea más adelante en el juego.
 var can_jump := true
 var can_attack := false
@@ -57,6 +63,10 @@ var vida := MAX_VIDA
 var lobo: LoboSprite
 var _coyote := 0.0
 var _buffer := 0.0
+var _jumping := false             # salto desde el suelo en curso (para el impulso sostenido y el corte)
+var _jump_t := 0.0
+var _jump_hold := 0.0
+var _cut_pending := false        # ya se cortó este salto
 var _drop_timer := 0.0
 var _on_one_way := false
 var _dash_t := 0.0
@@ -132,9 +142,23 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, (FRICTION if on_floor else AIR_FRICTION) * delta)
 
-	# --- gravedad
-	var g := GRAVITY * (FALL_MULT if velocity.y > 0.0 else 1.0)
-	if not on_floor and absf(velocity.y) < APEX_SPEED and Input.is_action_pressed("jump"):
+	# --- gravedad (sin gravedad mientras se sostiene el impulso del salto)
+	var held := Input.is_action_pressed("jump") and active
+	if _jumping:
+		_jump_t += delta
+		if velocity.y >= 0.0 or (on_floor and _jump_t > 0.05):
+			_jumping = false
+		elif not held and not _cut_pending and _jump_t >= JUMP_MIN:
+			velocity.y *= JUMP_CUT             # soltó el botón (o fue un toque): se corta una sola vez
+			_cut_pending = true
+			_jump_hold = 0.0
+	var g := FALL_GRAVITY if velocity.y > 0.0 else RISE_GRAVITY
+	if _jumping and _jump_hold > 0.0 and (held or _jump_t < JUMP_MIN):
+		_jump_hold -= delta
+		g = 0.0
+	else:
+		_jump_hold = 0.0
+	if not on_floor and absf(velocity.y) < APEX_SPEED and held:
 		g *= APEX_GRAVITY
 	velocity.y = minf(velocity.y + g * delta, MAX_FALL)
 
@@ -166,6 +190,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		_buffer = 0.0
 		_coyote = 0.0
+		_jumping = true
+		_jump_t = 0.0
+		_jump_hold = JUMP_HOLD
+		_cut_pending = false
 	elif _buffer > 0.0 and _wall_dir != 0.0:
 		velocity = Vector2(-_wall_dir * WALL_JUMP.x, WALL_JUMP.y)
 		_wall_lock = WALL_JUMP_LOCK
@@ -175,7 +203,9 @@ func _physics_process(delta: float) -> void:
 		lobo.special = "wall_jump"
 
 	if can_jump and Input.is_action_just_released("jump") and velocity.y < 0.0 and _wall_lock <= 0.0:
-		velocity.y *= JUMP_CUT
+		if not _jumping:                   # el salto desde el suelo se corta arriba, en la gravedad
+			velocity.y *= JUMP_CUT
+			_jump_hold = 0.0
 
 	# --- tajos: arriba + J hacia arriba, abajo + J en el aire hacia abajo, si no hacia el frente
 	if active and can_attack and _attack_cd <= 0.0 and not lobo.acting and Input.is_action_just_pressed("attack"):

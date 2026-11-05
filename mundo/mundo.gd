@@ -69,7 +69,7 @@ func _ready() -> void:
 	_build_portals()
 
 	walker = Player.new()
-	walker.max_speed = 400.0
+	walker.max_speed = 360.0
 	var all := not en_juego or Inventario.pincel
 	walker.can_attack = all
 	walker.can_dash = all
