@@ -14,6 +14,13 @@ signal attack_frame(anim: StringName, frame: int)
 
 const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BASE_SCALE * profundidad)
 const ART := "res://characters/lobo/pincel_v003"
+## Locomoción con el modelo elegido (Wolf_Run_v014 y Wolf_Jump_Fall_v001): reemplaza esas animaciones de
+## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
+const LOCO := "res://characters/lobo/locomocion_v014"
+const JUMP_APEX := &"jump_apex"
+const APEX_VY := 140.0                 # |vy| bajo esto, en el aire: pose de la cima
+const LAND_BOUNCE := 5.0               # rebote visual al aterrizar (px de celda) ...
+const LAND_BOUNCE_T := 0.18            # ... y su duración
 const IDLE := &"idle"
 const WALK := &"walk"
 const RUN := &"run"
@@ -26,7 +33,7 @@ const CELL_FEET := Vector2(192, 352)      # pies dentro de la celda
 ## px de celda que avanza un ciclo (2 pasos). Medido por Codex: caminata 153, carrera 302.5. La caminata
 ## usa más para que la animación vaya más pausada (pedido de Emma), a cambio de un leve deslizamiento.
 const STRIDE := 175.0
-const RUN_STRIDE := 302.5
+const RUN_STRIDE := 390.0           # carrera v014: el pie apoyado retrocede ~49 px de celda por cuadro
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0
@@ -48,6 +55,7 @@ var _smear: AnimatedSprite2D
 var _tips := {}
 var _contacts := {}               # "anim:frame" -> registro de brush_contacts.json
 var _last_pos := Vector2.ZERO
+var _bounce := 0.0                # tiempo que queda del rebote de aterrizaje
 
 
 func _ready() -> void:
@@ -60,7 +68,7 @@ func _ready() -> void:
 	_layers.append(_tip)
 	_smear = _layer(load(ART + "/Godot/Wolf_smear.tres"))
 	_layers.append(_smear)
-	sprite = _layer(load(ART + "/Godot/Wolf_body.tres"))
+	sprite = _layer(_body_frames())
 	sprite.play(IDLE)
 	sprite.animation_finished.connect(_on_finished)
 	sprite.frame_changed.connect(_on_frame_changed)
@@ -69,6 +77,31 @@ func _ready() -> void:
 	for c in JSON.parse_string(FileAccess.get_file_as_string(ART + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c
 	_sync_layers()
+
+
+## Cuerpo de pincel_v003 con la carrera, el salto y la caída del modelo nuevo.
+func _body_frames() -> SpriteFrames:
+	var f: SpriteFrames = (load(ART + "/Godot/Wolf_body.tres") as SpriteFrames).duplicate()
+	var run: Array[String] = []
+	for i in 8:
+		run.append(LOCO + "/run/%02d.png" % (i + 1))
+	_set_anim(f, RUN, run, 20.0, true)
+	_set_anim(f, JUMP_START, [LOCO + "/jump_fall/jump_start.png"], 12.0, false)
+	_set_anim(f, JUMP_UP, [LOCO + "/jump_fall/jump_up.png"], 5.0, true)
+	_set_anim(f, JUMP_APEX, [LOCO + "/jump_fall/jump_apex.png"], 5.0, true)
+	_set_anim(f, FALL, [LOCO + "/jump_fall/fall.png"], 5.0, true)
+	_set_anim(f, LAND, [LOCO + "/jump_fall/land.png"], 1.0 / LAND_BOUNCE_T, false)
+	return f
+
+
+func _set_anim(f: SpriteFrames, anim: StringName, files: Array, fps: float, loop: bool) -> void:
+	if f.has_animation(anim):
+		f.remove_animation(anim)
+	f.add_animation(anim)
+	f.set_animation_speed(anim, fps)
+	f.set_animation_loop(anim, loop)
+	for path in files:
+		f.add_frame(anim, load(path))
 
 
 func _layer(frames: SpriteFrames) -> AnimatedSprite2D:
@@ -93,8 +126,9 @@ func set_brush(state: String) -> void:
 func _sync_layers() -> void:
 	if _layers.is_empty() or sprite == null:
 		return
+	var shown := brush != "" and (acting or attacking)     # el pincel aparece solo al usarlo
 	for s in _layers:
-		s.visible = brush != ""
+		s.visible = shown and s.sprite_frames.has_animation(sprite.animation)
 		if s.visible:
 			s.animation = sprite.animation
 			s.frame = sprite.frame
@@ -123,6 +157,7 @@ func play_action(anim: StringName) -> void:
 	_landing = false
 	sprite.speed_scale = 1.0
 	_play(anim, true)
+	_sync_layers()
 	_on_frame_changed()
 
 
@@ -132,6 +167,7 @@ func play_attack(anim: StringName) -> void:
 	_landing = false
 	sprite.speed_scale = 1.0
 	_play(anim, true)
+	_sync_layers()
 	_on_frame_changed()
 
 
@@ -171,10 +207,12 @@ func _on_finished() -> void:
 	if acting:
 		acting = false
 		_play(IDLE, true)
+		_sync_layers()
 		action_finished.emit(anim)
 	elif attacking:
 		attacking = false
 		_play(IDLE, true)
+		_sync_layers()
 	elif anim == JUMP_START:
 		_play(JUMP_UP, true)
 	elif anim == LAND:
@@ -187,6 +225,9 @@ func _on_finished() -> void:
 func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false, vy: float = 0.0) -> void:
 	var ground := global_position.distance_to(_last_pos) / maxf(delta, 0.001)
 	_last_pos = global_position
+	# rebote visual del aterrizaje: sube unos px y vuelve (la colisión sigue en el suelo)
+	_bounce = maxf(0.0, _bounce - delta)
+	_flip.position.y = -sin((1.0 - _bounce / LAND_BOUNCE_T) * PI) * LAND_BOUNCE if _bounce > 0.0 else 0.0
 	if acting:
 		return
 	if absf(vel_x) > 6.0 and special != "wall_slide":
@@ -203,10 +244,12 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 		_landing = false
 		if not _air:
 			_play(JUMP_START if vy < 0.0 else FALL, true)
-		elif vy >= 0.0 and sprite.animation != FALL:
-			_play(FALL, true)
-		elif vy < 0.0 and sprite.animation != JUMP_START and sprite.animation != JUMP_UP:
-			_play(JUMP_UP, true)
+		elif absf(vy) < APEX_VY and sprite.animation != JUMP_START:
+			_play(JUMP_APEX)
+		elif vy >= APEX_VY:
+			_play(FALL)
+		elif vy < 0.0 and sprite.animation != JUMP_START:
+			_play(JUMP_UP)
 		_air = true
 		return
 	if _air:
@@ -215,6 +258,7 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 			_landing = true
 			sprite.speed_scale = 1.0
 			_play(LAND, true)
+			_bounce = LAND_BOUNCE_T
 			return
 	if _landing and speed01 < 0.05:
 		return
