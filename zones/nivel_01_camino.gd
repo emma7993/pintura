@@ -1249,6 +1249,42 @@ func _draw_cave_back(ci: CanvasItem) -> void:
 	ci.draw_rect(Rect2(HOLE.x, HIGH_Y, HOLE.y - HOLE.x, CAVE_TOP - HIGH_Y), air)
 
 
+## Paso del fondo izquierdo de la cueva (junto a la cascada) hacia la Zona de enemigos: una boca oscura en
+## la roca, medio tapada por hojas que cuelgan, para que se lea que por ahí se puede pasar (provisional).
+func _draw_leaf_passage(line: Color) -> void:
+	var x0 := CAVE_X.x - 80.0
+	var w := 120.0
+	var top := CAVE_Y - 250.0
+	var mouth := PackedVector2Array()
+	mouth.append(Vector2(x0, CAVE_Y + 2.0))
+	for k in 13:                                   # arco de la boca
+		var a := PI + PI * k / 12.0
+		mouth.append(Vector2(x0 + w * 0.5 + cos(a) * w * 0.5, top + w * 0.5 + sin(a) * w * 0.5))
+	mouth.append(Vector2(x0 + w, CAVE_Y + 2.0))
+	_terrain.draw_colored_polygon(mouth, Color(0.36, 0.34, 0.31))
+	_terrain.draw_polyline(mouth, line, 2.0, true)
+	var leaf := Color(0.33, 0.47, 0.27)
+	var leaf_dark := Color(0.22, 0.33, 0.18)
+	for i in 9:                                    # lianas con hojas, colgando del borde del arco
+		var vx := x0 + 4.0 + i * 15.0
+		var vy := top + 18.0 + absf(vx - (x0 + w * 0.5)) * 0.55
+		var length := 70.0 + fmod(i * 47.0, 110.0)
+		_terrain.draw_line(Vector2(vx, vy - 20.0), Vector2(vx + 3.0, vy + length), Color(0.25, 0.30, 0.20, 0.9), 1.6, true)
+		var y := vy
+		var side := 1.0 if i % 2 == 0 else -1.0
+		while y < vy + length:
+			var c := Vector2(vx + side * 6.0 + (y - vy) * 0.02, y)
+			var pts := PackedVector2Array([c + Vector2(-side * 5.0, -2.0), c + Vector2(side * 4.0, -7.0),
+				c + Vector2(side * 10.0, 0.0), c + Vector2(side * 3.0, 6.0)])
+			_terrain.draw_colored_polygon(pts, leaf if int(y) % 3 != 0 else leaf_dark)
+			_terrain.draw_polyline(PackedVector2Array([pts[0], pts[1], pts[2], pts[3], pts[0]]), leaf_dark, 1.0, true)
+			y += 14.0
+			side = -side
+	for k in 5:                                    # hojas caídas en el suelo, delante de la boca
+		var c := Vector2(x0 + 30.0 + k * 34.0, CAVE_Y - 3.0)
+		_terrain.draw_colored_polygon(PackedVector2Array([c + Vector2(-9, 0), c + Vector2(0, -6), c + Vector2(10, 0), c + Vector2(0, 3)]), leaf)
+
+
 ## Lo que cambia: el brocal y la losa del pozo, la tapa del fondo, sus trozos, y las espinas del foso.
 func _draw_terrain() -> void:
 	var line := Color(0.30, 0.28, 0.26, 0.85)
@@ -1262,6 +1298,7 @@ func _draw_terrain() -> void:
 	_terrain.draw_rect(door, Color(0.22, 0.18, 0.15))
 	_terrain.draw_rect(door, line, false, 2.5)
 	_terrain.draw_circle(Vector2(door.end.x - 18.0, CAVE_Y - 85.0), 5.0, stone)
+	_draw_leaf_passage(line)
 	# brocal del pozo (sobre el suelo alto)
 	var l := WELL_X - WELL_HALF - 14.0
 	var r := WELL_X + WELL_HALF + 14.0
