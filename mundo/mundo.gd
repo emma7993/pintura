@@ -18,6 +18,7 @@ const WALL := 40.0
 const DOOR_H := 300.0
 const HOLE_W := 300.0
 const LADDER_STEP := 150.0                # repisas para subir por un hueco del techo (salto ~225 px)
+const LEDGE := Vector2(620.0, 170.0)      # repisa alta del fondo con la puerta sellada (ancho, alto; salto ~240 px)
 const INK := Color(0.12, 0.11, 0.12)
 const TRACK := 5                          # canción: Camino
 ## Dónde aparece el lobo al llegar desde el Nivel 1 (sala -> fracción del ancho).
@@ -77,9 +78,9 @@ func _ready() -> void:
 	add_child(walker)
 	walker.lobo.set_brush("ink" if not en_juego or Inventario.tinta > 0.0 else ("dry" if Inventario.pincel else ""))
 	if en_juego:
-		var e := entrada if ENTRADAS.has(entrada) else "ca_sello"
-		walker.position = _floor_point(e, ENTRADAS[e]) + Vector2(0, -4)
-		if ENTRADAS[e] > 0.5:
+		var e := entrada if _rooms.has(entrada) and not _rooms[entrada].fuera else "ca_sello"
+		walker.position = _floor_point(e, ENTRADAS.get(e, 0.3)) + Vector2(0, -4)
+		if ENTRADAS.get(e, 0.3) > 0.5:
 			walker.lobo.face(-1)
 	else:
 		walker.position = _floor_point(MapaDatos.INICIO, 0.3) + Vector2(0, -4)
@@ -108,6 +109,8 @@ func _links() -> Dictionary:
 			continue
 		var a: Dictionary = _rooms[pair[0]]
 		var b: Dictionary = _rooms[pair[1]]
+		if a.d.get("sellada", "") == pair[1] or b.d.get("sellada", "") == pair[0]:
+			continue                          # se cruza por la puerta sellada (portal), no por un hueco
 		var ra: Rect2 = a.rect
 		var rb: Rect2 = b.rect
 		var side := ""
@@ -167,12 +170,17 @@ func _build_room(id: String, links: Dictionary) -> void:
 	# un par de repisas de adorno (deterministas por sala), lejos del centro
 	var rng := RandomNumberGenerator.new()
 	rng.seed = hash(id)
+	var sealed := d.has("sellada")
+	if sealed:
+		_solid(room, Rect2(r.end.x - WALL - LEDGE.x, floor_y - LEDGE.y, LEDGE.x, LEDGE.y))
 	for i in 2:
+		if sealed and i == 1:
+			continue                          # ahí está la repisa alta
 		var px := r.position.x + (r.size.x * (0.12 if i == 0 else 0.68)) + rng.randf_range(0, 120)
 		var py := floor_y - rng.randf_range(160, 210) - i * rng.randf_range(0, 140)
 		_platform(room, Rect2(px, py, rng.randf_range(200, 300), 14))
 	# sala cerrada: barrera en cada entrada, con lo que la abre
-	if d.tipo == "cerrada":
+	if d.tipo == "cerrada" and not sealed:
 		for door in room.doors:
 			var g := door as Rect2
 			var bar := g
@@ -193,7 +201,9 @@ func _build_room(id: String, links: Dictionary) -> void:
 	var label := _label("%s\n%s" % [d.nombre, d.nota], 38, Color(color.darkened(0.55), 0.8))
 	label.position = r.position + Vector2(90, CH - 660.0)   # a la vista desde el piso
 	var extra := []
-	if d.tipo == "cerrada":
+	if sealed:
+		extra.append("Puerta sellada al fondo — se abre con: " + String(d.get("req", "")))
+	elif d.tipo == "cerrada":
 		extra.append("Cerrada al inicio — se abre con: " + String(d.get("req", "")))
 	if d.get("enemigos", "") != "":
 		extra.append("Enemigos: " + String(d.enemigos))
@@ -227,6 +237,22 @@ func _build_portals() -> void:
 			var l := _label("%s\n%s" % [label, p[3]], 20, Color(INK, 0.85))
 			l.position = rect.position + Vector2(-40, -70)
 			l.size.x = 260
+	# puerta sellada: al fondo, sobre la repisa alta; del otro lado, una puerta igual
+	for id in _rooms:
+		var d: Dictionary = _rooms[id].d
+		var there := String(d.get("sellada", ""))
+		if there == "" or _rooms[id].fuera:
+			continue
+		var r: Rect2 = _rooms[id].rect
+		var floor_y := r.end.y - WALL
+		var a := Rect2(r.end.x - WALL - 330.0, floor_y - LEDGE.y - 260.0, 150, 260)
+		_portals.append({"rect": a, "room": id, "to": there, "label": "Puerta sellada → " + String(MapaDatos.sala(there).nombre),
+			"req": d.get("req", ""), "exit": "", "clave": d.get("clave", "")})
+		if _rooms.has(there) and not _rooms[there].fuera:
+			var rb: Rect2 = _rooms[there].rect
+			var b := Rect2(rb.end.x - 600.0, rb.end.y - WALL - 260.0, 150, 260)
+			_portals.append({"rect": b, "room": there, "to": id, "label": "Puerta sellada → " + String(d.nombre),
+				"req": d.get("req", ""), "exit": "", "clave": d.get("clave", "")})
 
 
 func _solid(room: Dictionary, r: Rect2) -> void:
@@ -332,6 +358,8 @@ func _physics_process(_delta: float) -> void:
 		if at_bench:
 			Inventario.guardar()
 			_leave("camino")
+		elif not _near_portal.is_empty() and not _abierta(_near_portal):
+			print("[mundo] puerta sellada: %s" % _near_portal.req)
 		elif not _near_portal.is_empty():
 			var p := _near_portal
 			if p.exit != "":
@@ -346,6 +374,8 @@ func _physics_process(_delta: float) -> void:
 		var h := ""
 		if at_bench:
 			h = "E: descansar y volver a la pintura"
+		elif not _near_portal.is_empty() and not _abierta(_near_portal):
+			h = "Puerta sellada   ·   se abre con: %s" % _near_portal.req
 		elif not _near_portal.is_empty():
 			h = "E: %s   ·   se abre con: %s" % [_near_portal.label, _near_portal.req]
 		if h != exit_hint:
@@ -353,6 +383,17 @@ func _physics_process(_delta: float) -> void:
 			near_exit = h != ""
 			near_exit_changed.emit(near_exit)
 	_update_ui()
+
+
+## Las puertas selladas se abren con su marca de Inventario (corrido solo, F6: también en modo libre).
+func _abierta(p: Dictionary) -> bool:
+	var clave := String(p.get("clave", ""))
+	return clave == "" or Inventario.hecho(clave) or (not en_juego and free_mode)
+
+
+## Lleva al lobo a una sala de aquí (Ñ / L en main.gd).
+func ir_a_sala(id: String) -> void:
+	_go_to(id, ENTRADAS.get(id, 0.3))
 
 
 func _leave(to: String) -> void:
@@ -480,8 +521,16 @@ func _draw_room(ci: CanvasItem, id: String) -> void:
 	for p in _portals:
 		if p.room == id:
 			var pr: Rect2 = p.rect
-			ci.draw_rect(pr, Color(0.25, 0.2, 0.35, 0.35))
-			ci.draw_rect(pr, INK, false, 4.0)
+			if p.has("clave") and not _abierta(p):
+				ci.draw_rect(pr, Color(0.22, 0.16, 0.13))          # puerta cerrada con el sello de la melodía
+				ci.draw_rect(pr, INK, false, 4.0)
+				var c := pr.get_center()
+				ci.draw_circle(c, 40, Color(0.72, 0.16, 0.2))
+				ci.draw_arc(c, 40, 0, TAU, 32, Color(0.35, 0.05, 0.08), 3.0)
+				ci.draw_string(ThemeDB.fallback_font, c + Vector2(-14, 16), "♪", HORIZONTAL_ALIGNMENT_LEFT, -1, 46, Color(0.98, 0.92, 0.8))
+			else:
+				ci.draw_rect(pr, Color(0.25, 0.2, 0.35, 0.35))
+				ci.draw_rect(pr, INK, false, 4.0)
 	if id == "pintura":
 		var frame := Rect2(r.position.x + r.size.x * 0.5 - 360, r.position.y + 150, 720, 420)
 		ci.draw_rect(frame, Color(0.55, 0.42, 0.28))

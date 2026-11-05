@@ -43,7 +43,8 @@ const WALL_SLIDE_SPEED := 160.0
 const WALL_JUMP := Vector2(520.0, -980.0)
 const WALL_JUMP_LOCK := 0.16      # tras saltar de la pared, un instante sin control horizontal
 ## Tajos y rebote: la estocada hacia abajo que da en algo rebota hacia arriba (pogo).
-const ATTACK_COOLDOWN := 0.30
+const ATTACK_COOLDOWN := 0.22
+const COMBO_WINDOW := 0.55        # golpe de lado dentro de este tiempo desde el anterior: sigue el combo
 const POGO_VELOCITY := -880.0
 ## Vida
 const MAX_VIDA := 5
@@ -77,6 +78,8 @@ var _wall_lock := 0.0
 var _wall_dir := 0.0              # -1 pared a la izquierda, 1 a la derecha, 0 ninguna
 var _attack_cd := 0.0
 var _attack_anim := &""
+var _combo := -1                  # golpe del combo que se dio último (-1 ninguno)
+var _combo_t := 99.0
 var _invulnerable := 0.0
 var _hurt_t := 0.0
 var _dead := false
@@ -111,6 +114,7 @@ func _physics_process(delta: float) -> void:
 	var on_floor := is_on_floor()
 	_dash_cd = maxf(0.0, _dash_cd - delta)
 	_attack_cd = maxf(0.0, _attack_cd - delta)
+	_combo_t += delta
 	_wall_lock = maxf(0.0, _wall_lock - delta)
 	_hurt_t = maxf(0.0, _hurt_t - delta)
 	_invulnerable = maxf(0.0, _invulnerable - delta)
@@ -211,11 +215,16 @@ func _physics_process(delta: float) -> void:
 	if active and can_attack and _attack_cd <= 0.0 and not lobo.acting and Input.is_action_just_pressed("attack"):
 		_attack_cd = ATTACK_COOLDOWN
 		if Input.is_action_pressed("move_up"):
-			_attack_anim = &"slash_up"
+			_attack_anim = LoboSprite.ATTACK_UP
+			_combo = -1
 		elif not on_floor and Input.is_action_pressed("move_down"):
 			_attack_anim = &"slash_down"
+			_combo = -1
 		else:
-			_attack_anim = &"slash_side"
+			# combo: corte ascendente, barrido y remate si se encadenan a tiempo
+			_combo = (_combo + 1) % LoboSprite.ATTACKS.size() if _combo_t < COMBO_WINDOW else 0
+			_attack_anim = LoboSprite.ATTACKS[_combo]
+		_combo_t = 0.0
 		lobo.play_attack(_attack_anim)
 		attack_started.emit(_attack_anim)
 

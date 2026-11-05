@@ -6,7 +6,8 @@ extends Node2D
 ## estela del golpe (se tiñe con la carga) y cuerpo. Sin pincel (brush == "") solo se ve el cuerpo.
 ## Estados: reposo, caminata, carrera, salto (despegue, subida, caída, aterrizaje) y los especiales que pide
 ## Player (dash, wall_slide, wall_jump, hurt, death). Acciones del nivel con play_action (el lobo se
-## detiene: paint_rise, paint_up, dip) y ataques con play_attack (se puede mover: slash_side/up/down).
+## detiene: paint_rise, paint_up, dip) y ataques con play_attack (se puede mover: combo attack_01..03,
+## attack_up y slash_down, el tajo hacia abajo con rebote).
 
 signal action_frame(anim: StringName, frame: int)   # frame empieza en 1, como en brush_contacts.json
 signal action_finished(anim: StringName)
@@ -17,6 +18,20 @@ const ART := "res://characters/lobo/pincel_v003"
 ## Locomoción con el modelo elegido (Wolf_Run_v014 y Wolf_Jump_Fall_v001): reemplaza esas animaciones de
 ## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
 const LOCO := "res://characters/lobo/locomocion_v014"
+## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
+## herramientas/ajustar_combo_v001.py): el pincel y la tinta vienen dibujados en el cuerpo.
+const COMBO := "res://characters/lobo/combo_v001"
+const ATTACKS: Array[StringName] = [&"attack_01", &"attack_02", &"attack_03"]   # corte ascendente, barrido, remate
+const ATTACK_UP := &"attack_up"        # mismo corte ascendente, con la zona de golpe sobre la cabeza
+const COMBO_FPS := 16.0
+const COMBO_DX := 36.0                 # el cuerpo del combo está más atrás en su celda: se corre para no retroceder
+## Zonas de golpe por cuadro (x, y, ancho, alto en px de celda), medidas del alcance del pincel y la tinta.
+const COMBO_HITS := {
+	&"attack_01": {2: Rect2(225, 141, 117, 207), 3: Rect2(215, 38, 123, 175)},
+	&"attack_02": {2: Rect2(225, 195, 115, 80), 3: Rect2(225, 205, 132, 85)},
+	&"attack_03": {2: Rect2(225, 166, 127, 184), 3: Rect2(225, 240, 118, 119)},
+	&"attack_up": {2: Rect2(140, 40, 200, 300), 3: Rect2(120, 0, 220, 215)},
+}
 const JUMP_APEX := &"jump_apex"
 const APEX_VY := 140.0                 # |vy| bajo esto, en el aire: pose de la cima
 const LAND_BOUNCE := 5.0               # rebote visual al aterrizar (px de celda) ...
@@ -73,6 +88,8 @@ func _ready() -> void:
 	sprite.animation_finished.connect(_on_finished)
 	sprite.frame_changed.connect(_on_frame_changed)
 	sprite.animation_changed.connect(_sync_layers)
+	sprite.animation_changed.connect(func() -> void:
+		sprite.offset = SPRITE_OFFSET + (Vector2(COMBO_DX, 0) if COMBO_HITS.has(sprite.animation) else Vector2.ZERO))
 	_last_pos = global_position
 	for c in JSON.parse_string(FileAccess.get_file_as_string(ART + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c
@@ -91,6 +108,13 @@ func _body_frames() -> SpriteFrames:
 	_set_anim(f, JUMP_APEX, [LOCO + "/jump_fall/jump_apex.png"], 5.0, true)
 	_set_anim(f, FALL, [LOCO + "/jump_fall/fall.png"], 5.0, true)
 	_set_anim(f, LAND, [LOCO + "/jump_fall/land.png"], 1.0 / LAND_BOUNCE_T, false)
+	for i in ATTACKS.size():
+		var files: Array[String] = []
+		for k in 4:
+			files.append(COMBO + "/attack_%02d/%02d.png" % [i + 1, k + 1])
+		_set_anim(f, ATTACKS[i], files, COMBO_FPS, false)
+		if i == 0:
+			_set_anim(f, ATTACK_UP, files, COMBO_FPS, false)
 	return f
 
 
@@ -192,13 +216,20 @@ func tip_global(anim: StringName, frame: int) -> Vector2:
 
 ## Zona de golpe (global) de un cuadro de tajo, o un Rect2 vacío si ese cuadro no golpea.
 func hitbox_global(anim: StringName, frame: int, margin := 14.0) -> Rect2:
-	var c := _contact(anim, frame)
-	if c.is_empty() or not c.get("hits", false) or c.get("hitbox") == null:
-		return Rect2()
-	var hb: Array = c.hitbox
+	var hb: Rect2
+	if COMBO_HITS.has(anim):
+		if not COMBO_HITS[anim].has(frame):
+			return Rect2()
+		hb = COMBO_HITS[anim][frame]
+		hb.position.x += COMBO_DX
+	else:
+		var c := _contact(anim, frame)
+		if c.is_empty() or not c.get("hits", false) or c.get("hitbox") == null:
+			return Rect2()
+		hb = Rect2(c.hitbox[0], c.hitbox[1], c.hitbox[2], c.hitbox[3])
 	var t := _flip.get_global_transform()
-	var a := t * (Vector2(hb[0], hb[1]) - CELL_FEET)
-	var b := t * (Vector2(hb[0] + hb[2], hb[1] + hb[3]) - CELL_FEET)
+	var a := t * (hb.position - CELL_FEET)
+	var b := t * (hb.end - CELL_FEET)
 	return Rect2(Vector2(minf(a.x, b.x), minf(a.y, b.y)), (b - a).abs()).grow(margin)
 
 

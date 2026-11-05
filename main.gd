@@ -65,12 +65,36 @@ func _unhandled_key_input(event: InputEvent) -> void:
 	elif map.visible:
 		if k.keycode == KEY_ESCAPE:
 			_toggle_map()
+	elif OS.is_debug_build() and not _choosing and not _busy and (_es_ene(k) or k.keycode == KEY_L):
+		_saltar_sala(1 if _es_ene(k) else -1)
 	elif k.keycode == KEY_0 or (_choosing and k.keycode == KEY_N):
 		_new_game()
 	elif _choosing and k.keycode in [KEY_ENTER, KEY_KP_ENTER, KEY_E, KEY_SPACE]:
 		_choosing = false
 		hint.modulate.a = 0.0
 		zone.walker.enabled = true
+
+
+## Ñ (o la tecla de la Ñ en un teclado inglés: ;) para adelantar sala.
+func _es_ene(k: InputEventKey) -> bool:
+	return k.keycode == 209 or k.unicode in [241, 209] or k.physical_keycode == KEY_SEMICOLON
+
+
+## Solo para probar (versión de desarrollo): Ñ adelanta y L regresa una sala de Camino, en el orden del
+## mapa. Las del Nivel 1 se recorren dentro del nivel; las demás, en el resto de Camino (mundo).
+func _saltar_sala(paso: int) -> void:
+	var orden := MapaDatos.orden("camino")
+	var cur := String(zone.map_room()) if zone and zone.has_method("map_room") else ""
+	var i := orden.find(cur)
+	var j := (0 if paso > 0 else orden.size() - 1) if i < 0 else wrapi(i + paso, 0, orden.size())
+	var id: String = orden[j]
+	var destino := "z_camino" if id in MapaDatos.NIVEL1 else "mundo"
+	print("[main] prueba: sala %s -> %s" % [cur, id])
+	_show_title("Sala %d de %d · %s" % [j + 1, orden.size(), MapaDatos.sala(id).nombre], 0.6)
+	if zone and zone.get_script().resource_path == ZONES[destino] and zone.has_method("ir_a_sala"):
+		zone.ir_a_sala(id)
+	else:
+		_on_exit_requested(destino + ":" + id)
 
 
 ## Mapa (M): pausa el juego y muestra lo recorrido; el lobo se marca si la zona sabe dónde está.

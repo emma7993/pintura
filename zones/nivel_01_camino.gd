@@ -74,6 +74,11 @@ const ENTRADAS := {
 	"fin": Vector2(WIDTH - 200.0, HIGH_Y), "arco": Vector2(EXIT_X + 120.0, HIGH_Y),
 	"pozo": Vector2(WELL_X + 220.0, CAVE_Y), "cueva": Vector2(CAVE_X.x + 130.0, CAVE_Y),
 	"copista": Vector2(COPISTA_X, CAVE_Y),
+	# una por sala del mapa (Ñ / L en main.gd, para probar)
+	"ca_despertar": SPAWN, "ca_barranco": Vector2(GAP.x - 700.0, GROUND_Y),
+	"ca_altar": Vector2(BRUSH_X - 40.0, HIGH_Y), "ca_arco": Vector2(EXIT_X - 160.0, HIGH_Y),
+	"ca_cascada": Vector2(FALL_X + 120.0, CAVE_Y), "ca_pozo": Vector2(WELL_X, CAVE_Y),
+	"ca_cueva": Vector2(COPISTA_X - 150.0, CAVE_Y),
 }
 
 var walker: Player
@@ -1288,6 +1293,16 @@ func _draw_terrain() -> void:
 		_terrain.draw_colored_polygon(tri, Color(0.20, 0.19, 0.20))
 		_terrain.draw_polyline(PackedVector2Array([tri[0], tri[2], tri[1]]), Color(0.08, 0.08, 0.09), 1.5, true)
 		x += 24.0
+
+
+## Lleva al lobo al punto de una sala (Ñ / L en main.gd, para probar).
+func ir_a_sala(id: String) -> void:
+	if not ENTRADAS.has(id):
+		return
+	walker.position = ENTRADAS[id]
+	walker.velocity = Vector2.ZERO
+	_checkpoint = walker.position
+	_cam.reset_smoothing()
 
 
 func track() -> int:

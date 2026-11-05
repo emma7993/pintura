@@ -16,6 +16,8 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 ## Pruebas
 - Windows: `herramientas/probar_juego.bat` ejecuta el juego unos segundos, guarda capturas en `pruebas/` y el log en `pruebas/godot_log.txt`. Revisar el log y las capturas antes de pedirle nada a Emma.
 - Godot: `C:\Users\Immix\Documents\Godot_v4.7.2-stable_win64_console.exe`.
+- Ñ adelanta y L regresa una sala de Camino en el orden del mapa (solo versión de desarrollo; `main.gd`). El Sello musical tiene la puerta sellada al fondo sobre una repisa alta (`sellada`/`clave` en `MapaDatos`) y su entrada no se cierra; prueba: `herramientas/prueba_sello.gd`.
+- Ataques: combo de tres golpes de lado y corte hacia arriba con `characters/lobo/combo_v001` (de `Wolf_Combo_v001`, convertido con `herramientas/ajustar_combo_v001.py`); el tajo hacia abajo (pogo) sigue siendo el de pincel_v003.
 - Física del lobo (`player.gd`): salto y carrera medidos de una grabación de Silksong, escalados al tamaño del lobo; `herramientas/prueba_salto.gd` comprueba las medidas (salto completo ~240 px, toque ~70 px, carrera 360).
 
 ## Git (dos computadoras: Windows y Mac)

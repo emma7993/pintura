@@ -19,6 +19,8 @@ const ZONAS := {
 ## Salas: id único, zona, columna y fila dentro de la zona, nombre, nota y tipo.
 ## tipo: "normal", "clave" (hub u objeto clave), "jefe", "cerrada" (empieza cerrada; "req" dice con qué
 ## se abre). banca = punto de control. enemigos = letras del esquema (M, U, S, B).
+## sellada = sala a la que lleva la puerta sellada del fondo (en una repisa alta); se abre con la marca
+## "clave" de Inventario. La entrada a una sala con puerta sellada no se cierra: se puede volver.
 const SALAS := [
 	# --- La Pintura (hub) ---
 	{"id": "pintura", "zona": "pintura", "c": 0, "f": 0, "nombre": "La Pintura", "nota": "Centro del mapa: cada puerta se pinta aquí", "tipo": "clave", "banca": true, "ancho": 2},
@@ -27,7 +29,7 @@ const SALAS := [
 	{"id": "ca_barranco", "zona": "camino", "c": 1, "f": 0, "nombre": "Barranco", "nota": "Correr y saltar", "tipo": "normal"},
 	{"id": "ca_altar", "zona": "camino", "c": 2, "f": 0, "nombre": "Altar del pincel", "nota": "Pincel y escudo", "tipo": "clave"},
 	{"id": "ca_arco", "zona": "camino", "c": 3, "f": 0, "nombre": "Arco dañado", "nota": "Puerta al cuadro", "tipo": "clave", "enemigos": "U"},
-	{"id": "ca_sello", "zona": "camino", "c": 4, "f": 0, "nombre": "Sello musical", "nota": "Melodía 1", "tipo": "cerrada", "req": "Melodía 1 (Un sueño)", "enemigos": "S · B"},
+	{"id": "ca_sello", "zona": "camino", "c": 4, "f": 0, "nombre": "Sello musical", "nota": "Melodía 1", "tipo": "cerrada", "req": "Melodía 1 (Un sueño)", "enemigos": "S · B", "sellada": "ca_descanso", "clave": "melodia_1"},
 	{"id": "ca_a_sueno", "zona": "camino", "c": 0, "f": 1, "nombre": "A Un sueño", "nota": "Atajo", "tipo": "cerrada", "req": "Atajo: melodía del sello"},
 	{"id": "ca_paleta", "zona": "camino", "c": 1, "f": 1, "nombre": "Cueva de la paleta", "nota": "Paleta de colores", "tipo": "clave", "enemigos": "M"},
 	{"id": "ca_cueva", "zona": "camino", "c": 2, "f": 1, "nombre": "Entrada a la cueva", "nota": "Junto al altar", "tipo": "normal", "enemigos": "M"},
@@ -144,6 +146,13 @@ const CH := 1080.0
 ## Salas de Camino que ya son el Nivel 1 jugable (zones/nivel_01_camino.gd): el mundo en bloques no las
 ## arma; al entrar en ellas se pasa al Nivel 1.
 const NIVEL1 := ["ca_despertar", "ca_barranco", "ca_altar", "ca_arco", "ca_cueva", "ca_cascada", "ca_pozo"]
+
+
+## Salas de una zona en el orden del mapa (fila por fila, de izquierda a derecha): Ñ / L en main.gd.
+static func orden(zona: String) -> Array:
+	var out := SALAS.filter(func(d: Dictionary) -> bool: return d.zona == zona)
+	out.sort_custom(func(a: Dictionary, b: Dictionary) -> bool: return a.f < b.f or (a.f == b.f and a.c < b.c))
+	return out.map(func(d: Dictionary) -> String: return d.id)
 
 
 static func sala(id: String) -> Dictionary:
