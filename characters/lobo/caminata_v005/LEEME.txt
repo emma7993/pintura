@@ -1,3 +1,0 @@
-Caminata sin pincel elegida por Emma: manos encogidas al pecho (Game_Assets/Wolf_Walk_v005/Revision_03, 12 cuadros).
-La usa characters/lobo/lobo_sprite.gd para "walk" e "idle" (cuadro 3, pies juntos) cuando el lobo no lleva pincel.
-La carrera, el salto y todo lo que lleva varita vienen de characters/lobo/varita_v002.

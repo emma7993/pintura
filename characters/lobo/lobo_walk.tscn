@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="SpriteFrames" path="res://characters/lobo/lobo_walk_frames.tres" id="1_frames"]
-
-[node name="LoboWalk" type="AnimatedSprite2D"]
-sprite_frames = ExtResource("1_frames")
-animation = &"walk"
-autoplay = "walk"
-offset = Vector2(-22, -152)

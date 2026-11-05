@@ -4,7 +4,7 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 
 ## Reparto de trabajo
 - ChatGPT/Codex: arte y diseño, siempre en `Game_Assets/` (versionado, con `.gdignore`: Godot NO lo importa).
-- Claude: estructura, código e integración. El arte se copia a `characters/...` (p. ej. `characters/lobo/v003/`). No editar los originales de `Game_Assets`; los ajustes se hacen con scripts en `herramientas/`.
+- Claude: estructura, código e integración. El arte se copia a `characters/...` (p. ej. `characters/lobo/salto_v004/`). No editar los originales de `Game_Assets`; los ajustes se hacen con scripts en `herramientas/`.
 - Leer `Game_Assets/LEEME_CODEX_CLAUDE.md` y el `INTEGRACION_CLAUDE.md` de la entrega vigente antes de integrar arte nuevo.
 
 ## Estado del juego

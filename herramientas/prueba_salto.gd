@@ -2,7 +2,8 @@ extends SceneTree
 ## Mide el salto y la carrera del lobo (player.gd) sobre un suelo plano, sin ventana:
 ##   Godot --headless --path . -s res://herramientas/prueba_salto.gd
 ## Objetivo, medido de una grabación de Silksong y escalado al lobo (~130 px):
-##   salto completo ~240 px, sube ~0.42 s, ~0.95 s en el aire; toque ~70 px, ~0.4 s; carrera 360 px/s.
+##   salto completo ~240 px, sube ~0.42 s, ~0.95 s en el aire; carrera 360 px/s.
+## Control total: un toque da un brinco corto (~40 px) y soltar a media subida lo para en seco.
 
 const GROUND := 600.0
 var _w: Player
@@ -14,6 +15,7 @@ var _apex_t := 0.0
 var _left := false
 var _fallas := 0
 var _x0 := 0.0
+var _soltado := -1.0
 
 
 func _initialize() -> void:
@@ -58,7 +60,22 @@ func _physics_process(delta: float) -> bool:
 			if _t > 0.02:
 				Input.action_release("jump")
 			if _mide(delta):
-				_reporta("toque", 40.0, 110.0, 0.25, 0.55)
+				_reporta("toque", 25.0, 80.0, 0.15, 0.45)
+				_t = 0.0
+				_paso = 40
+		40:
+			if _t > 0.3:
+				_inicio()
+				Input.action_press("jump")
+				_soltado = -1.0
+				_paso = 41
+		41:  # suelta a media subida: debe parar en seco (casi no sube más)
+			if _soltado < 0.0 and _t > 0.12:
+				Input.action_release("jump")
+				_soltado = GROUND - _w.position.y
+			if _mide(delta):
+				var extra := _top - _soltado
+				_check("al soltar a media subida para en seco: sube %.0f px más (soltó a %.0f px)" % [extra, _soltado], extra < 12.0)
 				_t = 0.0
 				_paso = 4
 		4:

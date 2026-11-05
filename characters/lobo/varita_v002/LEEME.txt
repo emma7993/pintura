@@ -1,5 +1,0 @@
-Copia de integración de Game_Assets/Wolf_Varita_v002 (ChatGPT/Codex, 2026-11-03). Ver su INTEGRACION_CLAUDE.md.
-El pincel se sostiene como varita grande. Capas: body (lobo), brush_base (mango), tip_color / tip_dry / tip_ink (punta).
-Orden de dibujo: mango, punta, cuerpo. Celdas 256x256, suelo y=238 (offset -128,-238). brush_contacts.json: punta por cuadro.
-Animaciones: idle, walk, run, jump_start, jump_up, fall, land (cada una también *_varita), paint_rise, paint_slash, paint_up, dip.
-Lo usa characters/lobo/lobo_sprite.gd. Sustituye a pincel_v001.

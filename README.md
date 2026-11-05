@@ -9,10 +9,9 @@ Estructura
 - zones/zone_camino.gd ....... zona Camino en la pintura (vista libre, perspectiva)
 - zones/zone_camino_lateral.gd  zona Camino en vista lateral (el lobo solo camina)
 - zones/prueba.tscn .......... zona de prueba del movimiento (F6): correr y saltar
-- characters/lobo/ ........... lobo: lobo_sprite.gd (sprites), player.gd (vista lateral), walker.gd (zona de la pintura), lobo_walk_* (hoja de 8 cuadros)
+- characters/lobo/ ........... lobo: lobo_sprite.gd (sprites), player.gd (vista lateral), walker.gd (zona de la pintura); sprites en las carpetas que lista characters/lobo/LEEME.txt
 - core/controls.gd ........... controles (teclado y mando)
 - art/backgrounds/ ........... pintura del camino y su máscara transitable
-- art/reference/ ............. referencia del lobo
 - shaders/ · audio/ .......... grano de papel · música (track_05.ogg para el Camino)
 - Game_Assets/ ............... biblioteca de arte nueva (lobo, entornos, enemigos...). Godot la ignora; de aqui se copia a characters/ y art/ lo que se usa
 - source_art/ ................ arte antiguo hecho con Blender (Godot lo ignora)

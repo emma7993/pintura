@@ -76,6 +76,7 @@ func _ready() -> void:
 	walker.can_dash = all
 	walker.can_wall = all
 	add_child(walker)
+	walker.lobo.solo_correr = true            # en el resto de Camino ya solo corre
 	walker.lobo.set_brush("ink" if not en_juego or Inventario.tinta > 0.0 else ("dry" if Inventario.pincel else ""))
 	if en_juego:
 		var e := entrada if _rooms.has(entrada) and not _rooms[entrada].fuera else "ca_sello"

@@ -57,10 +57,12 @@ const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie
 const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0]
 const PLUG := Rect2(5870, 812, 220, 24)   # tapa de piedra en el fondo del pozo
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
+## La velocidad del lobo solo cuenta en el primer tramo (camina con miedo): con la primera mano pasa de una
+## vez a correr (RUN_SPEED), sin caminata rápida. Las sombras sí siguen los tramos.
 const STAGES := [
 	[0.0, 127.0, 122.0, 520.0],           # miedo: solo camina (las sombras casi lo igualan)
-	[1100.0, 215.0, 190.0, 560.0],        # se apura
-	[2200.0, 360.0, 320.0, 430.0],        # corre
+	[1100.0, 215.0, 190.0, 560.0],        # se apuran las sombras
+	[2200.0, 360.0, 320.0, 430.0],        # corren
 ]
 const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
 const RUN_SPEED := 360.0                  # con el pincel el lobo ya no camina: siempre corre
@@ -128,6 +130,7 @@ var _ink_bar: ColorRect                   # barra del tintero: fondo; su hijo es
 var _ink_fill: ColorRect
 var _life: Array[ColorRect] = []
 var _stage := 0
+var _huye := false                        # ya salió la primera mano: corre y no vuelve a caminar
 var _shadow_speed := 0.0
 var _shadow_alpha := 1.0
 var _barrier_k := 0.0                     # 0..1: crecimiento de la barrera
@@ -272,12 +275,12 @@ func _apply_shortcut(n: int) -> void:
 	match n:
 		1:
 			walker.position = Vector2(GAP.x - 700.0, GROUND_Y)
-			walker.max_speed = STAGES[2][1]
+			_huir()
 			shadow_x = walker.position.x - 430.0
 			_shadow_speed = STAGES[2][2]
 		2:
 			walker.position = Vector2(BRUSH_X - 40.0, HIGH_Y)
-			walker.max_speed = STAGES[2][1]
+			_huir()
 			walker.can_jump = true
 			shadow_x = BRUSH_X - 700.0
 			_shadow_speed = 320.0
@@ -717,13 +720,10 @@ func _physics_process(delta: float) -> void:
 			if i > _stage:
 				_stage = i
 				_checkpoint = Vector2(STAGES[i][0] as float, GROUND_Y)
-				print("[nivel1] %.1f s: tramo %d (lobo %d px/s, sombras %d px/s)" % [_t, i, st[1], st[2]])
-	var target: float = st[1]
-	if shadows_gone:
-		target = RUN_SPEED
-	elif has_brush:
-		target = RUN_SPEED
-	walker.max_speed = move_toward(walker.max_speed, target, 140.0 * delta)
+				print("[nivel1] %.1f s: tramo %d (sombras %d px/s)" % [_t, i, st[2]])
+	if not _huye and (_sombras.hands_spawned > 0 or has_brush or shadows_gone):
+		_huir()
+	walker.max_speed = RUN_SPEED if _huye else STAGES[0][1]
 
 	# a lo lejos se ve la luz y el hueco: aquí descubre el salto
 	if not walker.can_jump and x > GAP.x - 420.0:
@@ -824,6 +824,14 @@ func _update_shadows(delta: float, st: Array) -> void:
 		_caught("lo alcanzaron las sombras")
 
 
+## Desde la primera mano (o con el pincel) el lobo corre de una vez y ya no vuelve a la caminata tímida.
+func _huir() -> void:
+	_huye = true
+	walker.max_speed = RUN_SPEED
+	walker.lobo.solo_correr = true
+	print("[nivel1] %.1f s: sale la primera mano: corre" % _t)
+
+
 ## Caída al hueco o a las espinas: pierde una vida y reaparece en el último punto seguro (sin recuperarla).
 func _hazard(why: String) -> void:
 	if _busy:
@@ -846,7 +854,7 @@ func _caught(why: String, revive := true) -> void:
 	await tw.finished
 	walker.position = _checkpoint
 	walker.velocity = Vector2.ZERO
-	walker.max_speed = RUN_SPEED if has_brush else STAGES[_stage][1]
+	walker.max_speed = RUN_SPEED if _huye else STAGES[0][1]
 	if revive or walker.is_dead():
 		walker.revive()
 	_update_life_ui()
@@ -1249,6 +1257,42 @@ func _draw_cave_back(ci: CanvasItem) -> void:
 	ci.draw_rect(Rect2(HOLE.x, HIGH_Y, HOLE.y - HOLE.x, CAVE_TOP - HIGH_Y), air)
 
 
+## Paso del fondo izquierdo de la cueva (junto a la cascada) hacia la Zona de enemigos: una boca oscura en
+## la roca, medio tapada por hojas que cuelgan, para que se lea que por ahí se puede pasar (provisional).
+func _draw_leaf_passage(line: Color) -> void:
+	var x0 := CAVE_X.x - 80.0
+	var w := 120.0
+	var top := CAVE_Y - 250.0
+	var mouth := PackedVector2Array()
+	mouth.append(Vector2(x0, CAVE_Y + 2.0))
+	for k in 13:                                   # arco de la boca
+		var a := PI + PI * k / 12.0
+		mouth.append(Vector2(x0 + w * 0.5 + cos(a) * w * 0.5, top + w * 0.5 + sin(a) * w * 0.5))
+	mouth.append(Vector2(x0 + w, CAVE_Y + 2.0))
+	_terrain.draw_colored_polygon(mouth, Color(0.36, 0.34, 0.31))
+	_terrain.draw_polyline(mouth, line, 2.0, true)
+	var leaf := Color(0.33, 0.47, 0.27)
+	var leaf_dark := Color(0.22, 0.33, 0.18)
+	for i in 9:                                    # lianas con hojas, colgando del borde del arco
+		var vx := x0 + 4.0 + i * 15.0
+		var vy := top + 18.0 + absf(vx - (x0 + w * 0.5)) * 0.55
+		var length := 70.0 + fmod(i * 47.0, 110.0)
+		_terrain.draw_line(Vector2(vx, vy - 20.0), Vector2(vx + 3.0, vy + length), Color(0.25, 0.30, 0.20, 0.9), 1.6, true)
+		var y := vy
+		var side := 1.0 if i % 2 == 0 else -1.0
+		while y < vy + length:
+			var c := Vector2(vx + side * 6.0 + (y - vy) * 0.02, y)
+			var pts := PackedVector2Array([c + Vector2(-side * 5.0, -2.0), c + Vector2(side * 4.0, -7.0),
+				c + Vector2(side * 10.0, 0.0), c + Vector2(side * 3.0, 6.0)])
+			_terrain.draw_colored_polygon(pts, leaf if int(y) % 3 != 0 else leaf_dark)
+			_terrain.draw_polyline(PackedVector2Array([pts[0], pts[1], pts[2], pts[3], pts[0]]), leaf_dark, 1.0, true)
+			y += 14.0
+			side = -side
+	for k in 5:                                    # hojas caídas en el suelo, delante de la boca
+		var c := Vector2(x0 + 30.0 + k * 34.0, CAVE_Y - 3.0)
+		_terrain.draw_colored_polygon(PackedVector2Array([c + Vector2(-9, 0), c + Vector2(0, -6), c + Vector2(10, 0), c + Vector2(0, 3)]), leaf)
+
+
 ## Lo que cambia: el brocal y la losa del pozo, la tapa del fondo, sus trozos, y las espinas del foso.
 func _draw_terrain() -> void:
 	var line := Color(0.30, 0.28, 0.26, 0.85)
@@ -1262,6 +1306,7 @@ func _draw_terrain() -> void:
 	_terrain.draw_rect(door, Color(0.22, 0.18, 0.15))
 	_terrain.draw_rect(door, line, false, 2.5)
 	_terrain.draw_circle(Vector2(door.end.x - 18.0, CAVE_Y - 85.0), 5.0, stone)
+	_draw_leaf_passage(line)
 	# brocal del pozo (sobre el suelo alto)
 	var l := WELL_X - WELL_HALF - 14.0
 	var r := WELL_X + WELL_HALF + 14.0

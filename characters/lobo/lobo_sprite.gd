@@ -18,9 +18,8 @@ const ART := "res://characters/lobo/pincel_v003"
 ## Carrera con el modelo de Wolf_Run_v014: reemplaza esa animación de
 ## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
 const LOCO := "res://characters/lobo/locomocion_v014"
-## Salto con el estilo del caminado (Wolf_Salto_Estudio_v003; el negro del cuerpo igualado al del caminado con
-## herramientas/ajustar_salto_v003.py).
-const SALTO := "res://characters/lobo/salto_v003"
+## Salto con el estilo del lobo original (Wolf_Salto_v004, copia directa).
+const SALTO := "res://characters/lobo/salto_v004"
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
 ## herramientas/ajustar_combo_v001.py): el pincel y la tinta vienen dibujados en el cuerpo.
 const COMBO := "res://characters/lobo/combo_v001"
@@ -62,6 +61,8 @@ var sprite: AnimatedSprite2D      # el cuerpo
 var brush := ""                   # "" sin pincel; "color", "dry" o "ink": punta que se ve
 var acting := false               # acción del nivel (el lobo no se mueve)
 var attacking := false            # tajo en curso (el lobo sí se mueve)
+## Ya no camina: cualquier avance usa la carrera (desde que lo persiguen las manos; Emma decide si vuelve).
+var solo_correr := false
 var special := ""                 # estado especial que pide Player ("dash", "wall_slide", ...); "" = ninguno
 var _running := false
 var _air := false
@@ -299,7 +300,7 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 	_landing = false
 	if speed01 > 0.05:
 		var cell := ground / absf(global_scale.y)          # px de celda por segundo
-		_running = cell > (RUN_TO if _running else RUN_FROM)
+		_running = solo_correr or cell > (RUN_TO if _running else RUN_FROM)
 		var anim := RUN if _running else WALK
 		# ciclos por segundo que pide el avance / ciclos por segundo de la animación a speed_scale 1
 		var ciclos := cell / (RUN_STRIDE if _running else STRIDE)

@@ -18,18 +18,21 @@ const SPRITE_SCALE := 0.60        # tamaño del lobo en pantalla (~130 px de alt
 ## Salto medido de una grabación de Silksong (nov 2026), escalado por altura del personaje (Hornet ~70 px
 ## en el video, el lobo ~130 px): sube a velocidad constante mientras se mantiene el botón (~0.15 s),
 ## frena hasta la cima (~0.42 s en total), flota un instante y cae acelerando hasta el tope (~0.52 s).
-## Salto completo ~1.8 veces el lobo (~240 px, ~0.95 s en el aire); con un toque, ~0.5 veces (~70 px).
+## Salto completo ~1.8 veces el lobo (~240 px, ~0.95 s en el aire).
+## Control total (pedido de Emma): soltar el salto lo para en seco, en el aire se mueve igual que en el suelo,
+## voltea al instante y ninguna pulsación de salto, tajo o dash se pierde (se guarda un instante). Cada error
+## debe sentirse evitable.
 const ACCEL := 7000.0             # llega a la velocidad tope en ~0.05 s (en el video: casi instantáneo)
-const AIR_ACCEL := 5500.0
+const AIR_ACCEL := 7000.0         # en el aire, el mismo control que en el suelo
 const FRICTION := 8000.0          # se detiene casi en seco al soltar
-const AIR_FRICTION := 4000.0
+const AIR_FRICTION := 8000.0
 const RISE_GRAVITY := 3000.0      # al subir, cuando ya no se sostiene el impulso
 const FALL_GRAVITY := 2700.0      # al caer
 const MAX_FALL := 1150.0
 const JUMP_VELOCITY := -780.0
 const JUMP_HOLD := 0.15           # con el botón apretado, sube sin gravedad este tiempo
-const JUMP_MIN := 0.07            # un toque sube al menos esto antes de cortarse
-const JUMP_CUT := 0.15            # al soltar en el ascenso queda esta fracción de la velocidad
+const JUMP_MIN := 0.05            # un toque sube al menos esto antes de cortarse (~40 px)
+const JUMP_CUT := 0.0             # al soltar en el ascenso se para en seco y empieza a caer
 const APEX_SPEED := 110.0         # cerca de la cima, con el botón apretado...
 const APEX_GRAVITY := 0.45        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
 const COYOTE_TIME := 0.10
@@ -41,10 +44,11 @@ const DASH_COOLDOWN := 0.35
 ## Pared: al caer pegado a una pared (empujando hacia ella) resbala despacio; saltar lo despega.
 const WALL_SLIDE_SPEED := 160.0
 const WALL_JUMP := Vector2(520.0, -980.0)
-const WALL_JUMP_LOCK := 0.16      # tras saltar de la pared, un instante sin control horizontal
+const WALL_JUMP_LOCK := 0.10      # tras saltar de la pared, un instante sin control horizontal
 ## Tajos y rebote: la estocada hacia abajo que da en algo rebota hacia arriba (pogo).
 const ATTACK_COOLDOWN := 0.22
 const COMBO_WINDOW := 0.55        # golpe de lado dentro de este tiempo desde el anterior: sigue el combo
+const ACTION_BUFFER := 0.15       # un tajo o dash pulsado un poco antes de poder hacerlo sale en cuanto se puede
 const POGO_VELOCITY := -880.0
 ## Vida
 const MAX_VIDA := 5
@@ -80,6 +84,8 @@ var _attack_cd := 0.0
 var _attack_anim := &""
 var _combo := -1                  # golpe del combo que se dio último (-1 ninguno)
 var _combo_t := 99.0
+var _attack_buffer := 0.0
+var _dash_buffer := 0.0
 var _invulnerable := 0.0
 var _hurt_t := 0.0
 var _dead := false
@@ -115,6 +121,14 @@ func _physics_process(delta: float) -> void:
 	_dash_cd = maxf(0.0, _dash_cd - delta)
 	_attack_cd = maxf(0.0, _attack_cd - delta)
 	_combo_t += delta
+	if active and Input.is_action_just_pressed("attack"):
+		_attack_buffer = ACTION_BUFFER
+	else:
+		_attack_buffer = maxf(0.0, _attack_buffer - delta)
+	if active and Input.is_action_just_pressed("dash"):
+		_dash_buffer = ACTION_BUFFER
+	else:
+		_dash_buffer = maxf(0.0, _dash_buffer - delta)
 	_wall_lock = maxf(0.0, _wall_lock - delta)
 	_hurt_t = maxf(0.0, _hurt_t - delta)
 	_invulnerable = maxf(0.0, _invulnerable - delta)
@@ -123,7 +137,8 @@ func _physics_process(delta: float) -> void:
 		_dash_ready = true
 
 	# --- dash
-	if active and can_dash and _dash_ready and _dash_cd <= 0.0 and _dash_t <= 0.0 and Input.is_action_just_pressed("dash"):
+	if active and can_dash and _dash_ready and _dash_cd <= 0.0 and _dash_t <= 0.0 and _dash_buffer > 0.0:
+		_dash_buffer = 0.0
 		_dash_t = DASH_TIME
 		_dash_cd = DASH_COOLDOWN
 		_dash_ready = on_floor
@@ -142,6 +157,8 @@ func _physics_process(delta: float) -> void:
 	# --- horizontal
 	if _wall_lock <= 0.0 and _hurt_t <= 0.0:
 		if absf(dir) > 0.01:
+			if velocity.x * dir < 0.0:
+				velocity.x = 0.0               # voltea al instante, sin derrapar
 			velocity.x = move_toward(velocity.x, dir * max_speed, (ACCEL if on_floor else AIR_ACCEL) * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, (FRICTION if on_floor else AIR_FRICTION) * delta)
@@ -212,7 +229,8 @@ func _physics_process(delta: float) -> void:
 			_jump_hold = 0.0
 
 	# --- tajos: arriba + J hacia arriba, abajo + J en el aire hacia abajo, si no hacia el frente
-	if active and can_attack and _attack_cd <= 0.0 and not lobo.acting and Input.is_action_just_pressed("attack"):
+	if active and can_attack and _attack_cd <= 0.0 and not lobo.acting and _attack_buffer > 0.0:
+		_attack_buffer = 0.0
 		_attack_cd = ATTACK_COOLDOWN
 		if Input.is_action_pressed("move_up"):
 			_attack_anim = LoboSprite.ATTACK_UP
