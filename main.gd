@@ -38,18 +38,19 @@ func _ready() -> void:
 	if auto:
 		add_child((load("res://herramientas/auto_prueba.gd") as GDScript).new())
 	elif _has_save():
-		# hay una partida guardada: se elige seguir o empezar de cero antes de caminar
-		_choosing = true
-		zone.walker.enabled = false
-		hint.text = "Partida guardada.   Enter: continuar   ·   N: nueva partida"
+		# hay una partida guardada: se sigue jugando de una vez; el aviso dice cómo empezar de cero
+		hint.text = "Partida guardada   ·   0: nueva partida"
 		hint.modulate.a = 1.0
+		var tw := create_tween()
+		tw.tween_interval(3.0)
+		tw.tween_property(hint, "modulate:a", 0.0, 1.0)
 
 
 func _has_save() -> bool:
 	return Inventario.pincel or Inventario.tintero or not Inventario.progreso.is_empty()
 
 
-## N (o 0 en cualquier momento): borra la partida y vuelve a empezar desde el principio de la pintura.
+## 0 (en cualquier momento): borra la partida y vuelve a empezar desde el principio de la pintura.
 func _new_game() -> void:
 	Inventario.reiniciar()
 	(load("res://zones/zone_camino.gd") as GDScript).set("return_pos", Vector2.ZERO)

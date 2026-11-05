@@ -1,7 +1,7 @@
 extends SceneTree
 ## Prueba del flujo de partida del juego completo, sin ventana:
 ##   Godot --headless --path . -s res://herramientas/prueba_partida.gd
-## 1) con partida guardada, al arrancar pregunta "continuar / nueva partida"; N la borra y empieza de cero;
+## 1) con partida guardada, arranca jugando (sin detener al lobo); 0 la borra y empieza de cero;
 ## 2) entra al Nivel 1 desde la pintura y empieza al principio del nivel;
 ## 3) con el pincel ya ganado, al volver a la pintura el lobo lo lleva.
 
@@ -24,10 +24,10 @@ func _process(delta: float) -> bool:
 	var main := current_scene
 	match _paso:
 		0:
-			print("[partida] con partida guardada pregunta al arrancar: ", main._choosing)
-			_tecla(KEY_N)
+			print("[partida] con partida guardada arranca jugando: ", main.zone.walker.enabled)
+			_tecla(KEY_0)
 		1:
-			print("[partida] tras N: pregunta=%s pincel=%s marcas=%s" % [main._choosing, Inventario.pincel, Inventario.progreso])
+			print("[partida] tras 0: jugando=%s pincel=%s marcas=%s" % [main.zone.walker.enabled, Inventario.pincel, Inventario.progreso])
 			main._on_exit_requested("z_camino")
 		2:
 			pass
