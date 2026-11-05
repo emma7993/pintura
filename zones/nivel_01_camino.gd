@@ -57,10 +57,12 @@ const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie
 const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0]
 const PLUG := Rect2(5870, 812, 220, 24)   # tapa de piedra en el fondo del pozo
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
+## La velocidad del lobo solo cuenta en el primer tramo (camina con miedo): con la primera mano pasa de una
+## vez a correr (RUN_SPEED), sin caminata rápida. Las sombras sí siguen los tramos.
 const STAGES := [
 	[0.0, 127.0, 122.0, 520.0],           # miedo: solo camina (las sombras casi lo igualan)
-	[1100.0, 215.0, 190.0, 560.0],        # se apura
-	[2200.0, 360.0, 320.0, 430.0],        # corre
+	[1100.0, 215.0, 190.0, 560.0],        # se apuran las sombras
+	[2200.0, 360.0, 320.0, 430.0],        # corren
 ]
 const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
 const RUN_SPEED := 360.0                  # con el pincel el lobo ya no camina: siempre corre
@@ -128,6 +130,7 @@ var _ink_bar: ColorRect                   # barra del tintero: fondo; su hijo es
 var _ink_fill: ColorRect
 var _life: Array[ColorRect] = []
 var _stage := 0
+var _huye := false                        # ya salió la primera mano: corre y no vuelve a caminar
 var _shadow_speed := 0.0
 var _shadow_alpha := 1.0
 var _barrier_k := 0.0                     # 0..1: crecimiento de la barrera
@@ -272,12 +275,12 @@ func _apply_shortcut(n: int) -> void:
 	match n:
 		1:
 			walker.position = Vector2(GAP.x - 700.0, GROUND_Y)
-			walker.max_speed = STAGES[2][1]
+			_huir()
 			shadow_x = walker.position.x - 430.0
 			_shadow_speed = STAGES[2][2]
 		2:
 			walker.position = Vector2(BRUSH_X - 40.0, HIGH_Y)
-			walker.max_speed = STAGES[2][1]
+			_huir()
 			walker.can_jump = true
 			shadow_x = BRUSH_X - 700.0
 			_shadow_speed = 320.0
@@ -717,13 +720,10 @@ func _physics_process(delta: float) -> void:
 			if i > _stage:
 				_stage = i
 				_checkpoint = Vector2(STAGES[i][0] as float, GROUND_Y)
-				print("[nivel1] %.1f s: tramo %d (lobo %d px/s, sombras %d px/s)" % [_t, i, st[1], st[2]])
-	var target: float = st[1]
-	if shadows_gone:
-		target = RUN_SPEED
-	elif has_brush:
-		target = RUN_SPEED
-	walker.max_speed = move_toward(walker.max_speed, target, 140.0 * delta)
+				print("[nivel1] %.1f s: tramo %d (sombras %d px/s)" % [_t, i, st[2]])
+	if not _huye and (_sombras.hands_spawned > 0 or has_brush or shadows_gone):
+		_huir()
+	walker.max_speed = RUN_SPEED if _huye else STAGES[0][1]
 
 	# a lo lejos se ve la luz y el hueco: aquí descubre el salto
 	if not walker.can_jump and x > GAP.x - 420.0:
@@ -824,6 +824,14 @@ func _update_shadows(delta: float, st: Array) -> void:
 		_caught("lo alcanzaron las sombras")
 
 
+## Desde la primera mano (o con el pincel) el lobo corre de una vez y ya no vuelve a la caminata tímida.
+func _huir() -> void:
+	_huye = true
+	walker.max_speed = RUN_SPEED
+	walker.lobo.solo_correr = true
+	print("[nivel1] %.1f s: sale la primera mano: corre" % _t)
+
+
 ## Caída al hueco o a las espinas: pierde una vida y reaparece en el último punto seguro (sin recuperarla).
 func _hazard(why: String) -> void:
 	if _busy:
@@ -846,7 +854,7 @@ func _caught(why: String, revive := true) -> void:
 	await tw.finished
 	walker.position = _checkpoint
 	walker.velocity = Vector2.ZERO
-	walker.max_speed = RUN_SPEED if has_brush else STAGES[_stage][1]
+	walker.max_speed = RUN_SPEED if _huye else STAGES[0][1]
 	if revive or walker.is_dead():
 		walker.revive()
 	_update_life_ui()

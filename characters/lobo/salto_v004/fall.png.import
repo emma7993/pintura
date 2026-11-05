@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi0s5rbkbanjr"
-path="res://.godot/imported/jump_up.png-31d3a4461f9cc27c1c6565323e3aabbb.ctex"
+uid="uid://cde6wt7tio3o2"
+path="res://.godot/imported/fall.png-e208c51f9bdb3e9868b3e7c2e78781a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/lobo/salto_v003/jump_up.png"
-dest_files=["res://.godot/imported/jump_up.png-31d3a4461f9cc27c1c6565323e3aabbb.ctex"]
+source_file="res://characters/lobo/salto_v004/fall.png"
+dest_files=["res://.godot/imported/fall.png-e208c51f9bdb3e9868b3e7c2e78781a8.ctex"]
 
 [params]
 

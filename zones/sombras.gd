@@ -21,6 +21,7 @@ var hand_every := Vector2(1.2, 2.0)
 ## Velocidad con la que se arrastran tras el lobo (px/s); el nivel la pone un poco por debajo de la del lobo.
 var chase_speed := 110.0
 var hands_on := false
+var hands_spawned := 0                    # manos que han brotado (el nivel: con la primera, el lobo corre)
 
 var _mist := Node2D.new()
 var _front: AnimatedSprite2D
@@ -171,6 +172,7 @@ func _spawn_hand(x: float, ground_y: float) -> void:
 	var h := {"node": node, "sprite": spr, "puddle": puddle, "design": design, "dir": 1.0, "t": 0.0,
 		"reach_until": _rng.randf_range(0.25, 0.6)}
 	_hands.append(h)
+	hands_spawned += 1
 	spr.animation_finished.connect(_on_hand_finished.bind(h))
 
 

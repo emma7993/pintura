@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1iofqxeijnj5"
-path="res://.godot/imported/jump_apex.png-db4bc831053349adb5da085aabed1159.ctex"
+uid="uid://cejucwfqe4q2p"
+path="res://.godot/imported/jump_apex.png-003b7379bd9935488068ec37e59e9a10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/lobo/salto_v003/jump_apex.png"
-dest_files=["res://.godot/imported/jump_apex.png-db4bc831053349adb5da085aabed1159.ctex"]
+source_file="res://characters/lobo/salto_v004/jump_apex.png"
+dest_files=["res://.godot/imported/jump_apex.png-003b7379bd9935488068ec37e59e9a10.ctex"]
 
 [params]
 
