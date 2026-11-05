@@ -1,5 +1,3 @@
-Locomoción del lobito con el modelo elegido (hoja de ataques de Codex).
-- run/01..08: Game_Assets/Wolf_Run_v014 (carrera, 20 FPS, ancla de pies 192,352).
-- jump_fall/: Game_Assets/Wolf_Jump_Fall_v001 (impulso, ascenso, cima, cayendo, aterrizaje).
-Las usa characters/lobo/lobo_sprite.gd en lugar de las de pincel_v003 para esas animaciones.
+Carrera del lobito (provisional, hasta la carrera v016 de ChatGPT con el estilo del lobo original).
+- run/01..08: Game_Assets/Wolf_Run_v014 (20 FPS, pies en 192,352). La usa characters/lobo/lobo_sprite.gd.
 Regla: el pincel no se lleva al correr ni en el aire; aparece al usarlo.

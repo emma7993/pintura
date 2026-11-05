@@ -1,4 +1,11 @@
-Lobo - caminata (PROVISIONAL, tomada de Game_Assets/.../References/Wolf_Previous_Sheet.png, fila 1)
-Hoja: lobo_walk_sheet.png (2048 x 320, 8 cuadros de 256 x 320, mira a la DERECHA, loop 8 FPS).
-Suelo en y=312 de la celda y cuerpo en x=150: offset del AnimatedSprite2D = (-22, -152) deja el origen en los pies.
-Para rehacerla con otra hoja: python herramientas/armar_hoja_lobo.py <hoja.png> characters/lobo/lobo_walk_sheet.png <fila> <filas_totales>
+Lobo — sprites que usa el juego (los arma lobo_sprite.gd). Referencia de dibujo para todo: el lobo original de
+pincel_v003 (idle y walk).
+
+- pincel_v003/   lobo original: quieto, caminata, dash, pared, tajo hacia abajo (pogo), pintar, mojar el pincel,
+                 daño y muerte, con las capas del pincel. Las animaciones reemplazadas (carrera, salto, tajos de
+                 lado y arriba) se quitaron con herramientas/limpiar_pincel_v003.gd.
+- locomocion_v014/run/   carrera (provisional, hasta la carrera v016 de ChatGPT).
+- salto_v004/    salto: impulso, subida, cima, caída y aterrizaje (Wolf_Salto_v004).
+- combo_v001/    combo de tres golpes y corte hacia arriba (Wolf_Combo_v001, herramientas/ajustar_combo_v001.py).
+
+Celdas de 384x384 con los pies en (192,352), mirando a la derecha.
