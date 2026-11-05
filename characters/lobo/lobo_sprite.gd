@@ -15,9 +15,12 @@ signal attack_frame(anim: StringName, frame: int)
 
 const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BASE_SCALE * profundidad)
 const ART := "res://characters/lobo/pincel_v003"
-## Locomoción con el modelo elegido (Wolf_Run_v014 y Wolf_Jump_Fall_v001): reemplaza esas animaciones de
+## Carrera con el modelo de Wolf_Run_v014: reemplaza esa animación de
 ## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
 const LOCO := "res://characters/lobo/locomocion_v014"
+## Salto con el estilo del caminado (Wolf_Salto_Estudio_v003; el negro del cuerpo igualado al del caminado con
+## herramientas/ajustar_salto_v003.py).
+const SALTO := "res://characters/lobo/salto_v003"
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
 ## herramientas/ajustar_combo_v001.py): el pincel y la tinta vienen dibujados en el cuerpo.
 const COMBO := "res://characters/lobo/combo_v001"
@@ -103,11 +106,11 @@ func _body_frames() -> SpriteFrames:
 	for i in 8:
 		run.append(LOCO + "/run/%02d.png" % (i + 1))
 	_set_anim(f, RUN, run, 20.0, true)
-	_set_anim(f, JUMP_START, [LOCO + "/jump_fall/jump_start.png"], 12.0, false)
-	_set_anim(f, JUMP_UP, [LOCO + "/jump_fall/jump_up.png"], 5.0, true)
-	_set_anim(f, JUMP_APEX, [LOCO + "/jump_fall/jump_apex.png"], 5.0, true)
-	_set_anim(f, FALL, [LOCO + "/jump_fall/fall.png"], 5.0, true)
-	_set_anim(f, LAND, [LOCO + "/jump_fall/land.png"], 1.0 / LAND_BOUNCE_T, false)
+	_set_anim(f, JUMP_START, [SALTO + "/jump_start.png"], 12.0, false)
+	_set_anim(f, JUMP_UP, [SALTO + "/jump_up.png"], 5.0, true)
+	_set_anim(f, JUMP_APEX, [SALTO + "/jump_apex.png"], 5.0, true)
+	_set_anim(f, FALL, [SALTO + "/fall.png"], 5.0, true)
+	_set_anim(f, LAND, [SALTO + "/land.png"], 1.0 / LAND_BOUNCE_T, false)
 	for i in ATTACKS.size():
 		var files: Array[String] = []
 		for k in 4:
