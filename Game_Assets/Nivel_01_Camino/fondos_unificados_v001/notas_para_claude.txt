@@ -1,0 +1,37 @@
+CAMINO — FONDOS UNIFICADOS V001
+
+CARPETA ACTIVA DE ESTA ENTREGA
+Game_Assets/Nivel_01_Camino/fondos_unificados_v001/
+43 parejas, 86 PNG de arte; comparativas adicionales, pruebas de mosaico y manifest.json.
+Los originales y entregas anteriores se conservan. Esta carpeta agrupa su tratamiento unificado; no mezclar el color de las entregas antiguas con esta version.
+
+DOS ESTADOS
+boceto/: gris neutral, contornos exploratorios y acabado reducido. Las formas cerradas tienen interior de papel blanco OPACO, con transparencia solo exterior. Los elementos de linea como juncos conservan sus trazos opacos; no se les agrega un rectangulo.
+definido/: dibujo detallado con un unico rango de sepia claro. Referencia de color: puente del plano medio de Camino. Las nubes y la cabeza en boceto son referencia del acabado inicial.
+Cada pareja comparte la misma mascara alfa, dimensiones y origen. Verificado pixel a pixel para los 43 pares.
+Las lineas del estado inicial proceden de los bocetos existentes cuando estan disponibles; las siluetas se registran con el definido y comparten mascara. No son dibujos nuevos con encuadres independientes.
+
+CONTENIDO
+camino/: capas 02–10, incluidas cabeza, faro y pozo de MADERA; nuevas piezas 11–16.
+zona_enemigos/: vista general, fondo y hoja modular.
+cueva_paleta/: vista general, fondo, modulos y coleccionable.
+originales/: fondos y modulos del prototipo anterior, incluido atlas, tratados con el mismo criterio. Se excluyen marcadores tecnicos y el lapiz de personaje.
+Las vistas generales son referencias opacas; los fondos y modulos RGBA son las piezas de montaje. No hornear coleccionables a partir de una vista general.
+
+PIEZAS 11–16
+11_casa_lejana.png: 1774x887, conjunto de casa/roca/cascada de 640px de ancho centrado y apoyado abajo. Interpretacion dibujada de la pequeña construccion de la pintura original.
+12_subsuelo.png: 1024x1024 RGB opaco, periodico X/Y.
+13_subsuelo_borde.png: 1024x256 RGBA, periodico X. Sus ultimas32 filas usan las ultimas32 de 12; ultima fila13 coincide exactamente con primera fila12 en ambos estados.
+14_cueva_pared.png: 1024x1024 RGB opaco, periodico X/Y; mas oscura y menos detallada que12.
+15_horizonte.png: 3548x500 RGBA, periodico X. Cerros y mar muy claros; bruma inferior se desvanece en alfa identica en ambos estados. Ese desvanecimiento es periferia intencional, no huecos transparentes dentro del dibujo.
+16_marco_pintura.png: 512x768 RGBA. Marco sepia en definido; lienzo insertado desde la portada original (es el unico contenido con color). Boceto de marco y lienzo blanco con pocas lineas sugeridas.
+En12 y14 Repeat habilitado en X/Y; en13 y15 Repeat solo X. Ver mosaicos antes de ajustar escala en Godot.
+
+VALIDACION
+Las80 imagenes se revisaron por parejas en comparativas/. Se verificaron dimensiones, igualdad alfa por par, bocetos neutrales y rango sepia de definidos (excepto lienzo de16).
+Se verifico igualdad exacta de pixeles en bordes repetibles y empalme13/12, y se inspeccionaron mosaicos2x2 o2x1.
+Los cambios de estilo se hicieron con Python con autorizacion explicita del usuario. Las seis bases nuevas se generaron con image_gen; prompts en fuentes_generadas.json y receta en procesamiento.py.
+No se modificaron codigo, escenas, colisiones ni referencias de Godot. Claude debe integrar esta carpeta; los modulos siguen necesitando recorte/atlas si se usan por pieza.
+No cambiar las colisiones para acomodar el arte. Los colores desbloqueados progresivamente son estados futuros separados de este sepia definido.
+
+Ver notas_enlaces_para_claude.txt para las nuevas piezas17–19 y el montaje completo.

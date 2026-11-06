@@ -1,0 +1,71 @@
+{
+  "lienzo_referencia": [
+    3548,
+    1000
+  ],
+  "capas": [
+    {
+      "archivo": "09_cabeza_lejana.png",
+      "x": 140,
+      "y_base": 785,
+      "ancho": 800,
+      "plano": "hito_lejano",
+      "recorte_origen": [
+        17,
+        171,
+        1259,
+        863
+      ]
+    },
+    {
+      "archivo": "04_plano_medio.png",
+      "x": 1070,
+      "y_base": 825,
+      "ancho": 1320,
+      "plano": "puentes",
+      "recorte_origen": [
+        33,
+        186,
+        1774,
+        618
+      ]
+    },
+    {
+      "archivo": "11_casa_lejana.png",
+      "x": 2330,
+      "y_base": 808,
+      "ancho": 280,
+      "plano": "casa",
+      "recorte_origen": [
+        567,
+        286,
+        1207,
+        887
+      ]
+    },
+    {
+      "archivo": "10_faro_lejano.png",
+      "x": 2600,
+      "y_base": 825,
+      "ancho": 850,
+      "plano": "faro",
+      "recorte_origen": [
+        297,
+        42,
+        1764,
+        870
+      ]
+    }
+  ],
+  "factores_sugeridos": {
+    "cielo": 0.05,
+    "horizonte": 0.08,
+    "cabeza": 0.1,
+    "colinas": 0.12,
+    "faro": 0.14,
+    "laderas": 0.2,
+    "puentes": 0.25,
+    "costa": 0.3
+  },
+  "nota": "Propuesta visual; probar desplazamiento y oclusiones en Godot. No es fondo aplanado para integrar."
+}

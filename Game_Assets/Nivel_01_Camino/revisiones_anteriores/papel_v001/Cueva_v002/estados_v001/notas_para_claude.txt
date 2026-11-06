@@ -1,0 +1,26 @@
+CAMINO — ESTADOS V001
+
+ANTES DEL PINCEL: boceto/ contiene los mismos nueve dibujos con menos acabado, contornos exploratorios y detalle interno reducido.
+DESPUES DEL PINCEL: definido/ contiene copias sin cambios de 02–08 de separacion_v001; 09–10 son nuevas interpretaciones de la portada en grafito.
+PAPEL: compartido/01_papel.png se usa en ambos estados.
+
+NUEVO PARALLAX
+09_cabeza_lejana: cabeza dormida de la portada reinterpretada en grafito, sin marco ni fondo.
+10_faro_lejano: faro con ola y mar de la portada reinterpretados en grafito.
+No son extracciones exactas del oleo original. Mantener cabeza hacia izquierda y faro hacia derecha para evocar la pintura; su escala en pantalla debe ser de paisaje distante.
+Sugerencia inicial: movimiento relativo de cabeza 0.08, faro 0.12; ruinas 0.20, plano medio 0.45; terreno 1.00. Son propuestas, no parametros ya integrados.
+Usar baja opacidad y ocultacion por laderas para que los nuevos hitos se vean lejanos, sin competir con el terreno.
+
+ALINEACION
+Las dimensiones de los nueve pares coinciden y se verifico alfa RGBA. Las ediciones generativas pueden cambiar trazos o contornos locales: NO se certifica coincidencia al pixel.
+Antes de cambiar por mascaras de pincelada, comparar cada par superpuesto. Ajustar registro y recortes por sprite si hace falta. Compartir origen, escala y region de atlas entre estados una vez comprobados.
+No cambiar colisiones. Las hojas 05–08 necesitan recorte de sprites; los fondos no estan certificados como repetibles sin costuras.
+El papel calido esta separado: las vistas previas oscuras pueden mostrar RGB de zonas transparentes; usar un visor que componga alfa correctamente.
+
+PROGRESION
+Boceto inicial -> pincel/negro refuerza detalles -> amarillo -> azul y verdes -> siguientes colores.
+Estas imagenes aun NO incluyen pigmentos desbloqueados. Definido no equivale a version final coloreada.
+
+ENTREGA
+Herramienta integrada image_gen. Prompts exactos en prompts.json; pares y medidas en manifest.json.
+No se modificaron escenas, scripts ni colisiones del juego. Se conserva separacion_v001 intacta.

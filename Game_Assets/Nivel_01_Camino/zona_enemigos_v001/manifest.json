@@ -1,0 +1,68 @@
+[
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/zona_enemigos_v001/definido/01_vista_general.png",
+    "dimensiones": [
+      1774,
+      887
+    ],
+    "modo": "RGB",
+    "alpha": null
+  },
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/zona_enemigos_v001/boceto/01_vista_general.png",
+    "dimensiones": [
+      1774,
+      887
+    ],
+    "modo": "RGB",
+    "alpha": null
+  },
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/zona_enemigos_v001/definido/02_fondo.png",
+    "dimensiones": [
+      1774,
+      887
+    ],
+    "modo": "RGBA",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/zona_enemigos_v001/boceto/02_fondo.png",
+    "dimensiones": [
+      1774,
+      887
+    ],
+    "modo": "RGBA",
+    "alpha": [
+      0,
+      201
+    ]
+  },
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/zona_enemigos_v001/definido/03_modulos.png",
+    "dimensiones": [
+      1774,
+      887
+    ],
+    "modo": "RGBA",
+    "alpha": [
+      0,
+      255
+    ]
+  },
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/zona_enemigos_v001/boceto/03_modulos.png",
+    "dimensiones": [
+      1774,
+      887
+    ],
+    "modo": "RGBA",
+    "alpha": [
+      0,
+      181
+    ]
+  }
+]

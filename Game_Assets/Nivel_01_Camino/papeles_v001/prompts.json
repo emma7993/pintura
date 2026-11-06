@@ -1,0 +1,12 @@
+[
+  {
+    "relative": "zona_enemigos_v001/boceto/01_vista_general.png",
+    "path": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-7a934c18-3fe9-491c-a86f-4dfba37244e5.png",
+    "prompt": "Precise color-only edit of supplied rough pencil Camino room: change ONLY warm beige/cream paper to clean neutral WHITE paper. All visible tones must be grayscale, no yellow/brown/beige warmth anywhere. Keep EXACT pencil marks, unfinished sketch line density, architectural geometry, roots, floor/platform outlines, framing and canvas 1774x887; do not add detail or redraw layout. Very subtle white paper grain allowed, predominantly bright white, no vignette or gray fog. This is the BEFORE-BRUSH white sketch version. No text or characters."
+  },
+  {
+    "relative": "papeles_v001/01_papel_boceto_blanco.png",
+    "path": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-b7fdec6d-4bed-4785-8c07-886b0fe8b1b2.png",
+    "prompt": "A blank pure neutral WHITE artist drawing paper texture for a 2D game's initial sketch background. Wide 2:1 opaque PNG 1774x887. Predominantly white, very faint almost invisible fine natural paper grain only. No warm tint whatsoever, grayscale R=G=B. Even brightness full bleed no vignette, no stains, no drawings, no lines, no objects, no text, no frames. This paper sits below transparent graphite asset layers."
+  }
+]

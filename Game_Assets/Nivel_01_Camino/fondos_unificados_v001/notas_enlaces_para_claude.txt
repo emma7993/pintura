@@ -1,0 +1,9 @@
+ENLACES DEL PANORAMA — 17 A 19
+17_colinas_enlace: colinas bajas para unir cabeza y puentes; colocar detras de hitos.
+18_laderas_rocosas: terreno intermedio bajo los puentes, delante de las formas mas lejanas.
+19_costa_enlace: franja baja para disimular uniones de cabeza, puente, casa/cascada y ola/faro.
+Las tres son RGBA3548x600, repetibles en X, con papel blanco opaco en boceto y sepia unificado en definido. Misma mascara y tamaño por par.
+El borde inferior llega al lienzo: ocultarlo tras terreno o fuera de camara. Superponer las franjas; no alinearlas como piezas de un rompecabezas sin solape.
+Ver comparativas/montaje_parallax_* y montaje_parallax.json. Son referencias de composicion, no fondos horneados para el juego.
+Al variar el parallax los hitos se desplazan respecto a las laderas; probar el rango completo de la camara en Godot para evitar huecos.
+No se modificaron escenas, scripts ni colisiones. Generacion integrada image_gen, acabado tecnico Python autorizado.

@@ -1,3 +1,11 @@
+REGLA VIGENTE DE PAPEL — reemplaza instrucciones anteriores sobre papel compartido
+Boceto: papel BLANCO neutral, trazos grises sueltos.
+Definido: papel BEIGE calido, dibujo detallado. Todavia no significa version con pigmentos desbloqueados.
+Cada familia incluye boceto/00_papel.png y definido/00_papel.png; son bases opacas, no sprites.
+Las piezas RGBA conservan transparencia y se montan sobre la base de su estado.
+No usar el antiguo compartido/01_papel.png beige en bocetos.
+No se modifico el codigo del juego: aplicar esta seleccion de base en la integracion con Claude.
+
 CAMINO — ESTADOS V001
 
 ANTES DEL PINCEL: boceto/ contiene los mismos nueve dibujos con menos acabado, contornos exploratorios y detalle interno reducido.

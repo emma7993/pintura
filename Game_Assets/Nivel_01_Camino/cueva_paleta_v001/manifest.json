@@ -1,0 +1,132 @@
+{
+  "imagenes": [
+    {
+      "ruta": "cueva_paleta_v001/definido/01_vista_general.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "modo": "RGB",
+      "alfa": null
+    },
+    {
+      "ruta": "cueva_paleta_v001/boceto/01_vista_general.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "modo": "RGB",
+      "alfa": null
+    },
+    {
+      "ruta": "cueva_paleta_v001/definido/02_fondo.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "modo": "RGBA",
+      "alfa": [
+        0,
+        255
+      ]
+    },
+    {
+      "ruta": "cueva_paleta_v001/boceto/02_fondo.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "modo": "RGBA",
+      "alfa": [
+        0,
+        123
+      ]
+    },
+    {
+      "ruta": "cueva_paleta_v001/definido/03_modulos.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "modo": "RGBA",
+      "alfa": [
+        0,
+        255
+      ]
+    },
+    {
+      "ruta": "cueva_paleta_v001/boceto/03_modulos.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "modo": "RGBA",
+      "alfa": [
+        0,
+        219
+      ]
+    },
+    {
+      "ruta": "cueva_paleta_v001/definido/04_paleta.png",
+      "dimensiones": [
+        1254,
+        1254
+      ],
+      "modo": "RGBA",
+      "alfa": [
+        0,
+        255
+      ]
+    },
+    {
+      "ruta": "cueva_paleta_v001/boceto/04_paleta.png",
+      "dimensiones": [
+        1254,
+        1254
+      ],
+      "modo": "RGBA",
+      "alfa": [
+        0,
+        126
+      ]
+    }
+  ],
+  "pares": [
+    {
+      "archivo": "01_vista_general.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "pares_iguales": true,
+      "porcentaje_calido_boceto": 0.0
+    },
+    {
+      "archivo": "02_fondo.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "pares_iguales": true,
+      "porcentaje_calido_boceto": 0.0
+    },
+    {
+      "archivo": "03_modulos.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "pares_iguales": true,
+      "porcentaje_calido_boceto": 0.0
+    },
+    {
+      "archivo": "04_paleta.png",
+      "dimensiones": [
+        1254,
+        1254
+      ],
+      "pares_iguales": true,
+      "porcentaje_calido_boceto": 0.0
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "pozo_madera_v001/definido/07_pozo.png",
+    "path": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-ca42006d-da81-4683-907a-eb79d43e1954.png",
+    "prompt": "Precise object edit of supplied Camino well sprite sheet. Change ONLY well COVERS and cover fragments from stone to WOOD, preserve all other stone masonry assets, all positions, scale, sheet arrangement, canvas 1536x1024, same delicate detailed graphite style and real alpha. Top-left closed stone well: replace circular stone slab cover with fitted old wooden planks, distinct board seams, natural wood grain, nail heads and two supporting cross battens. Top-center open well stays stone and open. Top-right isolated cover becomes same wooden plank lid. Middle-left shaft remains stone; middle small ledge remains stone; middle-right removable cracked plug becomes breakable wooden plank hatch. Bottom eight fragments become wood splinters and broken boards with jagged fibrous ends, not stone chunks. No brown painted pigment: initial defined graphite stage, neutral pencil rendering with fine hatching, intended over cream paper. No added rope or roof, no rearrangement, no text, no paper backdrop, no cast shadows or glow. Keep transparency.",
+    "entrega": "Game_Assets/Nivel_01_Camino/Cueva_v002/pozo_madera_v001/definido/07_pozo.png"
+  },
+  {
+    "name": "pozo_madera_v001/boceto/07_pozo.png",
+    "path": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-08627caf-8e1d-4e2d-bfe4-591826335225.png",
+    "prompt": "Precise edit of supplied game layer. Produce the BEFORE-BRUSH ROUGH SKETCH state of this exact image. Keep identical canvas dimensions, exact composition, object count, scale, placement, silhouette, sprite layout, margins and transparent negative space. Do not move, add or redesign anything. Make drawing clearly unfinished: light exploratory graphite construction lines, selective broken contours, loose doubled pencil gestures, omit about two thirds of tiny finished hatching/detail, minimal shadow, no rendered surfaces, no solid ink. Retain primary recognizable outlines and detail hints. Not merely lower opacity: simplify internal finish while preserving boundary geometry. Pure graphite gray, NO colored pigment, no paper fill or backdrop; actual transparent alpha PNG preserving all original transparent regions. No text labels frame. Keep wooden plank covers recognizably WOOD, same board divisions and battens on lid, same wooden splinter fragments, all well masonry remains stone. Exact layout and size 1536x1024.",
+    "entrega": "Game_Assets/Nivel_01_Camino/Cueva_v002/pozo_madera_v001/boceto/07_pozo.png"
+  }
+]

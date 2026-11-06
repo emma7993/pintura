@@ -1,0 +1,31 @@
+REGLA VIGENTE DE PAPEL — reemplaza instrucciones anteriores sobre papel compartido
+Boceto: papel BLANCO neutral, trazos grises sueltos.
+Definido: papel BEIGE calido, dibujo detallado. Todavia no significa version con pigmentos desbloqueados.
+Cada familia incluye boceto/00_papel.png y definido/00_papel.png; son bases opacas, no sprites.
+Las piezas RGBA conservan transparencia y se montan sobre la base de su estado.
+No usar el antiguo compartido/01_papel.png beige en bocetos.
+No se modifico el codigo del juego: aplicar esta seleccion de base en la integracion con Claude.
+
+POZO DE MADERA Y ZONA DE ENEMIGOS V001
+
+POZO
+Sustituir 07_pozo.png de ambos estados por pozo_madera_v001/boceto y definido.
+Brocal y tiro siguen siendo piedra. Tapa, tapón rompible y fragmentos son madera, con vetas, tablones y astillas.
+La tapa puede romperse con el golpe desde abajo; fragmentos para animacion por codigo.
+Las nuevas hojas conservan tamaño 1536x1024. Comprobar recortes y contornos: edicion generativa, no igualdad al pixel.
+Se conserva el material anterior en separacion_v001 y en el ZIP previo.
+
+ZONA DE ENEMIGOS
+01_vista_general es una referencia de montaje opaca, no una capa para superponer a 02/03.
+02_fondo es el paisaje distante RGBA; usar detras del terreno con papel crema compartido.
+03_modulos es hoja RGBA de piezas a recortar: techo, raices, suelo amplio, escalones, repisas, entradas y escombros.
+Cada uno tiene estado boceto y definido, ambos sin pigmentos desbloqueados. Dimensiones de cada par verificadas.
+Los contornos locales pueden variar: revisar superposicion antes de transiciones con mascaras y usar mismo origen y escala.
+Sala propuesta: entrada por hojas a izquierda, arena central despejada para aprender con Manchones, salida elevada a derecha hacia la paleta.
+Los arcos del paisaje son fondo decorativo sin colision. El concepto propone una cueva abierta hacia ruinas lejanas.
+No hay enemigos ni protagonista horneados en las imagenes. Los sprites de Manchon no se generaron en esta entrega.
+No exigir dash antes de desbloquearlo; ajustar recorrido al prototipo y las colisiones vigentes.
+No se modificaron codigo, escenas ni colisiones. No se verifico repeticion sin costuras.
+La colocacion definitiva de piezas y el diseño jugable deben comprobarse en Godot.
+
+Herramienta integrada image_gen; prompts y manifest incluidos.

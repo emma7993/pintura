@@ -1,0 +1,20 @@
+REGLA VIGENTE DE PAPEL — reemplaza instrucciones anteriores sobre papel compartido
+Boceto: papel BLANCO neutral, trazos grises sueltos.
+Definido: papel BEIGE calido, dibujo detallado. Todavia no significa version con pigmentos desbloqueados.
+Cada familia incluye boceto/00_papel.png y definido/00_papel.png; son bases opacas, no sprites.
+Las piezas RGBA conservan transparencia y se montan sobre la base de su estado.
+No usar el antiguo compartido/01_papel.png beige en bocetos.
+No se modifico el codigo del juego: aplicar esta seleccion de base en la integracion con Claude.
+
+CUEVA DE LA PALETA
+01_vista_general: referencia opaca de montaje, no superponer sobre las capas separadas.
+02_fondo: pared y ruinas lejanas RGBA. Usar menor contraste y movimiento que el terreno.
+03_modulos: techo, raices, suelo, escalones, repisas, entrada, nicho y pedestal para recortar.
+04_paleta: coleccionable independiente; cinco depositos vacios mas agujero del pulgar. No incluye pigmentos desbloqueados.
+Al recoger, ocultar el sprite 04 conservando nicho y pedestal. No usar la vista general como fondo final porque tiene el objeto dibujado.
+La paleta se exagera en la referencia para evaluar su diseño; escalar como objeto recogible en el montaje del juego.
+Acceso desde la zona de enemigos. Esta sala se propone tranquila y sin requisito de dash.
+Dimensiones coinciden por par; contornos locales generativos no certificados al pixel. Revisar superposicion y origen antes de mascaras.
+Las hojas necesitan recorte, no incluyen atlas ni colisiones. No cambiar las colisiones vigentes para acomodar el arte.
+Se conserva el pozo con tapas de madera.
+Herramienta integrada image_gen; prompts y manifest adjuntos.

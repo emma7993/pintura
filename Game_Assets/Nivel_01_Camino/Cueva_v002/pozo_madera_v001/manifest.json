@@ -1,0 +1,26 @@
+[
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/Cueva_v002/pozo_madera_v001/definido/07_pozo.png",
+    "dimensiones": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "alpha": [
+      0,
+      254
+    ]
+  },
+  {
+    "ruta": "Game_Assets/Nivel_01_Camino/Cueva_v002/pozo_madera_v001/boceto/07_pozo.png",
+    "dimensiones": [
+      1536,
+      1024
+    ],
+    "modo": "RGBA",
+    "alpha": [
+      0,
+      230
+    ]
+  }
+]

@@ -1,0 +1,750 @@
+{
+  "pares": [
+    {
+      "archivo": "camino/11_casa_lejana.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 160492,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-13a4f57a-106c-4db5-af39-5a3820f9a1d6.png",
+      "ancho_objeto_px": 640
+    },
+    {
+      "archivo": "camino/12_subsuelo.png",
+      "dimensiones": [
+        1024,
+        1024
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 876066,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-86a8c4bd-b74e-4912-bdb9-a9351859ad9c.png",
+      "repetible": "xy"
+    },
+    {
+      "archivo": "camino/14_cueva_pared.png",
+      "dimensiones": [
+        1024,
+        1024
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 881103,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-c6bcdc53-bd34-4e83-89bd-e20eeee874e2.png",
+      "repetible": "xy"
+    },
+    {
+      "archivo": "camino/13_subsuelo_borde.png",
+      "dimensiones": [
+        1024,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 196116,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-4b26f257-7b3d-4c1c-9593-de07bde084c8.png",
+      "repetible": "x",
+      "empalme_con": "12_subsuelo.png"
+    },
+    {
+      "archivo": "camino/15_horizonte.png",
+      "dimensiones": [
+        3548,
+        500
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 607412,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-91b3c403-fbd7-49a7-80d8-7f390b871f78.png",
+      "repetible": "x",
+      "bruma": "desvanecimiento alfa solo periferia inferior"
+    },
+    {
+      "archivo": "camino/16_marco_pintura.png",
+      "dimensiones": [
+        512,
+        768
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 223434,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-f22fe782-0cd4-4da0-afe2-a264e3e078a6.png",
+      "lienzo_rect": [
+        87,
+        196,
+        426,
+        534
+      ],
+      "color_unicamente_lienzo": true
+    },
+    {
+      "archivo": "camino/02_cielo_nubes.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 5000,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/02_cielo_nubes.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/02_cielo_nubes.png"
+    },
+    {
+      "archivo": "camino/03_ruinas_lejanas.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 253335,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/03_ruinas_lejanas.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/03_ruinas_lejanas.png"
+    },
+    {
+      "archivo": "camino/04_plano_medio.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 171671,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/04_plano_medio.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/04_plano_medio.png"
+    },
+    {
+      "archivo": "camino/05_terreno_vegetacion.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 3555,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/05_terreno_vegetacion.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/05_terreno_vegetacion.png"
+    },
+    {
+      "archivo": "camino/06_cueva_modulos.png",
+      "dimensiones": [
+        1536,
+        1024
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 349454,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/06_cueva_modulos.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/06_cueva_modulos.png"
+    },
+    {
+      "archivo": "camino/07_pozo.png",
+      "dimensiones": [
+        1536,
+        1024
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 214523,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/07_pozo.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/07_pozo.png"
+    },
+    {
+      "archivo": "camino/08_foso_espinas.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 265428,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/08_foso_espinas.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/08_foso_espinas.png"
+    },
+    {
+      "archivo": "camino/09_cabeza_lejana.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 382569,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/09_cabeza_lejana.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/09_cabeza_lejana.png"
+    },
+    {
+      "archivo": "camino/10_faro_lejano.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 375149,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/10_faro_lejano.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/10_faro_lejano.png"
+    },
+    {
+      "archivo": "zona_enemigos/01_vista_general.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 1190530,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/zona_enemigos_v001/definido/01_vista_general.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/zona_enemigos_v001/boceto/01_vista_general.png"
+    },
+    {
+      "archivo": "zona_enemigos/02_fondo.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 316528,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/zona_enemigos_v001/definido/02_fondo.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/zona_enemigos_v001/boceto/02_fondo.png"
+    },
+    {
+      "archivo": "zona_enemigos/03_modulos.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 285376,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/zona_enemigos_v001/definido/03_modulos.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/zona_enemigos_v001/boceto/03_modulos.png"
+    },
+    {
+      "archivo": "cueva_paleta/01_vista_general.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 1210086,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/definido/01_vista_general.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/boceto/01_vista_general.png"
+    },
+    {
+      "archivo": "cueva_paleta/02_fondo.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 720461,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/definido/02_fondo.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/boceto/02_fondo.png"
+    },
+    {
+      "archivo": "cueva_paleta/03_modulos.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 96834,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/definido/03_modulos.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/boceto/03_modulos.png"
+    },
+    {
+      "archivo": "cueva_paleta/04_paleta.png",
+      "dimensiones": [
+        1254,
+        1254
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 598710,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/definido/04_paleta.png",
+      "boceto_fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/cueva_paleta_v001/boceto/04_paleta.png"
+    },
+    {
+      "archivo": "originales/fondos/01_cielo_lejano.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 0,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Fondos/01_cielo_lejano.png"
+    },
+    {
+      "archivo": "originales/fondos/02_acueducto_faro.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 61,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Fondos/02_acueducto_faro.png"
+    },
+    {
+      "archivo": "originales/fondos/03_bosque_orilla.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 2294,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Fondos/03_bosque_orilla.png"
+    },
+    {
+      "archivo": "originales/modulos/bridge.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 245,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/bridge.png"
+    },
+    {
+      "archivo": "originales/modulos/gate.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 3029,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/gate.png"
+    },
+    {
+      "archivo": "originales/modulos/ground_a.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 992,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/ground_a.png"
+    },
+    {
+      "archivo": "originales/modulos/ground_b.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 99,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/ground_b.png"
+    },
+    {
+      "archivo": "originales/modulos/ground_c.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 1,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/ground_c.png"
+    },
+    {
+      "archivo": "originales/modulos/ground_d.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 1226,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/ground_d.png"
+    },
+    {
+      "archivo": "originales/modulos/modulos_atlas.png",
+      "dimensiones": [
+        1024,
+        1024
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 14694,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/modulos_atlas.png"
+    },
+    {
+      "archivo": "originales/modulos/pedestal.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 189,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/pedestal.png"
+    },
+    {
+      "archivo": "originales/modulos/platform_long.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 5052,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/platform_long.png"
+    },
+    {
+      "archivo": "originales/modulos/platform_short.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 1688,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/platform_short.png"
+    },
+    {
+      "archivo": "originales/modulos/reeds.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 0,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/reeds.png"
+    },
+    {
+      "archivo": "originales/modulos/stones.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 286,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/stones.png"
+    },
+    {
+      "archivo": "originales/modulos/tree_left.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 52,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/tree_left.png"
+    },
+    {
+      "archivo": "originales/modulos/tree_right.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 56,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/tree_right.png"
+    },
+    {
+      "archivo": "originales/modulos/wall.png",
+      "dimensiones": [
+        256,
+        256
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 138,
+      "fuente": "/Users/l03123318/Documents/pintura/Game_Assets/Nivel_01_Camino/Bocetos_v001/Modulos/wall.png"
+    },
+    {
+      "archivo": "camino/17_colinas_enlace.png",
+      "dimensiones": [
+        3548,
+        600
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 485057,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-5830289a-59f0-4a32-8f22-52e2358e46b1.png",
+      "repetible": "x",
+      "funcion": "LOW SOFT INLAND HILLS linking the sleeping-head landscape to the aqueduct/bridges. Two overlapping low gently rolling ridge silhouettes, broad shallow valley in center to leave landmarks visible, modest more rounded hill at left and a slightly higher shoulder right. Distant pale graphite contours, very sparse fine stratum hatching and occasional tiny low ground cover, NO trees taller than a tiny shrub. No cliffs. Entire ridge belt reaches both horizontal edges at SAME elevation with matching slope for seamless repetition. Transparent sky above continuous irregular top contour, opaque light paper terrain below to bottom, no island-like cutout bottom."
+    },
+    {
+      "archivo": "camino/18_laderas_rocosas.png",
+      "dimensiones": [
+        3548,
+        600
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 671195,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-b5abdc75-827a-4426-8fe7-2bc1dbb6a210.png",
+      "repetible": "x",
+      "funcion": "MID-DISTANCE ROCKY SLOPES linking old stone bridges to seaside lighthouse. Layered low limestone terraces and gently eroded sloping rock shelves, a broad saddle opening in middle for bridge landmark, a few fine fissures and small roots. More detailed than far hills but quieter than playable terrain. Broad landform belt spanning edge to edge, low profile not a towering mountain or cave. Same height and tangent at left/right endpoints for seamless horizontal repetition. Transparent sky above top contour, opaque warm paper land extending to bottom, no floating island lower contour."
+    },
+    {
+      "archivo": "camino/19_costa_enlace.png",
+      "dimensiones": [
+        3548,
+        600
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 177550,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-9e4089b2-f9c1-4158-856b-7b4e07922dd0.png",
+      "repetible": "x",
+      "funcion": "LOW COASTAL LAND/SEA TRANSITION BELT to visually join the foot of sleeping head, bottom of bridges, waterfall and lighthouse wave. Very low rounded rocky shoreline left, quiet thin water pencil ripples in center, several modest low shore rocks right and subtly rougher sea pencil lines toward right. No large wave: existing lighthouse-wave remains a separate layer. Avoid busy detail, unified almost horizontal low profile with matched left/right height and tangent for seamless horizontal repetition. Transparent above low shoreline silhouette, opaque pale paper interiors and base to bottom. No horizon skyline: this is coastal connective foreground of the distant panorama."
+    }
+  ],
+  "validacion": [
+    {
+      "archivo": "camino/11_casa_lejana.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/12_subsuelo.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "xy"
+    },
+    {
+      "archivo": "camino/14_cueva_pared.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "xy"
+    },
+    {
+      "archivo": "camino/13_subsuelo_borde.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    },
+    {
+      "archivo": "camino/15_horizonte.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    },
+    {
+      "archivo": "camino/16_marco_pintura.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/02_cielo_nubes.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/03_ruinas_lejanas.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/04_plano_medio.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/05_terreno_vegetacion.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/06_cueva_modulos.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/07_pozo.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/08_foso_espinas.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/09_cabeza_lejana.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/10_faro_lejano.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "zona_enemigos/01_vista_general.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "zona_enemigos/02_fondo.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "zona_enemigos/03_modulos.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "cueva_paleta/01_vista_general.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "cueva_paleta/02_fondo.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "cueva_paleta/03_modulos.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "cueva_paleta/04_paleta.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/fondos/01_cielo_lejano.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/fondos/02_acueducto_faro.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/fondos/03_bosque_orilla.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/bridge.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/gate.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/ground_a.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/ground_b.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/ground_c.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/ground_d.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/modulos_atlas.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/pedestal.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/platform_long.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/platform_short.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/reeds.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/stones.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/tree_left.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/tree_right.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "originales/modulos/wall.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true
+    },
+    {
+      "archivo": "camino/17_colinas_enlace.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    },
+    {
+      "archivo": "camino/18_laderas_rocosas.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    },
+    {
+      "archivo": "camino/19_costa_enlace.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    }
+  ],
+  "paleta_definido": {
+    "papel": [
+      247.0,
+      237.0,
+      223.0
+    ],
+    "grafito_mas_oscuro": [
+      139.0,
+      119.0,
+      96.0
+    ]
+  },
+  "autorizacion": "Usuario autorizo acabado tecnico Python"
+}
