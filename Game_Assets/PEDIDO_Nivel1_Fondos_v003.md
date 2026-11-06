@@ -40,7 +40,8 @@ silueta y en el mismo lugar del lienzo:
   claro, igual que el faro definido y el terreno adjuntos. No uses gris frío, azul, color, negro puro ni
   piedra renderizada en 3D.
 
-Vista lateral plana. Diseño original. Sin texto, firma, marco ni números.
+Vista lateral plana. Diseño original. Sin texto, firma ni números, y sin marco alrededor de la imagen
+(la pieza 6 sí es un marco, porque es la puerta).
 
 1. `11_casa_lejana.png` — PNG transparente de 1774x887. La casa de la pintura adjunta: la pequeña
    construcción de piedra en el centro, sobre la roca de donde sale la cascada. Se dibuja como se vería a lo
