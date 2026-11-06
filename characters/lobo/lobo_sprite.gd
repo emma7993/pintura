@@ -17,7 +17,8 @@ const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BA
 const ART := "res://characters/lobo/pincel_v003"
 ## Carrera con el modelo de Wolf_Run_v014: reemplaza esa animación de
 ## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
-const LOCO := "res://characters/lobo/locomocion_v014"
+## Carrera v016 (la que eligió Emma), con grano por herramientas/ajustar_run_v016.py; brazos y bufanda pendientes (v021).
+const RUN_ART := "res://characters/lobo/run_v016"
 ## Salto con el estilo del lobo original (Wolf_Salto_v004, copia directa).
 const SALTO := "res://characters/lobo/salto_v004"
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
@@ -50,7 +51,7 @@ const CELL_FEET := Vector2(192, 352)      # pies dentro de la celda
 ## px de celda que avanza un ciclo (2 pasos). Medido por Codex: caminata 153, carrera 302.5. La caminata
 ## usa más para que la animación vaya más pausada (pedido de Emma), a cambio de un leve deslizamiento.
 const STRIDE := 175.0
-const RUN_STRIDE := 390.0           # carrera v014: el pie apoyado retrocede ~49 px de celda por cuadro
+const RUN_STRIDE := 446.0           # carrera v016: el pie apoyado retrocede ~55.75 px de celda por cuadro
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0
@@ -105,7 +106,7 @@ func _body_frames() -> SpriteFrames:
 	var f: SpriteFrames = (load(ART + "/Godot/Wolf_body.tres") as SpriteFrames).duplicate()
 	var run: Array[String] = []
 	for i in 8:
-		run.append(LOCO + "/run/%02d.png" % (i + 1))
+		run.append(RUN_ART + "/%02d.png" % (i + 1))
 	_set_anim(f, RUN, run, 20.0, true)
 	_set_anim(f, JUMP_START, [SALTO + "/jump_start.png"], 12.0, false)
 	_set_anim(f, JUMP_UP, [SALTO + "/jump_up.png"], 5.0, true)

@@ -97,6 +97,10 @@ hacer ediciones puntuales sobre esa misma hoja (cola, bufanda, grano). Ese es el
    la mayoría por script, y prohibir explícitamente regenerar o redibujar. Pedidos cortos y concretos.
 
 **Base vigente de la carrera: v016** (elegida por Emma el 2026-11-06). Pedido de corrección: v021.
+Ya está en el juego (`characters/lobo/run_v016`, zancada 446 px por ciclo) con el grano puesto por
+`herramientas/ajustar_run_v016.py`. Probado por script: el grano sale bien; adelgazar la bufanda o achicar
+el ojo erosionando bordes NO sirve (se pierden los flecos y el ojo queda con anillo). Eso, y los brazos,
+van por edición local de ChatGPT (v021).
 
 ## 6. Revisión de cada entrega (Claude)
 1. Correr `herramientas/comparar_lobo.py` y revisar la lámina con zoom de cabeza y manos.
