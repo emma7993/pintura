@@ -32,17 +32,20 @@ const T08 := "08_foso_espinas"
 ## Fondos v002 (herramientas/fondos_camino_v002.py): bocetos rellenos de blanco y definidos de un mismo tono.
 const FONDOS := "res://art/worlds/camino/nivel_01_fondos_v002"
 ## Capas que se repiten: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
+## Encuadre con el lobo en el suelo: la pantalla va de GROUND_Y - 430 (arriba) a GROUND_Y + 290. Nubes arriba,
+## la lejanía completa a media altura y el plano medio bajo, para que no la tape.
 const CAPAS_V002 := [
-	["02_cielo_nubes", 0.08, -70, 1.0, 760.0, -720.0],
-	["04_plano_medio", 0.45, -30, 1.0, 760.0, -600.0],
+	["02_cielo_nubes", 0.08, -70, 1.0, 600.0, -470.0],
+	["04_plano_medio", 0.45, -30, 1.0, 560.0, -300.0],
 ]
 ## Lejanía: partes de la pintura en una sola capa (parallax 0.3) que se recorre de izquierda a derecha:
-## el paisaje del camino al inicio, la casa hacia la puerta pintada y el faro al final.
+## el paisaje del camino al inicio, la casa hacia la puerta pintada y el faro al final. La y va medida sobre
+## GROUND_Y (el camino está en el suelo bajo; la casa y el faro, sobre el suelo alto, 110 px más arriba).
 ## [archivo, parallax, z, opacidad, ancho, x, y de arriba sobre GROUND_Y, bordes fundidos]
 const HITOS_V002 := [
-	["03_ruinas_lejanas", 0.30, -52, 1.0, 1500.0, -60.0, -640.0, true],
-	["09_cabeza_lejana", 0.30, -50, 1.0, 640.0, 1680.0, -540.0, false],   # lugar de la casa (pendiente de ChatGPT)
-	["10_faro_lejano", 0.30, -50, 1.0, 720.0, 2850.0, -560.0, false],
+	["03_ruinas_lejanas", 0.30, -52, 1.0, 1500.0, -60.0, -442.0, true],
+	["09_cabeza_lejana", 0.30, -50, 1.0, 800.0, 1600.0, -564.0, false],   # lugar de la casa (pendiente de ChatGPT)
+	["10_faro_lejano", 0.30, -50, 1.0, 720.0, 2850.0, -523.0, false],
 ]
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
@@ -56,6 +59,7 @@ const HIGH_Y := 490.0                     # suelo de la plataforma alta, despué
 const BRUSH_X := 4560.0                   # la luz con el pincel
 const EXIT_X := 5700.0                    # puerta de regreso al lienzo principal
 const GATE_SCALE := 1.8
+const MESETA_PISADA := 76.0               # fila de la superficie de la meseta en su pieza (hoja 05)
 const PIE_HUNDIDO := 20.0                # árboles y matas: la base entra en la losa del suelo (si no, flotan)
 const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
 const WELL_X := 5980.0                    # pozo junto al arco; su tiro baja hasta el techo de la cueva
@@ -417,9 +421,15 @@ func _build_piezas_v002() -> void:
 		_pieza(T08, 1, (e[0] as float) - (e[4] as float) + 8.0, e[1] as float, e[4] as float, -1)
 		_pieza(T08, 2, (e[2] as float) - 8.0, e[3] as float, e[4] as float, -1)
 	# meseta: acantilado con cornisa, estirado en vertical para que su base llegue al suelo alto
-	var rm: Array = _piezas[T05][0]
+	# la pisada de piezas.json (fila 56) es la cornisa de la derecha; la superficie donde camina el lobo baja
+	# hacia la izquierda (fila ~76): con 56 el lobo flotaba sobre la roca
+	var rm: Array = (_piezas[T05][0] as Array).duplicate()
+	rm[4] = MESETA_PISADA
+	_piezas[T05][0] = rm
 	var alto_meseta := (HIGH_Y + 24.0 - PLATEAU_Y - 4.0) * float(rm[3]) / (float(rm[3]) - float(rm[4]))
-	_pieza(T05, 0, PLATEAU.x - 40.0, PLATEAU_Y + 4.0, PLATEAU.y - PLATEAU.x + 80.0, -1, alto_meseta)
+	# la superficie pisable de la pieza va de la columna ~100 a la ~600: se estira para cubrir todo el piso
+	var fx_meseta := (PLATEAU.y - PLATEAU.x) / 500.0
+	_pieza(T05, 0, PLATEAU.x - 100.0 * fx_meseta, PLATEAU_Y + 4.0, float(rm[2]) * fx_meseta, -1, alto_meseta)
 	# espinas del foso
 	_pieza_pie(T08, 0, (PIT.x + PIT.y) * 0.5, PIT_FLOOR + 4.0, PIT.y - PIT.x + 10.0, -1, SPIKE_H + 24.0)
 	# pozo: brocal (detrás del lobo), losa caída, tiro y tapa vista desde abajo

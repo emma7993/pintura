@@ -2,10 +2,13 @@
 
 Claude ya arregló el fondo del Nivel 1 por script (`herramientas/fondos_camino_v002.py`). Los bocetos
 llevan relleno blanco, los definidos tienen un solo tono, y la lejanía va en una capa: camino, casa y faro.
-Faltan dos cosas que solo se pueden dibujar:
+Faltan cuatro cosas que solo se pueden dibujar:
 1. **La casa** de la pintura. Ahora ocupa su lugar la cabeza dormida.
 2. **El subsuelo**: la tierra bajo el suelo donde camina el lobo y las paredes de la cueva. Hoy es un
    relleno liso con rayas dibujadas por código.
+3. **El horizonte**: una franja continua de bruma, colinas y mar lejano bajo la capa lejana. Sin ella, la
+   cabeza y el faro flotan sobre papel vacío.
+4. **La puerta del inicio** (regreso a la pintura). Hoy es un marco café provisional.
 
 Todo va en dos estados, igual que `Cueva_v002/estados_v001`:
 - **boceto**: antes de pintar la puerta. Lápiz gris sobre blanco, y el interior de cada forma RELLENO DE
@@ -58,6 +61,17 @@ Vista lateral plana. Diseño original. Sin texto, firma, marco ni números.
    fondo dentro de la cueva, detrás del personaje. Como la 12, pero más oscura y con menos detalle, para
    que se lea como fondo. Boceto: blanco con un gris muy leve. Definido: sepia un poco más oscuro que la 12.
 
+5. `15_horizonte.png` — PNG transparente de 3548x500, repetible en horizontal. Es la línea del horizonte
+   muy a lo lejos, para ir debajo del faro, la casa y la cabeza: bruma baja, colinas suaves, y un mar
+   tranquilo que se pierde a la izquierda y se agita un poco a la derecha (hacia el faro). La mitad de abajo
+   es bruma pareja que se funde hacia el papel. Muy claro y con poco detalle: es lo más lejano después del
+   cielo. Sin edificios ni árboles grandes.
+
+6. `16_marco_pintura.png` — PNG transparente de 512x768. Es la puerta de regreso a la pintura: un marco de
+   cuadro antiguo, de pie sobre el suelo, con el lienzo adentro mostrando la pintura adjunta en miniatura.
+   Boceto: el marco a lápiz relleno de blanco y el lienzo apenas sugerido. Definido: el marco en grafito
+   sepia con molduras, y el lienzo con la pintura en sus colores (lo único con color de esta entrega).
+
 Antes de entregar, pon cada boceto junto a su definido y confirma tres cosas: misma silueta, el boceto
 relleno de blanco (no transparente) y el definido en el mismo tono cálido que el faro adjunto. Las
-texturas 12, 13 y 14 deben repetirse sin que se note la costura.
+texturas 12, 13, 14 y 15 deben repetirse sin que se note la costura.
