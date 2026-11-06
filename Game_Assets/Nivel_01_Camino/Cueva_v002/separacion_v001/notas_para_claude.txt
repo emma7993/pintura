@@ -1,0 +1,23 @@
+CAMINO — SEPARACION V001
+Generado con la herramienta integrada de imagenes a partir del concepto adjunto por el usuario.
+Estado inicial: dibujo detallado de grafito sobre papel calido.
+
+CONTENIDO
+01: papel opaco. 02–04: capas de fondo RGBA. 05–08: hojas de piezas RGBA para recortar.
+Las imagenes se reconstruyeron por separado: no son extracciones exactas al pixel ni estan alineadas automaticamente.
+Las capas 01–05 y 08 miden 1774 x 887. Las hojas 06–07 miden 1536 x 1024.
+Mantener originales; recortar piezas en archivos derivados sin reescalar toda la hoja a una medida comun.
+El canal alfa se verifico en las siete imagenes RGBA. Algunos visores muestran RGB residual en pixeles transparentes; no usar un visor que ignore el alfa.
+
+MONTAJE PARA CLAUDE
+Papel fijo detras de todo; nubes, ruinas y plano medio por delante. Factores de parallax en manifest.json son propuestas de prueba.
+Los fondos no se han verificado como repetibles sin costuras. Ajustar posicion, escala y bordes en Godot.
+05–08: recortar sprites individuales con sus margenes y conservar alpha; no importar la hoja completa como una plataforma.
+Las hojas muestran objetos con volumen artistico. Adaptar el borde de colision al recorrido lateral existente, sin alterar colisiones para acomodar la ilustracion.
+No hay colisiones, atlas ni escenas Godot en esta entrega. No se modifico el proyecto del juego.
+Comparar el montaje con el concepto: la generacion independiente puede introducir variaciones.
+
+PROGRESION VIGENTE DEL USUARIO
+Inicio con grafito detallado y papel crema; negro refuerza detalles; amarillo agrega pigmento amarillo; azul permite azules y verdes; continuar por colores obtenidos.
+Estas ocho imagenes solo cubren el estado inicial. Para futuros estados usar cada pieza aprobada como referencia y conservar encuadre, contorno, dimensiones y origen.
+No generar estados de color de forma independiente sin comprobar alineacion.

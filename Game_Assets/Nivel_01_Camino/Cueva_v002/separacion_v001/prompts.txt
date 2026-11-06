@@ -1,0 +1,12 @@
+Herramienta: image_gen integrada. Referencia: concepto entrada y pozo adjunto por el usuario.
+Instruccion comun: extraer/reconstruir una capa del concepto conservando grafito fino detallado, rayado delicado, arquitectura y profundidad; sin pigmentos, personajes ni texto. Transparencia salvo papel.
+
+01_papel.png: Papel crema; base fija opaca.
+02_cielo_nubes.png: Nubes; capa transparente lejana.
+03_ruinas_lejanas.png: Acueductos y paisaje distante.
+04_plano_medio.png: Puente y laderas intermedias.
+05_terreno_vegetacion.png: Hoja: terrazas, plataforma, suelo, rocas, arboles y arbustos.
+06_cueva_modulos.png: Hoja: techos, pisos, repisa, entrada y pared.
+07_pozo.png: Hoja: cerrado, abierto, tapa, tiro, repisa, tapón y ocho fragmentos.
+08_foso_espinas.png: Hoja: espinas, bordes de foso, escalon y escombros.
+Restricciones: aislar cada grupo, mantener aproximadamente la posicion de los fondos; hojas con margenes y piezas sin superponer; preservar detalle artistico.
