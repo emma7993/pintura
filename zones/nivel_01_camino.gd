@@ -392,8 +392,10 @@ func _build_piezas_v002() -> void:
 	for e in [[GAP.x, GROUND_Y, GAP.y, HIGH_Y, 380.0], [PIT.x, HIGH_Y, PIT.y, HIGH_Y, 280.0], [HOLE.x, HIGH_Y, HOLE.y, HIGH_Y, 240.0]]:
 		_pieza(T08, 1, (e[0] as float) - (e[4] as float) + 8.0, e[1] as float, e[4] as float, -1)
 		_pieza(T08, 2, (e[2] as float) - 8.0, e[3] as float, e[4] as float, -1)
-	# meseta: acantilado con cornisa; su cara cubre el corte hasta el suelo alto
-	_pieza(T05, 0, PLATEAU.x - 40.0, PLATEAU_Y + 4.0, PLATEAU.y - PLATEAU.x + 80.0, -1)
+	# meseta: acantilado con cornisa, estirado en vertical para que su base llegue al suelo alto
+	var rm: Array = _piezas[T05][0]
+	var alto_meseta := (HIGH_Y + 24.0 - PLATEAU_Y - 4.0) * float(rm[3]) / (float(rm[3]) - float(rm[4]))
+	_pieza(T05, 0, PLATEAU.x - 40.0, PLATEAU_Y + 4.0, PLATEAU.y - PLATEAU.x + 80.0, -1, alto_meseta)
 	# espinas del foso
 	_pieza_pie(T08, 0, (PIT.x + PIT.y) * 0.5, PIT_FLOOR + 4.0, PIT.y - PIT.x + 10.0, -1, SPIKE_H + 24.0)
 	# pozo: brocal (detrás del lobo), losa caída, tiro y tapa vista desde abajo
@@ -408,7 +410,7 @@ func _build_piezas_v002() -> void:
 	for seg in [Vector2(CAVE_X.x - 40.0, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, HOLE.x), Vector2(HOLE.y, CAVE_X.y + 40.0)]:
 		_tira_v2(T06, [1, 0], seg.x, seg.y, CAVE_TOP - 6.0, 0.42, -2)
 	# paso hacia la Zona de enemigos (junto a la cascada) y columna como pared derecha de la cueva
-	_pieza_pie(T06, 5, CAVE_X.x - 20.0, CAVE_Y + 8.0, 300.0, -9)
+	_pieza_pie(T06, 5, CAVE_X.x - 20.0, CAVE_Y + 8.0, 300.0, -1, 0.0, true)   # en espejo: la cueva sigue a la derecha
 	_pieza_pie(T06, 6, CAVE_X.y + 30.0, CAVE_Y + 8.0, 260.0, -1, CAVE_Y - CAVE_TOP + 20.0)   # pared derecha
 	# árboles y matas (sin óleo todavía: la pincelada solo revela color en juncos y piedras)
 	for e in [[7, 760.0, 430.0], [9, 1900.0, 380.0], [7, 2900.0, 400.0], [9, 5100.0, 340.0],
@@ -1507,7 +1509,7 @@ func _v2(n: CanvasItem) -> CanvasItem:
 
 ## Pieza i de una hoja de ChatGPT (región de la hoja original, sin recortar el PNG), escalada a «ancho».
 ## Se coloca con su borde izquierdo en x y su fila de pisada en pisada_y; «alto» > 0 la estira en vertical.
-func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: int, alto := 0.0) -> Sprite2D:
+func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Sprite2D:
 	var r: Array = _piezas[hoja][i]
 	var at := AtlasTexture.new()
 	at.atlas = load(PIEZAS_V002 + "/" + hoja + ".png")
@@ -1516,6 +1518,7 @@ func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: in
 	s.texture = at
 	s.centered = false
 	s.z_index = z
+	s.flip_h = espejo
 	s.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	var fx := ancho / float(r[2])
 	var fy := fx if alto <= 0.0 else alto / float(r[3])
@@ -1527,8 +1530,8 @@ func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: in
 
 
 ## Pieza apoyada por su base: centrada en cx, con el borde de abajo en base_y.
-func _pieza_pie(hoja: String, i: int, cx: float, base_y: float, ancho: float, z: int, alto := 0.0) -> Sprite2D:
-	var s := _pieza(hoja, i, cx - ancho * 0.5, 0.0, ancho, z, alto)
+func _pieza_pie(hoja: String, i: int, cx: float, base_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Sprite2D:
+	var s := _pieza(hoja, i, cx - ancho * 0.5, 0.0, ancho, z, alto, espejo)
 	var r: Array = _piezas[hoja][i]
 	s.position.y = base_y - float(r[3]) * s.scale.y
 	return s
