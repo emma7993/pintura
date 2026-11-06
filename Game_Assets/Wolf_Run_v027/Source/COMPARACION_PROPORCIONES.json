@@ -1,0 +1,149 @@
+{
+  "method": "ancho de silueta a altura del ojo; indicador de escala de cabeza, sensible a pose y expresión; no equivale a longitud ósea ni valida extremidades",
+  "measurements": [
+    {
+      "file": "Game_Assets/Wolf_Salto_v004/Sprites/02_jump_up.png",
+      "head_width_at_eye_px": 84,
+      "eye_xy": [
+        210.5,
+        177.13
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Salto_v004/Sprites/03_jump_apex.png",
+      "head_width_at_eye_px": 67,
+      "eye_xy": [
+        211.53,
+        179.43
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/01.png",
+      "head_width_at_eye_px": 75,
+      "eye_xy": [
+        239.5,
+        204.64
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/02.png",
+      "head_width_at_eye_px": 77,
+      "eye_xy": [
+        239.21,
+        203.28
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/03.png",
+      "head_width_at_eye_px": 76,
+      "eye_xy": [
+        239.5,
+        202.36
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/04.png",
+      "head_width_at_eye_px": 72,
+      "eye_xy": [
+        240.89,
+        196.59
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/05.png",
+      "head_width_at_eye_px": 75,
+      "eye_xy": [
+        239.75,
+        203.0
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/06.png",
+      "head_width_at_eye_px": 75,
+      "eye_xy": [
+        239.53,
+        203.57
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/07.png",
+      "head_width_at_eye_px": 76,
+      "eye_xy": [
+        239.69,
+        203.06
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v026/Sprites/run/08.png",
+      "head_width_at_eye_px": 75,
+      "eye_xy": [
+        240.96,
+        197.44
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/01.png",
+      "head_width_at_eye_px": 74,
+      "eye_xy": [
+        238.51,
+        208.15
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/02.png",
+      "head_width_at_eye_px": 72,
+      "eye_xy": [
+        238.32,
+        207.89
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/03.png",
+      "head_width_at_eye_px": 72,
+      "eye_xy": [
+        239.02,
+        207.19
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/04.png",
+      "head_width_at_eye_px": 69,
+      "eye_xy": [
+        240.12,
+        201.81
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/05.png",
+      "head_width_at_eye_px": 68,
+      "eye_xy": [
+        239.41,
+        207.56
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/06.png",
+      "head_width_at_eye_px": 69,
+      "eye_xy": [
+        238.63,
+        207.97
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/07.png",
+      "head_width_at_eye_px": 71,
+      "eye_xy": [
+        238.45,
+        207.47
+      ]
+    },
+    {
+      "file": "Game_Assets/Wolf_Run_v027/Sprites/run/08.png",
+      "head_width_at_eye_px": 66,
+      "eye_xy": [
+        239.73,
+        205.61
+      ]
+    }
+  ]
+}

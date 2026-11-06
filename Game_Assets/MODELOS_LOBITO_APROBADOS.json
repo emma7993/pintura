@@ -1,0 +1,139 @@
+{
+  "approval_date": "2026-11-06",
+  "approved_by": "user",
+  "integration_owner": "Claude",
+  "assets": {
+    "run": [
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/01.png",
+        "sha256": "3d341ffdca15a84c1be242c3f6f6b60059eff74f49b0c0ce8d9ef5c37e8070e1"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/02.png",
+        "sha256": "b9ffc09642eb98865700b0a1c4d3d0651afd8ce45c2644843bb9504e01998851"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/03.png",
+        "sha256": "ce2820b9cee3709bc1d11ac5f22274bc0c072741fed6d7f53d8e6dc3e6f40c3e"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/04.png",
+        "sha256": "8e2fa176fadb6751a390e082b1c6a2b0f76e7384e8deee244e7158ef4ffe6dda"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/05.png",
+        "sha256": "b9a5383aa68bddbbe65af7fa7ae36f7cf902906b35a2035f7d895e49131824ac"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/06.png",
+        "sha256": "89a3cb85eeb7cf2180da521b890be346412b8f908080ff7845572cfa49eeb370"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/07.png",
+        "sha256": "6cf11c17a230b65beddc59285f4fd2af7d1a21166f2e24a890fcb3c80bf23d92"
+      },
+      {
+        "path": "Game_Assets/Wolf_Run_v027/Sprites/run/08.png",
+        "sha256": "b8cc2f2a54de20c0d2418f0f4ad0fa22f310a424da67c04afacaec7f59353fdb"
+      }
+    ],
+    "jump_fall": [
+      {
+        "path": "Game_Assets/Wolf_Salto_v004/Sprites/01_jump_start.png",
+        "sha256": "4f3877aefdc619b136f21d08b3d7856523a84bc740b5d690f46368aec1a55c41"
+      },
+      {
+        "path": "Game_Assets/Wolf_Salto_v004/Sprites/02_jump_up.png",
+        "sha256": "e87223bcf625527031042b8adbbdd740aa69c9d3e4adc742baf3ba2f3fac764e"
+      },
+      {
+        "path": "Game_Assets/Wolf_Salto_v004/Sprites/03_jump_apex.png",
+        "sha256": "6b00868187e1d6e0f1789684dd4d1e89f58b28b85f9d3f5f093db0dd9720af6f"
+      },
+      {
+        "path": "Game_Assets/Wolf_Salto_v004/Sprites/04_fall.png",
+        "sha256": "7e3ef28689707bba6d15eb9a455dd487d118ac59d3f6fedad557ff163e5abfda"
+      },
+      {
+        "path": "Game_Assets/Wolf_Salto_v004/Sprites/05_land.png",
+        "sha256": "223074ba7aacfaa4995453d6c3059fae8c788706757a689367ef01b2230b3816"
+      }
+    ],
+    "walk": [
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/01.png",
+        "sha256": "00ffded7af173d7d679b4e274937dd874643788672c63cd22a835aace90dade6"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/02.png",
+        "sha256": "ae36e7d7f90883451658818d6d42def58b44606a81e02e08000ca105342602e5"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/03.png",
+        "sha256": "ba56676942851ac92a23b86f9dc2746e79988df6ca23fd4a6cab99528a122868"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/04.png",
+        "sha256": "4a61a6806a889e85c2e38b7a50bb6e22929463e3b25ab072a09452404a4dbf6d"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/05.png",
+        "sha256": "12ed06ab5921c05959128c64cf2aa5c5e2393d2e1bfc959d07c6728b9c971466"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/06.png",
+        "sha256": "93254259fa0cb4ce08c617c84fb74df31131f9753396c69b643badda5e04c31c"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/07.png",
+        "sha256": "3a5a86eea5442f74fb8a203c411a64a5253c94b11be4c71dad1611a299c2ce02"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/08.png",
+        "sha256": "8b1fed76b369583811d56d71d0d45da800e5ed19e9a8e08faccee5f9d04f12e8"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/09.png",
+        "sha256": "cb3b4e208657fb6b5558276338142baa2fac26f68648d98e5805745ade24d9b9"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/10.png",
+        "sha256": "cc6aa7722ce61fa983fe14b63ccb934a9448fba7867b5e0ec0a27215cb915912"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/11.png",
+        "sha256": "f1680ab303c9173e229c9a7e06980f2a57451887001b1376d9e448823d7d5080"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/walk/body/12.png",
+        "sha256": "786f343615389c7c78ccd0cf8bce20cc30874f80ec99280fdc60153049c1c3a3"
+      }
+    ],
+    "idle": [
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/idle/body/01.png",
+        "sha256": "f65fa4ecc2079eba92a7557c544e7ca6aa8a18d56d307be035bfa09518d85337"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/idle/body/02.png",
+        "sha256": "d82477fa70f90f49c05b548733a5770db200fe27a01732dc3157811215349b17"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/idle/body/03.png",
+        "sha256": "ba69404aa5e4264a4242db194acef6a6d57b5d4e15be0a6f5e26f4c58c9dae0f"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/idle/body/04.png",
+        "sha256": "a644cff9180c4633b39b5e9b0f5e176a417c05f56c286155122a6a5d0975a8f1"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/idle/body/05.png",
+        "sha256": "caef83224a79f56fbb4f1970d286a7377681ccbd58dd00541512da17664ca386"
+      },
+      {
+        "path": "Game_Assets/Wolf_Pincel_v003/Animations/idle/body/06.png",
+        "sha256": "969a877300ec8e50b2d4c5b3d88b51240fa651a0fe358bed5c8e00945f17a0f3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "status": "aprobado_artisticamente_para_pruebas",
+  "cell": [
+    384,
+    384
+  ],
+  "fps": 20,
+  "frames": [
+    {
+      "frame": 1,
+      "opaque_bbox": [
+        108,
+        141,
+        264,
+        354
+      ],
+      "bottom_opaque_y": 353
+    },
+    {
+      "frame": 2,
+      "opaque_bbox": [
+        111,
+        141,
+        264,
+        353
+      ],
+      "bottom_opaque_y": 352
+    },
+    {
+      "frame": 3,
+      "opaque_bbox": [
+        116,
+        141,
+        264,
+        353
+      ],
+      "bottom_opaque_y": 352
+    },
+    {
+      "frame": 4,
+      "opaque_bbox": [
+        105,
+        137,
+        276,
+        344
+      ],
+      "bottom_opaque_y": 343
+    },
+    {
+      "frame": 5,
+      "opaque_bbox": [
+        114,
+        143,
+        264,
+        351
+      ],
+      "bottom_opaque_y": 350
+    },
+    {
+      "frame": 6,
+      "opaque_bbox": [
+        111,
+        143,
+        263,
+        351
+      ],
+      "bottom_opaque_y": 350
+    },
+    {
+      "frame": 7,
+      "opaque_bbox": [
+        116,
+        143,
+        263,
+        351
+      ],
+      "bottom_opaque_y": 350
+    },
+    {
+      "frame": 8,
+      "opaque_bbox": [
+        107,
+        142,
+        286,
+        342
+      ],
+      "bottom_opaque_y": 341
+    }
+  ],
+  "shared_source_scale": [
+    0.8658399098083427,
+    0.8658399098083427
+  ],
+  "common_translation_y": 30,
+  "logical_origin_xy": [
+    192,
+    352
+  ],
+  "individual_rescaling": false,
+  "generation_calls": 1,
+  "constant_foot_speed_verified": false,
+  "pixel_identity_with_v026_claimed": false,
+  "references": [
+    "Wolf_Salto_v004/02_jump_up",
+    "Wolf_Salto_v004/03_jump_apex",
+    "Referencia_Salto_Usuario.png"
+  ],
+  "user_approval_date": "2026-11-06",
+  "integration_status": "a_cargo_de_claude"
+}
