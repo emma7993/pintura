@@ -20,6 +20,13 @@ signal near_exit_changed(is_near: bool)
 
 const ART := "res://art/worlds/camino/nivel_01_bocetos_v001"
 const COLOR_ART := "res://art/worlds/camino/nivel_01_color_v001"   # óleo, máscaras, barrera, cascada, altar
+const FONDOS_V002 := "res://art/worlds/camino/nivel_01_fondos_v002" # fondos de ChatGPT (F3 alterna con v001)
+## Capas de FONDOS_V002: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
+const CAPAS_V002 := [
+	["02_cielo_nubes", 0.08, -70, 0.85, 760.0, -720.0],
+	["03_ruinas_lejanas", 0.20, -50, 0.80, 760.0, -640.0],
+	["04_plano_medio", 0.45, -30, 0.90, 760.0, -600.0],
+]
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
 const MASK_DIV := 4.0                     # px de mundo por px de máscara
@@ -143,6 +150,8 @@ var _cam: Camera2D
 var _hint: Label
 var _fade: ColorRect
 var _vignette: TextureRect
+var _fondos_v002: Array[CanvasItem] = []  # papel y capas de ChatGPT (FONDOS_V002)
+var _fondos_v002_on := true
 
 
 func _ready() -> void:
@@ -154,6 +163,7 @@ func _ready() -> void:
 	_env.set("world_width", WIDTH)
 	_env.set("show_modules", false)       # solo fondos: el terreno se arma aquí, con el hueco
 	add_child(_env)
+	_build_fondos_v002()
 	_effects = load(COLOR_ART + "/Godot/Color_Effects.tres")
 	_build_paint_mask()
 	_build_ground()
@@ -246,7 +256,13 @@ func _shortcuts_on() -> bool:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	var k := event as InputEventKey
-	if k == null or not k.pressed or k.echo or not _shortcuts_on():
+	if k == null or not k.pressed or k.echo:
+		return
+	if k.keycode == KEY_F3 and OS.is_debug_build():   # prueba: alterna fondos v002 (ChatGPT) y v001
+		_set_fondos_v002(not _fondos_v002_on)
+		get_viewport().set_input_as_handled()
+		return
+	if not _shortcuts_on():
 		return
 	var n := k.keycode - KEY_0
 	if n < 0 or n > 6:
@@ -1338,6 +1354,56 @@ func _draw_terrain() -> void:
 		_terrain.draw_colored_polygon(tri, Color(0.20, 0.19, 0.20))
 		_terrain.draw_polyline(PackedVector2Array([tri[0], tri[2], tri[1]]), Color(0.08, 0.08, 0.09), 1.5, true)
 		x += 24.0
+
+
+## Fondos de ChatGPT (FONDOS_V002): papel fijo detrás de todo y capas con parallax. Los de v001 (Environment)
+## se quedan armados pero ocultos, para comparar con F3.
+func _build_fondos_v002() -> void:
+	var paper_layer := CanvasLayer.new()
+	paper_layer.layer = -99
+	add_child(paper_layer)
+	var paper := TextureRect.new()
+	paper.texture = load(FONDOS_V002 + "/01_papel.png")
+	paper.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	paper.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	paper.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	paper_layer.add_child(paper)
+	_fondos_v002.append(paper)
+	var bordes := ShaderMaterial.new()           # las capas no son continuas: se funden sus bordes
+	bordes.shader = load("res://zones/bordes_fundidos.gdshader")
+	for c in CAPAS_V002:
+		var tex := load(FONDOS_V002 + "/" + (c[0] as String) + ".png") as Texture2D
+		var f: float = (c[4] as float) / tex.get_height()
+		var par := Parallax2D.new()
+		par.name = "v002_" + (c[0] as String)
+		par.scroll_scale = Vector2(c[1] as float, 1.0)
+		par.repeat_size = Vector2(tex.get_width() * f, 0)
+		par.repeat_times = 3
+		par.z_index = c[2] as int
+		add_child(par)
+		var s := Sprite2D.new()
+		s.texture = tex
+		s.centered = false
+		s.scale = Vector2.ONE * f
+		s.position = Vector2(-150, GROUND_Y + (c[5] as float))
+		s.modulate.a = c[3] as float
+		s.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		s.material = bordes
+		par.add_child(s)
+		_fondos_v002.append(par)
+	_set_fondos_v002(true)
+
+
+func _set_fondos_v002(on: bool) -> void:
+	_fondos_v002_on = on
+	for n in _fondos_v002:
+		n.visible = on
+	for child in _env.get_children():
+		if child is CanvasLayer:
+			(child as CanvasLayer).visible = not on
+		elif child is Parallax2D:
+			(child as Parallax2D).visible = not on
 
 
 ## Lleva al lobo al punto de una sala (Ñ / L en main.gd, para probar).

@@ -1,0 +1,2 @@
+Copia de integración de Game_Assets/Nivel_01_Camino/Cueva_v002/separacion_v001 (ChatGPT, 2026-11-05): capas 01-04 sin cambios (los bordes se funden en el juego con un shader).
+No editar aquí a mano. Lo usa zones/nivel_01_camino.gd (_build_fondos_v002); F3 alterna con los fondos v001.
