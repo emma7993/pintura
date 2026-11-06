@@ -1,5 +1,7 @@
 # Pedido para ChatGPT/Codex — Nivel_01_Camino/Cueva_v001 (cueva, pozo, foso y plataformas)
 
+> Sustituido por `PEDIDO_Nivel1_Cueva_v002_ChatGPT.md` (el arte ahora lo hace ChatGPT).
+
 Copiar desde aquí:
 
 ---

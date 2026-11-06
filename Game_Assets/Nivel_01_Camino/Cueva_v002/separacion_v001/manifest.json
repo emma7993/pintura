@@ -1,0 +1,66 @@
+[
+  {
+    "archivo": "01_papel.png",
+    "ancho": 1774,
+    "alto": 887,
+    "modo": "RGB",
+    "descripcion": "Papel crema; base fija opaca.",
+    "parallax_sugerido": 0
+  },
+  {
+    "archivo": "02_cielo_nubes.png",
+    "ancho": 1774,
+    "alto": 887,
+    "modo": "RGBA",
+    "descripcion": "Nubes; capa transparente lejana.",
+    "parallax_sugerido": 0.08
+  },
+  {
+    "archivo": "03_ruinas_lejanas.png",
+    "ancho": 1774,
+    "alto": 887,
+    "modo": "RGBA",
+    "descripcion": "Acueductos y paisaje distante.",
+    "parallax_sugerido": 0.2
+  },
+  {
+    "archivo": "04_plano_medio.png",
+    "ancho": 1774,
+    "alto": 887,
+    "modo": "RGBA",
+    "descripcion": "Puente y laderas intermedias.",
+    "parallax_sugerido": 0.45
+  },
+  {
+    "archivo": "05_terreno_vegetacion.png",
+    "ancho": 1774,
+    "alto": 887,
+    "modo": "RGBA",
+    "descripcion": "Hoja: terrazas, plataforma, suelo, rocas, arboles y arbustos.",
+    "parallax_sugerido": 1
+  },
+  {
+    "archivo": "06_cueva_modulos.png",
+    "ancho": 1536,
+    "alto": 1024,
+    "modo": "RGBA",
+    "descripcion": "Hoja: techos, pisos, repisa, entrada y pared.",
+    "parallax_sugerido": 1
+  },
+  {
+    "archivo": "07_pozo.png",
+    "ancho": 1536,
+    "alto": 1024,
+    "modo": "RGBA",
+    "descripcion": "Hoja: cerrado, abierto, tapa, tiro, repisa, tapón y ocho fragmentos.",
+    "parallax_sugerido": 1
+  },
+  {
+    "archivo": "08_foso_espinas.png",
+    "ancho": 1774,
+    "alto": 887,
+    "modo": "RGBA",
+    "descripcion": "Hoja: espinas, bordes de foso, escalon y escombros.",
+    "parallax_sugerido": 1
+  }
+]

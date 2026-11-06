@@ -20,6 +20,26 @@ signal near_exit_changed(is_near: bool)
 
 const ART := "res://art/worlds/camino/nivel_01_bocetos_v001"
 const COLOR_ART := "res://art/worlds/camino/nivel_01_color_v001"   # óleo, máscaras, barrera, cascada, altar
+## Arte de ChatGPT en dos estados: boceto/ antes de pintar la puerta y definido/ después; al pintarla, lo
+## definido se dibuja desde la puerta hacia todo el paisaje (zones/revelar_dibujo.gdshader). F3 alterna con v001.
+const ESTADOS := "res://art/worlds/camino/nivel_01_estados_v001"
+const DIBUJO_DURA := 3.2                  # s que tarda el frente en cruzar la pantalla al pintar la puerta
+const DIBUJO_FIN := 2600.0                # radio (px de pantalla) que cubre toda la pantalla
+const T05 := "05_terreno_vegetacion"
+const T06 := "06_cueva_modulos"
+const T07 := "07_pozo"
+const T08 := "08_foso_espinas"
+## Capas de fondo: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
+const CAPAS_V002 := [
+	["02_cielo_nubes", 0.08, -70, 0.85, 760.0, -720.0],
+	["03_ruinas_lejanas", 0.20, -50, 0.80, 760.0, -640.0],
+	["04_plano_medio", 0.45, -30, 0.90, 760.0, -600.0],
+]
+## Hitos lejanos de la portada (no se repiten): [archivo, parallax, z, opacidad, ancho, x, y de arriba sobre GROUND_Y]
+const HITOS_V002 := [
+	["09_cabeza_lejana", 0.08, -45, 0.60, 700.0, 380.0, -540.0],
+	["10_faro_lejano", 0.12, -60, 0.50, 640.0, 900.0, -540.0],
+]
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
 const MASK_DIV := 4.0                     # px de mundo por px de máscara
@@ -52,10 +72,10 @@ const CHAMBER_LEDGE_Y := CHAMBER_Y - 150.0
 const ALTAR_X := 7250.0                   # pedestal con el tintero (en la cámara)
 const FALL_X := 5350.0                    # cascada de tinta (bajo tierra, a la izquierda)
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
-## Repisas para subir del suelo de la cueva al arco por el pozo (salto máx. ~175 px). La de 965 queda
-## justo bajo la tapa: desde ahí se golpea. Las de dentro del tiro solo se alcanzan con la tapa rota.
+## Repisas para subir saltando del suelo de la cueva por el tiro del pozo (salto máx. ~175 px), que está
+## abierto por abajo. La de 660 es la más alta, bajo la losa de la boca: desde ahí se golpea la losa.
 const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0]
-const PLUG := Rect2(5870, 812, 220, 24)   # tapa de piedra en el fondo del pozo
+const PLUG := Rect2(5870, HIGH_Y + 30.0, 220, 24)   # cara de abajo de la losa que cierra la boca del pozo
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 ## La velocidad del lobo solo cuenta en el primer tramo (camina con miedo): con la primera mano pasa de una
 ## vez a correr (RUN_SPEED), sin caminata rápida. Las sombras sí siguen los tramos.
@@ -105,10 +125,10 @@ var _gate_glow: Sprite2D
 var _at_gate := false
 var _at_altar := false
 var _at_lake := false
-var _at_well := false                     # bajo la tapa del pozo, en la repisa de 965
+var _at_well := false                     # bajo la losa del pozo, en la repisa más alta del tiro
 var _over_well := false
 var _action_target := ""                  # qué pinta paint_up: "gate" o "well"
-var _plug: StaticBody2D
+var _tapa_roca: Node2D                    # roca que tapa el tiro del pozo visto desde arriba
 var _lid: StaticBody2D                    # losa del pozo en el suelo alto (luego, repisa de un solo sentido)
 var _debris: Array[Dictionary] = []       # trozos de la tapa al romperse
 var _terrain: Node2D                      # roca y pozo dibujados (provisional hasta tener arte)
@@ -144,6 +164,16 @@ var _cam_ahead := 0.0
 var _hint: Label
 var _fade: ColorRect
 var _vignette: TextureRect
+var _fondos_v002: Array[CanvasItem] = []  # papel y capas de fondo de ChatGPT (ESTADOS)
+var _mats_dibujo: Array[ShaderMaterial] = []   # revelar_dibujo: boceto y definido, con y sin bordes fundidos
+var _dibujo_r := 0.0                      # radio del frente de dibujo (0 = boceto, DIBUJO_FIN = definido)
+var _fondos_v002_on := true
+var _piezas := {}                          # hoja -> [[x, y, ancho, alto, fila de pisada], ...] (piezas.json)
+var _arte_v1: Array[CanvasItem] = []      # módulos de bocetos v001 que reemplazan las piezas v002
+var _arte_v2: Array[CanvasItem] = []      # piezas v002 (ChatGPT)
+var _pozo_v2 := {}                        # "cerrado", "abierto", "losa", "tapa": sprites del pozo
+var _rock_node: Node2D
+var _back_node: Node2D
 
 
 func _ready() -> void:
@@ -155,6 +185,8 @@ func _ready() -> void:
 	_env.set("world_width", WIDTH)
 	_env.set("show_modules", false)       # solo fondos: el terreno se arma aquí, con el hueco
 	add_child(_env)
+	_piezas = JSON.parse_string(FileAccess.get_file_as_string(ESTADOS + "/piezas.json"))
+	_build_fondos_v002()
 	_effects = load(COLOR_ART + "/Godot/Color_Effects.tres")
 	_build_paint_mask()
 	_build_ground()
@@ -236,6 +268,7 @@ func _restore_progress() -> void:
 		gate_open = true
 		_gate_k = 1.0
 		_gate_paint.visible = true
+		_dibujar_paisaje(false)
 		walker.position = Vector2(EXIT_X + 120.0, HIGH_Y)   # vuelve del lienzo por la puerta
 	_update_inventory_ui()
 
@@ -247,7 +280,13 @@ func _shortcuts_on() -> bool:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	var k := event as InputEventKey
-	if k == null or not k.pressed or k.echo or not _shortcuts_on():
+	if k == null or not k.pressed or k.echo:
+		return
+	if k.keycode == KEY_F3 and OS.is_debug_build():   # prueba: alterna fondos v002 (ChatGPT) y v001
+		_set_fondos_v002(not _fondos_v002_on)
+		get_viewport().set_input_as_handled()
+		return
+	if not _shortcuts_on():
 		return
 	var n := k.keycode - KEY_0
 	if n < 0 or n > 6:
@@ -314,16 +353,16 @@ func _build_ground() -> void:
 	_solid(Rect2(WIDTH, GROUND_Y - 1200, 240, 2600))
 	# pared de la plataforma alta y piedras en el borde del hueco
 	var wb: Array = _metrics.wall.bounds
-	_place("wall", Vector2(GAP.y + 30, GROUND_Y + 40), 170.0 / float(wb[3]), -9).modulate.a = 0.8
+	_v1(_place("wall", Vector2(GAP.y + 30, GROUND_Y + 40), 170.0 / float(wb[3]), -9)).modulate.a = 0.8
 	_place("stones", Vector2(GAP.x - 20, GROUND_Y + 8), 0.7, -8)
 	_place("stones", Vector2(GAP.y + 40, HIGH_Y + 8), 0.6, -8)
 	# escalón flotante y meseta: sin el escalón la meseta es demasiado alta para un salto
 	_platform(Rect2(STEP_X.x, STEP_Y, STEP_X.y - STEP_X.x, 16), "platform_short")
 	var plateau_top := PLATEAU_Y
-	_ground_strip(PLATEAU.x, PLATEAU.y, plateau_top)
+	_ground_strip(PLATEAU.x, PLATEAU.y, plateau_top, false)
 	_solid(Rect2(PLATEAU.x, plateau_top, PLATEAU.y - PLATEAU.x, HIGH_Y - plateau_top))
 	for side in [PLATEAU.x + 20.0, PLATEAU.y - 20.0]:
-		_place("wall", Vector2(side, HIGH_Y + 30), (HIGH_Y - PLATEAU_Y + 30.0) / float(wb[3]), -9).modulate.a = 0.8
+		_v1(_place("wall", Vector2(side, HIGH_Y + 30), (HIGH_Y - PLATEAU_Y + 30.0) / float(wb[3]), -9)).modulate.a = 0.8
 	# cueva: suelo, cámara honda con el tintero (se sale por una repisa) y paredes
 	_ground_strip(CAVE_X.x, CHAMBER.x, CAVE_Y)
 	_ground_strip(CHAMBER.x, CHAMBER.y, CHAMBER_Y)
@@ -334,25 +373,72 @@ func _build_ground() -> void:
 	_solid(Rect2(CAVE_X.x - 400, CAVE_TOP, 400, 1200))
 	_solid(Rect2(CAVE_X.y, CAVE_TOP, 400, 1200))
 	_platform(Rect2(CHAMBER.x + 40, CHAMBER_LEDGE_Y, 240, 16), "platform_long")
-	# bajo el pozo: repisas para subir; la tapa cierra el tiro hasta romperla
+	# tiro del pozo: repisas para subir saltando desde la cueva; arriba lo cierra la losa (_lid) hasta romperla
 	for i in WELL_LEDGES.size():
 		var y: float = WELL_LEDGES[i]
 		var x0 := WELL_X - 80.0 + (30.0 if i % 2 == 0 else -30.0)
 		_platform(Rect2(x0, y, 160, 16), "platform_long")
-	_plug = _solid(PLUG)
+	_build_piezas_v002()
 	# roca, cueva y pozo dibujados por código (provisional)
 	var back := Node2D.new()
 	back.z_index = -60
 	back.draw.connect(_draw_cave_back.bind(back))
 	add_child(back)
+	_back_node = back
 	var rock := Node2D.new()
 	rock.z_index = -3                      # tapa el chorro de la cascada por encima del techo de la cueva
 	rock.draw.connect(_draw_rock.bind(rock))
 	add_child(rock)
+	_rock_node = rock
+	# roca sobre el tiro del pozo: desde arriba no se ve el camino de abajo; se aparta al bajar a la cueva
+	_tapa_roca = Node2D.new()
+	_tapa_roca.z_index = 2
+	_tapa_roca.draw.connect(_draw_tapa_roca)
+	add_child(_tapa_roca)
 	_terrain = Node2D.new()
 	_terrain.z_index = -2
 	_terrain.draw.connect(_draw_terrain)
 	add_child(_terrain)
+
+
+## Estructuras de ChatGPT (hojas 05-08) que no son tiras de suelo ni repisas: bordes de huecos, meseta,
+## pozo, espinas, techo de la cueva, paso de la cueva, columna, árboles y matas. Las colisiones no cambian.
+func _build_piezas_v002() -> void:
+	# bordes de roca: el que tiene la cornisa a la derecha cierra un hueco por la izquierda, y al revés
+	for e in [[GAP.x, GROUND_Y, GAP.y, HIGH_Y, 380.0], [PIT.x, HIGH_Y, PIT.y, HIGH_Y, 280.0], [HOLE.x, HIGH_Y, HOLE.y, HIGH_Y, 240.0]]:
+		_pieza(T08, 1, (e[0] as float) - (e[4] as float) + 8.0, e[1] as float, e[4] as float, -1)
+		_pieza(T08, 2, (e[2] as float) - 8.0, e[3] as float, e[4] as float, -1)
+	# meseta: acantilado con cornisa, estirado en vertical para que su base llegue al suelo alto
+	var rm: Array = _piezas[T05][0]
+	var alto_meseta := (HIGH_Y + 24.0 - PLATEAU_Y - 4.0) * float(rm[3]) / (float(rm[3]) - float(rm[4]))
+	_pieza(T05, 0, PLATEAU.x - 40.0, PLATEAU_Y + 4.0, PLATEAU.y - PLATEAU.x + 80.0, -1, alto_meseta)
+	# espinas del foso
+	_pieza_pie(T08, 0, (PIT.x + PIT.y) * 0.5, PIT_FLOOR + 4.0, PIT.y - PIT.x + 10.0, -1, SPIKE_H + 24.0)
+	# pozo: brocal (detrás del lobo), losa caída, tiro y tapa vista desde abajo
+	_pozo_v2.cerrado = _pieza_pie(T07, 0, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
+	_pozo_v2.abierto = _pieza_pie(T07, 1, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
+	_pozo_v2.losa = _pieza_pie(T07, 2, WELL_X + WELL_HALF + 110.0, HIGH_Y + 6.0, 170.0, -9)
+	_pozo_v2.tapa = _pieza_pie(T07, 5, WELL_X, PLUG.end.y + 30.0, PLUG.size.x + 30.0, -1)   # losa vista desde abajo
+	var tiro: Node2D = _pieza(T07, 3, WELL_X - WELL_HALF + 6.0, HIGH_Y + 20.0, WELL_HALF * 2.0 - 12.0, -59, CAVE_TOP - HIGH_Y)
+	tiro.modulate.a = 0.55
+	_update_pozo_v2()
+	# techo de la cueva con estalactitas, salvo bajo el pozo y la boca
+	for seg in [Vector2(CAVE_X.x - 40.0, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, HOLE.x), Vector2(HOLE.y, CAVE_X.y + 40.0)]:
+		_tira_v2(T06, [1, 0], seg.x, seg.y, CAVE_TOP - 6.0, 0.42, -2)
+	# paso hacia la Zona de enemigos (junto a la cascada) y columna como pared derecha de la cueva
+	_pieza_pie(T06, 5, CAVE_X.x - 20.0, CAVE_Y + 8.0, 300.0, -1, 0.0, true)   # en espejo: la cueva sigue a la derecha
+	_pieza_pie(T06, 6, CAVE_X.y + 30.0, CAVE_Y + 8.0, 260.0, -1, CAVE_Y - CAVE_TOP + 20.0)   # pared derecha
+	# árboles y matas (sin óleo todavía: la pincelada solo revela color en juncos y piedras)
+	for e in [[7, 760.0, 430.0], [9, 1900.0, 380.0], [7, 2900.0, 400.0], [9, 5100.0, 340.0],
+			[7, 6450.0, 360.0], [9, 8100.0, 360.0], [7, 9300.0, 420.0]]:
+		_pieza_pie(T05, e[0] as int, e[1] as float, _ground_at(e[1] as float) + 6.0, e[2] as float, -18).modulate.a = 0.85
+	for j in 14:
+		var x := 620.0 + j * 690.0
+		if absf(x - GAP.x) < 260.0 or absf(x - WELL_X) < 260.0 or absf(x - PIT.x) < 300.0 or absf(x - HOLE.x) < 300.0 \
+				or (x > PLATEAU.x - 60.0 and x < PLATEAU.y + 60.0):
+			continue
+		var i: int = [10, 11, 12, 5, 6][j % 5]
+		_pieza_pie(T05, i, x, _ground_at(x) + 6.0, 110.0 if i >= 10 else 70.0, -8)
 
 
 ## Altura del suelo en x por arriba (lo que pisa el lobo antes de bajar a la cueva).
@@ -389,10 +475,15 @@ func _platform(r: Rect2, art: String) -> void:
 	var s := _sprite(art, -9)
 	s.scale = Vector2.ONE * f
 	s.position = Vector2(r.position.x - float(b[0]) * f, r.position.y - float(b[1]) * f - 6.0)
+	_v1(s)
+	if art == "platform_short":
+		_pieza(T05, 3, r.position.x - 12.0, r.position.y + 4.0, r.size.x + 24.0, -9)   # piedra flotante
+	elif art == "platform_long":
+		_pieza(T07, 4, r.position.x - 12.0, r.position.y + 4.0, r.size.x + 24.0, -9)   # repisa del pozo
 
 
 ## Tira de suelo a lápiz entre x0 y x1 a la altura y (sin colisión: va aparte).
-func _ground_strip(x0: float, x1: float, ground: float) -> void:
+func _ground_strip(x0: float, x1: float, ground: float, v2 := true) -> void:
 	var x := x0
 	var i := 0
 	while x < x1 - 40.0:
@@ -409,8 +500,15 @@ func _ground_strip(x0: float, x1: float, ground: float) -> void:
 			s.region_enabled = true
 			s.region_rect = Rect2(0, 0, float(b[0]) + room / f, 256)
 		_add_oil(s, id)
+		_v1(s)
 		x += maxf(60.0, float(b[2]) * f - 30.0)
 		i += 1
+	if not v2:
+		return
+	if ground >= CAVE_TOP:
+		_tira_v2(T06, [3, 2, 4], x0, x1, ground + 4.0, 0.55, -10)    # pisos de cueva
+	else:
+		_tira_v2(T05, [4], x0, x1, ground + 4.0, 0.42, -10)          # losa larga
 
 
 func _solid(r: Rect2) -> StaticBody2D:
@@ -431,7 +529,7 @@ func _build_decor() -> void:
 	# self_modulate: el grafito se atenúa, pero el óleo de debajo (hijo) conserva su color al pintarse
 	for e in [["tree_left", 760.0, 2.4], ["tree_right", 1900.0, 2.8], ["tree_left", 2900.0, 2.6], ["tree_right", 5100.0, 2.6],
 			["tree_left", 6450.0, 2.2], ["tree_right", 8100.0, 2.4], ["tree_left", 9300.0, 2.6]]:
-		_place(e[0], Vector2(e[1], _ground_at(e[1]) + 4), e[2], -18).self_modulate.a = 0.38
+		_v1(_place(e[0], Vector2(e[1], _ground_at(e[1]) + 4), e[2], -18)).self_modulate.a = 0.38
 	var skip := [Vector2(GAP.x - 120, GAP.y + 120), Vector2(EXIT_X - 200, WELL_X + WELL_HALF + 60),
 		Vector2(STEP_X.x - 60, PLATEAU.y + 60), Vector2(PIT.x - 80, PIT.y + 80), Vector2(HOLE.x - 80, HOLE.y + 80)]
 	for j in 29:
@@ -775,6 +873,8 @@ func _physics_process(delta: float) -> void:
 		elif brush == "seco":
 			_show_hint("El pincel está seco" if Inventario.tinta <= 0.0 else "Aquí no hay nada que pintar", 1.2)
 	_update_gate_paint()
+	_update_dibujo()
+	_update_tapa_roca(delta)
 	if _mask_dirty:
 		_mask_dirty = false
 		_mask_tex.update(_mask_img)
@@ -1031,13 +1131,13 @@ func _update_places(x: float) -> void:
 	if at_lake and not _at_lake and Inventario.tinta < Inventario.TINTA_MAX:
 		_show_hint("El lago de tinta.  F: llenar el tintero")
 	_at_lake = at_lake
-	# bajo la tapa del pozo (repisa de 965): con tinta en el pincel se rompe de un golpe
-	var at_well := not well_open and absf(x - WELL_X) < 100.0 and absf(y - WELL_LEDGES[1]) < 12.0 and floor_ok
+	# bajo la losa del pozo (repisa más alta del tiro): con tinta en el pincel se rompe de un golpe
+	var at_well := not well_open and absf(x - WELL_X) < 100.0 and absf(y - WELL_LEDGES[3]) < 12.0 and floor_ok
 	if at_well and not _at_well:
 		if Inventario.tinta >= Inventario.COSTO_TRAZO:
-			_show_hint("Una tapa de piedra cierra el pozo.  F: golpearla con el pincel")
+			_show_hint("Una losa de piedra cierra el pozo.  F: golpearla con el pincel")
 		else:
-			_show_hint("Una tapa de piedra cierra el pozo… con tinta en el pincel podrías romperla", 3.5)
+			_show_hint("Una losa de piedra cierra el pozo… con tinta en el pincel podrías romperla", 3.5)
 	_at_well = at_well
 	var over_well := not well_open and absf(x - WELL_X) < WELL_HALF and absf(y - HIGH_Y) < 10.0 and shadows_gone
 	if over_well and not _over_well:
@@ -1053,13 +1153,13 @@ func _strike_well() -> void:
 	_start_action(&"paint_up", walker.lobo.facing)
 
 
-## Rompe la tapa del fondo del pozo y quita la losa de arriba: queda un tiro con repisas hasta el arco.
-## La losa pasa a ser una repisa de un solo sentido, para salir por arriba y volver a bajar.
+## Rompe la losa que cierra la boca del pozo (golpe desde la repisa más alta del tiro): se sale junto al arco.
+## En su lugar queda una repisa de un solo sentido, para salir por arriba y volver a bajar.
 func _open_well(effects: bool) -> void:
 	if well_open:
 		return
 	well_open = true
-	_plug.queue_free()
+	_update_pozo_v2()
 	_lid.queue_free()
 	_platform(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, 16), "bridge")
 	if effects:
@@ -1068,7 +1168,7 @@ func _open_well(effects: bool) -> void:
 				"v": Vector2(randf_range(-160, 160), randf_range(-260, 40)), "r": randf_range(4, 11)})
 		Inventario.marcar("n1_pozo")
 		print("[nivel1] %.1f s: se rompe la tapa del pozo" % _t)
-		_show_hint("La tapa se rompió: sube por el pozo", 3.0)
+		_show_hint("La losa se rompió: sal por el pozo", 3.0)
 
 
 func _update_debris(delta: float) -> void:
@@ -1107,6 +1207,7 @@ func _paint_gate() -> void:
 ## La tinta sube por la puerta desde el pie del trazo (cuadro 4 de paint_up).
 func _reveal_gate() -> void:
 	_gate_paint.visible = true
+	_dibujar_paisaje(true)
 	var tw := create_tween()
 	tw.tween_property(self, "_gate_k", 1.0, 1.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tw.tween_callback(func() -> void:
@@ -1227,34 +1328,43 @@ func _rock_rects() -> Array[Rect2]:
 
 
 func _draw_rock(ci: CanvasItem) -> void:
-	var fill := Color(0.84, 0.82, 0.78)
-	var hatch := Color(0.42, 0.40, 0.37, 0.30)
 	for r in _rock_rects():
-		ci.draw_rect(r, fill)
-		# rayado de lápiz irregular (determinista)
-		var y := r.position.y + 14.0
-		while y < r.end.y - 6.0:
-			var x := r.position.x + fmod(y * 7.3, 37.0)
-			while x < r.end.x - 20.0:
-				var n := sin(x * 0.013 + y * 0.071) * 0.5 + 0.5
-				ci.draw_line(Vector2(x, y), Vector2(x + 14.0 + n * 10.0, y - 9.0 - n * 6.0), hatch, 1.2, true)
-				x += 30.0 + n * 26.0
-			y += 22.0
+		_rock_rect(ci, r)
 		ci.draw_line(r.position, Vector2(r.end.x, r.position.y), Color(0.30, 0.28, 0.26, 0.35), 1.5)
-	# estalactitas en el techo de la cueva
+	# estalactitas en el techo de la cueva (v002: las pone el techo de ChatGPT)
+	if _fondos_v002_on:
+		return
 	var x := CAVE_X.x + 90.0
 	while x < CAVE_X.y - 60.0:
 		if absf(x - WELL_X) > WELL_HALF + 30.0 and (x < HOLE.x - 40.0 or x > HOLE.y + 40.0):
 			var h := 26.0 + fmod(x * 0.37, 38.0)
 			var pts := PackedVector2Array([Vector2(x - 14, CAVE_TOP), Vector2(x + 14, CAVE_TOP), Vector2(x + 2, CAVE_TOP + h)])
-			ci.draw_colored_polygon(pts, fill)
+			ci.draw_colored_polygon(pts, Color(0.84, 0.82, 0.78))   # estalactitas v001
 			ci.draw_polyline(PackedVector2Array([pts[0], pts[2], pts[1]]), Color(0.30, 0.28, 0.26, 0.55), 1.5, true)
 		x += 140.0 + fmod(x * 0.61, 90.0)
 
 
+## Un rectángulo de roca: relleno y rayado de lápiz irregular (determinista, continuo entre rectángulos).
+func _rock_rect(ci: CanvasItem, r: Rect2) -> void:
+	var fill := Color(0.84, 0.82, 0.78)
+	var hatch := Color(0.42, 0.40, 0.37, 0.30)
+	if _fondos_v002_on:                    # tono del relleno de las piezas de ChatGPT
+		fill = Color(0.85, 0.79, 0.73)
+		hatch = Color(0.45, 0.37, 0.30, 0.22)
+	ci.draw_rect(r, fill)
+	var y := r.position.y + 14.0
+	while y < r.end.y - 6.0:
+		var x := r.position.x + fmod(y * 7.3, 37.0)
+		while x < r.end.x - 20.0:
+			var n := sin(x * 0.013 + y * 0.071) * 0.5 + 0.5
+			ci.draw_line(Vector2(x, y), Vector2(x + 14.0 + n * 10.0, y - 9.0 - n * 6.0), hatch, 1.2, true)
+			x += 30.0 + n * 26.0
+		y += 22.0
+
+
 ## Aire de la cueva, del tiro del pozo y de la boca: papel un poco más oscuro, detrás de todo.
 func _draw_cave_back(ci: CanvasItem) -> void:
-	var air := Color(0.88, 0.86, 0.82)
+	var air := Color(0.79, 0.74, 0.68) if _fondos_v002_on else Color(0.88, 0.86, 0.82)
 	ci.draw_rect(Rect2(CAVE_X.x, CAVE_TOP, CAVE_X.y - CAVE_X.x, CHAMBER_Y + 40.0 - CAVE_TOP), air)
 	ci.draw_rect(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, CAVE_TOP - HIGH_Y), air)
 	ci.draw_rect(Rect2(HOLE.x, HIGH_Y, HOLE.y - HOLE.x, CAVE_TOP - HIGH_Y), air)
@@ -1272,8 +1382,9 @@ func _draw_leaf_passage(line: Color) -> void:
 		var a := PI + PI * k / 12.0
 		mouth.append(Vector2(x0 + w * 0.5 + cos(a) * w * 0.5, top + w * 0.5 + sin(a) * w * 0.5))
 	mouth.append(Vector2(x0 + w, CAVE_Y + 2.0))
-	_terrain.draw_colored_polygon(mouth, Color(0.36, 0.34, 0.31))
-	_terrain.draw_polyline(mouth, line, 2.0, true)
+	if not _fondos_v002_on:                # v002: la boca es la entrada de cueva de ChatGPT
+		_terrain.draw_colored_polygon(mouth, Color(0.36, 0.34, 0.31))
+		_terrain.draw_polyline(mouth, line, 2.0, true)
 	var leaf := Color(0.33, 0.47, 0.27)
 	var leaf_dark := Color(0.22, 0.33, 0.18)
 	for i in 9:                                    # lianas con hojas, colgando del borde del arco
@@ -1310,6 +1421,10 @@ func _draw_terrain() -> void:
 	_terrain.draw_rect(door, line, false, 2.5)
 	_terrain.draw_circle(Vector2(door.end.x - 18.0, CAVE_Y - 85.0), 5.0, stone)
 	_draw_leaf_passage(line)
+	if _fondos_v002_on:                    # pozo y espinas: piezas de ChatGPT
+		for d in _debris:
+			_terrain.draw_circle(d.p, d.r, Color(0.62, 0.55, 0.48))
+		return
 	# brocal del pozo (sobre el suelo alto)
 	var l := WELL_X - WELL_HALF - 14.0
 	var r := WELL_X + WELL_HALF + 14.0
@@ -1341,6 +1456,181 @@ func _draw_terrain() -> void:
 		_terrain.draw_colored_polygon(tri, Color(0.20, 0.19, 0.20))
 		_terrain.draw_polyline(PackedVector2Array([tri[0], tri[2], tri[1]]), Color(0.08, 0.08, 0.09), 1.5, true)
 		x += 24.0
+
+
+## Fondos de ChatGPT: papel fijo detrás de todo, capas con parallax e hitos lejanos (cabeza y faro), cada uno
+## en boceto y definido. Los de v001 (Environment) se quedan armados pero ocultos, para comparar con F3.
+func _build_fondos_v002() -> void:
+	for k in 4:                                  # 0 boceto, 1 definido, 2 boceto con bordes, 3 definido con bordes
+		var m := ShaderMaterial.new()
+		m.shader = load("res://zones/revelar_dibujo.gdshader")
+		m.set_shader_parameter("invertir", k % 2 == 0)
+		m.set_shader_parameter("borde", 0.12 if k >= 2 else 0.0)
+		_mats_dibujo.append(m)
+	var paper_layer := CanvasLayer.new()
+	paper_layer.layer = -99
+	add_child(paper_layer)
+	var paper := TextureRect.new()
+	paper.texture = load(ESTADOS + "/01_papel.png")
+	paper.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	paper.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	paper.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	paper_layer.add_child(paper)
+	_fondos_v002.append(paper)
+	for c in CAPAS_V002 + HITOS_V002:
+		var hito: bool = (c as Array).size() > 6
+		var tex := load(ESTADOS + "/definido/" + (c[0] as String) + ".png") as Texture2D
+		var f: float = ((c[4] as float) / tex.get_width()) if hito else ((c[4] as float) / tex.get_height())
+		var par := Parallax2D.new()
+		par.name = "v002_" + (c[0] as String)
+		par.scroll_scale = Vector2(c[1] as float, 1.0)
+		if not hito:
+			par.repeat_size = Vector2(tex.get_width() * f, 0)
+			par.repeat_times = 3
+		par.z_index = c[2] as int
+		add_child(par)
+		for estado in ["boceto", "definido"]:
+			var sp := Sprite2D.new()
+			sp.texture = load(ESTADOS + "/" + estado + "/" + (c[0] as String) + ".png")
+			sp.centered = false
+			sp.scale = Vector2.ONE * f
+			sp.position = Vector2(c[5] as float, GROUND_Y + (c[6] as float)) if hito else Vector2(-150, GROUND_Y + (c[5] as float))
+			sp.modulate.a = c[3] as float
+			sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+			sp.material = _mats_dibujo[(0 if estado == "boceto" else 1) + (0 if hito else 2)]
+			par.add_child(sp)
+		_fondos_v002.append(par)
+	_set_fondos_v002(true)
+
+
+## Al pintar la puerta: el frente de dibujo sale de la puerta y cubre el paisaje (boceto -> definido).
+func _dibujar_paisaje(efecto: bool) -> void:
+	if not efecto:
+		_dibujo_r = DIBUJO_FIN
+		return
+	var tw := create_tween()
+	tw.tween_interval(0.5)
+	tw.tween_property(self, "_dibujo_r", DIBUJO_FIN, DIBUJO_DURA).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+
+## Pasa a los shaders dónde está la puerta en pantalla y cuánto ha avanzado el frente.
+func _update_dibujo() -> void:
+	if _mats_dibujo.is_empty():
+		return
+	var centro := get_viewport().get_canvas_transform() * Vector2(EXIT_X, HIGH_Y - 150.0)
+	var r := _dibujo_r if _dibujo_r < DIBUJO_FIN else 100000.0
+	for m in _mats_dibujo:
+		m.set_shader_parameter("centro", centro)
+		m.set_shader_parameter("radio", r)
+
+
+func _set_fondos_v002(on: bool) -> void:
+	_fondos_v002_on = on
+	for n in _fondos_v002:
+		n.visible = on
+	for child in _env.get_children():
+		if child is CanvasLayer:
+			(child as CanvasLayer).visible = not on
+		elif child is Parallax2D:
+			(child as Parallax2D).visible = not on
+	for n in _arte_v1:
+		if is_instance_valid(n):
+			n.visible = not on
+	for n in _arte_v2:
+		if is_instance_valid(n):
+			n.visible = on
+	_update_pozo_v2()
+	for n in [_rock_node, _back_node, _terrain, _tapa_roca]:
+		if n:
+			n.queue_redraw()
+
+
+## Registra arte de una sola versión: queda visible según la versión activa (F3).
+func _v1(n: CanvasItem) -> CanvasItem:
+	_arte_v1.append(n)
+	n.visible = not _fondos_v002_on
+	return n
+
+
+func _v2(n: CanvasItem) -> CanvasItem:
+	_arte_v2.append(n)
+	n.visible = _fondos_v002_on
+	return n
+
+
+## Pieza i de una hoja de ChatGPT (región de la hoja original, sin recortar el PNG), escalada a «ancho».
+## Se coloca con su borde izquierdo en x y su fila de pisada en pisada_y; «alto» > 0 la estira en vertical.
+## Devuelve un nodo con dos sprites en el mismo lugar: boceto y definido (los cambia _update_dibujo).
+func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Node2D:
+	var r: Array = _piezas[hoja][i]
+	var n := Node2D.new()
+	n.z_index = z
+	var fx := ancho / float(r[2])
+	var fy := fx if alto <= 0.0 else alto / float(r[3])
+	n.scale = Vector2(fx, fy)
+	n.position = Vector2(x, pisada_y - float(r[4]) * fy)
+	for k in 2:
+		var at := AtlasTexture.new()
+		at.atlas = load(ESTADOS + "/" + ["boceto", "definido"][k] + "/" + hoja + ".png")
+		at.region = Rect2(r[0], r[1], r[2], r[3])
+		var sp := Sprite2D.new()
+		sp.texture = at
+		sp.centered = false
+		sp.flip_h = espejo
+		sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		sp.material = _mats_dibujo[k]
+		n.add_child(sp)
+	add_child(n)
+	_v2(n)
+	return n
+
+
+## Pieza apoyada por su base: centrada en cx, con el borde de abajo en base_y.
+func _pieza_pie(hoja: String, i: int, cx: float, base_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Node2D:
+	var n := _pieza(hoja, i, cx - ancho * 0.5, 0.0, ancho, z, alto, espejo)
+	var r: Array = _piezas[hoja][i]
+	n.position.y = base_y - float(r[3]) * n.scale.y
+	return n
+
+
+## Repite piezas de una hoja entre x0 y x1 (se solapan un poco); la última se recorta para no pasarse.
+func _tira_v2(hoja: String, ids: Array, x0: float, x1: float, pisada_y: float, f: float, z: int) -> void:
+	var x := x0 - 16.0
+	var k := 0
+	while x < x1 - 30.0:
+		var i: int = ids[k % ids.size()]
+		var r: Array = _piezas[hoja][i]
+		var n := _pieza(hoja, i, x, pisada_y, float(r[2]) * f, z)
+		var room := (x1 + 16.0 - x) / f
+		if room < float(r[2]):
+			for sp in n.get_children():
+				((sp as Sprite2D).texture as AtlasTexture).region.size.x = room
+		x += float(r[2]) * f - 34.0
+		k += 1
+
+
+## El pozo de ChatGPT: brocal cerrado o abierto, losa caída y tapa vista desde la cueva.
+func _update_pozo_v2() -> void:
+	if _pozo_v2.is_empty():
+		return
+	var on := _fondos_v002_on
+	_pozo_v2.cerrado.visible = on and not well_open
+	_pozo_v2.tapa.visible = on and not well_open
+	_pozo_v2.abierto.visible = on and well_open
+	_pozo_v2.losa.visible = on and well_open
+
+
+## La roca sobre el tiro se ve mientras el lobo está arriba y se desvanece cuando baja (bajo el suelo alto).
+func _update_tapa_roca(delta: float) -> void:
+	var abajo := walker.position.y > HIGH_Y + 40.0 and walker.position.x > GAP.y
+	_tapa_roca.modulate.a = move_toward(_tapa_roca.modulate.a, 0.0 if abajo else 1.0, delta * 3.0)
+	_tapa_roca.visible = _tapa_roca.modulate.a > 0.0
+
+
+func _draw_tapa_roca() -> void:
+	var r := Rect2(WELL_X - WELL_HALF - 2.0, HIGH_Y + 22.0, WELL_HALF * 2.0 + 4.0, CAVE_TOP - HIGH_Y - 22.0)
+	_rock_rect(_tapa_roca, r)
 
 
 ## Lleva al lobo al punto de una sala (Ñ / L en main.gd, para probar).

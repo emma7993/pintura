@@ -3,7 +3,8 @@ extends Node
 ##   1) huye de las sombras (camina, se apura, corre), salta el hueco, toma el pincel y da la pincelada;
 ##   2) sube el escalón y la meseta, salta el foso de espinas y baja por la boca de la cueva;
 ##   3) en la cámara honda toma el tintero, sale por la repisa y va a la izquierda hasta la cascada;
-##   4) vuelve bajo el pozo, sube a la repisa, rompe la tapa, sube por el tiro hasta el arco, lo pinta y entra.
+##   4) vuelve bajo el pozo, sube saltando por las repisas del tiro, rompe la losa de arriba, sale junto al arco,
+##      lo pinta y entra.
 ## Se activa con `-- --auto-nivel1` (probar_nivel1.bat). El nivel escribe en el log su guion ([nivel1]).
 
 const LIMITE := 150.0             # segundos: si no terminó, algo falló
@@ -134,18 +135,18 @@ func _explorar() -> void:
 					_f("llena el tintero")
 				else:
 					_fase = 10
-		10:  # bajo el pozo: sube a la repisa de 965
+		10:  # bajo el pozo: sube saltando por las repisas del tiro hasta la más alta
 			if _ir(n.WELL_X, false) and suelo:
-				if _cerca(y, n.WELL_LEDGES[1]):
+				if _cerca(y, n.WELL_LEDGES[3]):
 					_fase = 11
 				else:
 					_saltar("repisa del pozo")
-		11:  # rompe la tapa
+		11:  # rompe la losa de arriba
 			_mover(0.0)
 			if n.well_open:
 				_fase = 12
 			elif suelo:
-				_f("golpea la tapa")
+				_f("golpea la losa")
 		12:  # sube por el tiro hasta el suelo alto
 			_ir(n.WELL_X, false)
 			if suelo and _cerca(y, n.HIGH_Y):

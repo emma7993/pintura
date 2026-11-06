@@ -1,0 +1,13 @@
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/02_cielo_nubes.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/03_ruinas_lejanas.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/04_plano_medio.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/05_terreno_vegetacion.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/06_cueva_modulos.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/07_pozo.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/08_foso_espinas.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/09_cabeza_lejana.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/definido/10_faro_lejano.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/09_cabeza_lejana.png
+Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001/boceto/10_faro_lejano.png
+
+Adicionales: definido/02–08 (copias intactas de la entrega anterior) y compartido/01_papel.png.
