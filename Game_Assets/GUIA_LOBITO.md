@@ -97,10 +97,16 @@ hacer ediciones puntuales sobre esa misma hoja (cola, bufanda, grano). Ese es el
    la mayoría por script, y prohibir explícitamente regenerar o redibujar. Pedidos cortos y concretos.
 
 **Base vigente de la carrera: v016** (elegida por Emma el 2026-11-06). Pedido de corrección: v021.
-Ya está en el juego (`characters/lobo/run_v016`, zancada 446 px por ciclo) con el grano puesto por
-`herramientas/ajustar_run_v016.py`. Probado por script: el grano sale bien; adelgazar la bufanda o achicar
-el ojo erosionando bordes NO sirve (se pierden los flecos y el ojo queda con anillo). Eso, y los brazos,
-van por edición local de ChatGPT (v021).
+En el juego: `characters/lobo/run_v021` (bufanda y limpieza de v021, brazos de v016 y grano), armado por
+`herramientas/ajustar_run.py`; zancada 446 px por ciclo. Pedido siguiente: v022, solo manos en punta.
+
+12. **Al redibujar brazos sobre el torso, los rellena negro sobre negro** y borra la línea gris que los
+   separa: en v021 los brazos casi desaparecían y en el GIF parpadeaban (en la lámina fija no se nota).
+   Pedir que conserve el contorno gris completo del brazo y revisar siempre el GIF cuadro por cuadro.
+13. **Sí sirve que entregue máscaras por zona** (brazos, bufanda, limpieza): permiten quedarse con lo bueno
+   de cada versión. Pedirlas siempre en ediciones locales.
+- Por script: el grano sale bien; adelgazar la bufanda o achicar el ojo erosionando bordes NO sirve
+  (se pierden los flecos y el ojo queda con anillo).
 
 ## 6. Revisión de cada entrega (Claude)
 1. Correr `herramientas/comparar_lobo.py` y revisar la lámina con zoom de cabeza y manos.
@@ -130,3 +136,12 @@ x=150 y debajo de la bufanda. En v020/02 y 08 el valor literal es 84%, pero el m
 borde calculado antes del recorte dan 100%. No cambiar el cuerpo ni los rangos de esta guía para ocultarlo:
 conservar ambos datos y la explicación en la entrega. El comparador original no fue modificado.
 Ver `Wolf_Run_v020/INTEGRACION_CLAUDE.md`. La aprobación artística sigue correspondiendo al usuario.
+
+### Pedido de edición local v021 (2026-11-06)
+
+El usuario eligió expresamente los ocho PNG v016 como base de v021. En este pedido no se trasladan cambios
+de modelo, grano, carbón, tamaño ni movimiento de v019/v020. Solo brazos/manos, grosor de bufanda y las
+manchas indicadas. Se entregan máscaras separadas y una comparación RGBA con cero diferencias fuera de
+ellas; cabeza/orejas/ojo, zonas visibles protegidas de cola y banda de pies quedan idénticos. La bufanda
+se afina por remuestreo local, conservando flecos y ondeo, sin erosión. Ver la lámina v016–v021 y
+`Wolf_Run_v021/INTEGRACION_CLAUDE.md` antes de integrar.
