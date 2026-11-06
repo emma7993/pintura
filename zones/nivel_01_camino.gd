@@ -59,8 +59,13 @@ const HIGH_Y := 490.0                     # suelo de la plataforma alta, despué
 const BRUSH_X := 4560.0                   # la luz con el pincel
 const EXIT_X := 5700.0                    # puerta de regreso al lienzo principal
 const GATE_SCALE := 1.8
+## Fila donde pisa el lobo en las piezas de suelo: [hoja, pieza, fila]. La superficie de la losa (05/4) va de la
+## fila 56 (orilla de atrás) a la ~80 (de adelante); la de los bordes de los huecos (08/1 y 08/2), de la ~23 a la ~65.
+const PISADAS := [["05_terreno_vegetacion", 4, 74.0], ["08_foso_espinas", 1, 44.0], ["08_foso_espinas", 2, 48.0],
+	["05_terreno_vegetacion", 3, 28.0]]
+const LOSA_ESCALA := 0.8                  # losa del suelo (antes 0.42: su superficie apenas tenía 10 px de fondo)
 const MESETA_PISADA := 76.0               # fila de la superficie de la meseta en su pieza (hoja 05)
-const PIE_HUNDIDO := 20.0                # árboles y matas: la base entra en la losa del suelo (si no, flotan)
+const PIE_HUNDIDO := 8.0                # árboles y matas: la base entra en la losa del suelo (si no, flotan)
 const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
 const WELL_X := 5980.0                    # pozo junto al arco; su tiro baja hasta el techo de la cueva
 const WELL_HALF := 110.0
@@ -195,6 +200,12 @@ func _ready() -> void:
 	_env.set("show_modules", false)       # solo fondos: el terreno se arma aquí, con el hueco
 	add_child(_env)
 	_piezas = JSON.parse_string(FileAccess.get_file_as_string(ESTADOS + "/piezas.json"))
+	# en piezas.json la pisada es la orilla de atrás de la superficie: con ella el lobo caminaba sobre el borde
+	# y se veía encima del suelo. Se pisa más adelante, para que se vea un poco de suelo detrás de él.
+	for k in PISADAS:
+		var r: Array = (_piezas[k[0]][k[1]] as Array).duplicate()
+		r[4] = k[2]
+		_piezas[k[0]][k[1]] = r
 	_build_fondos_v002()
 	_effects = load(COLOR_ART + "/Godot/Color_Effects.tres")
 	_build_paint_mask()
@@ -526,7 +537,7 @@ func _ground_strip(x0: float, x1: float, ground: float, v2 := true) -> void:
 	if ground >= CAVE_TOP:
 		_tira_v2(T06, [3, 2, 4], x0, x1, ground + 4.0, 0.55, -10)    # pisos de cueva
 	else:
-		_tira_v2(T05, [4], x0, x1, ground + 4.0, 0.42, -10)          # losa larga
+		_tira_v2(T05, [4], x0, x1, ground + 4.0, LOSA_ESCALA, -10)   # losa larga
 
 
 func _solid(r: Rect2) -> StaticBody2D:
@@ -1629,17 +1640,17 @@ func _pieza_pie(hoja: String, i: int, cx: float, base_y: float, ancho: float, z:
 
 ## Repite piezas de una hoja entre x0 y x1 (se solapan un poco); la última se recorta para no pasarse.
 func _tira_v2(hoja: String, ids: Array, x0: float, x1: float, pisada_y: float, f: float, z: int) -> void:
-	var x := x0 - 16.0
+	var x := x0                            # sin pasarse: lo que asomaba al hueco se veía bajo el borde de roca
 	var k := 0
 	while x < x1 - 30.0:
 		var i: int = ids[k % ids.size()]
 		var r: Array = _piezas[hoja][i]
 		var n := _pieza(hoja, i, x, pisada_y, float(r[2]) * f, z)
-		var room := (x1 + 16.0 - x) / f
+		var room := (x1 - x) / f
 		if room < float(r[2]):
 			for sp in n.get_children():
 				((sp as Sprite2D).texture as AtlasTexture).region.size.x = room
-		x += float(r[2]) * f - 34.0
+		x += float(r[2]) * f - maxf(34.0, 110.0 * f)   # traslape: las puntas redondeadas no deben verse como uniones
 		k += 1
 
 
