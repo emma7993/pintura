@@ -7,10 +7,10 @@ DESCARGAS="${DESCARGAS:-$HOME/Downloads}"
 MARCA="$HOME/.pintura_ultima_entrega"
 [ -f "$MARCA" ] || touch -t "$(date -v-1d +%Y%m%d%H%M 2>/dev/null || date -d '-1 day' +%Y%m%d%H%M)" "$MARCA"
 
-LISTA=$(find "$DESCARGAS" -maxdepth 1 -type f \( -iname '*.png' -o -iname '*.webp' -o -iname '*.jpg' \) -newer "$MARCA" | sort)
+LISTA=$(find "$DESCARGAS" -maxdepth 1 -type f -iname 'ChatGPT*' \( -iname '*.png' -o -iname '*.webp' -o -iname '*.jpg' \) -newer "$MARCA" | sort)
 N=$(printf '%s' "$LISTA" | grep -c .)
 if [ "$N" -eq 0 ]; then
-	echo "No hay imagenes nuevas en Descargas desde la ultima entrega."
+	echo "No hay imagenes nuevas de ChatGPT (archivos \"ChatGPT Image...\") en Descargas desde la ultima entrega."; echo "Si tus imagenes de ChatGPT se bajan con otro nombre, avisale a Claude."
 	read -r -p "Enter para cerrar" _; exit 0
 fi
 echo "Imagenes nuevas en Descargas ($N):"

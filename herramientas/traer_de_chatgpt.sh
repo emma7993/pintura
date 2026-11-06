@@ -22,7 +22,7 @@ done
 N=$(printf '%s' "$RUTAS" | grep -c .)
 [ "$N" -eq 0 ] && { echo "No pegaste ninguna ruta valida."; exit 1; }
 
-LISTA=$(ls -tr "$DESCARGAS"/*.png 2>/dev/null | tail -n "$N")
+LISTA=$(ls -tr "$DESCARGAS"/ChatGPT*.png 2>/dev/null | tail -n "$N")
 HAY=$(printf '%s\n' "$LISTA" | grep -c .)
 [ "$HAY" -lt "$N" ] && { echo "Hay $N rutas pero solo $HAY PNG en $DESCARGAS."; exit 1; }
 
