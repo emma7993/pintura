@@ -1,0 +1,3 @@
+Copia de integración de Game_Assets/Nivel_01_Camino/Cueva_v002/separacion_v001 (ChatGPT, 2026-11-05): hojas 05-08 sin cambios.
+piezas.json: rectángulo y fila de pisada de cada pieza (herramientas/piezas_camino_v002.py).
+Lo usa zones/nivel_01_camino.gd (_pieza, _build_piezas_v002); F3 alterna con los bocetos v001.
