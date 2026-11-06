@@ -92,6 +92,12 @@ hacer ediciones puntuales sobre esa misma hoja (cola, bufanda, grano). Ese es el
 10. **Sí acepta ajustes deterministas** (por script) para color y tamaño: carbón, tamaño del ojo, escala.
    Usarlos para lo numérico y dejar la herramienta de imágenes solo para la forma.
 
+11. **Cada versión nueva aleja el resultado**: de v017 a v020 se perdió la frescura de v016, que Emma
+   prefirió. Cuando una versión ya gusta, trabajar SOBRE sus PNG con pocas correcciones (máximo cuatro),
+   la mayoría por script, y prohibir explícitamente regenerar o redibujar. Pedidos cortos y concretos.
+
+**Base vigente de la carrera: v016** (elegida por Emma el 2026-11-06). Pedido de corrección: v021.
+
 ## 6. Revisión de cada entrega (Claude)
 1. Correr `herramientas/comparar_lobo.py` y revisar la lámina con zoom de cabeza y manos.
 2. Comparar contra las tablas de las secciones 2 y 3, y el movimiento contra la sección 4.
