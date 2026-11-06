@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diwa48vsbbw06"
-path="res://.godot/imported/01_papel.png-df0b805fa89992d51db05089ba6892c6.ctex"
+uid="uid://wbweyrh22q7"
+path="res://.godot/imported/08_foso_espinas.png-027075d3bb678008ac70ac721d27d70f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/worlds/camino/nivel_01_fondos_v002/01_papel.png"
-dest_files=["res://.godot/imported/01_papel.png-df0b805fa89992d51db05089ba6892c6.ctex"]
+source_file="res://art/worlds/camino/nivel_01_estados_v001/boceto/08_foso_espinas.png"
+dest_files=["res://.godot/imported/08_foso_espinas.png-027075d3bb678008ac70ac721d27d70f.ctex"]
 
 [params]
 

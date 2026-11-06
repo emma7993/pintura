@@ -1,7 +1,8 @@
 extends SceneTree
 ## Capturas del Nivel 1 en puntos fijos (para revisar arte sin jugar). Necesita pantalla (xvfb en Linux):
 ##   Godot --path . -s res://herramientas/captura_nivel1.gd -- x,y x,y ...   -> pruebas/captura_N.png
-## Sin puntos usa una lista de lugares clave. «--v001» captura con el arte anterior (como F3).
+## Sin puntos usa una lista de lugares clave. «--v001» captura con el arte anterior (como F3); «--puerta», con la
+## puerta ya pintada (arte definido).
 
 var _puntos: Array[Vector2] = []
 var _lvl: Node
@@ -21,6 +22,8 @@ func _initialize() -> void:
 	Inventario.reiniciar()
 	Inventario.pincel = true
 	Inventario.progreso = {"n1_sombras": true, "n1_trazo_x": 5210.0}
+	if "--puerta" in args:
+		Inventario.progreso["n1_puerta"] = true
 	_lvl = (load("res://zones/nivel_01_camino.tscn") as PackedScene).instantiate()
 	root.add_child(_lvl)
 	if "--v001" in args:

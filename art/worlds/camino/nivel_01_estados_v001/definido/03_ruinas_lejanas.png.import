@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwykbfb5ukvgu"
-path="res://.godot/imported/02_cielo_nubes.png-39fd6f684797683cf274740d567394f6.ctex"
+uid="uid://navvn28aiqx5"
+path="res://.godot/imported/03_ruinas_lejanas.png-85cff7ee6849753562ffdba771f166a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/worlds/camino/nivel_01_fondos_v002/02_cielo_nubes.png"
-dest_files=["res://.godot/imported/02_cielo_nubes.png-39fd6f684797683cf274740d567394f6.ctex"]
+source_file="res://art/worlds/camino/nivel_01_estados_v001/definido/03_ruinas_lejanas.png"
+dest_files=["res://.godot/imported/03_ruinas_lejanas.png-85cff7ee6849753562ffdba771f166a5.ctex"]
 
 [params]
 

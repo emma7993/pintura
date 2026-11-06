@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1fxb4sgrpy65"
-path="res://.godot/imported/08_foso_espinas.png-9c594287a6722aa1c1e17889c398a203.ctex"
+uid="uid://bqcw5clx0ih23"
+path="res://.godot/imported/09_cabeza_lejana.png-e796f61571a381f301266f8b4a3e0c39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/worlds/camino/nivel_01_piezas_v002/08_foso_espinas.png"
-dest_files=["res://.godot/imported/08_foso_espinas.png-9c594287a6722aa1c1e17889c398a203.ctex"]
+source_file="res://art/worlds/camino/nivel_01_estados_v001/definido/09_cabeza_lejana.png"
+dest_files=["res://.godot/imported/09_cabeza_lejana.png-e796f61571a381f301266f8b4a3e0c39.ctex"]
 
 [params]
 

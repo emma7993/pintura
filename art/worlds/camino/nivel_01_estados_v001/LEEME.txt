@@ -1,0 +1,4 @@
+Copia de integración de Game_Assets/Nivel_01_Camino/Cueva_v002/estados_v001 (ChatGPT, 2026-11-05), sin cambios.
+boceto/: antes de pintar la puerta del Nivel 1; definido/: después (se dibuja desde la puerta al pintarla).
+piezas.json: rectángulo y fila de pisada de cada pieza de las hojas 05-08 (herramientas/piezas_camino.py).
+Lo usa zones/nivel_01_camino.gd; F3 alterna con los bocetos v001.

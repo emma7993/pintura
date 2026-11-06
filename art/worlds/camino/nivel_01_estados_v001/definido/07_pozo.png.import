@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyajdomu72s6"
-path="res://.godot/imported/05_terreno_vegetacion.png-01bce3686cf2e2ea651eb5566c6e3526.ctex"
+uid="uid://wfe0bqbhko7t"
+path="res://.godot/imported/07_pozo.png-c0f3926aaa05495fdce6940423d37630.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/worlds/camino/nivel_01_piezas_v002/05_terreno_vegetacion.png"
-dest_files=["res://.godot/imported/05_terreno_vegetacion.png-01bce3686cf2e2ea651eb5566c6e3526.ctex"]
+source_file="res://art/worlds/camino/nivel_01_estados_v001/definido/07_pozo.png"
+dest_files=["res://.godot/imported/07_pozo.png-c0f3926aaa05495fdce6940423d37630.ctex"]
 
 [params]
 

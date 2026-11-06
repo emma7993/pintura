@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d15k11nf5ywgm"
-path="res://.godot/imported/03_ruinas_lejanas.png-0d70db7a4dd4ae7483f470668e801b5c.ctex"
+uid="uid://bh4afmkx6k67o"
+path="res://.godot/imported/04_plano_medio.png-0af2737f63a6ef70c65a368c65cd7434.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/worlds/camino/nivel_01_fondos_v002/03_ruinas_lejanas.png"
-dest_files=["res://.godot/imported/03_ruinas_lejanas.png-0d70db7a4dd4ae7483f470668e801b5c.ctex"]
+source_file="res://art/worlds/camino/nivel_01_estados_v001/definido/04_plano_medio.png"
+dest_files=["res://.godot/imported/04_plano_medio.png-0af2737f63a6ef70c65a368c65cd7434.ctex"]
 
 [params]
 

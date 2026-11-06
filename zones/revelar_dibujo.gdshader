@@ -2,7 +2,7 @@ shader_type canvas_item;
 // Revela una capa como si se dibujara: un frente irregular que sale de «centro» (px de pantalla) y crece con
 // «radio». Junto al frente el trazo aparece más oscuro (grafito recién puesto) y se asienta detrás.
 // invertir = true hace lo contrario (la capa se borra al pasar el frente): para el boceto que se va.
-// También funde los bordes izquierdo y derecho (capas que se repiten), como bordes_fundidos.gdshader.
+// También funde los bordes izquierdo y derecho (capas que se repiten).
 uniform vec2 centro = vec2(640.0, 360.0);
 uniform float radio = 0.0;
 uniform float suave = 140.0;

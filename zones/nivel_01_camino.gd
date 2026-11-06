@@ -20,17 +20,25 @@ signal near_exit_changed(is_near: bool)
 
 const ART := "res://art/worlds/camino/nivel_01_bocetos_v001"
 const COLOR_ART := "res://art/worlds/camino/nivel_01_color_v001"   # óleo, máscaras, barrera, cascada, altar
-const FONDOS_V002 := "res://art/worlds/camino/nivel_01_fondos_v002" # fondos de ChatGPT (F3 alterna con v001)
-const PIEZAS_V002 := "res://art/worlds/camino/nivel_01_piezas_v002" # hojas 05-08 de ChatGPT y sus piezas
+## Arte de ChatGPT en dos estados: boceto/ antes de pintar la puerta y definido/ después; al pintarla, lo
+## definido se dibuja desde la puerta hacia todo el paisaje (zones/revelar_dibujo.gdshader). F3 alterna con v001.
+const ESTADOS := "res://art/worlds/camino/nivel_01_estados_v001"
+const DIBUJO_DURA := 3.2                  # s que tarda el frente en cruzar la pantalla al pintar la puerta
+const DIBUJO_FIN := 2600.0                # radio (px de pantalla) que cubre toda la pantalla
 const T05 := "05_terreno_vegetacion"
 const T06 := "06_cueva_modulos"
 const T07 := "07_pozo"
 const T08 := "08_foso_espinas"
-## Capas de FONDOS_V002: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
+## Capas de fondo: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
 const CAPAS_V002 := [
 	["02_cielo_nubes", 0.08, -70, 0.85, 760.0, -720.0],
 	["03_ruinas_lejanas", 0.20, -50, 0.80, 760.0, -640.0],
 	["04_plano_medio", 0.45, -30, 0.90, 760.0, -600.0],
+]
+## Hitos lejanos de la portada (no se repiten): [archivo, parallax, z, opacidad, ancho, x, y de arriba sobre GROUND_Y]
+const HITOS_V002 := [
+	["09_cabeza_lejana", 0.08, -45, 0.60, 700.0, 380.0, -540.0],
+	["10_faro_lejano", 0.12, -60, 0.50, 640.0, 900.0, -540.0],
 ]
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
@@ -155,7 +163,9 @@ var _cam: Camera2D
 var _hint: Label
 var _fade: ColorRect
 var _vignette: TextureRect
-var _fondos_v002: Array[CanvasItem] = []  # papel y capas de ChatGPT (FONDOS_V002)
+var _fondos_v002: Array[CanvasItem] = []  # papel y capas de fondo de ChatGPT (ESTADOS)
+var _mats_dibujo: Array[ShaderMaterial] = []   # revelar_dibujo: boceto y definido, con y sin bordes fundidos
+var _dibujo_r := 0.0                      # radio del frente de dibujo (0 = boceto, DIBUJO_FIN = definido)
 var _fondos_v002_on := true
 var _piezas := {}                          # hoja -> [[x, y, ancho, alto, fila de pisada], ...] (piezas.json)
 var _arte_v1: Array[CanvasItem] = []      # módulos de bocetos v001 que reemplazan las piezas v002
@@ -174,7 +184,7 @@ func _ready() -> void:
 	_env.set("world_width", WIDTH)
 	_env.set("show_modules", false)       # solo fondos: el terreno se arma aquí, con el hueco
 	add_child(_env)
-	_piezas = JSON.parse_string(FileAccess.get_file_as_string(PIEZAS_V002 + "/piezas.json"))
+	_piezas = JSON.parse_string(FileAccess.get_file_as_string(ESTADOS + "/piezas.json"))
 	_build_fondos_v002()
 	_effects = load(COLOR_ART + "/Godot/Color_Effects.tres")
 	_build_paint_mask()
@@ -257,6 +267,7 @@ func _restore_progress() -> void:
 		gate_open = true
 		_gate_k = 1.0
 		_gate_paint.visible = true
+		_dibujar_paisaje(false)
 		walker.position = Vector2(EXIT_X + 120.0, HIGH_Y)   # vuelve del lienzo por la puerta
 	_update_inventory_ui()
 
@@ -403,7 +414,7 @@ func _build_piezas_v002() -> void:
 	_pozo_v2.abierto = _pieza_pie(T07, 1, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
 	_pozo_v2.losa = _pieza_pie(T07, 2, WELL_X + WELL_HALF + 110.0, HIGH_Y + 6.0, 170.0, -9)
 	_pozo_v2.tapa = _pieza_pie(T07, 5, WELL_X, PLUG.end.y + 18.0, PLUG.size.x + 30.0, -1)
-	var tiro := _pieza(T07, 3, WELL_X - WELL_HALF + 6.0, HIGH_Y + 20.0, WELL_HALF * 2.0 - 12.0, -59, CAVE_TOP - HIGH_Y)
+	var tiro: Node2D = _pieza(T07, 3, WELL_X - WELL_HALF + 6.0, HIGH_Y + 20.0, WELL_HALF * 2.0 - 12.0, -59, CAVE_TOP - HIGH_Y)
 	tiro.modulate.a = 0.55
 	_update_pozo_v2()
 	# techo de la cueva con estalactitas, salvo bajo el pozo y la boca
@@ -857,6 +868,7 @@ func _physics_process(delta: float) -> void:
 		elif brush == "seco":
 			_show_hint("El pincel está seco" if Inventario.tinta <= 0.0 else "Aquí no hay nada que pintar", 1.2)
 	_update_gate_paint()
+	_update_dibujo()
 	if _mask_dirty:
 		_mask_dirty = false
 		_mask_tex.update(_mask_img)
@@ -1189,6 +1201,7 @@ func _paint_gate() -> void:
 ## La tinta sube por la puerta desde el pie del trazo (cuadro 4 de paint_up).
 func _reveal_gate() -> void:
 	_gate_paint.visible = true
+	_dibujar_paisaje(true)
 	var tw := create_tween()
 	tw.tween_property(self, "_gate_k", 1.0, 1.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tw.tween_callback(func() -> void:
@@ -1434,43 +1447,71 @@ func _draw_terrain() -> void:
 		x += 24.0
 
 
-## Fondos de ChatGPT (FONDOS_V002): papel fijo detrás de todo y capas con parallax. Los de v001 (Environment)
-## se quedan armados pero ocultos, para comparar con F3.
+## Fondos de ChatGPT: papel fijo detrás de todo, capas con parallax e hitos lejanos (cabeza y faro), cada uno
+## en boceto y definido. Los de v001 (Environment) se quedan armados pero ocultos, para comparar con F3.
 func _build_fondos_v002() -> void:
+	for k in 4:                                  # 0 boceto, 1 definido, 2 boceto con bordes, 3 definido con bordes
+		var m := ShaderMaterial.new()
+		m.shader = load("res://zones/revelar_dibujo.gdshader")
+		m.set_shader_parameter("invertir", k % 2 == 0)
+		m.set_shader_parameter("borde", 0.12 if k >= 2 else 0.0)
+		_mats_dibujo.append(m)
 	var paper_layer := CanvasLayer.new()
 	paper_layer.layer = -99
 	add_child(paper_layer)
 	var paper := TextureRect.new()
-	paper.texture = load(FONDOS_V002 + "/01_papel.png")
+	paper.texture = load(ESTADOS + "/01_papel.png")
 	paper.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	paper.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	paper.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	paper_layer.add_child(paper)
 	_fondos_v002.append(paper)
-	var bordes := ShaderMaterial.new()           # las capas no son continuas: se funden sus bordes
-	bordes.shader = load("res://zones/bordes_fundidos.gdshader")
-	for c in CAPAS_V002:
-		var tex := load(FONDOS_V002 + "/" + (c[0] as String) + ".png") as Texture2D
-		var f: float = (c[4] as float) / tex.get_height()
+	for c in CAPAS_V002 + HITOS_V002:
+		var hito: bool = (c as Array).size() > 6
+		var tex := load(ESTADOS + "/definido/" + (c[0] as String) + ".png") as Texture2D
+		var f: float = ((c[4] as float) / tex.get_width()) if hito else ((c[4] as float) / tex.get_height())
 		var par := Parallax2D.new()
 		par.name = "v002_" + (c[0] as String)
 		par.scroll_scale = Vector2(c[1] as float, 1.0)
-		par.repeat_size = Vector2(tex.get_width() * f, 0)
-		par.repeat_times = 3
+		if not hito:
+			par.repeat_size = Vector2(tex.get_width() * f, 0)
+			par.repeat_times = 3
 		par.z_index = c[2] as int
 		add_child(par)
-		var s := Sprite2D.new()
-		s.texture = tex
-		s.centered = false
-		s.scale = Vector2.ONE * f
-		s.position = Vector2(-150, GROUND_Y + (c[5] as float))
-		s.modulate.a = c[3] as float
-		s.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-		s.material = bordes
-		par.add_child(s)
+		for estado in ["boceto", "definido"]:
+			var sp := Sprite2D.new()
+			sp.texture = load(ESTADOS + "/" + estado + "/" + (c[0] as String) + ".png")
+			sp.centered = false
+			sp.scale = Vector2.ONE * f
+			sp.position = Vector2(c[5] as float, GROUND_Y + (c[6] as float)) if hito else Vector2(-150, GROUND_Y + (c[5] as float))
+			sp.modulate.a = c[3] as float
+			sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+			sp.material = _mats_dibujo[(0 if estado == "boceto" else 1) + (0 if hito else 2)]
+			par.add_child(sp)
 		_fondos_v002.append(par)
 	_set_fondos_v002(true)
+
+
+## Al pintar la puerta: el frente de dibujo sale de la puerta y cubre el paisaje (boceto -> definido).
+func _dibujar_paisaje(efecto: bool) -> void:
+	if not efecto:
+		_dibujo_r = DIBUJO_FIN
+		return
+	var tw := create_tween()
+	tw.tween_interval(0.5)
+	tw.tween_property(self, "_dibujo_r", DIBUJO_FIN, DIBUJO_DURA).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+
+## Pasa a los shaders dónde está la puerta en pantalla y cuánto ha avanzado el frente.
+func _update_dibujo() -> void:
+	if _mats_dibujo.is_empty():
+		return
+	var centro := get_viewport().get_canvas_transform() * Vector2(EXIT_X, HIGH_Y - 150.0)
+	var r := _dibujo_r if _dibujo_r < DIBUJO_FIN else 100000.0
+	for m in _mats_dibujo:
+		m.set_shader_parameter("centro", centro)
+		m.set_shader_parameter("radio", r)
 
 
 func _set_fondos_v002(on: bool) -> void:
@@ -1509,32 +1550,37 @@ func _v2(n: CanvasItem) -> CanvasItem:
 
 ## Pieza i de una hoja de ChatGPT (región de la hoja original, sin recortar el PNG), escalada a «ancho».
 ## Se coloca con su borde izquierdo en x y su fila de pisada en pisada_y; «alto» > 0 la estira en vertical.
-func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Sprite2D:
+## Devuelve un nodo con dos sprites en el mismo lugar: boceto y definido (los cambia _update_dibujo).
+func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Node2D:
 	var r: Array = _piezas[hoja][i]
-	var at := AtlasTexture.new()
-	at.atlas = load(PIEZAS_V002 + "/" + hoja + ".png")
-	at.region = Rect2(r[0], r[1], r[2], r[3])
-	var s := Sprite2D.new()
-	s.texture = at
-	s.centered = false
-	s.z_index = z
-	s.flip_h = espejo
-	s.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+	var n := Node2D.new()
+	n.z_index = z
 	var fx := ancho / float(r[2])
 	var fy := fx if alto <= 0.0 else alto / float(r[3])
-	s.scale = Vector2(fx, fy)
-	s.position = Vector2(x, pisada_y - float(r[4]) * fy)
-	add_child(s)
-	_v2(s)
-	return s
+	n.scale = Vector2(fx, fy)
+	n.position = Vector2(x, pisada_y - float(r[4]) * fy)
+	for k in 2:
+		var at := AtlasTexture.new()
+		at.atlas = load(ESTADOS + "/" + ["boceto", "definido"][k] + "/" + hoja + ".png")
+		at.region = Rect2(r[0], r[1], r[2], r[3])
+		var sp := Sprite2D.new()
+		sp.texture = at
+		sp.centered = false
+		sp.flip_h = espejo
+		sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		sp.material = _mats_dibujo[k]
+		n.add_child(sp)
+	add_child(n)
+	_v2(n)
+	return n
 
 
 ## Pieza apoyada por su base: centrada en cx, con el borde de abajo en base_y.
-func _pieza_pie(hoja: String, i: int, cx: float, base_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Sprite2D:
-	var s := _pieza(hoja, i, cx - ancho * 0.5, 0.0, ancho, z, alto, espejo)
+func _pieza_pie(hoja: String, i: int, cx: float, base_y: float, ancho: float, z: int, alto := 0.0, espejo := false) -> Node2D:
+	var n := _pieza(hoja, i, cx - ancho * 0.5, 0.0, ancho, z, alto, espejo)
 	var r: Array = _piezas[hoja][i]
-	s.position.y = base_y - float(r[3]) * s.scale.y
-	return s
+	n.position.y = base_y - float(r[3]) * n.scale.y
+	return n
 
 
 ## Repite piezas de una hoja entre x0 y x1 (se solapan un poco); la última se recorta para no pasarse.
@@ -1544,11 +1590,11 @@ func _tira_v2(hoja: String, ids: Array, x0: float, x1: float, pisada_y: float, f
 	while x < x1 - 30.0:
 		var i: int = ids[k % ids.size()]
 		var r: Array = _piezas[hoja][i]
-		var s := _pieza(hoja, i, x, pisada_y, float(r[2]) * f, z)
+		var n := _pieza(hoja, i, x, pisada_y, float(r[2]) * f, z)
 		var room := (x1 + 16.0 - x) / f
 		if room < float(r[2]):
-			var at := s.texture as AtlasTexture
-			at.region.size.x = room
+			for sp in n.get_children():
+				((sp as Sprite2D).texture as AtlasTexture).region.size.x = room
 		x += float(r[2]) * f - 34.0
 		k += 1
 
