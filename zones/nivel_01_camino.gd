@@ -140,6 +140,7 @@ var _moved := false
 var _metrics := {}
 var _env: Node2D
 var _cam: Camera2D
+var _cam_ahead := 0.0
 var _hint: Label
 var _fade: ColorRect
 var _vignette: TextureRect
@@ -888,6 +889,7 @@ func _on_attack_hit(anim: StringName, area: Rect2) -> void:
 			_update_inventory_ui()
 			print("[nivel1] %.1f s: el pincel deshizo %d mano(s) (tinta %d)" % [_t, n, Inventario.tinta])
 			bounced = true
+			walker.golpe_conectado(area.get_center(), n > 1)
 	var spikes := Rect2(PIT.x, PIT_FLOOR - SPIKE_H, PIT.y - PIT.x, SPIKE_H + 10.0)
 	if area.intersects(spikes):
 		bounced = true
@@ -1131,7 +1133,8 @@ func _update_gate_paint() -> void:
 func _update_camera(delta: float) -> void:
 	# mira hacia adelante cuando corre, para ver lo que viene
 	var ahead := clampf(walker.velocity.x * 0.45, -60.0, 200.0)
-	_cam.offset.x = move_toward(_cam.offset.x, ahead, 220.0 * delta)
+	_cam_ahead = move_toward(_cam_ahead, ahead, 220.0 * delta)
+	_cam.offset = Vector2(_cam_ahead, -70.0) + Efectos.temblor_ahora()
 
 
 func _update_exits() -> void:

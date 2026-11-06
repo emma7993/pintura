@@ -5,6 +5,7 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 ## Reparto de trabajo
 - ChatGPT/Codex: arte y diseño, siempre en `Game_Assets/` (versionado, con `.gdignore`: Godot NO lo importa).
 - Claude: estructura, código e integración. El arte se copia a `characters/...` (p. ej. `characters/lobo/salto_v004/`). No editar los originales de `Game_Assets`; los ajustes se hacen con scripts en `herramientas/`.
+- Sprites del lobito: toda entrega se revisa con `Game_Assets/GUIA_LOBITO.md` (medidas del original, rasgos, movimiento de Hornet y errores repetidos de ChatGPT) y `python herramientas/comparar_lobo.py <carpeta>`; actualizar la guía en cada revisión.
 - Leer `Game_Assets/LEEME_CODEX_CLAUDE.md` y el `INTEGRACION_CLAUDE.md` de la entrega vigente antes de integrar arte nuevo.
 
 ## Estado del juego
@@ -19,6 +20,7 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 - Godot: `C:\Users\Immix\Documents\Godot_v4.7.2-stable_win64_console.exe`.
 - Ñ adelanta y L regresa una sala de Camino en el orden del mapa (solo versión de desarrollo; `main.gd`). El Sello musical tiene la puerta sellada al fondo sobre una repisa alta (`sellada`/`clave` en `MapaDatos`) y su entrada no se cierra; prueba: `herramientas/prueba_sello.gd`.
 - Ataques: combo de tres golpes de lado y corte hacia arriba con `characters/lobo/combo_v001` (de `Wolf_Combo_v001`, convertido con `herramientas/ajustar_combo_v001.py`); el tajo hacia abajo (pogo) sigue siendo el de pincel_v003.
+- Efectos de respuesta (`characters/lobo/efectos.gd`): polvo de grafito al despegar, aterrizar, correr, dash y pared; aplastar/estirar; `golpe_conectado()` da chispas de tinta, micro-pausa y temblor. Las cámaras suman `Efectos.temblor_ahora()` a su offset; la del mundo se adelanta hacia donde corre.
 - Física del lobo (`player.gd`): salto y carrera medidos de una grabación de Silksong, escalados al tamaño del lobo; `herramientas/prueba_salto.gd` comprueba las medidas (salto completo ~240 px, toque ~70 px, carrera 360).
 
 ## Git (dos computadoras: Windows y Mac)

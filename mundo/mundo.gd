@@ -50,6 +50,7 @@ var _portals: Array[Dictionary] = []      # {"rect": Rect2, "room": id, "to": id
 var _cur := ""
 var _bench := MapaDatos.INICIO
 var _cam: Camera2D
+var _cam_ahead := 0.0
 var _title: Label
 var _hint: Label
 var _map: MapaUI
@@ -331,6 +332,12 @@ func _build_ui() -> void:
 # --- juego -------------------------------------------------------------------------------------------
 
 func _physics_process(_delta: float) -> void:
+	# la cámara se adelanta hacia donde corre el lobo (en la posición, que sí respeta los límites de la sala);
+	# el temblor de los golpes va en el offset, que es de pocos píxeles
+	var ahead := clampf(walker.velocity.x * 0.4, -150.0, 150.0)
+	_cam_ahead = move_toward(_cam_ahead, ahead, 200.0 * _delta)
+	_cam.position.x = _cam_ahead
+	_cam.offset = Efectos.temblor_ahora()
 	var id := room_at(walker.position + Vector2(0, -40))
 	if id != "" and id != _cur:
 		_cur = id

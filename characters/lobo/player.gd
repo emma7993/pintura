@@ -89,6 +89,11 @@ var _dash_buffer := 0.0
 var _invulnerable := 0.0
 var _hurt_t := 0.0
 var _dead := false
+## Efectos de respuesta (efectos.gd): aplastar y estirar al lobo, polvo de los pasos y del aterrizaje.
+var _squash := Vector2.ONE
+var _paso_t := 0.0
+var _en_suelo_antes := true
+var _vy_caida := 0.0
 
 
 func _ready() -> void:
@@ -144,6 +149,9 @@ func _physics_process(delta: float) -> void:
 		_dash_ready = on_floor
 		_dash_dir = signf(dir) if dir != 0.0 else lobo.facing
 		lobo.face(_dash_dir)
+		Efectos.polvo(get_parent(), global_position + Vector2(-_dash_dir * 20.0, -4.0), 7,
+			Vector2(-_dash_dir, -0.25), 0.9, 260.0, 9.0)
+		_squash = Vector2(1.18, 0.86)
 	if _dash_t > 0.0:
 		_dash_t -= delta
 		velocity = Vector2(_dash_dir * DASH_SPEED, 0.0)
@@ -215,11 +223,16 @@ func _physics_process(delta: float) -> void:
 		_jump_t = 0.0
 		_jump_hold = JUMP_HOLD
 		_cut_pending = false
+		Efectos.polvo(get_parent(), global_position, 6, Vector2.UP, PI * 0.9, 140.0, 8.0)
+		_squash = Vector2(0.86, 1.16)
 	elif _buffer > 0.0 and _wall_dir != 0.0:
 		velocity = Vector2(-_wall_dir * WALL_JUMP.x, WALL_JUMP.y)
 		_wall_lock = WALL_JUMP_LOCK
 		_buffer = 0.0
 		lobo.face(-_wall_dir)
+		Efectos.polvo(get_parent(), global_position + Vector2(_wall_dir * 26.0, -60.0), 6,
+			Vector2(-_wall_dir, 0.2), 1.2, 180.0, 8.0)
+		_squash = Vector2(0.88, 1.14)
 		_wall_dir = 0.0
 		lobo.special = "wall_jump"
 
@@ -246,7 +259,9 @@ func _physics_process(delta: float) -> void:
 		lobo.play_attack(_attack_anim)
 		attack_started.emit(_attack_anim)
 
+	_vy_caida = velocity.y
 	move_and_slide()
+	_efectos_suelo(delta)
 
 	_on_one_way = false
 	for i in get_slide_collision_count():
@@ -274,6 +289,37 @@ func _on_attack_frame(anim: StringName, frame: int) -> void:
 func pogo() -> void:
 	velocity.y = POGO_VELOCITY
 	_dash_ready = true
+	Efectos.golpe(get_parent(), global_position + Vector2(0, 30))
+	_squash = Vector2(0.88, 1.14)
+
+
+## El nivel la llama cuando un tajo dio en algo: chispas en el punto, micro-pausa y temblor.
+func golpe_conectado(pos: Vector2, fuerte := false) -> void:
+	Efectos.golpe(get_parent(), pos, fuerte)
+
+
+## Polvo al aterrizar (según la fuerza de la caída) y a cada paso de la carrera.
+func _efectos_suelo(delta: float) -> void:
+	var suelo := is_on_floor()
+	if suelo and not _en_suelo_antes and _vy_caida > 300.0:
+		var k := clampf((_vy_caida - 300.0) / 800.0, 0.0, 1.0)
+		var n := 4 + int(k * 6.0)
+		Efectos.polvo(get_parent(), global_position + Vector2(-10, 0), n, Vector2.LEFT, 0.7, 120.0 + k * 140.0, 8.0)
+		Efectos.polvo(get_parent(), global_position + Vector2(10, 0), n, Vector2.RIGHT, 0.7, 120.0 + k * 140.0, 8.0)
+		_squash = Vector2(1.0 + 0.22 * k + 0.06, 1.0 - 0.18 * k - 0.05)
+		if k > 0.85:
+			Efectos.temblar(2.0, 0.10)
+		_paso_t = 0.1
+	_en_suelo_antes = suelo
+	if suelo and absf(velocity.x) > 250.0 and _dash_t <= 0.0:
+		_paso_t -= delta
+		if _paso_t <= 0.0:
+			_paso_t = 0.2
+			var atras := -signf(velocity.x)
+			Efectos.polvo(get_parent(), global_position + Vector2(atras * 14.0, -2.0), 2,
+				Vector2(atras, -0.5), 0.8, 70.0, 6.0)
+	else:
+		_paso_t = 0.0
 
 
 ## Recibe un golpe desde from_x: pierde una vida, sale despedido y queda invulnerable un momento.
@@ -283,6 +329,9 @@ func hurt(from_x: float, amount := 1) -> bool:
 		return false
 	vida = maxi(0, vida - amount)
 	_invulnerable = INVULNERABLE
+	Efectos.chispas(get_parent(), global_position + Vector2(0, -60), 10)
+	Efectos.temblar(8.0, 0.25)
+	Efectos.pausa(get_tree(), 0.10)
 	_dash_t = 0.0
 	var away := signf(global_position.x - from_x) if global_position.x != from_x else -lobo.facing
 	velocity = Vector2(away * KNOCKBACK.x, KNOCKBACK.y)
@@ -322,4 +371,6 @@ func _on_body_anim_finished() -> void:
 
 
 func _animate(delta: float) -> void:
+	_squash = _squash.lerp(Vector2.ONE, 1.0 - exp(-16.0 * delta))
+	lobo.scale = _squash * SPRITE_SCALE
 	lobo.animate(delta, absf(velocity.x) / maxf(max_speed, 1.0), velocity.x, not is_on_floor(), velocity.y)
