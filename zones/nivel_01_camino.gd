@@ -29,16 +29,20 @@ const T05 := "05_terreno_vegetacion"
 const T06 := "06_cueva_modulos"
 const T07 := "07_pozo"
 const T08 := "08_foso_espinas"
-## Capas de fondo: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
+## Fondos v002 (herramientas/fondos_camino_v002.py): bocetos rellenos de blanco y definidos de un mismo tono.
+const FONDOS := "res://art/worlds/camino/nivel_01_fondos_v002"
+## Capas que se repiten: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
 const CAPAS_V002 := [
-	["02_cielo_nubes", 0.08, -70, 0.85, 760.0, -720.0],
-	["03_ruinas_lejanas", 0.20, -50, 0.80, 760.0, -640.0],
-	["04_plano_medio", 0.45, -30, 0.90, 760.0, -600.0],
+	["02_cielo_nubes", 0.08, -70, 1.0, 760.0, -720.0],
+	["04_plano_medio", 0.45, -30, 1.0, 760.0, -600.0],
 ]
-## Hitos lejanos de la portada (no se repiten): [archivo, parallax, z, opacidad, ancho, x, y de arriba sobre GROUND_Y]
+## Lejanía: partes de la pintura en una sola capa (parallax 0.3) que se recorre de izquierda a derecha:
+## el paisaje del camino al inicio, la casa hacia la puerta pintada y el faro al final.
+## [archivo, parallax, z, opacidad, ancho, x, y de arriba sobre GROUND_Y, bordes fundidos]
 const HITOS_V002 := [
-	["09_cabeza_lejana", 0.08, -45, 0.60, 700.0, 380.0, -540.0],
-	["10_faro_lejano", 0.12, -60, 0.50, 640.0, 900.0, -540.0],
+	["03_ruinas_lejanas", 0.30, -52, 1.0, 1500.0, -60.0, -640.0, true],
+	["09_cabeza_lejana", 0.30, -50, 1.0, 640.0, 1680.0, -540.0, false],   # lugar de la casa (pendiente de ChatGPT)
+	["10_faro_lejano", 0.30, -50, 1.0, 720.0, 2850.0, -560.0, false],
 ]
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
@@ -52,6 +56,7 @@ const HIGH_Y := 490.0                     # suelo de la plataforma alta, despué
 const BRUSH_X := 4560.0                   # la luz con el pincel
 const EXIT_X := 5700.0                    # puerta de regreso al lienzo principal
 const GATE_SCALE := 1.8
+const PIE_HUNDIDO := 20.0                # árboles y matas: la base entra en la losa del suelo (si no, flotan)
 const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
 const WELL_X := 5980.0                    # pozo junto al arco; su tiro baja hasta el techo de la cueva
 const WELL_HALF := 110.0
@@ -383,17 +388,20 @@ func _build_ground() -> void:
 	var back := Node2D.new()
 	back.z_index = -60
 	back.draw.connect(_draw_cave_back.bind(back))
+	back.material = _mat_tierra()
 	add_child(back)
 	_back_node = back
 	var rock := Node2D.new()
 	rock.z_index = -3                      # tapa el chorro de la cascada por encima del techo de la cueva
 	rock.draw.connect(_draw_rock.bind(rock))
+	rock.material = _mat_tierra()
 	add_child(rock)
 	_rock_node = rock
 	# roca sobre el tiro del pozo: desde arriba no se ve el camino de abajo; se aparta al bajar a la cueva
 	_tapa_roca = Node2D.new()
 	_tapa_roca.z_index = 2
 	_tapa_roca.draw.connect(_draw_tapa_roca)
+	_tapa_roca.material = _mat_tierra()
 	add_child(_tapa_roca)
 	_terrain = Node2D.new()
 	_terrain.z_index = -2
@@ -431,14 +439,14 @@ func _build_piezas_v002() -> void:
 	# árboles y matas (sin óleo todavía: la pincelada solo revela color en juncos y piedras)
 	for e in [[7, 760.0, 430.0], [9, 1900.0, 380.0], [7, 2900.0, 400.0], [9, 5100.0, 340.0],
 			[7, 6450.0, 360.0], [9, 8100.0, 360.0], [7, 9300.0, 420.0]]:
-		_pieza_pie(T05, e[0] as int, e[1] as float, _ground_at(e[1] as float) + 6.0, e[2] as float, -18).modulate.a = 0.85
+		_pieza_pie(T05, e[0] as int, e[1] as float, _ground_at(e[1] as float) + PIE_HUNDIDO, e[2] as float, -18)
 	for j in 14:
 		var x := 620.0 + j * 690.0
 		if absf(x - GAP.x) < 260.0 or absf(x - WELL_X) < 260.0 or absf(x - PIT.x) < 300.0 or absf(x - HOLE.x) < 300.0 \
 				or (x > PLATEAU.x - 60.0 and x < PLATEAU.y + 60.0):
 			continue
 		var i: int = [10, 11, 12, 5, 6][j % 5]
-		_pieza_pie(T05, i, x, _ground_at(x) + 6.0, 110.0 if i >= 10 else 70.0, -8)
+		_pieza_pie(T05, i, x, _ground_at(x) + PIE_HUNDIDO, 110.0 if i >= 10 else 70.0, -12)
 
 
 ## Altura del suelo en x por arriba (lo que pisa el lobo antes de bajar a la cueva).
@@ -1315,6 +1323,7 @@ func _rock_rects() -> Array[Rect2]:
 	var band := HIGH_Y + 26.0
 	var deep := CHAMBER_Y + 420.0
 	var r: Array[Rect2] = []
+	r.append(Rect2(-240.0, GROUND_Y + 26.0, GAP.x + 240.0, deep - GROUND_Y - 26.0))   # bajo el suelo del inicio
 	# franja entre el suelo alto y el techo de la cueva, con los huecos del pozo, el foso y la boca
 	for seg in [Vector2(GAP.y, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, PIT.x), Vector2(PIT.y, HOLE.x), Vector2(HOLE.y, WIDTH + 200.0)]:
 		r.append(Rect2(seg.x, band, seg.y - seg.x, CAVE_TOP - band))
@@ -1470,17 +1479,21 @@ func _build_fondos_v002() -> void:
 	var paper_layer := CanvasLayer.new()
 	paper_layer.layer = -99
 	add_child(paper_layer)
-	var paper := TextureRect.new()
-	paper.texture = load(ESTADOS + "/01_papel.png")
-	paper.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	paper.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
-	paper.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	paper_layer.add_child(paper)
-	_fondos_v002.append(paper)
+	for hoja in ["01_papel", "01_papel_boceto"]:     # papel cálido; encima, el blanco del boceto que se va
+		var paper := TextureRect.new()
+		paper.texture = load(FONDOS + "/" + hoja + ".png")
+		paper.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		paper.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+		paper.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		paper.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		if hoja == "01_papel_boceto":
+			paper.material = _mats_dibujo[0]
+		paper_layer.add_child(paper)
+		_fondos_v002.append(paper)
 	for c in CAPAS_V002 + HITOS_V002:
 		var hito: bool = (c as Array).size() > 6
-		var tex := load(ESTADOS + "/definido/" + (c[0] as String) + ".png") as Texture2D
+		var bordes: bool = (c[7] as bool) if hito else true
+		var tex := load(FONDOS + "/definido/" + (c[0] as String) + ".png") as Texture2D
 		var f: float = ((c[4] as float) / tex.get_width()) if hito else ((c[4] as float) / tex.get_height())
 		var par := Parallax2D.new()
 		par.name = "v002_" + (c[0] as String)
@@ -1492,13 +1505,13 @@ func _build_fondos_v002() -> void:
 		add_child(par)
 		for estado in ["boceto", "definido"]:
 			var sp := Sprite2D.new()
-			sp.texture = load(ESTADOS + "/" + estado + "/" + (c[0] as String) + ".png")
+			sp.texture = load(FONDOS + "/" + estado + "/" + (c[0] as String) + ".png")
 			sp.centered = false
 			sp.scale = Vector2.ONE * f
 			sp.position = Vector2(c[5] as float, GROUND_Y + (c[6] as float)) if hito else Vector2(-150, GROUND_Y + (c[5] as float))
 			sp.modulate.a = c[3] as float
 			sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-			sp.material = _mats_dibujo[(0 if estado == "boceto" else 1) + (0 if hito else 2)]
+			sp.material = _mats_dibujo[(0 if estado == "boceto" else 1) + (2 if bordes else 0)]
 			par.add_child(sp)
 		_fondos_v002.append(par)
 	_set_fondos_v002(true)
@@ -1512,6 +1525,16 @@ func _dibujar_paisaje(efecto: bool) -> void:
 	var tw := create_tween()
 	tw.tween_interval(0.5)
 	tw.tween_property(self, "_dibujo_r", DIBUJO_FIN, DIBUJO_DURA).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+
+## Material de la roca y el aire dibujados por código: blanco de boceto hasta que llega el frente de dibujo.
+func _mat_tierra() -> ShaderMaterial:
+	var m := ShaderMaterial.new()
+	m.shader = load("res://zones/revelar_dibujo.gdshader")
+	m.set_shader_parameter("aclarar", true)
+	m.set_shader_parameter("radio", _dibujo_r)
+	_mats_dibujo.append(m)
+	return m
 
 
 ## Pasa a los shaders dónde está la puerta en pantalla y cuánto ha avanzado el frente.
@@ -1572,7 +1595,7 @@ func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: in
 	n.position = Vector2(x, pisada_y - float(r[4]) * fy)
 	for k in 2:
 		var at := AtlasTexture.new()
-		at.atlas = load(ESTADOS + "/" + ["boceto", "definido"][k] + "/" + hoja + ".png")
+		at.atlas = load(FONDOS + "/" + ["boceto", "definido"][k] + "/" + hoja + ".png")
 		at.region = Rect2(r[0], r[1], r[2], r[3])
 		var sp := Sprite2D.new()
 		sp.texture = at

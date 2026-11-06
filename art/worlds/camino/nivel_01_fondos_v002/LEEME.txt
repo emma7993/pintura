@@ -1,0 +1,2 @@
+Generado por herramientas/fondos_camino_v002.py desde nivel_01_estados_v001 (no editar a mano).
+boceto/: relleno blanco dentro de la silueta y lápiz encima. definido/: mismo tono y lejanía, opaco.

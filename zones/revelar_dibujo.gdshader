@@ -8,6 +8,8 @@ uniform float radio = 0.0;
 uniform float suave = 140.0;
 uniform bool invertir = false;
 uniform float borde = 0.0;
+// aclarar = true: no se borra ni aparece; antes del frente se ve en blanco de boceto (roca dibujada por código).
+uniform bool aclarar = false;
 
 float hash(vec2 p) {
 	return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -25,7 +27,10 @@ void fragment() {
 	float n = ruido(px / 70.0) * 0.65 + ruido(px / 13.0) * 0.35;
 	float d = distance(px, centro) + (n - 0.5) * suave * 1.6;
 	float k = 1.0 - smoothstep(radio - suave, radio, d);   // 1 = ya dibujado
-	if (invertir) {
+	if (aclarar) {
+		vec3 boceto = mix(COLOR.rgb, vec3(0.975, 0.97, 0.96), 0.82);
+		COLOR.rgb = mix(boceto, COLOR.rgb, k);
+	} else if (invertir) {
 		COLOR.a *= 1.0 - k;
 	} else {
 		float frente = smoothstep(radio - suave, radio - suave * 0.35, d) * k;
