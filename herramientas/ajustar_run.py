@@ -1,9 +1,9 @@
 """Carrera del lobo para el juego, sin tocar los originales de Game_Assets.
 
-Base: Wolf_Run_v021 (v016 con la bufanda adelgazada y la limpieza de ChatGPT). Los brazos de v021 salieron
-negro sobre negro y parpadean en movimiento, así que dentro de su máscara (Source/Masks/NN_brazos.png, fuera de
-la de bufanda) se vuelven a poner los brazos de v016. Encima, grano fino de lápiz en el carbón del cuerpo
-(v016 quedó plano, desviación ~2.7; meta ~5). Escribe characters/lobo/run_v021/01..08.png.
+Base: Wolf_Run_v022 (v021 con los brazos de v016 y las manos afiladas en punta). En los cuadros 04-06 la mano
+de atrás queda sobre la cola y el cuerpo; al afilarla, v022 recortó un hueco rectangular en ellos, así que ahí
+(máscara Source/Masks/NN_mano_1.png) se deja la base sin afilar. Encima, grano fino de lápiz en el carbón del
+cuerpo (meta ~5 de desviación, como el original). Escribe characters/lobo/run_v022/01..08.png.
 
 Uso: python herramientas/ajustar_run.py
 """
@@ -13,21 +13,21 @@ import numpy as np
 from PIL import Image, ImageFilter
 
 RAIZ = Path(__file__).resolve().parent.parent
-V016 = RAIZ / "Game_Assets/Wolf_Run_v016/Sprites/run"
-ORIG = RAIZ / "Game_Assets/Wolf_Run_v021/Sprites/run"
-MASCARAS = RAIZ / "Game_Assets/Wolf_Run_v021/Source/Masks"
-SALIDA = RAIZ / "characters/lobo/run_v021"
+ENTREGA = RAIZ / "Game_Assets/Wolf_Run_v022"
+ORIG = ENTREGA / "Sprites/run"
+BASE = ENTREGA / "Source/Base"
+MASCARAS = ENTREGA / "Source/Masks"
+SALIDA = RAIZ / "characters/lobo/run_v022"
+SIN_AFILAR = {"04": ["mano_1"], "05": ["mano_1"], "06": ["mano_1"]}   # mano sobre la cola: v022 abría hueco
 rng = np.random.default_rng(16)
 
 
 def ajustar(im: Image.Image, nombre: str) -> Image.Image:
     a = np.array(im.convert("RGBA")).astype(np.float32)
-    # brazos de v016 donde v021 los redibujó (sin tocar la bufanda nueva)
-    brazos = np.array(Image.open(MASCARAS / f"{nombre}_brazos.png").convert("L")) > 0
-    bufanda = np.array(Image.open(MASCARAS / f"{nombre}_bufanda.png").convert("L")) > 0
-    viejo = np.array(Image.open(V016 / f"{nombre}.png").convert("RGBA")).astype(np.float32)
-    sel = brazos & ~bufanda
-    a[sel] = viejo[sel]
+    for mano in SIN_AFILAR.get(nombre, []):
+        sel = np.array(Image.open(MASCARAS / f"{nombre}_{mano}.png").convert("L")) > 0
+        base = np.array(Image.open(BASE / f"{nombre}.png").convert("RGBA")).astype(np.float32)
+        a[sel] = base[sel]
     # grano de lápiz en el carbón del cuerpo
     carbon = (a[..., 3] > 128) & (a[..., 0] < 70) & (a[..., 1] < 70) & (a[..., 2] < 70)
     ruido = rng.normal(128.0, 40.0, carbon.shape).clip(0, 255).astype(np.uint8)

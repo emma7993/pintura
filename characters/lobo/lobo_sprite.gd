@@ -17,8 +17,8 @@ const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BA
 const ART := "res://characters/lobo/pincel_v003"
 ## Carrera con el modelo de Wolf_Run_v014: reemplaza esa animación de
 ## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
-## Carrera v021 (v016 con la bufanda corregida) con los brazos de v016 y grano: herramientas/ajustar_run.py.
-const RUN_ART := "res://characters/lobo/run_v021"
+## Carrera v022 (v021 + brazos de v016 + manos en punta) con grano: herramientas/ajustar_run.py.
+const RUN_ART := "res://characters/lobo/run_v022"
 ## Salto con el estilo del lobo original (Wolf_Salto_v004, copia directa).
 const SALTO := "res://characters/lobo/salto_v004"
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con

@@ -97,14 +97,17 @@ hacer ediciones puntuales sobre esa misma hoja (cola, bufanda, grano). Ese es el
    la mayoría por script, y prohibir explícitamente regenerar o redibujar. Pedidos cortos y concretos.
 
 **Base vigente de la carrera: v016** (elegida por Emma el 2026-11-06). Pedido de corrección: v021.
-En el juego: `characters/lobo/run_v021` (bufanda y limpieza de v021, brazos de v016 y grano), armado por
-`herramientas/ajustar_run.py`; zancada 446 px por ciclo. Pedido siguiente: v022, solo manos en punta.
+En el juego: `characters/lobo/run_v022` (bufanda y limpieza de v021, brazos de v016, manos en punta de v022 y
+grano), armado por `herramientas/ajustar_run.py`; zancada 446 px por ciclo. La carrera normal queda cerrada.
 
 12. **Al redibujar brazos sobre el torso, los rellena negro sobre negro** y borra la línea gris que los
    separa: en v021 los brazos casi desaparecían y en el GIF parpadeaban (en la lámina fija no se nota).
    Pedir que conserve el contorno gris completo del brazo y revisar siempre el GIF cuadro por cuadro.
 13. **Sí sirve que entregue máscaras por zona** (brazos, bufanda, limpieza): permiten quedarse con lo bueno
    de cada versión. Pedirlas siempre en ediciones locales.
+14. **Al afilar una mano que queda encima de la cola o del cuerpo, recorta un hueco rectangular** en ellos
+   (v022, cuadros 04-06, mano de atrás): pedir que solo quite píxeles que dan al fondo, nunca dentro de la
+   figura. Esas manos se dejaron sin afilar por script.
 - Por script: el grano sale bien; adelgazar la bufanda o achicar el ojo erosionando bordes NO sirve
   (se pierden los flecos y el ojo queda con anillo).
 
