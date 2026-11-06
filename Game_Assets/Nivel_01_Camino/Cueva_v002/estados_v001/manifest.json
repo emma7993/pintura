@@ -1,0 +1,155 @@
+[
+  {
+    "nombre": "02_cielo_nubes.png",
+    "boceto": "boceto/02_cielo_nubes.png",
+    "definido": "definido/02_cielo_nubes.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      105
+    ],
+    "alpha_definido": [
+      0,
+      145
+    ]
+  },
+  {
+    "nombre": "03_ruinas_lejanas.png",
+    "boceto": "boceto/03_ruinas_lejanas.png",
+    "definido": "definido/03_ruinas_lejanas.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      121
+    ],
+    "alpha_definido": [
+      0,
+      253
+    ]
+  },
+  {
+    "nombre": "04_plano_medio.png",
+    "boceto": "boceto/04_plano_medio.png",
+    "definido": "definido/04_plano_medio.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      135
+    ],
+    "alpha_definido": [
+      0,
+      255
+    ]
+  },
+  {
+    "nombre": "05_terreno_vegetacion.png",
+    "boceto": "boceto/05_terreno_vegetacion.png",
+    "definido": "definido/05_terreno_vegetacion.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      255
+    ],
+    "alpha_definido": [
+      0,
+      255
+    ]
+  },
+  {
+    "nombre": "06_cueva_modulos.png",
+    "boceto": "boceto/06_cueva_modulos.png",
+    "definido": "definido/06_cueva_modulos.png",
+    "ancho": 1536,
+    "alto": 1024,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      159
+    ],
+    "alpha_definido": [
+      0,
+      254
+    ]
+  },
+  {
+    "nombre": "07_pozo.png",
+    "boceto": "boceto/07_pozo.png",
+    "definido": "definido/07_pozo.png",
+    "ancho": 1536,
+    "alto": 1024,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      160
+    ],
+    "alpha_definido": [
+      0,
+      254
+    ]
+  },
+  {
+    "nombre": "08_foso_espinas.png",
+    "boceto": "boceto/08_foso_espinas.png",
+    "definido": "definido/08_foso_espinas.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      254
+    ],
+    "alpha_definido": [
+      0,
+      255
+    ]
+  },
+  {
+    "nombre": "09_cabeza_lejana.png",
+    "boceto": "boceto/09_cabeza_lejana.png",
+    "definido": "definido/09_cabeza_lejana.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      179
+    ],
+    "alpha_definido": [
+      0,
+      255
+    ]
+  },
+  {
+    "nombre": "10_faro_lejano.png",
+    "boceto": "boceto/10_faro_lejano.png",
+    "definido": "definido/10_faro_lejano.png",
+    "ancho": 1774,
+    "alto": 887,
+    "dimensiones_coinciden": true,
+    "alineacion_pixel_verificada": false,
+    "alpha_boceto": [
+      0,
+      255
+    ],
+    "alpha_definido": [
+      0,
+      255
+    ]
+  }
+]
