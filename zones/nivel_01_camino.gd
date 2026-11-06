@@ -72,10 +72,10 @@ const CHAMBER_LEDGE_Y := CHAMBER_Y - 150.0
 const ALTAR_X := 7250.0                   # pedestal con el tintero (en la cámara)
 const FALL_X := 5350.0                    # cascada de tinta (bajo tierra, a la izquierda)
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
-## Repisas para subir del suelo de la cueva al arco por el pozo (salto máx. ~175 px). La de 965 queda
-## justo bajo la tapa: desde ahí se golpea. Las de dentro del tiro solo se alcanzan con la tapa rota.
+## Repisas para subir saltando del suelo de la cueva por el tiro del pozo (salto máx. ~175 px), que está
+## abierto por abajo. La de 660 es la más alta, bajo la losa de la boca: desde ahí se golpea la losa.
 const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0]
-const PLUG := Rect2(5870, 812, 220, 24)   # tapa de piedra en el fondo del pozo
+const PLUG := Rect2(5870, HIGH_Y + 30.0, 220, 24)   # cara de abajo de la losa que cierra la boca del pozo
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 ## La velocidad del lobo solo cuenta en el primer tramo (camina con miedo): con la primera mano pasa de una
 ## vez a correr (RUN_SPEED), sin caminata rápida. Las sombras sí siguen los tramos.
@@ -125,10 +125,10 @@ var _gate_glow: Sprite2D
 var _at_gate := false
 var _at_altar := false
 var _at_lake := false
-var _at_well := false                     # bajo la tapa del pozo, en la repisa de 965
+var _at_well := false                     # bajo la losa del pozo, en la repisa más alta del tiro
 var _over_well := false
 var _action_target := ""                  # qué pinta paint_up: "gate" o "well"
-var _plug: StaticBody2D
+var _tapa_roca: Node2D                    # roca que tapa el tiro del pozo visto desde arriba
 var _lid: StaticBody2D                    # losa del pozo en el suelo alto (luego, repisa de un solo sentido)
 var _debris: Array[Dictionary] = []       # trozos de la tapa al romperse
 var _terrain: Node2D                      # roca y pozo dibujados (provisional hasta tener arte)
@@ -372,12 +372,11 @@ func _build_ground() -> void:
 	_solid(Rect2(CAVE_X.x - 400, CAVE_TOP, 400, 1200))
 	_solid(Rect2(CAVE_X.y, CAVE_TOP, 400, 1200))
 	_platform(Rect2(CHAMBER.x + 40, CHAMBER_LEDGE_Y, 240, 16), "platform_long")
-	# bajo el pozo: repisas para subir; la tapa cierra el tiro hasta romperla
+	# tiro del pozo: repisas para subir saltando desde la cueva; arriba lo cierra la losa (_lid) hasta romperla
 	for i in WELL_LEDGES.size():
 		var y: float = WELL_LEDGES[i]
 		var x0 := WELL_X - 80.0 + (30.0 if i % 2 == 0 else -30.0)
 		_platform(Rect2(x0, y, 160, 16), "platform_long")
-	_plug = _solid(PLUG)
 	_build_piezas_v002()
 	# roca, cueva y pozo dibujados por código (provisional)
 	var back := Node2D.new()
@@ -390,6 +389,11 @@ func _build_ground() -> void:
 	rock.draw.connect(_draw_rock.bind(rock))
 	add_child(rock)
 	_rock_node = rock
+	# roca sobre el tiro del pozo: desde arriba no se ve el camino de abajo; se aparta al bajar a la cueva
+	_tapa_roca = Node2D.new()
+	_tapa_roca.z_index = 2
+	_tapa_roca.draw.connect(_draw_tapa_roca)
+	add_child(_tapa_roca)
 	_terrain = Node2D.new()
 	_terrain.z_index = -2
 	_terrain.draw.connect(_draw_terrain)
@@ -413,7 +417,7 @@ func _build_piezas_v002() -> void:
 	_pozo_v2.cerrado = _pieza_pie(T07, 0, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
 	_pozo_v2.abierto = _pieza_pie(T07, 1, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
 	_pozo_v2.losa = _pieza_pie(T07, 2, WELL_X + WELL_HALF + 110.0, HIGH_Y + 6.0, 170.0, -9)
-	_pozo_v2.tapa = _pieza_pie(T07, 5, WELL_X, PLUG.end.y + 18.0, PLUG.size.x + 30.0, -1)
+	_pozo_v2.tapa = _pieza_pie(T07, 5, WELL_X, PLUG.end.y + 30.0, PLUG.size.x + 30.0, -1)   # losa vista desde abajo
 	var tiro: Node2D = _pieza(T07, 3, WELL_X - WELL_HALF + 6.0, HIGH_Y + 20.0, WELL_HALF * 2.0 - 12.0, -59, CAVE_TOP - HIGH_Y)
 	tiro.modulate.a = 0.55
 	_update_pozo_v2()
@@ -869,6 +873,7 @@ func _physics_process(delta: float) -> void:
 			_show_hint("El pincel está seco" if Inventario.tinta <= 0.0 else "Aquí no hay nada que pintar", 1.2)
 	_update_gate_paint()
 	_update_dibujo()
+	_update_tapa_roca(delta)
 	if _mask_dirty:
 		_mask_dirty = false
 		_mask_tex.update(_mask_img)
@@ -1124,13 +1129,13 @@ func _update_places(x: float) -> void:
 	if at_lake and not _at_lake and Inventario.tinta < Inventario.TINTA_MAX:
 		_show_hint("El lago de tinta.  F: llenar el tintero")
 	_at_lake = at_lake
-	# bajo la tapa del pozo (repisa de 965): con tinta en el pincel se rompe de un golpe
-	var at_well := not well_open and absf(x - WELL_X) < 100.0 and absf(y - WELL_LEDGES[1]) < 12.0 and floor_ok
+	# bajo la losa del pozo (repisa más alta del tiro): con tinta en el pincel se rompe de un golpe
+	var at_well := not well_open and absf(x - WELL_X) < 100.0 and absf(y - WELL_LEDGES[3]) < 12.0 and floor_ok
 	if at_well and not _at_well:
 		if Inventario.tinta >= Inventario.COSTO_TRAZO:
-			_show_hint("Una tapa de piedra cierra el pozo.  F: golpearla con el pincel")
+			_show_hint("Una losa de piedra cierra el pozo.  F: golpearla con el pincel")
 		else:
-			_show_hint("Una tapa de piedra cierra el pozo… con tinta en el pincel podrías romperla", 3.5)
+			_show_hint("Una losa de piedra cierra el pozo… con tinta en el pincel podrías romperla", 3.5)
 	_at_well = at_well
 	var over_well := not well_open and absf(x - WELL_X) < WELL_HALF and absf(y - HIGH_Y) < 10.0 and shadows_gone
 	if over_well and not _over_well:
@@ -1146,14 +1151,13 @@ func _strike_well() -> void:
 	_start_action(&"paint_up", walker.lobo.facing)
 
 
-## Rompe la tapa del fondo del pozo y quita la losa de arriba: queda un tiro con repisas hasta el arco.
-## La losa pasa a ser una repisa de un solo sentido, para salir por arriba y volver a bajar.
+## Rompe la losa que cierra la boca del pozo (golpe desde la repisa más alta del tiro): se sale junto al arco.
+## En su lugar queda una repisa de un solo sentido, para salir por arriba y volver a bajar.
 func _open_well(effects: bool) -> void:
 	if well_open:
 		return
 	well_open = true
 	_update_pozo_v2()
-	_plug.queue_free()
 	_lid.queue_free()
 	_platform(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, 16), "bridge")
 	if effects:
@@ -1162,7 +1166,7 @@ func _open_well(effects: bool) -> void:
 				"v": Vector2(randf_range(-160, 160), randf_range(-260, 40)), "r": randf_range(4, 11)})
 		Inventario.marcar("n1_pozo")
 		print("[nivel1] %.1f s: se rompe la tapa del pozo" % _t)
-		_show_hint("La tapa se rompió: sube por el pozo", 3.0)
+		_show_hint("La losa se rompió: sal por el pozo", 3.0)
 
 
 func _update_debris(delta: float) -> void:
@@ -1321,22 +1325,8 @@ func _rock_rects() -> Array[Rect2]:
 
 
 func _draw_rock(ci: CanvasItem) -> void:
-	var fill := Color(0.84, 0.82, 0.78)
-	var hatch := Color(0.42, 0.40, 0.37, 0.30)
-	if _fondos_v002_on:                    # tono del relleno de las piezas de ChatGPT
-		fill = Color(0.85, 0.79, 0.73)
-		hatch = Color(0.45, 0.37, 0.30, 0.22)
 	for r in _rock_rects():
-		ci.draw_rect(r, fill)
-		# rayado de lápiz irregular (determinista)
-		var y := r.position.y + 14.0
-		while y < r.end.y - 6.0:
-			var x := r.position.x + fmod(y * 7.3, 37.0)
-			while x < r.end.x - 20.0:
-				var n := sin(x * 0.013 + y * 0.071) * 0.5 + 0.5
-				ci.draw_line(Vector2(x, y), Vector2(x + 14.0 + n * 10.0, y - 9.0 - n * 6.0), hatch, 1.2, true)
-				x += 30.0 + n * 26.0
-			y += 22.0
+		_rock_rect(ci, r)
 		ci.draw_line(r.position, Vector2(r.end.x, r.position.y), Color(0.30, 0.28, 0.26, 0.35), 1.5)
 	# estalactitas en el techo de la cueva (v002: las pone el techo de ChatGPT)
 	if _fondos_v002_on:
@@ -1346,9 +1336,27 @@ func _draw_rock(ci: CanvasItem) -> void:
 		if absf(x - WELL_X) > WELL_HALF + 30.0 and (x < HOLE.x - 40.0 or x > HOLE.y + 40.0):
 			var h := 26.0 + fmod(x * 0.37, 38.0)
 			var pts := PackedVector2Array([Vector2(x - 14, CAVE_TOP), Vector2(x + 14, CAVE_TOP), Vector2(x + 2, CAVE_TOP + h)])
-			ci.draw_colored_polygon(pts, fill)
+			ci.draw_colored_polygon(pts, Color(0.84, 0.82, 0.78))   # estalactitas v001
 			ci.draw_polyline(PackedVector2Array([pts[0], pts[2], pts[1]]), Color(0.30, 0.28, 0.26, 0.55), 1.5, true)
 		x += 140.0 + fmod(x * 0.61, 90.0)
+
+
+## Un rectángulo de roca: relleno y rayado de lápiz irregular (determinista, continuo entre rectángulos).
+func _rock_rect(ci: CanvasItem, r: Rect2) -> void:
+	var fill := Color(0.84, 0.82, 0.78)
+	var hatch := Color(0.42, 0.40, 0.37, 0.30)
+	if _fondos_v002_on:                    # tono del relleno de las piezas de ChatGPT
+		fill = Color(0.85, 0.79, 0.73)
+		hatch = Color(0.45, 0.37, 0.30, 0.22)
+	ci.draw_rect(r, fill)
+	var y := r.position.y + 14.0
+	while y < r.end.y - 6.0:
+		var x := r.position.x + fmod(y * 7.3, 37.0)
+		while x < r.end.x - 20.0:
+			var n := sin(x * 0.013 + y * 0.071) * 0.5 + 0.5
+			ci.draw_line(Vector2(x, y), Vector2(x + 14.0 + n * 10.0, y - 9.0 - n * 6.0), hatch, 1.2, true)
+			x += 30.0 + n * 26.0
+		y += 22.0
 
 
 ## Aire de la cueva, del tiro del pozo y de la boca: papel un poco más oscuro, detrás de todo.
@@ -1530,7 +1538,7 @@ func _set_fondos_v002(on: bool) -> void:
 		if is_instance_valid(n):
 			n.visible = on
 	_update_pozo_v2()
-	for n in [_rock_node, _back_node, _terrain]:
+	for n in [_rock_node, _back_node, _terrain, _tapa_roca]:
 		if n:
 			n.queue_redraw()
 
@@ -1608,6 +1616,18 @@ func _update_pozo_v2() -> void:
 	_pozo_v2.tapa.visible = on and not well_open
 	_pozo_v2.abierto.visible = on and well_open
 	_pozo_v2.losa.visible = on and well_open
+
+
+## La roca sobre el tiro se ve mientras el lobo está arriba y se desvanece cuando baja (bajo el suelo alto).
+func _update_tapa_roca(delta: float) -> void:
+	var abajo := walker.position.y > HIGH_Y + 40.0 and walker.position.x > GAP.y
+	_tapa_roca.modulate.a = move_toward(_tapa_roca.modulate.a, 0.0 if abajo else 1.0, delta * 3.0)
+	_tapa_roca.visible = _tapa_roca.modulate.a > 0.0
+
+
+func _draw_tapa_roca() -> void:
+	var r := Rect2(WELL_X - WELL_HALF - 2.0, HIGH_Y + 22.0, WELL_HALF * 2.0 + 4.0, CAVE_TOP - HIGH_Y - 22.0)
+	_rock_rect(_tapa_roca, r)
 
 
 ## Lleva al lobo al punto de una sala (Ñ / L en main.gd, para probar).
