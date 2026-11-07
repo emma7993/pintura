@@ -60,14 +60,15 @@ const FRANJAS_V003 := [
 ## lentos y detrás de las colinas, como algo enorme en el horizonte.
 const HITOS_V003 := [
 	["03_ruinas_lejanas", 0.14, -65, 7000.0, -230.0, 1100.0, [0, 50, 1774, 450], 0.8],   # puentes y acueductos lejanos
-	["09_cabeza_lejana", 0.16, -64, 2500.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
+	["09_cabeza_lejana", 0.24, -64, 3500.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
 	["04_plano_medio", 0.25, -54, 680.0, -61.0, 990.0, [33, 186, 1774, 618], 1.0],
 	["11_casa_lejana", 0.25, -53, 3480.0, -64.0, 260.0, [567, 286, 1207, 887], 1.0],
 	["10_faro_lejano", 0.16, -64, 5240.0, -238.0, 380.0, [297, 42, 1764, 870], 0.75],
 ]
 const SUB_ESC := 0.5                      # subsuelo (12, 13) y pared de la cueva (14): 1024 px de textura = 512
 const SUB_BORDE := 256.0 * SUB_ESC        # alto de la orilla del subsuelo (13) en el mundo
-const MARCO_ALTO := 330.0                 # puerta de regreso a la pintura (16_marco_pintura), en el arco
+const PUERTA_TEX := Vector2(512, 512)      # 16_marco_camino: el cuadro de Camino con su marco
+const MARCO_ALTO := 300.0                 # puerta de regreso a la pintura (16_marco_pintura), en el arco
 const CAER_DESDE := 560.0                 # al entrar desde la pintura, el lobo cae desde esta altura
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
@@ -89,8 +90,12 @@ const LOSA_ESCALA := 0.8                  # losa del suelo (antes 0.42: su super
 const MESETA_PISADA := 76.0               # fila de la superficie de la meseta en su pieza (hoja 05)
 const PIE_HUNDIDO := 8.0                # árboles y matas: la base entra en la losa del suelo (si no, flotan)
 const GROUND_LINE := 126.0               # fila de los módulos ground_a/b/c que queda bajo los pies
-const WELL_X := 5980.0                    # pozo junto al arco; su tiro baja hasta el techo de la cueva
-const WELL_HALF := 110.0
+const WELL_X := 6330.0                    # pozo abierto, después del arco; su tiro baja hasta el techo de la cueva
+const WELL_HALF := 140.0
+## Brocal: estructura sobre el suelo alto a la que se sube para dejarse caer por el centro (ya no tiene tapa).
+const BROCAL_ANCHO := WELL_HALF * 2.0 + 30.0
+const BROCAL_Y := HIGH_Y - 142.0            # cara de arriba del brocal, donde se pisa
+const BROCAL_HUECO := 95.0                  # medio ancho de la boca, entre los dos lados del brocal
 const STEP_X := Vector2(6700, 6870)       # escalón flotante
 const STEP_Y := HIGH_Y - 150.0
 const PLATEAU := Vector2(6900, 7500)      # meseta: sin el escalón no se sube (salto máx. ~225 px)
@@ -104,13 +109,14 @@ const CAVE_Y := 1250.0                    # suelo de la cueva
 const CAVE_X := Vector2(5000, 8750)
 const CHAMBER := Vector2(6900, 7600)      # cámara de la paleta (plana, al nivel de la cueva)
 const CHAMBER_Y := CAVE_Y
+const PALETA_ANCHO := 65.0              # la paleta sobre el altar
 const ALTAR_X := 7390.0                   # altar con la paleta (a la derecha de la cámara; a la izquierda, la entrada)
 const FALL_X := 5350.0                    # cascada de tinta (bajo tierra, a la izquierda)
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
 ## Repisas para subir saltando del suelo de la cueva por el tiro del pozo (salto máx. ~175 px), que está
 ## abierto por abajo. La de 660 es la más alta, bajo la losa de la boca: desde ahí se golpea la losa.
-const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0]
-const PLUG := Rect2(5870, HIGH_Y + 30.0, 220, 24)   # cara de abajo de la losa que cierra la boca del pozo
+const WELL_LEDGES := [1110.0, 965.0, 810.0, 660.0, 520.0]
+const PLUG := Rect2(WELL_X - WELL_HALF, HIGH_Y + 30.0, WELL_HALF * 2.0, 24)   # cara de abajo de la losa que cierra la boca del pozo
 ## Tramos: [desde x, velocidad máxima del lobo, velocidad de las sombras, distancia máxima de las sombras]
 ## La velocidad del lobo solo cuenta en el primer tramo (camina con miedo): con la primera mano pasa de una
 ## vez a correr (RUN_SPEED), sin caminata rápida. Las sombras sí siguen los tramos.
@@ -151,7 +157,7 @@ var brush := ""                           # restos del pincel: "color" (un trazo
 var barrier_x := -INF                     # -INF = sin barrera
 var shadows_gone := false
 var gate_open := false                    # la puerta ya se pintó
-var well_open := false                    # la tapa del pozo ya se rompió
+var well_open := true                     # el pozo ya no tiene tapa (queda la variable para las pruebas)
 
 var _t := 0.0
 var _gate_k := 0.0                        # 0..1: avance de la pintura de la puerta
@@ -391,8 +397,10 @@ func _build_ground() -> void:
 	for seg in [Vector2(GAP.y, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, PIT.x), Vector2(PIT.y, HOLE.x), Vector2(HOLE.y, WIDTH + 200.0)]:
 		_ground_strip(seg.x, seg.y, HIGH_Y)
 		_solid(Rect2(seg.x, HIGH_Y, seg.y - seg.x, CAVE_TOP - HIGH_Y))
-	_ground_strip(WELL_X - WELL_HALF, WELL_X + WELL_HALF, HIGH_Y)    # la losa del pozo, a lápiz
-	_lid = _solid(Rect2(WELL_X - WELL_HALF, HIGH_Y, WELL_HALF * 2.0, 30))
+	# brocal: dos lados macizos a los que se sube; por el hueco del centro se cae al tiro
+	for lado in [-1.0, 1.0]:
+		var x0: float = WELL_X - BROCAL_ANCHO * 0.5 if lado < 0.0 else WELL_X + BROCAL_HUECO
+		_solid(Rect2(x0, BROCAL_Y, BROCAL_ANCHO * 0.5 - BROCAL_HUECO, HIGH_Y - BROCAL_Y))
 	_solid(Rect2(GAP.y, CAVE_TOP, CAVE_X.x - GAP.y, 1000))          # roca maciza a la izquierda de la cueva
 	_solid(Rect2(PIT.x, PIT_FLOOR, PIT.y - PIT.x, CAVE_TOP - PIT_FLOOR))
 	_solid(Rect2(-240, GROUND_Y - 1200, 240, 1200))                  # bordes del mundo
@@ -418,11 +426,12 @@ func _build_ground() -> void:
 	_solid(Rect2(CHAMBER.y, CAVE_Y, CAVE_X.y - CHAMBER.y, 600))
 	_solid(Rect2(CAVE_X.x - 400, CAVE_TOP, 400, 1200))
 	_solid(Rect2(CAVE_X.y, CAVE_TOP, 400, 1200))
-	# tiro del pozo: repisas para subir saltando desde la cueva; arriba lo cierra la losa (_lid) hasta romperla
+	# tiro del pozo: repisas para subir saltando desde la cueva y salir por el brocal
 	for i in WELL_LEDGES.size():
 		var y: float = WELL_LEDGES[i]
-		var x0 := WELL_X - 80.0 + (30.0 if i % 2 == 0 else -30.0)
-		_platform(Rect2(x0, y, 160, 16), "platform_long")
+		# a los lados, alternadas: por el centro se cae libre desde el brocal
+		var x0 := WELL_X - WELL_HALF if i % 2 == 0 else WELL_X + 50.0
+		_platform(Rect2(x0, y, 90, 16), "platform_long")
 	_build_piezas_v002()
 	# subsuelo, pared de la cueva y roca sobre el tiro del pozo: mosaicos 12-14 (v001: relleno y rayas)
 	_back_node = _nodo_tierra(-45, _draw_cave_back)    # delante del panorama: tapa sus bordes en los huecos
@@ -455,8 +464,8 @@ func _build_piezas_v002() -> void:
 	# espinas del foso
 	_pieza_pie(T08, 0, (PIT.x + PIT.y) * 0.5, PIT_FLOOR + 4.0, PIT.y - PIT.x + 10.0, -1, SPIKE_H + 24.0)
 	# pozo: brocal (detrás del lobo), losa caída, tiro y tapa vista desde abajo
-	_pozo_v2.cerrado = _pieza_pie(T07, 0, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
-	_pozo_v2.abierto = _pieza_pie(T07, 1, WELL_X, HIGH_Y + 14.0, WELL_HALF * 2.0 + 30.0, -11)
+	_pozo_v2.cerrado = _pieza_pie(T07, 0, WELL_X, HIGH_Y + 14.0, BROCAL_ANCHO, -11)
+	_pozo_v2.abierto = _pieza_pie(T07, 1, WELL_X, HIGH_Y + 14.0, BROCAL_ANCHO, -11)
 	_pozo_v2.losa = _pieza_pie(T07, 2, WELL_X + WELL_HALF + 110.0, HIGH_Y + 6.0, 170.0, -9)
 	_pozo_v2.tapa = _pieza_pie(T07, 5, WELL_X, PLUG.end.y + 30.0, PLUG.size.x + 30.0, -1)   # losa vista desde abajo
 	var tiro: Node2D = _pieza(T07, 3, WELL_X - WELL_HALF + 6.0, HIGH_Y + 20.0, WELL_HALF * 2.0 - 12.0, -44, CAVE_TOP - HIGH_Y)
@@ -584,8 +593,8 @@ func _build_decor() -> void:
 	# puerta: boceto gris apagado; encima, su versión entintada (gate_tinta, mismo lienzo), oculta hasta que se pinta
 	# v003: la puerta es el marco con la pintura (16_marco_pintura): boceto blanco y, al pintarlo, el marco
 	# definido con el lienzo a color; detrás, un halo con su misma silueta
-	var fm := MARCO_ALTO / 768.0
-	var esq := Vector2(EXIT_X - 256.0 * fm, HIGH_Y + 8.0 - MARCO_ALTO)
+	var fm := MARCO_ALTO / PUERTA_TEX.y
+	var esq := Vector2(EXIT_X - PUERTA_TEX.x * 0.5 * fm, HIGH_Y + 8.0 - MARCO_ALTO)
 	_gate_sketch = _sprite("gate", -18)
 	_gate_sketch.texture = _tex_v3("boceto", "16_marco_camino")
 	_gate_sketch.scale = Vector2.ONE * fm
@@ -593,7 +602,7 @@ func _build_decor() -> void:
 	_gate_glow = _sprite("gate", -19)
 	_gate_glow.texture = _tex_v3("definido", "16_marco_camino")
 	_gate_glow.scale = Vector2.ONE * fm * 1.08
-	_gate_glow.position = esq - Vector2(256.0, 384.0) * fm * 0.08
+	_gate_glow.position = esq - PUERTA_TEX * 0.5 * fm * 0.08
 	_gate_glow.modulate = Color(1.6, 1.35, 0.9, 0.0)
 	_gate_paint = _sprite("gate", -17)
 	_gate_paint.texture = _tex_v3("definido", "16_marco_camino")
@@ -645,9 +654,9 @@ func _build_color_props() -> void:
 	_inkwell.region_enabled = true
 	_inkwell.region_rect = Rect2(84, 187, 1069, 835)
 	_inkwell.centered = false
-	_inkwell.scale = Vector2.ONE * 130.0 / 1069.0
+	_inkwell.scale = Vector2.ONE * PALETA_ANCHO / 1069.0
 	_inkwell.rotation = -0.18
-	_inkwell.position = Vector2(ALTAR_X - 70.0, top - 835.0 * 130.0 / 1069.0 + 30.0)
+	_inkwell.position = Vector2(ALTAR_X - PALETA_ANCHO * 0.5, top - 835.0 * PALETA_ANCHO / 1069.0 + 14.0)
 	_inkwell.z_index = -7
 	add_child(_inkwell)
 	# cascada: chorro 160x720 en (112,0) y charco 384x128 en (0,676) de un lienzo 384x804; el agua del
@@ -866,7 +875,8 @@ func _update_inventory_ui() -> void:
 	if Inventario.tintero:
 		_ink_fill.size = Vector2(166.0 * Inventario.tinta / Inventario.TINTA_MAX, 8)
 		var icon := AtlasTexture.new()
-		icon.atlas = _tex_v3("definido", "cueva_paleta/04_paleta")
+		# con tinta, el hueco grande de la paleta se ve lleno de negro (herramientas/paleta_tinta_v001.py)
+		icon.atlas = _tex_v3("definido", "cueva_paleta/04_paleta_tinta" if Inventario.tinta > 0.0 else "cueva_paleta/04_paleta")
 		icon.region = Rect2(84, 187, 1069, 835)
 		_ink_icon.texture = icon
 	_ink_icon.visible = Inventario.tintero
@@ -1306,10 +1316,10 @@ func _reveal_gate() -> void:
 func _update_gate_paint() -> void:
 	if not _gate_paint.visible:
 		return
-	var fm := MARCO_ALTO / 768.0
-	var h := 768.0 * _gate_k
-	_gate_paint.region_rect = Rect2(0, 768.0 - h, 512, h)
-	_gate_paint.position = Vector2(EXIT_X - 256.0 * fm, HIGH_Y + 8.0 - h * fm)
+	var fm := MARCO_ALTO / PUERTA_TEX.y
+	var h := PUERTA_TEX.y * _gate_k
+	_gate_paint.region_rect = Rect2(0, PUERTA_TEX.y - h, PUERTA_TEX.x, h)
+	_gate_paint.position = Vector2(EXIT_X - PUERTA_TEX.x * 0.5 * fm, HIGH_Y + 8.0 - h * fm)
 	_gate_sketch.modulate.a = 1.0 - _gate_k
 	_gate_glow.modulate.a = _gate_k * (0.35 + sin(_t * 3.0) * 0.1)
 
@@ -1774,10 +1784,10 @@ func _update_pozo_v2() -> void:
 	if _pozo_v2.is_empty():
 		return
 	var on := _fondos_v002_on
-	_pozo_v2.cerrado.visible = on and not well_open
-	_pozo_v2.tapa.visible = on and not well_open
-	_pozo_v2.abierto.visible = on and well_open
-	_pozo_v2.losa.visible = on and well_open
+	_pozo_v2.cerrado.visible = false
+	_pozo_v2.tapa.visible = false
+	_pozo_v2.abierto.visible = on
+	_pozo_v2.losa.visible = false               # la losa ya no se usa
 
 
 ## La roca sobre el tiro se ve mientras el lobo está arriba y se desvanece cuando baja (bajo el suelo alto).

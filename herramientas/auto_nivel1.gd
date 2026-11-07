@@ -3,7 +3,7 @@ extends Node
 ##   1) huye de las sombras (camina, se apura, corre), salta el hueco, toma el pincel y da la pincelada;
 ##   2) sube el escalón y la meseta, salta el foso de espinas y baja por la boca de la cueva;
 ##   3) en la cámara honda toma el tintero, sale por la repisa y va a la izquierda hasta la cascada;
-##   4) vuelve bajo el pozo, sube saltando por las repisas del tiro, rompe la losa de arriba, sale junto al arco,
+##   4) vuelve bajo el pozo, sube saltando por las repisas del tiro, sale por el brocal, vuelve al arco,
 ##      lo pinta y entra.
 ## Se activa con `-- --auto-nivel1` (probar_nivel1.bat). El nivel escribe en el log su guion ([nivel1]).
 
@@ -71,9 +71,17 @@ func _explorar() -> void:
 	var suelo: bool = _w.is_on_floor() and not _nivel._acting and (_salto < 0.0 or _t - _salto > 0.3)
 	var n: Node = _nivel
 	match _fase:
-		0:  # hasta el escalón; salta encima
-			_mover(1.0)
-			if suelo and x >= n.STEP_X.x - 130.0 and x < n.STEP_X.x - 40.0 and _cerca(y, n.HIGH_Y) and _w.velocity.x > 100.0:
+		0:  # hasta el escalón; salta encima (antes, por encima del brocal del pozo, sin caer por la boca)
+			# cayendo sobre el lado izquierdo del brocal: se frena para no irse por la boca
+			var sobre_brocal: bool = not _w.is_on_floor() and y < n.BROCAL_Y + 5.0 and _salto_brocal 				and x > n.WELL_X - 200.0 and x < n.WELL_X - 100.0
+			_mover(0.0 if sobre_brocal else 1.0)
+			if suelo and _cerca(y, n.HIGH_Y) and x > n.WELL_X - 330.0 and x < n.WELL_X - 150.0:
+				_saltar("al brocal")
+				_salto_brocal = true
+			elif suelo and _cerca(y, n.BROCAL_Y) and x < n.WELL_X:
+				_saltar("sobre la boca del pozo")
+				_salto_brocal = false
+			elif suelo and x >= n.STEP_X.x - 130.0 and x < n.STEP_X.x - 40.0 and _cerca(y, n.HIGH_Y) and _w.velocity.x > 100.0:
 				_saltar("al escalón")
 				_fase = 1
 			elif suelo and x >= n.STEP_X.x - 40.0 and _cerca(y, n.HIGH_Y) and _retro == -INF:
@@ -125,24 +133,37 @@ func _explorar() -> void:
 					_f("llena el tintero")
 				else:
 					_fase = 10
-		10:  # bajo el pozo: sube saltando por las repisas del tiro hasta la más alta
-			if _ir(n.WELL_X, false) and suelo:
-				if _cerca(y, n.WELL_LEDGES[3]):
-					_fase = 11
-				else:
-					_saltar("repisa del pozo")
-		11:  # rompe la losa de arriba
-			_mover(0.0)
-			if n.well_open:
+		10:  # bajo el pozo: sube saltando por las repisas del tiro (alternadas a los lados) hasta la más alta
+			var ultima: float = n.WELL_LEDGES[n.WELL_LEDGES.size() - 1]
+			if suelo and _cerca(y, ultima):
 				_fase = 12
 			elif suelo:
-				_f("golpea la losa")
-		12:  # sube por el tiro hasta el suelo alto
-			_ir(n.WELL_X, false)
-			if suelo and _cerca(y, n.HIGH_Y):
+				_repisa = -1
+				for k in n.WELL_LEDGES.size():
+					if n.WELL_LEDGES[k] < y - 20.0:
+						_repisa = k
+						break
+				var tx: float = n.WELL_X + (-95.0 if _repisa % 2 == 0 else 95.0) + (20.0 if _repisa == n.WELL_LEDGES.size() - 1 else 0.0)
+				# desde una repisa, primero a su orilla de adentro (más cerca de la siguiente)
+				var orilla: float = n.WELL_X + (65.0 if x > n.WELL_X else -65.0)
+				if _repisa == 0 and absf(x - tx) > 20.0:
+					_ir(tx, false)
+				elif _repisa > 0 and absf(x - orilla) > 25.0:
+					_ir(orilla, false)
+				else:
+					_saltar("repisa %d del pozo" % _repisa)
+			elif _repisa >= 0:
+				var tx: float = n.WELL_X + (-95.0 if _repisa % 2 == 0 else 95.0) + (20.0 if _repisa == n.WELL_LEDGES.size() - 1 else 0.0)
+				_mover(signf(tx - x) if absf(tx - x) > 30.0 else 0.0)   # a 10 cuadros/s: sin margen se pasa
+		12:  # sale del tiro: salta por la boca y cae sobre el lado izquierdo del brocal, luego al suelo alto
+			if suelo and _cerca(y, n.WELL_LEDGES[n.WELL_LEDGES.size() - 1]):
+				_ir(n.WELL_X - 62.0, false)
+				if absf(x - (n.WELL_X - 62.0)) < 25.0:
+					_saltar("boca del pozo")
+			elif not suelo and y < n.BROCAL_Y - 10.0:
+				_mover(-1.0)
+			elif suelo and (y < n.HIGH_Y - 20.0 or (_cerca(y, n.HIGH_Y) and x < n.WELL_X)):
 				_fase = 13
-			elif suelo:
-				_saltar("tiro del pozo")
 		13:  # al arco: lo pinta y entra
 			if _ir(n.EXIT_X, false) and suelo:
 				if not n.gate_open and n._gate_k == 0.0:
@@ -166,6 +187,8 @@ func _ir(meta: float, correr: bool) -> bool:
 
 
 var _retro := -INF
+var _salto_brocal := false
+var _repisa := -1
 
 
 func _retroceder(hasta: float) -> void:
