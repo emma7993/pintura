@@ -16,6 +16,7 @@ const EXITS := [
 static var return_pos := Vector2.ZERO
 
 const S := 1.5                                   # escala de la pintura en el mundo
+const CUADRO_ESQ := Vector2(157, 163)            # esquina de la pintura dentro de camino_cuadro.jpg
 const SPAWN := Vector2(652, 652)                # px de la imagen
 const TRACK := 5                                 # canción: Camino
 
@@ -30,11 +31,14 @@ var _mask_tex: Texture2D
 
 
 func _ready() -> void:
-	var tex: Texture2D = load("res://art/backgrounds/camino.jpg")
+	# el cuadro completo (camino_cuadro.jpg, de herramientas/pintura_camino_v001.py): la pintura queda en el
+	# mismo lugar que antes (la máscara y las salidas no cambian) y el marco la rodea
+	var tex: Texture2D = load("res://art/backgrounds/camino_cuadro.jpg")
 	var bg := Sprite2D.new()
 	bg.texture = tex
 	bg.centered = false
 	bg.scale = Vector2.ONE * S
+	bg.position = -CUADRO_ESQ * S
 	bg.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	bg.z_index = -4000
 	add_child(bg)
@@ -65,10 +69,10 @@ func _ready() -> void:
 	camera = Camera2D.new()
 	camera.position_smoothing_enabled = true
 	camera.position_smoothing_speed = 5.0
-	camera.limit_left = 0
-	camera.limit_top = 0
-	camera.limit_right = int(tex.get_width() * S)
-	camera.limit_bottom = int(tex.get_height() * S)
+	camera.limit_left = int(-CUADRO_ESQ.x * S)
+	camera.limit_top = int(-CUADRO_ESQ.y * S)
+	camera.limit_right = int((tex.get_width() - CUADRO_ESQ.x) * S)
+	camera.limit_bottom = int((tex.get_height() - CUADRO_ESQ.y) * S)
 	camera.offset = Vector2(0, -40)
 	walker.add_child(camera)
 	camera.reset_smoothing()

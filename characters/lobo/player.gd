@@ -149,8 +149,9 @@ func _physics_process(delta: float) -> void:
 		_dash_ready = on_floor
 		_dash_dir = signf(dir) if dir != 0.0 else lobo.facing
 		lobo.face(_dash_dir)
-		Efectos.polvo(get_parent(), global_position + Vector2(-_dash_dir * 20.0, -4.0), 7,
-			Vector2(-_dash_dir, -0.25), 0.9, 260.0, 9.0)
+		if on_floor:                              # en el aire no hay suelo que levante polvo
+			Efectos.polvo(get_parent(), global_position + Vector2(-_dash_dir * 20.0, -4.0), 7,
+				Vector2(-_dash_dir, -0.25), 0.9, 260.0, 9.0)
 		_squash = Vector2(1.18, 0.86)
 	if _dash_t > 0.0:
 		_dash_t -= delta

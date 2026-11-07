@@ -35,7 +35,7 @@ const PUERTAS_CERRADAS := {"ca_enemigos": ["left"]}
 ## Fondo dibujado de una sala: [archivo, región, en espejo]. La Zona de enemigos usa la entrada de cueva
 ## (pieza 5 de 06_cueva_modulos de los fondos del Nivel 1), recortada al formato de la sala.
 const FONDOS := {
-	"ca_enemigos": ["res://art/worlds/camino/nivel_01_fondos_v003/definido/06_cueva_modulos.png", Rect2(154, 617, 655, 368), true],
+	# (la Zona de enemigos usará las tres capas de la cueva: pedido en Game_Assets/PEDIDO_Nivel1_Cueva_v003.md)
 }
 ## Zona del juego (main.gd) a la que lleva un portal hacia otra zona.
 const ZONA_JUEGO := {"pintura": "camino", "sueno": "z_sueno", "miedo": "z_miedo", "cambio": "z_cambio", "final": "z_final"}
@@ -471,6 +471,7 @@ func _go_to(id: String, frac: float) -> void:
 func _teleport(p: Vector2) -> void:
 	walker.position = p
 	walker.velocity = Vector2.ZERO
+	walker.reset_physics_interpolation()   # sin esto se ve un barrido de un cuadro
 	_cur = ""
 	_cam.reset_smoothing()
 

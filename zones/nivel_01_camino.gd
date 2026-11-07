@@ -59,6 +59,7 @@ const FRANJAS_V003 := [
 ## base sobre GROUND_Y, ancho en pantalla, recorte del PNG, opacidad]. La cabeza y el faro, muy lejos: chicos,
 ## lentos y detrás de las colinas, como algo enorme en el horizonte.
 const HITOS_V003 := [
+	["03_ruinas_lejanas", 0.14, -65, 7000.0, -230.0, 1100.0, [0, 50, 1774, 450], 0.8],   # puentes y acueductos lejanos
 	["09_cabeza_lejana", 0.16, -64, 2500.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
 	["04_plano_medio", 0.25, -54, 680.0, -61.0, 990.0, [33, 186, 1774, 618], 1.0],
 	["11_casa_lejana", 0.25, -53, 3480.0, -64.0, 260.0, [567, 286, 1207, 887], 1.0],
@@ -586,16 +587,16 @@ func _build_decor() -> void:
 	var fm := MARCO_ALTO / 768.0
 	var esq := Vector2(EXIT_X - 256.0 * fm, HIGH_Y + 8.0 - MARCO_ALTO)
 	_gate_sketch = _sprite("gate", -18)
-	_gate_sketch.texture = _tex_v3("boceto", "16_marco_pintura")
+	_gate_sketch.texture = _tex_v3("boceto", "16_marco_camino")
 	_gate_sketch.scale = Vector2.ONE * fm
 	_gate_sketch.position = esq
 	_gate_glow = _sprite("gate", -19)
-	_gate_glow.texture = _tex_v3("definido", "16_marco_pintura")
+	_gate_glow.texture = _tex_v3("definido", "16_marco_camino")
 	_gate_glow.scale = Vector2.ONE * fm * 1.08
 	_gate_glow.position = esq - Vector2(256.0, 384.0) * fm * 0.08
 	_gate_glow.modulate = Color(1.6, 1.35, 0.9, 0.0)
 	_gate_paint = _sprite("gate", -17)
-	_gate_paint.texture = _tex_v3("definido", "16_marco_pintura")
+	_gate_paint.texture = _tex_v3("definido", "16_marco_camino")
 	_gate_paint.scale = Vector2.ONE * fm
 	_gate_paint.position = esq
 	_gate_paint.region_enabled = true
@@ -1038,6 +1039,7 @@ func _caught(why: String, revive := true) -> void:
 	await tw.finished
 	walker.position = _checkpoint
 	walker.velocity = Vector2.ZERO
+	walker.reset_physics_interpolation()   # sin esto se ve un barrido de un cuadro
 	walker.max_speed = RUN_SPEED if _huye else STAGES[0][1]
 	if revive or walker.is_dead():
 		walker.revive()
@@ -1796,6 +1798,7 @@ func ir_a_sala(id: String) -> void:
 		return
 	walker.position = ENTRADAS[id]
 	walker.velocity = Vector2.ZERO
+	walker.reset_physics_interpolation()   # sin esto se ve un barrido de un cuadro
 	_checkpoint = walker.position
 	_cam.reset_smoothing()
 
