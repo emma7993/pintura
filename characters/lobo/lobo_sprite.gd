@@ -17,8 +17,8 @@ const BASE_SCALE := 0.60          # tamaño en la zona de la pintura (scale = BA
 const ART := "res://characters/lobo/pincel_v003"
 ## Carrera con el modelo de Wolf_Run_v014: reemplaza esa animación de
 ## pincel_v003. Sin pincel: el pincel solo aparece al usarlo (acciones y tajos).
-## Carrera v022 (v021 + brazos de v016 + manos en punta) con grano: herramientas/ajustar_run.py.
-const RUN_ART := "res://characters/lobo/run_v022"
+## Carrera v027, aprobada por Emma (Game_Assets/MODELOS_LOBITO_APROBADOS.md): copia sin retoques de Wolf_Run_v027.
+const RUN_ART := "res://characters/lobo/run_v027"
 ## Salto con el estilo del lobo original (Wolf_Salto_v004, copia directa).
 const SALTO := "res://characters/lobo/salto_v004"
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
@@ -51,7 +51,7 @@ const CELL_FEET := Vector2(192, 352)      # pies dentro de la celda
 ## px de celda que avanza un ciclo (2 pasos). Medido por Codex: caminata 153, carrera 302.5. La caminata
 ## usa más para que la animación vaya más pausada (pedido de Emma), a cambio de un leve deslizamiento.
 const STRIDE := 175.0
-const RUN_STRIDE := 446.0           # carrera v016/v021: el pie apoyado retrocede ~55.75 px de celda por cuadro
+const RUN_STRIDE := 446.0           # carrera v027: el pie apoyado retrocede ~55 px de celda por cuadro (como v016)
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0
