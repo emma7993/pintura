@@ -97,8 +97,9 @@ hacer ediciones puntuales sobre esa misma hoja (cola, bufanda, grano). Ese es el
    la mayoría por script, y prohibir explícitamente regenerar o redibujar. Pedidos cortos y concretos.
 
 **Base vigente de la carrera: v016** (elegida por Emma el 2026-11-06). Pedido de corrección: v021.
-En el juego: `characters/lobo/run_v022` (bufanda y limpieza de v021, brazos de v016, manos en punta de v022 y
-grano), armado por `herramientas/ajustar_run.py`; zancada 446 px por ciclo. La carrera normal queda cerrada.
+En el juego: carrera `characters/lobo/run_v027` (copia sin retoques, zancada 446 px por ciclo) y salto
+`salto_v004`, agrandado 6.5 % por código (`SALTO_ESCALA` en `lobo_sprite.gd`) porque está dibujado más chico
+que la carrera.
 
 12. **Al redibujar brazos sobre el torso, los rellena negro sobre negro** y borra la línea gris que los
    separa: en v021 los brazos casi desaparecían y en el GIF parpadeaban (en la lámina fija no se nota).
@@ -108,6 +109,9 @@ grano), armado por `herramientas/ajustar_run.py`; zancada 446 px por ciclo. La c
 14. **Al afilar una mano que queda encima de la cola o del cuerpo, recorta un hueco rectangular** en ellos
    (v022, cuadros 04-06, mano de atrás): pedir que solo quite píxeles que dan al fondo, nunca dentro de la
    figura. Esas manos se dejaron sin afilar por script.
+15. **Cada entrega sale a una escala un poco distinta**: el salto v004 tiene ~13 % menos masa de cuerpo que la
+   carrera v027 (6122 contra 7080 px; ~6.5 % más chico de lado) y al saltar parecía encogerse. Comparar la
+   masa del cuerpo, la cola y la bufanda contra la animación con la que enlaza, no solo contra el original.
 - Por script: el grano sale bien; adelgazar la bufanda o achicar el ojo erosionando bordes NO sirve
   (se pierden los flecos y el ojo queda con anillo).
 

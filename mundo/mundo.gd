@@ -24,12 +24,19 @@ const TRACK := 5                          # canción: Camino
 ## Dónde aparece el lobo al llegar desde el Nivel 1 (sala -> fracción del ancho).
 const ENTRADAS := {"ca_sello": 0.06, "ca_enemigos": 0.94, "ca_copista": 0.25}
 ## Al pasar de una sala de aquí a una del Nivel 1: a qué punto del Nivel 1 se llega.
-## A la Zona de enemigos se llega cayendo desde la cueva del Nivel 1; subiendo por ese hueco se vuelve ahí.
+## Del lago de tinta (cueva del Nivel 1) se llega a la Zona de enemigos por su puerta derecha, y por ahí se vuelve.
 const SALIDAS := {
-	"ca_sello>ca_arco": "z_camino:fin", "ca_enemigos>ca_paleta": "z_camino:cueva",
+	"ca_sello>ca_arco": "z_camino:fin", "ca_enemigos>ca_paleta": "z_camino:ca_paleta",
 	"ca_a_sueno>ca_paleta": "z_camino:cueva", "ca_enemigos>ca_cascada": "z_camino:cueva",
 }
-const CAE := ["ca_enemigos"]              # salas a las que se llega cayendo por el hueco del techo
+const CAE: Array[String] = []             # salas a las que se llega cayendo por el hueco del techo
+## Puertas laterales cerradas por ahora (llevarán a otra zona más adelante).
+const PUERTAS_CERRADAS := {"ca_enemigos": ["left"]}
+## Fondo dibujado de una sala: [archivo, región, en espejo]. La Zona de enemigos usa la entrada de cueva
+## (pieza 5 de 06_cueva_modulos de los fondos del Nivel 1), recortada al formato de la sala.
+const FONDOS := {
+	"ca_enemigos": ["res://art/worlds/camino/nivel_01_fondos_v003/definido/06_cueva_modulos.png", Rect2(154, 617, 655, 368), true],
+}
 ## Zona del juego (main.gd) a la que lleva un portal hacia otra zona.
 const ZONA_JUEGO := {"pintura": "camino", "sueno": "z_sueno", "miedo": "z_miedo", "cambio": "z_cambio", "final": "z_final"}
 
@@ -56,6 +63,7 @@ var _title: Label
 var _hint: Label
 var _map: MapaUI
 var _near_portal := {}
+var _fondos := {}                         # id -> Texture2D (se guarda: si no, se libera y sale en blanco)
 
 
 func _ready() -> void:
@@ -145,7 +153,7 @@ func _build_room(id: String, links: Dictionary) -> void:
 	# paredes laterales, con puerta a nivel del piso hacia el vecino
 	for side in ["left", "right"]:
 		var x := r.position.x if side == "left" else r.end.x - WALL
-		if links.has(side):
+		if links.has(side) and not side in PUERTAS_CERRADAS.get(id, []):
 			_solid(room, Rect2(x, r.position.y, WALL, floor_y - DOOR_H - r.position.y))
 			room.doors.append(Rect2(x, floor_y - DOOR_H, WALL, DOOR_H))
 		else:
@@ -503,6 +511,14 @@ func _draw_room(ci: CanvasItem, id: String) -> void:
 	if d.tipo == "jefe":
 		back = back.lerp(Color(0.85, 0.55, 0.55), 0.35)
 	ci.draw_rect(r, back)
+	if FONDOS.has(id):
+		var f: Array = FONDOS[id]
+		if not _fondos.has(id):
+			_fondos[id] = load(f[0])
+		if f[2]:                                 # en espejo sobre el centro de la sala
+			ci.draw_set_transform(Vector2(r.position.x + r.end.x, 0.0), 0.0, Vector2(-1, 1))
+		ci.draw_texture_rect_region(_fondos[id], r, f[1])
+		ci.draw_set_transform(Vector2.ZERO)
 	for s in room.solid:
 		ci.draw_rect(s, zc.darkened(0.35))
 		ci.draw_rect(s, INK, false, 3.0)

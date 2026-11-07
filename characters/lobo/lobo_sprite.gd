@@ -21,6 +21,11 @@ const ART := "res://characters/lobo/pincel_v003"
 const RUN_ART := "res://characters/lobo/run_v027"
 ## Salto con el estilo del lobo original (Wolf_Salto_v004, copia directa).
 const SALTO := "res://characters/lobo/salto_v004"
+## El lobo del salto v004 está dibujado ~6.5 % más chico que el de la carrera v027 (masa del cuerpo 6122 contra
+## 7080 px de celda; cola y bufanda en la misma proporción): se agranda desde los pies para que no cambie de
+## tamaño al saltar. El arte no se toca.
+const SALTO_ESCALA := 1.065
+const SALTO_ANIMS: Array[StringName] = [&"jump_start", &"jump_up", &"jump_apex", &"fall", &"land"]
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
 ## herramientas/ajustar_combo_v001.py): el pincel y la tinta vienen dibujados en el cuerpo.
 const COMBO := "res://characters/lobo/combo_v001"
@@ -94,7 +99,8 @@ func _ready() -> void:
 	sprite.frame_changed.connect(_on_frame_changed)
 	sprite.animation_changed.connect(_sync_layers)
 	sprite.animation_changed.connect(func() -> void:
-		sprite.offset = SPRITE_OFFSET + (Vector2(COMBO_DX, 0) if COMBO_HITS.has(sprite.animation) else Vector2.ZERO))
+		sprite.offset = SPRITE_OFFSET + (Vector2(COMBO_DX, 0) if COMBO_HITS.has(sprite.animation) else Vector2.ZERO)
+		sprite.scale = Vector2.ONE * (SALTO_ESCALA if sprite.animation in SALTO_ANIMS else 1.0))
 	_last_pos = global_position
 	for c in JSON.parse_string(FileAccess.get_file_as_string(ART + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c

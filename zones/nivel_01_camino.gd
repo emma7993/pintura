@@ -101,10 +101,9 @@ const HOLE := Vector2(8450, 8610)         # boca de la cueva
 const CAVE_TOP := 800.0                   # techo de la cueva (entre el suelo alto y aquí: roca)
 const CAVE_Y := 1250.0                    # suelo de la cueva
 const CAVE_X := Vector2(5000, 8750)
-const CHAMBER := Vector2(6900, 7600)      # cámara honda con el tintero
-const CHAMBER_Y := 1550.0                 # 300 px bajo la cueva: se sale por una repisa
-const CHAMBER_LEDGE_Y := CHAMBER_Y - 150.0
-const ALTAR_X := 7250.0                   # pedestal con el tintero (en la cámara)
+const CHAMBER := Vector2(6900, 7600)      # cámara de la paleta (plana, al nivel de la cueva)
+const CHAMBER_Y := CAVE_Y
+const ALTAR_X := 7390.0                   # altar con la paleta (a la derecha de la cámara; a la izquierda, la entrada)
 const FALL_X := 5350.0                    # cascada de tinta (bajo tierra, a la izquierda)
 const LAKE_R := 160.0                     # medio ancho del lago de tinta al pie de la cascada
 ## Repisas para subir saltando del suelo de la cueva por el tiro del pozo (salto máx. ~175 px), que está
@@ -418,7 +417,6 @@ func _build_ground() -> void:
 	_solid(Rect2(CHAMBER.y, CAVE_Y, CAVE_X.y - CHAMBER.y, 600))
 	_solid(Rect2(CAVE_X.x - 400, CAVE_TOP, 400, 1200))
 	_solid(Rect2(CAVE_X.y, CAVE_TOP, 400, 1200))
-	_platform(Rect2(CHAMBER.x + 40, CHAMBER_LEDGE_Y, 240, 16), "platform_long")
 	# tiro del pozo: repisas para subir saltando desde la cueva; arriba lo cierra la losa (_lid) hasta romperla
 	for i in WELL_LEDGES.size():
 		var y: float = WELL_LEDGES[i]
@@ -467,7 +465,7 @@ func _build_piezas_v002() -> void:
 	for seg in [Vector2(CAVE_X.x - 40.0, WELL_X - WELL_HALF), Vector2(WELL_X + WELL_HALF, HOLE.x), Vector2(HOLE.y, CAVE_X.y + 40.0)]:
 		_tira_v2(T06, [1, 0], seg.x, seg.y, CAVE_TOP - 6.0, 0.42, -2)
 	# paso hacia la Zona de enemigos (junto a la cascada) y columna como pared derecha de la cueva
-	_pieza_pie(T06, 5, CAVE_X.x - 20.0, CAVE_Y + 8.0, 300.0, -1, 0.0, true)   # en espejo: la cueva sigue a la derecha
+	_pieza_pie(T06, 5, CAVE_X.x + 10.0, CAVE_Y + 8.0, 600.0, -1, 0.0, true)   # en espejo, del alto de la cueva
 	_pieza_pie(T06, 6, CAVE_X.y + 30.0, CAVE_Y + 8.0, 260.0, -1, CAVE_Y - CAVE_TOP + 20.0)   # pared derecha
 	# árboles y matas (sin óleo todavía: la pincelada solo revela color en juncos y piedras)
 	for e in [[7, 760.0, 430.0], [9, 1900.0, 380.0], [7, 2900.0, 400.0], [9, 5100.0, 340.0],
@@ -605,17 +603,18 @@ func _build_decor() -> void:
 
 
 ## Pieza de la cueva de la paleta (boceto y definido) apoyada por su base: esquina izquierda de abajo en «pie».
-func _cueva_paleta(hoja: String, box: Array, pie: Vector2, ancho: float, z: int) -> void:
+func _cueva_paleta(hoja: String, box: Array, pie: Vector2, ancho: float, z: int, alto := 0.0) -> void:
 	var r := Rect2(box[0], box[1], box[2] - box[0], box[3] - box[1])
 	var f := ancho / r.size.x
+	var fy := alto / r.size.y if alto > 0.0 else f
 	for k in 2:
 		var sp := Sprite2D.new()
 		sp.texture = _tex_v3(["boceto", "definido"][k], "cueva_paleta/" + hoja)
 		sp.region_enabled = true
 		sp.region_rect = r
 		sp.centered = false
-		sp.scale = Vector2.ONE * f
-		sp.position = pie - Vector2(0, r.size.y * f)
+		sp.scale = Vector2(f, fy)
+		sp.position = pie - Vector2(0, r.size.y * fy)
 		sp.z_index = z
 		sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 		sp.material = _mats_dibujo[k]
@@ -631,7 +630,11 @@ func _build_color_props() -> void:
 	# altar (en la cámara honda de la cueva): el mismo pedestal a lápiz que el del pincel; encima, el tintero vacío,
 	# aclarado para que se lea transparente (pie del frasco en y=236 de su celda)
 	# cueva de la paleta (fondos_unificados_v001/cueva_paleta): fondo de la cámara, arco y altar; la paleta encima
-	_cueva_paleta("02_fondo", [32, 81, 1750, 771], Vector2(CHAMBER.x - 20.0, CHAMBER_Y + 12.0), CHAMBER.y - CHAMBER.x + 40.0, -44)
+	# la cámara es plana: el fondo la cubre toda, del techo al suelo; techo con raíces, arco de entrada a la
+	# izquierda y el arco grande con el altar
+	_cueva_paleta("02_fondo", [32, 81, 1750, 771], Vector2(CHAMBER.x - 70.0, CHAMBER_Y + 30.0), CHAMBER.y - CHAMBER.x + 140.0, -44, CHAMBER_Y + 30.0 - CAVE_TOP + 40.0)
+	_cueva_paleta("03_modulos", [10, 10, 990, 320], Vector2(CHAMBER.x - 40.0, CAVE_TOP + 200.0), CHAMBER.y - CHAMBER.x + 80.0, -43)
+	_cueva_paleta("03_modulos", [60, 500, 370, 862], Vector2(CHAMBER.x + 10.0, CHAMBER_Y + 8.0), 230.0, -43)
 	_cueva_paleta("03_modulos", [480, 430, 979, 861], Vector2(ALTAR_X - 165.0, CHAMBER_Y + 8.0), 330.0, -43)
 	_cueva_paleta("03_modulos", [1453, 653, 1723, 851], Vector2(CHAMBER.x + 300.0, CHAMBER_Y + 8.0), 120.0, -9)
 	_cueva_paleta("03_modulos", [1062, 703, 1280, 853], Vector2(ALTAR_X - 90.0, CHAMBER_Y + 8.0), 180.0, -8)
@@ -1505,43 +1508,6 @@ func _draw_cave_back(ci: CanvasItem, estado: String) -> void:
 	ci.draw_rect(Rect2(HOLE.x, HIGH_Y, HOLE.y - HOLE.x, CAVE_TOP - HIGH_Y), air)
 
 
-## Paso del fondo izquierdo de la cueva (junto a la cascada) hacia la Zona de enemigos: una boca oscura en
-## la roca, medio tapada por hojas que cuelgan, para que se lea que por ahí se puede pasar (provisional).
-func _draw_leaf_passage(line: Color) -> void:
-	var x0 := CAVE_X.x - 80.0
-	var w := 120.0
-	var top := CAVE_Y - 250.0
-	var mouth := PackedVector2Array()
-	mouth.append(Vector2(x0, CAVE_Y + 2.0))
-	for k in 13:                                   # arco de la boca
-		var a := PI + PI * k / 12.0
-		mouth.append(Vector2(x0 + w * 0.5 + cos(a) * w * 0.5, top + w * 0.5 + sin(a) * w * 0.5))
-	mouth.append(Vector2(x0 + w, CAVE_Y + 2.0))
-	if not _fondos_v002_on:                # v002: la boca es la entrada de cueva de ChatGPT
-		_terrain.draw_colored_polygon(mouth, Color(0.36, 0.34, 0.31))
-		_terrain.draw_polyline(mouth, line, 2.0, true)
-	var leaf := Color(0.33, 0.47, 0.27)
-	var leaf_dark := Color(0.22, 0.33, 0.18)
-	for i in 9:                                    # lianas con hojas, colgando del borde del arco
-		var vx := x0 + 4.0 + i * 15.0
-		var vy := top + 18.0 + absf(vx - (x0 + w * 0.5)) * 0.55
-		var length := 70.0 + fmod(i * 47.0, 110.0)
-		_terrain.draw_line(Vector2(vx, vy - 20.0), Vector2(vx + 3.0, vy + length), Color(0.25, 0.30, 0.20, 0.9), 1.6, true)
-		var y := vy
-		var side := 1.0 if i % 2 == 0 else -1.0
-		while y < vy + length:
-			var c := Vector2(vx + side * 6.0 + (y - vy) * 0.02, y)
-			var pts := PackedVector2Array([c + Vector2(-side * 5.0, -2.0), c + Vector2(side * 4.0, -7.0),
-				c + Vector2(side * 10.0, 0.0), c + Vector2(side * 3.0, 6.0)])
-			_terrain.draw_colored_polygon(pts, leaf if int(y) % 3 != 0 else leaf_dark)
-			_terrain.draw_polyline(PackedVector2Array([pts[0], pts[1], pts[2], pts[3], pts[0]]), leaf_dark, 1.0, true)
-			y += 14.0
-			side = -side
-	for k in 5:                                    # hojas caídas en el suelo, delante de la boca
-		var c := Vector2(x0 + 30.0 + k * 34.0, CAVE_Y - 3.0)
-		_terrain.draw_colored_polygon(PackedVector2Array([c + Vector2(-9, 0), c + Vector2(0, -6), c + Vector2(10, 0), c + Vector2(0, 3)]), leaf)
-
-
 ## Lo que cambia: el brocal y la losa del pozo, la tapa del fondo, sus trozos, y las espinas del foso.
 func _draw_terrain() -> void:
 	var line := Color(0.30, 0.28, 0.26, 0.85)
@@ -1552,7 +1518,6 @@ func _draw_terrain() -> void:
 		_terrain.draw_rect(frame, Color(0.55, 0.42, 0.28))
 		_terrain.draw_rect(frame.grow(-14.0), Color(0.93, 0.89, 0.80))
 		_terrain.draw_rect(frame, line, false, 2.0)
-	_draw_leaf_passage(line)
 	if _fondos_v002_on:                    # pozo y espinas: piezas de ChatGPT
 		for d in _debris:
 			_terrain.draw_circle(d.p, d.r, Color(0.62, 0.55, 0.48))

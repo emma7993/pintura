@@ -2,7 +2,7 @@ extends SceneTree
 ## Prueba de Camino unido dentro del juego (main.tscn), sin ventana:
 ##   Godot --headless --path . -s res://herramientas/prueba_camino.gd
 ## Pintura -> Nivel 1 -> (extremo derecho) resto de Camino -> (vuelta por el sello) Nivel 1 -> (fondo de la
-## cueva) Zona de enemigos -> banca -> pintura; de la cueva se cae a la Zona de enemigos, de ahí al taller
+## cueva) Zona de enemigos -> banca -> pintura; de la cueva se pasa a la Zona de enemigos (por su derecha), de ahí al taller
 ## del copista, y subiendo por el hueco se vuelve a la cueva; mapa (M) que pausa y marca lo recorrido.
 
 var _t := 0.0
@@ -57,7 +57,7 @@ func _process(delta: float) -> bool:
 			_check("de la pintura entra al Nivel 1", _is(z, "nivel_01_camino.gd"))
 			z.walker.position = Vector2(z.CAVE_X.x + 20.0, z.CAVE_Y)       # fondo izquierdo de la cueva
 		8:
-			_check("cae a la Zona de enemigos por el hueco del techo", _is(z, "mundo.gd") and z.map_room() == "ca_enemigos")
+			_check("entra a la Zona de enemigos por la derecha", _is(z, "mundo.gd") and z.map_room() == "ca_enemigos" 				and z.walker.position.x > MapaDatos.rect("ca_enemigos").end.x - 400.0 and z.walker.is_on_floor())
 			for q in z._portals:
 				if q.room == "ca_enemigos" and q.to == "ca_copista":
 					z._teleport((q.rect as Rect2).get_center() + Vector2(0, 100))
@@ -68,9 +68,9 @@ func _process(delta: float) -> bool:
 			_check("entra al taller del copista", _is(z, "mundo.gd") and z.map_room() == "ca_copista")
 			z._teleport(MapaDatos.rect("ca_enemigos").get_center())
 		11:
-			z._teleport(MapaDatos.rect("ca_paleta").get_center())       # sube por el hueco del techo
+			z._teleport(MapaDatos.rect("ca_cascada").get_center())      # sale por la puerta derecha
 		12:
-			_check("subiendo vuelve a la cueva, donde cayó", _is(z, "nivel_01_camino.gd") and absf(z.walker.position.x - z.CAVE_X.x) < 300.0)
+			_check("por la derecha vuelve a la cueva, junto al lago", _is(z, "nivel_01_camino.gd") and absf(z.walker.position.x - z.CAVE_X.x) < 300.0)
 			main._toggle_map()
 		13:
 			_check("el mapa pausa el juego y marca al lobo", paused and main.map.pos != Vector2.INF)

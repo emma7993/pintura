@@ -115,20 +115,10 @@ func _explorar() -> void:
 					_f("toma el tintero")
 				else:
 					_fase = 7
-		7:  # sale de la cámara por la repisa
+		7:  # sale de la cámara (plana) hacia la cascada
 			_mover(-1.0)
-			if suelo and _cerca(y, n.CHAMBER_Y) and x <= n.CHAMBER.x + 340.0:
-				_saltar("a la repisa de la cámara")
-				_fase = 8
-		8:
-			_mover(-1.0)
-			if suelo and _cerca(y, n.CHAMBER_LEDGE_Y):
-				_saltar("fuera de la cámara")
-			elif suelo and _cerca(y, n.CAVE_Y) and x < n.CHAMBER.x:
+			if suelo and x < n.CHAMBER.x:
 				_fase = 9
-			elif suelo and _cerca(y, n.CHAMBER_Y) and x < n.CHAMBER.x + 200.0:
-				_fase = 7
-				_retroceder(n.CHAMBER.x + 330.0)
 		9:  # a la cascada y llena el tintero
 			if _ir(n.FALL_X + 60.0, false) and suelo:
 				if Inventario.tinta <= 0.0:
