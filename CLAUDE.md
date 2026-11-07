@@ -9,7 +9,7 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 - Leer `Game_Assets/LEEME_CODEX_CLAUDE.md` y el `INTEGRACION_CLAUDE.md` de la entrega vigente antes de integrar arte nuevo.
 
 ## Estado del juego
-- Ojos del lobo (regla de Emma): caminando, entrecerrados y temerosos; desde que corre (correr, saltar, caer) ya está despierto y los abre.
+- Ojos del lobo (regla de Emma): caminando, entrecerrados y temerosos; desde que corre (correr, saltar, caer) ya está despierto y los abre. Quieto: reposo tímido hasta vencer las sombras de Camino (`n1_sombras`); después, el reposo relajado `characters/lobo/idle_relajado_v001` (Wolf_Idle_Relajado_v001, 6 FPS, agrandado 6.5 % como el salto).
 - Fase 1: movimiento lateral. El lobo (negro, bufanda roja, temeroso) solo CAMINA al inicio; `can_jump=false` en `zones/zone_camino_lateral.gd`. Salto solo con Espacio.
 - Interfaz de animación: `LoboSprite.animate(delta, speed01, vel_x, air, vy)` en `characters/lobo/lobo_sprite.gd`. Lo usan `player.gd` (zonas laterales) y `walker.gd` (zona de la pintura).
 - Zonas: `main.gd` (ZONES), `zones/zone_camino.gd` (pintura), `zones/zone_camino_lateral.gd`, `zones/prueba.tscn` (F6).

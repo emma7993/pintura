@@ -45,6 +45,11 @@ const APEX_VY := 140.0                 # |vy| bajo esto, en el aire: pose de la 
 const LAND_BOUNCE := 5.0               # rebote visual al aterrizar (px de celda) ...
 const LAND_BOUNCE_T := 0.18            # ... y su duración
 const IDLE := &"idle"
+## Reposo relajado (Wolf_Idle_Relajado_v001, copia sin retoques): ojos abiertos, brazos sueltos, respiración;
+## 12 cuadros a 6 FPS. Se usa al quedarse quieto una vez vencidas las sombras de Camino (n1_sombras); antes,
+## el reposo tímido de pincel_v003. Dibujado ~6 % más chico que la carrera, como el salto: se agranda igual.
+const IDLE_RELAX := &"idle_relaxed"
+const RELAX_ART := "res://characters/lobo/idle_relajado_v001"
 const WALK := &"walk"
 const RUN := &"run"
 const JUMP_START := &"jump_start"
@@ -100,7 +105,7 @@ func _ready() -> void:
 	sprite.animation_changed.connect(_sync_layers)
 	sprite.animation_changed.connect(func() -> void:
 		sprite.offset = SPRITE_OFFSET + (Vector2(COMBO_DX, 0) if COMBO_HITS.has(sprite.animation) else Vector2.ZERO)
-		sprite.scale = Vector2.ONE * (SALTO_ESCALA if sprite.animation in SALTO_ANIMS else 1.0))
+		sprite.scale = Vector2.ONE * (SALTO_ESCALA if sprite.animation in SALTO_ANIMS or sprite.animation == IDLE_RELAX else 1.0))
 	_last_pos = global_position
 	for c in JSON.parse_string(FileAccess.get_file_as_string(ART + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c
@@ -114,6 +119,10 @@ func _body_frames() -> SpriteFrames:
 	for i in 8:
 		run.append(RUN_ART + "/%02d.png" % (i + 1))
 	_set_anim(f, RUN, run, 20.0, true)
+	var relax: Array[String] = []
+	for i in 12:
+		relax.append(RELAX_ART + "/%02d.png" % (i + 1))
+	_set_anim(f, IDLE_RELAX, relax, 6.0, true)
 	_set_anim(f, JUMP_START, [SALTO + "/jump_start.png"], 12.0, false)
 	_set_anim(f, JUMP_UP, [SALTO + "/jump_up.png"], 5.0, true)
 	_set_anim(f, JUMP_APEX, [SALTO + "/jump_apex.png"], 5.0, true)
@@ -244,22 +253,27 @@ func hitbox_global(anim: StringName, frame: int, margin := 14.0) -> Rect2:
 	return Rect2(Vector2(minf(a.x, b.x), minf(a.y, b.y)), (b - a).abs()).grow(margin)
 
 
+## Reposo que toca: relajado una vez vencidas las sombras de Camino; antes, el tímido.
+func _reposo() -> StringName:
+	return IDLE_RELAX if Inventario.hecho("n1_sombras") else IDLE
+
+
 func _on_finished() -> void:
 	var anim := sprite.animation
 	if acting:
 		acting = false
-		_play(IDLE, true)
+		_play(_reposo(), true)
 		_sync_layers()
 		action_finished.emit(anim)
 	elif attacking:
 		attacking = false
-		_play(IDLE, true)
+		_play(_reposo(), true)
 		_sync_layers()
 	elif anim == JUMP_START:
 		_play(JUMP_UP, true)
 	elif anim == LAND:
 		_landing = false
-		_play(IDLE, true)
+		_play(_reposo(), true)
 
 
 ## speed01: 0 = quieto, 1 = a toda velocidad. El ritmo de caminata y carrera sale del avance real en
@@ -317,4 +331,4 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 	else:
 		_running = false
 		sprite.speed_scale = 1.0
-		_play(IDLE)
+		_play(_reposo())

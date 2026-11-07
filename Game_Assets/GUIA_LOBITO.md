@@ -99,7 +99,10 @@ hacer ediciones puntuales sobre esa misma hoja (cola, bufanda, grano). Ese es el
 **Base vigente de la carrera: v016** (elegida por Emma el 2026-11-06). Pedido de corrección: v021.
 En el juego: carrera `characters/lobo/run_v027` (copia sin retoques, zancada 446 px por ciclo) y salto
 `salto_v004`, agrandado 6.5 % por código (`SALTO_ESCALA` en `lobo_sprite.gd`) porque está dibujado más chico
-que la carrera.
+que la carrera. Reposo relajado `characters/lobo/idle_relajado_v001` (Wolf_Idle_Relajado_v001, copia sin
+retoques) tras vencer las sombras, con la misma escala que el salto: bufanda −16 % y cola −7 % de área contra
+la carrera; su cabeza mide 52 px de oreja a ojo (original 62), así que la proporción cabeza/cuerpo (0.36) queda
+bajo el rango; Emma lo aprobó así.
 
 12. **Al redibujar brazos sobre el torso, los rellena negro sobre negro** y borra la línea gris que los
    separa: en v021 los brazos casi desaparecían y en el GIF parpadeaban (en la lámina fija no se nota).
