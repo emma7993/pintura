@@ -59,10 +59,10 @@ const FRANJAS_V003 := [
 ## base sobre GROUND_Y, ancho en pantalla, recorte del PNG, opacidad]. La cabeza y el faro, muy lejos: chicos,
 ## lentos y detrás de las colinas, como algo enorme en el horizonte.
 const HITOS_V003 := [
-	["09_cabeza_lejana", 0.16, -64, 900.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
-	["04_plano_medio", 0.25, -54, 2600.0, -61.0, 990.0, [33, 186, 1774, 618], 1.0],
-	["11_casa_lejana", 0.25, -53, 5400.0, -64.0, 260.0, [567, 286, 1207, 887], 1.0],
-	["10_faro_lejano", 0.16, -64, 8600.0, -238.0, 380.0, [297, 42, 1764, 870], 0.75],
+	["09_cabeza_lejana", 0.16, -64, 2500.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
+	["04_plano_medio", 0.25, -54, 680.0, -61.0, 990.0, [33, 186, 1774, 618], 1.0],
+	["11_casa_lejana", 0.25, -53, 3480.0, -64.0, 260.0, [567, 286, 1207, 887], 1.0],
+	["10_faro_lejano", 0.16, -64, 5240.0, -238.0, 380.0, [297, 42, 1764, 870], 0.75],
 ]
 const SUB_ESC := 0.5                      # subsuelo (12, 13) y pared de la cueva (14): 1024 px de textura = 512
 const SUB_BORDE := 256.0 * SUB_ESC        # alto de la orilla del subsuelo (13) en el mundo
@@ -1636,8 +1636,9 @@ func _build_panorama_v003() -> void:
 				sp.region_rect = Rect2(box[0], box[1], box[2] - box[0], box[3] - box[1])
 				var f: float = (c[5] as float) / sp.region_rect.size.x
 				sp.scale = Vector2.ONE * f
-				# en una capa con parallax s, lo que está en x se ve al centro cuando la cámara está en x / s
-				sp.position = Vector2((c[3] as float) * s - (c[5] as float) * 0.5, GROUND_Y + (c[4] as float) - sp.region_rect.size.y * f)
+				# en una capa con parallax s, lo que está en x se ve al centro de la pantalla cuando la cámara está
+				# en (x - 640 (1 - s)) / s: Parallax2D cuenta desde la esquina izquierda de la pantalla, no del centro
+				sp.position = Vector2((c[3] as float) * s + 640.0 * (1.0 - s) - (c[5] as float) * 0.5, GROUND_Y + (c[4] as float) - sp.region_rect.size.y * f)
 				sp.modulate.a = c[7] as float
 			else:
 				sp.scale = Vector2.ONE * e
