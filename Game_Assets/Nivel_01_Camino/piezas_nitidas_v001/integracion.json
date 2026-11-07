@@ -1,0 +1,187 @@
+[
+  {
+    "nombre": "arbol_izquierdo",
+    "hoja": "05_terreno_vegetacion",
+    "indice": 7,
+    "rect_logico": [
+      54,
+      474,
+      479,
+      413,
+      51
+    ],
+    "referencia": "arbol_izquierdo_referencia.png",
+    "dimensiones_px": [
+      1437,
+      1239
+    ],
+    "escala_pixel_logico": 3,
+    "misma_silueta_entre_estados": true,
+    "boceto_blanco_opaco": true,
+    "definido_paleta": {
+      "papel": [
+        247,
+        237,
+        223
+      ],
+      "grafito": [
+        139,
+        119,
+        96
+      ]
+    },
+    "fuente_generada_px": [
+      1351,
+      1164
+    ],
+    "nota": "Redibujo nuevo; conservar dimensiones logicas, no usar pixeles HD como unidades del mundo."
+  },
+  {
+    "nombre": "arbol_derecho",
+    "hoja": "05_terreno_vegetacion",
+    "indice": 9,
+    "rect_logico": [
+      553,
+      563,
+      398,
+      304,
+      31
+    ],
+    "referencia": "arbol_derecho_referencia.png",
+    "dimensiones_px": [
+      1194,
+      912
+    ],
+    "escala_pixel_logico": 3,
+    "misma_silueta_entre_estados": true,
+    "boceto_blanco_opaco": true,
+    "definido_paleta": {
+      "papel": [
+        247,
+        237,
+        223
+      ],
+      "grafito": [
+        139,
+        119,
+        96
+      ]
+    },
+    "fuente_generada_px": [
+      1435,
+      1096
+    ],
+    "nota": "Redibujo nuevo; conservar dimensiones logicas, no usar pixeles HD como unidades del mundo."
+  },
+  {
+    "nombre": "meseta_piedra",
+    "hoja": "05_terreno_vegetacion",
+    "indice": 0,
+    "rect_logico": [
+      3,
+      0,
+      627,
+      319,
+      56
+    ],
+    "referencia": "meseta_piedra_referencia.png",
+    "dimensiones_px": [
+      1881,
+      957
+    ],
+    "escala_pixel_logico": 3,
+    "misma_silueta_entre_estados": true,
+    "boceto_blanco_opaco": true,
+    "definido_paleta": {
+      "papel": [
+        247,
+        237,
+        223
+      ],
+      "grafito": [
+        139,
+        119,
+        96
+      ]
+    },
+    "fuente_generada_px": [
+      1760,
+      894
+    ],
+    "nota": "Redibujo nuevo; conservar dimensiones logicas, no usar pixeles HD como unidades del mundo."
+  },
+  {
+    "nombre": "plataforma_corta",
+    "hoja": "05_terreno_vegetacion",
+    "indice": 3,
+    "rect_logico": [
+      59,
+      350,
+      181,
+      107,
+      18
+    ],
+    "referencia": "plataforma_corta_referencia.png",
+    "dimensiones_px": [
+      543,
+      321
+    ],
+    "escala_pixel_logico": 3,
+    "misma_silueta_entre_estados": true,
+    "boceto_blanco_opaco": true,
+    "definido_paleta": {
+      "papel": [
+        247,
+        237,
+        223
+      ],
+      "grafito": [
+        139,
+        119,
+        96
+      ]
+    },
+    "fuente_generada_px": [
+      1631,
+      964
+    ],
+    "nota": "Redibujo nuevo; conservar dimensiones logicas, no usar pixeles HD como unidades del mundo."
+  },
+  {
+    "nombre": "plataforma_larga",
+    "hoja": "07_pozo",
+    "indice": 4,
+    "rect_logico": [
+      605,
+      498,
+      292,
+      151,
+      19
+    ],
+    "referencia": "plataforma_larga_referencia.png",
+    "dimensiones_px": [
+      876,
+      453
+    ],
+    "escala_pixel_logico": 3,
+    "misma_silueta_entre_estados": true,
+    "boceto_blanco_opaco": true,
+    "definido_paleta": {
+      "papel": [
+        247,
+        237,
+        223
+      ],
+      "grafito": [
+        139,
+        119,
+        96
+      ]
+    },
+    "fuente_generada_px": [
+      1744,
+      902
+    ],
+    "nota": "Redibujo nuevo; conservar dimensiones logicas, no usar pixeles HD como unidades del mundo."
+  }
+]
