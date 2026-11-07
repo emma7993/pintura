@@ -1,0 +1,11 @@
+CORRECCION DE LA ZONA DEL FARO — CAMINO A LA IZQUIERDA, MAR A LA DERECHA
+20_mar_agitado_derecha.png:1774x887, RGBA, oleaje con espuma a la derecha del faro. Repetible horizontalmente.
+21_camino_izquierda_faro.png:1774x887, RGBA, acceso de losas y roca costera a la izquierda. No es un tile; solapar su extremo derecho con la base del faro.
+22_mar_lejano.png:1774x887, RGBA, mar muy palido al fondo. Repetible en X, situar por detras del faro y20.
+Dos estados por pieza: boceto gris con blanco opaco dentro de formas; definido sepia unificado. Misma mascara alfa y tamaño por par, comprobados.
+En la zona del faro NO usar17_colinas_enlace,18_laderas_rocosas ni19_costa_enlace como mar. Las colinas siguen disponibles para el paisaje interior de Camino.
+El montaje_faro_mar_* reemplaza la propuesta anterior en la zona maritima. Ninguna duna ni colina se usa a la derecha del faro.
+Montaje de referencia: lienzo5322x887; mar lejano repetido X a y=-105, camino a x0,y=-120 escalado2100x887, mar agitado continuo con tiles en x0/1774/3548,y20, faro existente x1400,y20. Camino solapado sobre mar y faro al frente. Ajustar a camara real.
+Factores iniciales propuestos: mar lejano0.08, faro0.14, camino0.16, mar agitado0.20. Para un empalme completamente fijo, mantener20 y10 en el mismo plano y compensar diferencia por animacion de agua separada.
+Las vistas son referencias, no escenas Godot ni colisiones. Probar todo el desplazamiento de camara antes de usar diferencias de parallax en piezas que se tocan.
+Generacion integrada image_gen y acabado tecnico Python autorizado. Prompts adjuntos.
