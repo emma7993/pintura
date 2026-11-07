@@ -38,6 +38,7 @@ func _process(_delta: float) -> bool:
 	if _espera == 0:
 		w.position = _puntos[_i]
 		w.set("velocity", Vector2.ZERO)
+		w.reset_physics_interpolation()       # sin esto la cámara llega tarde (interpolación de física)
 		(_lvl.get("_cam") as Camera2D).reset_smoothing()
 	_espera += 1
 	if _espera >= 20:

@@ -27,6 +27,13 @@ const DIBUJO_DURA := 3.2                  # s que tarda el frente en cruzar la p
 const DIBUJO_FIN := 2600.0                # radio (px de pantalla) que cubre toda la pantalla
 const T05 := "05_terreno_vegetacion"
 const T06 := "06_cueva_modulos"
+## Piezas nítidas (Game_Assets/Nivel_01_Camino/piezas_nitidas_v001): redibujos sueltos que reemplazan estos
+## recortes de las hojas, con el mismo rectángulo lógico (el PNG va a 3 px por unidad).
+const NITIDAS := {
+	"05_terreno_vegetacion:7": "arbol_izquierdo", "05_terreno_vegetacion:9": "arbol_derecho",
+	"05_terreno_vegetacion:0": "meseta_piedra", "05_terreno_vegetacion:3": "plataforma_corta",
+	"07_pozo:4": "plataforma_larga",
+}
 const T07 := "07_pozo"
 const T08 := "08_foso_espinas"
 ## Fondos v003 (herramientas/fondos_camino_v003.py, de fondos_unificados_v001 de ChatGPT): bocetos blancos
@@ -59,7 +66,7 @@ const FRANJAS_V003 := [
 ## base sobre GROUND_Y, ancho en pantalla, recorte del PNG, opacidad]. La cabeza y el faro, muy lejos: chicos,
 ## lentos y detrás de las colinas, como algo enorme en el horizonte.
 const HITOS_V003 := [
-	["03_ruinas_lejanas", 0.14, -65, 7000.0, -230.0, 1100.0, [0, 50, 1774, 450], 0.8],   # puentes y acueductos lejanos
+	["03_ruinas_lejanas", 0.14, -65, -2000.0, -200.0, 850.0, [0, 50, 1774, 450], 0.8],   # puentes y acueductos lejanos
 	["09_cabeza_lejana", 0.24, -64, 3500.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
 	["04_plano_medio", 0.25, -54, 680.0, -61.0, 990.0, [33, 186, 1774, 618], 1.0],
 	["11_casa_lejana", 0.25, -53, 3480.0, -64.0, 260.0, [567, 286, 1207, 887], 1.0],
@@ -1591,6 +1598,7 @@ func _build_fondos_v002() -> void:
 		paper_layer.add_child(paper)
 		_fondos_v002.append(paper)
 	_build_panorama_v003()
+	_build_faro_mar()
 	for c in CAPAS_V002:
 		var hito := false
 		var bordes := true
@@ -1657,6 +1665,49 @@ func _build_panorama_v003() -> void:
 				sp.position = Vector2(dx, arriba + (c[3] as float) * e)
 			par.add_child(sp)
 		_fondos_v002.append(par)
+
+## Zona del faro (fondos_unificados_v001/montaje_faro_mar.json, lienzo 5322x887): a la izquierda, el camino
+## costero de losas (21, estirado a 2100 de ancho); a la derecha, el mar agitado (20) y detrás el mar lejano (22),
+## repetidos. Todo en el mismo parallax que el faro, para que los empalmes no se separen. Las coordenadas del
+## montaje se pasan al mundo con la misma escala y el mismo punto que el faro (su recorte empieza en x 1697, y su
+## borde de abajo está en y 890 del montaje).
+const FARO_MAR := [   # [archivo, x, y, ancho, alto, z, repeticiones] en px del montaje
+	["22_mar_lejano", 900.0, -105.0, 1774.0, 887.0, -67, 3],
+	["20_mar_agitado_derecha", 1100.0, 20.0, 1774.0, 887.0, -66, 3],
+	["21_camino_izquierda_faro", 0.0, -120.0, 2100.0, 887.0, -65, 1],
+]
+
+
+func _build_faro_mar() -> void:
+	var faro: Array = HITOS_V003.filter(func(h: Array) -> bool: return h[0] == "10_faro_lejano")[0]
+	var s: float = faro[1]
+	var box: Array = faro[6]
+	var k: float = (faro[5] as float) / float(box[2] - box[0])
+	var izq: float = (faro[3] as float) * s + 640.0 * (1.0 - s) - (faro[5] as float) * 0.5
+	var abajo: float = GROUND_Y + (faro[4] as float)
+	for c in FARO_MAR:
+		var par := Parallax2D.new()
+		par.name = "v003_" + (c[0] as String)
+		par.scroll_scale = Vector2(s, 1.0)
+		par.z_index = c[5] as int
+		add_child(par)
+		for n in (c[6] as int):
+			for e in 2:
+				var sp := Sprite2D.new()
+				# el primer tramo de cada mar entra fundido (herramientas/faro_mar_v001.py): sin corte recto
+				var archivo: String = (c[0] as String) + ("_inicio" if n == 0 and (c[6] as int) > 1 else "")
+				sp.texture = _tex_v3(["boceto", "definido"][e], archivo)
+				sp.centered = false
+				sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+				sp.material = _mats_dibujo[e]
+				var t := sp.texture
+				sp.scale = Vector2((c[3] as float) / t.get_width(), (c[4] as float) / t.get_height()) * k
+				var mx: float = (c[1] as float) + n * (c[3] as float)
+				sp.position = Vector2(izq + (mx - 1697.0) * k, abajo + ((c[2] as float) - 890.0) * k)
+				sp.modulate.a = faro[7] as float
+				par.add_child(sp)
+		_fondos_v002.append(par)
+
 
 ## Al pintar la puerta: el frente de dibujo sale de la puerta y cubre el paisaje (boceto -> definido).
 func _dibujar_paisaje(efecto: bool) -> void:
@@ -1739,12 +1790,18 @@ func _pieza(hoja: String, i: int, x: float, pisada_y: float, ancho: float, z: in
 	var fy := fx if alto <= 0.0 else alto / float(r[3])
 	n.scale = Vector2(fx, fy)
 	n.position = Vector2(x, pisada_y - float(r[4]) * fy)
+	var nitida: String = NITIDAS.get("%s:%d" % [hoja, i], "")
 	for k in 2:
-		var at := AtlasTexture.new()
-		at.atlas = load(FONDOS + "/" + ["boceto", "definido"][k] + "/" + hoja + ".png")
-		at.region = Rect2(r[0], r[1], r[2], r[3])
 		var sp := Sprite2D.new()
-		sp.texture = at
+		if nitida != "":                 # redibujo suelto: ocupa el mismo rectángulo lógico que el recorte
+			var t: Texture2D = load(FONDOS + "/" + ["boceto", "definido"][k] + "/nitidas/" + nitida + ".png")
+			sp.texture = t
+			sp.scale = Vector2(float(r[2]) / t.get_width(), float(r[3]) / t.get_height())
+		else:
+			var at := AtlasTexture.new()
+			at.atlas = load(FONDOS + "/" + ["boceto", "definido"][k] + "/" + hoja + ".png")
+			at.region = Rect2(r[0], r[1], r[2], r[3])
+			sp.texture = at
 		sp.centered = false
 		sp.flip_h = espejo
 		sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
@@ -1798,7 +1855,7 @@ func _update_tapa_roca(delta: float) -> void:
 
 
 func _draw_tapa_roca(ci: CanvasItem, estado: String) -> void:
-	var r := Rect2(WELL_X - WELL_HALF - 2.0, HIGH_Y + 26.0, WELL_HALF * 2.0 + 4.0, CAVE_TOP - HIGH_Y - 26.0)
+	var r := Rect2(WELL_X - WELL_HALF - 2.0, HIGH_Y + 4.0, WELL_HALF * 2.0 + 4.0, CAVE_TOP - HIGH_Y - 4.0)   # bajo el brocal: sin franja clara
 	_rock_rect(ci, r, estado, true, HIGH_Y + 26.0)
 
 

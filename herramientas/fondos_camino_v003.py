@@ -10,6 +10,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 ORIG = RAIZ / "Game_Assets/Nivel_01_Camino/fondos_unificados_v001"
+NITIDAS = RAIZ / "Game_Assets/Nivel_01_Camino/piezas_nitidas_v001"
 SALIDA = RAIZ / "art/worlds/camino/nivel_01_fondos_v003"
 
 
@@ -22,6 +23,10 @@ def main():
         (SALIDA / estado / "cueva_paleta").mkdir(exist_ok=True)
         for f in sorted((ORIG / estado / "cueva_paleta").glob("*.png")):
             shutil.copy2(f, SALIDA / estado / "cueva_paleta" / f.name)
+        # piezas nítidas (redibujos sueltos de 5 piezas de las hojas 05 y 07, a 3 px por unidad lógica)
+        (SALIDA / estado / "nitidas").mkdir(exist_ok=True)
+        for f in sorted((NITIDAS / estado).glob("*.png")):
+            shutil.copy2(f, SALIDA / estado / "nitidas" / f.name)
     shutil.copy2(ORIG / "papeles/boceto_blanco.png", SALIDA / "01_papel_boceto.png")
     shutil.copy2(ORIG / "papeles/definido_sepia.png", SALIDA / "01_papel.png")
     (SALIDA / "LEEME.txt").write_text(
