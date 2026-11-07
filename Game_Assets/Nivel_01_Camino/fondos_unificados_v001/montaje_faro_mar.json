@@ -1,0 +1,13 @@
+{
+  "tamano": [
+    5322,
+    887
+  ],
+  "izquierda": "21_camino_izquierda_faro.png",
+  "centro": "10_faro_lejano.png",
+  "derecha": "20_mar_agitado_derecha.png",
+  "fondo": "22_mar_lejano.png",
+  "reemplaza_colinas_en_zona_mar": true,
+  "camino_y": -120,
+  "solape_bordes_px": 180
+}

@@ -1,0 +1,10 @@
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/boceto/arbol_izquierdo.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/definido/arbol_izquierdo.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/boceto/arbol_derecho.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/definido/arbol_derecho.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/boceto/meseta_piedra.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/definido/meseta_piedra.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/boceto/plataforma_corta.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/definido/plataforma_corta.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/boceto/plataforma_larga.png
+Game_Assets/Nivel_01_Camino/piezas_nitidas_v001/definido/plataforma_larga.png

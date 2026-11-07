@@ -67,5 +67,7 @@
     "puentes": 0.25,
     "costa": 0.3
   },
-  "nota": "Propuesta visual; probar desplazamiento y oclusiones en Godot. No es fondo aplanado para integrar."
+  "nota": "Propuesta visual; probar desplazamiento y oclusiones en Godot. No es fondo aplanado para integrar.",
+  "zona_faro_montaje_activo": "montaje_faro_mar.json",
+  "colinas_solo_en_tierra": true
 }

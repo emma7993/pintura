@@ -465,6 +465,42 @@
       "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-9e4089b2-f9c1-4158-856b-7b4e07922dd0.png",
       "repetible": "x",
       "funcion": "LOW COASTAL LAND/SEA TRANSITION BELT to visually join the foot of sleeping head, bottom of bridges, waterfall and lighthouse wave. Very low rounded rocky shoreline left, quiet thin water pencil ripples in center, several modest low shore rocks right and subtly rougher sea pencil lines toward right. No large wave: existing lighthouse-wave remains a separate layer. Avoid busy detail, unified almost horizontal low profile with matched left/right height and tangent for seamless horizontal repetition. Transparent above low shoreline silhouette, opaque pale paper interiors and base to bottom. No horizon skyline: this is coastal connective foreground of the distant panorama."
+    },
+    {
+      "archivo": "camino/20_mar_agitado_derecha.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 411090,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-d1327224-d556-4ba1-b1b5-a2c95fc611de.png",
+      "repetible": "x",
+      "lado_del_faro": "derecha/fondo"
+    },
+    {
+      "archivo": "camino/21_camino_izquierda_faro.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 230482,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-b62e25de-0702-49b9-b533-ebe712b40649.png",
+      "repetible": false,
+      "lado_del_faro": "izquierda"
+    },
+    {
+      "archivo": "camino/22_mar_lejano.png",
+      "dimensiones": [
+        1774,
+        887
+      ],
+      "misma_mascara_alfa": true,
+      "pixeles_blanco_opaco": 275232,
+      "fuente": "/Users/l03123318/.codex/generated_images/01a1ae0f-3e87-7520-810d-db7f4abc5e8b/exec-bd806824-6d9b-4714-96df-d9922bc4d0bc.png",
+      "repetible": "x",
+      "lado_del_faro": "derecha/fondo"
     }
   ],
   "validacion": [
@@ -728,6 +764,27 @@
     },
     {
       "archivo": "camino/19_costa_enlace.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    },
+    {
+      "archivo": "camino/20_mar_agitado_derecha.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": "x"
+    },
+    {
+      "archivo": "camino/21_camino_izquierda_faro.png",
+      "misma_silueta_y_posicion": true,
+      "boceto_grises": true,
+      "definido_sepia": true,
+      "bordes_repetibles_exactos": false
+    },
+    {
+      "archivo": "camino/22_mar_lejano.png",
       "misma_silueta_y_posicion": true,
       "boceto_grises": true,
       "definido_sepia": true,
