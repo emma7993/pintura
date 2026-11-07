@@ -31,9 +31,9 @@ const SALAS := [
 	{"id": "ca_arco", "zona": "camino", "c": 3, "f": 0, "nombre": "Arco dañado", "nota": "Puerta al cuadro", "tipo": "clave", "enemigos": "U"},
 	{"id": "ca_sello", "zona": "camino", "c": 4, "f": 0, "nombre": "Sello musical", "nota": "Melodía 1", "tipo": "cerrada", "req": "Melodía 1 (Un sueño)", "enemigos": "S · B", "sellada": "ca_descanso", "clave": "melodia_1"},
 	{"id": "ca_a_sueno", "zona": "camino", "c": 0, "f": 1, "nombre": "A Un sueño", "nota": "Atajo", "tipo": "cerrada", "req": "Atajo: melodía del sello"},
-	{"id": "ca_paleta", "zona": "camino", "c": 1, "f": 1, "nombre": "Cueva de la paleta", "nota": "Paleta de colores", "tipo": "clave", "enemigos": "M"},
+	{"id": "ca_paleta", "zona": "camino", "c": 1, "f": 1, "nombre": "Cueva de la paleta", "nota": "Paleta y cascada", "tipo": "clave", "enemigos": "M"},
 	{"id": "ca_cueva", "zona": "camino", "c": 2, "f": 1, "nombre": "Entrada a la cueva", "nota": "Junto al altar", "tipo": "normal", "enemigos": "M"},
-	{"id": "ca_copista", "zona": "camino", "c": 3, "f": 1, "nombre": "Taller del copista", "nota": "Vendedor", "tipo": "normal"},
+	{"id": "ca_copista", "zona": "camino", "c": 3, "f": 1, "nombre": "Taller del copista", "nota": "Vendedor · se entra desde la Zona de enemigos", "tipo": "normal"},
 	{"id": "ca_descanso", "zona": "camino", "c": 4, "f": 1, "nombre": "Zona de descanso", "nota": "Cascada de pintura", "tipo": "normal", "banca": true},
 	{"id": "ca_a_miedo", "zona": "camino", "c": 0, "f": 2, "nombre": "A Miedo", "nota": "Atajo", "tipo": "cerrada", "req": "Atajo: pintar rojo en el acantilado"},
 	{"id": "ca_enemigos", "zona": "camino", "c": 1, "f": 2, "nombre": "Zona de enemigos", "nota": "Aprende a atacar", "tipo": "normal", "enemigos": "M"},
@@ -98,10 +98,10 @@ const SALAS := [
 const CONEXIONES := [
 	# Camino
 	["ca_despertar", "ca_barranco"], ["ca_barranco", "ca_altar"], ["ca_altar", "ca_arco"], ["ca_arco", "ca_sello"],
-	["ca_altar", "ca_cueva"], ["ca_arco", "ca_copista"], ["ca_sello", "ca_descanso"],
+	["ca_altar", "ca_cueva"], ["ca_sello", "ca_descanso"],
 	["ca_a_sueno", "ca_paleta"], ["ca_paleta", "ca_cueva"], ["ca_paleta", "ca_enemigos"],
 	["ca_a_miedo", "ca_enemigos"], ["ca_enemigos", "ca_cascada"], ["ca_cascada", "ca_pozo"],
-	["ca_copista", "ca_pozo"], ["ca_descanso", "ca_jefe"],
+	["ca_descanso", "ca_jefe"],
 	# Un sueño
 	["su_a_camino", "su_umbral"], ["su_umbral", "su_a_final"], ["su_umbral", "su_claro"], ["su_claro", "su_burbujas"],
 	["su_burbujas", "su_cascada"], ["su_cascada", "su_jefe"], ["su_raices", "su_claro"], ["su_raices", "su_arbol"],
@@ -126,6 +126,7 @@ const CONEXIONES := [
 ## Portales: puertas del hub y atajos entre zonas. [sala A, sala B, rótulo, con qué se abre]
 const PORTALES := [
 	["pintura", "ca_arco", "Camino", "Primera puerta, siempre abierta"],
+	["ca_enemigos", "ca_copista", "Taller del copista", "Siempre abierta"],
 	["pintura", "su_umbral", "Un sueño y muchos momentos", "Pintar la puerta con el negro"],
 	["pintura", "cb_pozo", "Cambio", "Blanco: dash, viento y descenso"],
 	["pintura", "mi_muelle", "Miedo", "Melodía de las olas y bote"],
@@ -145,7 +146,8 @@ const CH := 1080.0
 
 ## Salas de Camino que ya son el Nivel 1 jugable (zones/nivel_01_camino.gd): el mundo en bloques no las
 ## arma; al entrar en ellas se pasa al Nivel 1.
-const NIVEL1 := ["ca_despertar", "ca_barranco", "ca_altar", "ca_arco", "ca_cueva", "ca_cascada", "ca_pozo"]
+## La cueva de la paleta es la cámara honda del Nivel 1 (donde antes estaba el tintero).
+const NIVEL1 := ["ca_despertar", "ca_barranco", "ca_altar", "ca_arco", "ca_cueva", "ca_cascada", "ca_pozo", "ca_paleta"]
 
 
 ## Salas de una zona en el orden del mapa (fila por fila, de izquierda a derecha): Ñ / L en main.gd.
@@ -174,7 +176,8 @@ const NIVEL1_TRAMOS := [
 	# [sala, x desde, x hasta, en la cueva]
 	["ca_despertar", -200.0, 2600.0, false], ["ca_barranco", 2600.0, 4300.0, false],
 	["ca_altar", 4300.0, 5300.0, false], ["ca_arco", 5300.0, 10200.0, false],
-	["ca_cascada", 4600.0, 5800.0, true], ["ca_pozo", 5800.0, 6200.0, true], ["ca_cueva", 6200.0, 9200.0, true],
+	["ca_cascada", 4600.0, 5800.0, true], ["ca_pozo", 5800.0, 6200.0, true], ["ca_paleta", 6900.0, 7600.0, true],
+	["ca_cueva", 6200.0, 9200.0, true],
 ]
 
 
@@ -196,4 +199,4 @@ static func _nivel1_tramo(p: Vector2) -> Array:
 	for t in NIVEL1_TRAMOS:
 		if t[3] == cave and p.x >= t[1] and p.x < t[2]:
 			return t
-	return NIVEL1_TRAMOS[6] if cave else NIVEL1_TRAMOS[3]
+	return NIVEL1_TRAMOS[7] if cave else NIVEL1_TRAMOS[3]

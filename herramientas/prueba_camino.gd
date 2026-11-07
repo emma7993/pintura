@@ -2,8 +2,8 @@ extends SceneTree
 ## Prueba de Camino unido dentro del juego (main.tscn), sin ventana:
 ##   Godot --headless --path . -s res://herramientas/prueba_camino.gd
 ## Pintura -> Nivel 1 -> (extremo derecho) resto de Camino -> (vuelta por el sello) Nivel 1 -> (fondo de la
-## cueva) Zona de enemigos -> banca -> pintura; puerta del copista y su salida al arco; puerta del inicio
-## del Nivel 1 hacia la pintura; mapa (M) que pausa y marca lo recorrido.
+## cueva) Zona de enemigos -> banca -> pintura; de la cueva se cae a la Zona de enemigos, de ahí al taller
+## del copista, y subiendo por el hueco se vuelve a la cueva; mapa (M) que pausa y marca lo recorrido.
 
 var _t := 0.0
 var _paso := 0
@@ -54,28 +54,28 @@ func _process(delta: float) -> bool:
 			_check("desde la banca vuelve a la pintura", _is(z, "zone_camino.gd"))
 			main._on_exit_requested("z_camino")
 		7:
-			z.walker.position = Vector2(z.COPISTA_X, z.CAVE_Y)
-			z._moved = true
+			_check("de la pintura entra al Nivel 1", _is(z, "nivel_01_camino.gd"))
+			z.walker.position = Vector2(z.CAVE_X.x + 20.0, z.CAVE_Y)       # fondo izquierdo de la cueva
 		8:
-			_check("junto a la puerta del copista", z.cur_exit == "mundo:ca_copista")
-			_pulsar("interact")
+			_check("cae a la Zona de enemigos por el hueco del techo", _is(z, "mundo.gd") and z.map_room() == "ca_enemigos")
+			for q in z._portals:
+				if q.room == "ca_enemigos" and q.to == "ca_copista":
+					z._teleport((q.rect as Rect2).get_center() + Vector2(0, 100))
 		9:
-			_check("entra al taller del copista", _is(z, "mundo.gd") and z.map_room() == "ca_copista")
-			z._teleport(MapaDatos.rect("ca_arco").get_center())
+			_check("junto a la puerta del copista (Zona de enemigos)", z.exit_hint.contains("copista"))
+			_pulsar("interact")
 		10:
-			_check("del copista sube al arco del Nivel 1", _is(z, "nivel_01_camino.gd") and absf(z.walker.position.x - z.EXIT_X) < 300.0)
-			z.walker.position = Vector2(60.0, z.GROUND_Y)
-			z._moved = true
+			_check("entra al taller del copista", _is(z, "mundo.gd") and z.map_room() == "ca_copista")
+			z._teleport(MapaDatos.rect("ca_enemigos").get_center())
 		11:
-			_check("junto a la puerta del inicio", z.cur_exit == "camino")
-			main._toggle_map()
+			z._teleport(MapaDatos.rect("ca_paleta").get_center())       # sube por el hueco del techo
 		12:
+			_check("subiendo vuelve a la cueva, donde cayó", _is(z, "nivel_01_camino.gd") and absf(z.walker.position.x - z.CAVE_X.x) < 300.0)
+			main._toggle_map()
+		13:
 			_check("el mapa pausa el juego y marca al lobo", paused and main.map.pos != Vector2.INF)
 			main._toggle_map()
-			_pulsar("interact")
-		13:
-			_check("la puerta del inicio lleva a la pintura", _is(z, "zone_camino.gd"))
-			var want := ["ca_despertar", "ca_arco", "ca_sello", "ca_enemigos", "ca_descanso", "ca_copista", "ca_cueva"]
+			var want := ["ca_arco", "ca_sello", "ca_enemigos", "ca_descanso", "ca_copista", "ca_cascada"]
 			var missing := want.filter(func(id: String) -> bool: return not Inventario.visitadas.has(id))
 			_check("salas recorridas guardadas %s" % str(missing), missing.is_empty())
 			Inventario.reiniciar()

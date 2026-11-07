@@ -32,10 +32,13 @@ const T08 := "08_foso_espinas"
 ## Fondos v003 (herramientas/fondos_camino_v003.py, de fondos_unificados_v001 de ChatGPT): bocetos blancos
 ## opacos y definidos en sepia uniforme, misma silueta por pareja.
 const FONDOS := "res://art/worlds/camino/nivel_01_fondos_v003"
-## Cielo, se repite: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y]
-## Encuadre con el lobo en el suelo: la pantalla va de GROUND_Y - 430 (arriba) a GROUND_Y + 290.
+## Cielo, se repite: [archivo, parallax, z, opacidad, alto en pantalla, y de la parte de arriba sobre GROUND_Y,
+## en espejo]. Encuadre con el lobo en el suelo: la pantalla va de GROUND_Y - 430 (arriba) a GROUND_Y + 290; las
+## nubes solo ocupan la parte de arriba de la imagen, así que se apilan tres filas para cuando el lobo sube.
 const CAPAS_V002 := [
-	["02_cielo_nubes", 0.08, -70, 1.0, 600.0, -470.0],
+	["02_cielo_nubes", 0.08, -70, 1.0, 600.0, -470.0, false],
+	["02_cielo_nubes", 0.065, -71, 0.9, 600.0, -747.0, true],
+	["02_cielo_nubes", 0.05, -72, 0.8, 600.0, -1024.0, false],
 ]
 ## Panorama: el montaje de ChatGPT (fondos_unificados_v001/montaje_parallax.json, lienzo de 3548x1000) escalado
 ## MONTAJE_ESCALA, con su borde de abajo bajo el suelo del inicio. Cada capa con su parallax; se ven como en el
@@ -52,16 +55,19 @@ const FRANJAS_V003 := [
 	["18_laderas_rocosas", 0.27, -56, 480.0],
 	["19_costa_enlace", 0.29, -50, 290.0],
 ]
-## Partes de la pintura, en orden: [archivo, parallax, z, x, y de la base, ancho, recorte del PNG] (del montaje)
+## Partes de la pintura, en orden: [archivo, parallax, z, x de la cámara en la que se ve al centro, y de la
+## base sobre GROUND_Y, ancho en pantalla, recorte del PNG, opacidad]. La cabeza y el faro, muy lejos: chicos,
+## lentos y detrás de las colinas, como algo enorme en el horizonte.
 const HITOS_V003 := [
-	["09_cabeza_lejana", 0.24, -58, 140.0, 785.0, 800.0, [17, 171, 1259, 863]],
-	["04_plano_medio", 0.25, -54, 1070.0, 825.0, 1320.0, [33, 186, 1774, 618]],
-	["11_casa_lejana", 0.25, -53, 2330.0, 808.0, 280.0, [567, 286, 1207, 887]],
-	["10_faro_lejano", 0.25, -52, 2600.0, 825.0, 850.0, [297, 42, 1764, 870]],
+	["09_cabeza_lejana", 0.16, -64, 900.0, -232.0, 330.0, [17, 171, 1259, 863], 0.75],
+	["04_plano_medio", 0.25, -54, 2600.0, -61.0, 990.0, [33, 186, 1774, 618], 1.0],
+	["11_casa_lejana", 0.25, -53, 5400.0, -64.0, 260.0, [567, 286, 1207, 887], 1.0],
+	["10_faro_lejano", 0.16, -64, 8600.0, -238.0, 380.0, [297, 42, 1764, 870], 0.75],
 ]
 const SUB_ESC := 0.5                      # subsuelo (12, 13) y pared de la cueva (14): 1024 px de textura = 512
 const SUB_BORDE := 256.0 * SUB_ESC        # alto de la orilla del subsuelo (13) en el mundo
-const MARCO_ALTO := 250.0                 # puerta de regreso a la pintura (16_marco_pintura)
+const MARCO_ALTO := 330.0                 # puerta de regreso a la pintura (16_marco_pintura), en el arco
+const CAER_DESDE := 560.0                 # al entrar desde la pintura, el lobo cae desde esta altura
 const MASK_ORIGIN := Vector2(-200, -500)  # máscara de pintura: esquina superior izquierda en px de mundo
 const MASK_SIZE := Vector2(10400, 2300)
 const MASK_DIV := 4.0                     # px de mundo por px de máscara
@@ -130,6 +136,7 @@ const ENTRADAS := {
 	"ca_altar": Vector2(BRUSH_X - 40.0, HIGH_Y), "ca_arco": Vector2(EXIT_X - 160.0, HIGH_Y),
 	"ca_cascada": Vector2(FALL_X + 120.0, CAVE_Y), "ca_pozo": Vector2(WELL_X, CAVE_Y),
 	"ca_cueva": Vector2(COPISTA_X - 150.0, CAVE_Y),
+	"ca_paleta": Vector2(ALTAR_X - 220.0, CHAMBER_Y),
 }
 
 var walker: Player
@@ -203,7 +210,6 @@ var _arte_v2: Array[CanvasItem] = []      # piezas v002 (ChatGPT)
 var _pozo_v2 := {}                        # "cerrado", "abierto", "losa", "tapa": sprites del pozo
 var _rock_node: Node2D
 var _nodos_tierra: Array[Node2D] = []    # roca y aire de la cueva: definido y, de hijo, su boceto
-var _marco_v3: Node2D
 var _texturas := {}
 var _back_node: Node2D
 
@@ -266,6 +272,8 @@ func _ready() -> void:
 		_checkpoint = walker.position
 		if entrada == "fin":
 			walker.lobo.face(-1)
+	elif entrada == "" and not auto:
+		walker.position.y -= CAER_DESDE      # se llega a este mundo cayendo desde la pintura
 	_update_life_ui()
 	if Inventario.atajo >= 0:
 		_apply_shortcut(Inventario.atajo)
@@ -348,8 +356,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _apply_shortcut(n: int) -> void:
 	var names := ["desde el principio (partida borrada)", "antes del hueco, corriendo", "junto al pincel",
-		"sin sombras, antes de las plataformas", "en la cascada (cueva) con el tintero vacío",
-		"en el arco con el tintero lleno", "bajo el pozo con tinta, listo para romper la tapa"]
+		"sin sombras, antes de las plataformas", "en la cascada (cueva) con la paleta vacía",
+		"en el arco con la paleta llena", "bajo el pozo con tinta, listo para romper la tapa"]
 	match n:
 		1:
 			walker.position = Vector2(GAP.x - 700.0, GROUND_Y)
@@ -575,30 +583,69 @@ func _build_decor() -> void:
 		_place("stones", Vector2(x, CAVE_Y + 6), 0.6, -8).self_modulate.a = 0.7
 	_place("pedestal", Vector2(BRUSH_X, HIGH_Y + 5), 0.6, -8)
 	# puerta: boceto gris apagado; encima, su versión entintada (gate_tinta, mismo lienzo), oculta hasta que se pinta
-	_gate_sketch = _place("gate", Vector2(EXIT_X, HIGH_Y + 4), GATE_SCALE, -18)
-	_gate_sketch.modulate.a = 0.5
-	_gate_glow = _place("gate", Vector2(EXIT_X, HIGH_Y + 4), GATE_SCALE, -19)
-	_gate_glow.texture = load(COLOR_ART + "/Gate/gate_active_glow.png")
-	_gate_glow.modulate.a = 0.0
-	_gate_paint = _place("gate", Vector2(EXIT_X, HIGH_Y + 4), GATE_SCALE, -17)
-	_gate_paint.texture = load(COLOR_ART + "/Gate/gate_tinta.png")
+	# v003: la puerta es el marco con la pintura (16_marco_pintura): boceto blanco y, al pintarlo, el marco
+	# definido con el lienzo a color; detrás, un halo con su misma silueta
+	var fm := MARCO_ALTO / 768.0
+	var esq := Vector2(EXIT_X - 256.0 * fm, HIGH_Y + 8.0 - MARCO_ALTO)
+	_gate_sketch = _sprite("gate", -18)
+	_gate_sketch.texture = _tex_v3("boceto", "16_marco_pintura")
+	_gate_sketch.scale = Vector2.ONE * fm
+	_gate_sketch.position = esq
+	_gate_glow = _sprite("gate", -19)
+	_gate_glow.texture = _tex_v3("definido", "16_marco_pintura")
+	_gate_glow.scale = Vector2.ONE * fm * 1.08
+	_gate_glow.position = esq - Vector2(256.0, 384.0) * fm * 0.08
+	_gate_glow.modulate = Color(1.6, 1.35, 0.9, 0.0)
+	_gate_paint = _sprite("gate", -17)
+	_gate_paint.texture = _tex_v3("definido", "16_marco_pintura")
+	_gate_paint.scale = Vector2.ONE * fm
+	_gate_paint.position = esq
 	_gate_paint.region_enabled = true
 	_gate_paint.visible = false
 
 
-## Arte de color de Codex: pincel en la luz, altar con el tintero y cascada de tinta con su lago.
+## Pieza de la cueva de la paleta (boceto y definido) apoyada por su base: esquina izquierda de abajo en «pie».
+func _cueva_paleta(hoja: String, box: Array, pie: Vector2, ancho: float, z: int) -> void:
+	var r := Rect2(box[0], box[1], box[2] - box[0], box[3] - box[1])
+	var f := ancho / r.size.x
+	for k in 2:
+		var sp := Sprite2D.new()
+		sp.texture = _tex_v3(["boceto", "definido"][k], "cueva_paleta/" + hoja)
+		sp.region_enabled = true
+		sp.region_rect = r
+		sp.centered = false
+		sp.scale = Vector2.ONE * f
+		sp.position = pie - Vector2(0, r.size.y * f)
+		sp.z_index = z
+		sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		sp.material = _mats_dibujo[k]
+		add_child(sp)
+		_v2(sp)
+
+
+## Arte de color de Codex: pincel en la luz, la paleta en la cueva y la cascada de tinta con su lago.
 func _build_color_props() -> void:
 	_brush_pickup = _color_sprite("Objects/brush_pickup.png", -6)
 	_brush_pickup.centered = true
 	_brush_pickup.scale = Vector2.ONE * 0.42
 	# altar (en la cámara honda de la cueva): el mismo pedestal a lápiz que el del pincel; encima, el tintero vacío,
 	# aclarado para que se lea transparente (pie del frasco en y=236 de su celda)
-	var ped := _place("pedestal", Vector2(ALTAR_X, CHAMBER_Y + 5.0), 0.6, -8)
-	var top: float = ped.position.y + float(_metrics.pedestal.bounds[1]) * 0.6
-	_inkwell = _color_sprite("Altar/inkwell_empty.png", -7)
-	_inkwell.scale = Vector2.ONE * 0.5
-	_inkwell.position = Vector2(ALTAR_X - 128.0 * 0.5, top + 4.0 - 236.0 * 0.5)
-	_inkwell.modulate = Color(1.45, 1.45, 1.5, 0.95)
+	# cueva de la paleta (fondos_unificados_v001/cueva_paleta): fondo de la cámara, arco y altar; la paleta encima
+	_cueva_paleta("02_fondo", [32, 81, 1750, 771], Vector2(CHAMBER.x - 20.0, CHAMBER_Y + 12.0), CHAMBER.y - CHAMBER.x + 40.0, -44)
+	_cueva_paleta("03_modulos", [480, 430, 979, 861], Vector2(ALTAR_X - 165.0, CHAMBER_Y + 8.0), 330.0, -43)
+	_cueva_paleta("03_modulos", [1453, 653, 1723, 851], Vector2(CHAMBER.x + 300.0, CHAMBER_Y + 8.0), 120.0, -9)
+	_cueva_paleta("03_modulos", [1062, 703, 1280, 853], Vector2(ALTAR_X - 90.0, CHAMBER_Y + 8.0), 180.0, -8)
+	var top := CHAMBER_Y + 8.0 - 150.0 * 180.0 / 218.0       # cara de arriba del altar
+	_inkwell = Sprite2D.new()
+	_inkwell.texture = _tex_v3("definido", "cueva_paleta/04_paleta")
+	_inkwell.region_enabled = true
+	_inkwell.region_rect = Rect2(84, 187, 1069, 835)
+	_inkwell.centered = false
+	_inkwell.scale = Vector2.ONE * 130.0 / 1069.0
+	_inkwell.rotation = -0.18
+	_inkwell.position = Vector2(ALTAR_X - 70.0, top - 835.0 * 130.0 / 1069.0 + 30.0)
+	_inkwell.z_index = -7
+	add_child(_inkwell)
 	# cascada: chorro 160x720 en (112,0) y charco 384x128 en (0,676) de un lienzo 384x804; el agua del
 	# charco (y≈100 de su celda) queda a ras del suelo de la cueva; la roca tapa lo que sobra arriba
 	var origin := Vector2(FALL_X - 192.0, CAVE_Y + 8.0 - 776.0)
@@ -815,8 +862,8 @@ func _update_inventory_ui() -> void:
 	if Inventario.tintero:
 		_ink_fill.size = Vector2(166.0 * Inventario.tinta / Inventario.TINTA_MAX, 8)
 		var icon := AtlasTexture.new()
-		icon.atlas = load(COLOR_ART + "/Altar/inkwell_%s.png" % ("full" if Inventario.tinta > 0.0 else "empty"))
-		icon.region = Rect2(64, 118, 128, 128)
+		icon.atlas = _tex_v3("definido", "cueva_paleta/04_paleta")
+		icon.region = Rect2(84, 187, 1069, 835)
 		_ink_icon.texture = icon
 	_ink_icon.visible = Inventario.tintero
 	_ink_bar.visible = Inventario.tintero
@@ -1158,11 +1205,11 @@ func _update_places(x: float) -> void:
 	_at_gate = at_gate
 	var at_altar := absf(x - ALTAR_X) < 110.0 and absf(y - CHAMBER_Y) < 20.0 and has_brush and not Inventario.tintero
 	if at_altar and not _at_altar:
-		_show_hint("Un tintero sobre el altar.  F: tomarlo")
+		_show_hint("Una paleta sobre el altar.  F: tomarla")
 	_at_altar = at_altar
 	var at_lake := absf(x - FALL_X) < LAKE_R and absf(y - CAVE_Y) < 20.0 and Inventario.tintero
 	if at_lake and not _at_lake and Inventario.tinta < Inventario.TINTA_MAX:
-		_show_hint("El lago de tinta.  F: llenar el tintero")
+		_show_hint("El lago de tinta.  F: cargar la paleta")
 	_at_lake = at_lake
 	# bajo la losa del pozo (repisa más alta del tiro): con tinta en el pincel se rompe de un golpe
 	var at_well := not well_open and absf(x - WELL_X) < 100.0 and absf(y - WELL_LEDGES[3]) < 12.0 and floor_ok
@@ -1219,13 +1266,13 @@ func _take_inkwell() -> void:
 	_inkwell.visible = false
 	print("[nivel1] %.1f s: toma el tintero (vacío)" % _t)
 	_update_inventory_ui()
-	_show_hint("Tomaste el tintero. Está vacío: llénalo en el lago de tinta", 4.0)
+	_show_hint("Tomaste la paleta. Está vacía: cárgala en el lago de tinta, junto a la cascada", 4.0)
 
 
 ## Moja el pincel en el lago: la tinta entra en los cuadros 4–5 del dip (ver _on_action_frame).
 func _fill_inkwell() -> void:
 	if Inventario.tinta >= Inventario.TINTA_MAX:
-		_show_hint("El tintero ya está lleno", 1.2)
+		_show_hint("La paleta ya está cargada", 1.2)
 		return
 	_start_action(&"dip", signf(FALL_X - walker.position.x))
 
@@ -1254,14 +1301,12 @@ func _reveal_gate() -> void:
 func _update_gate_paint() -> void:
 	if not _gate_paint.visible:
 		return
-	var b: Array = _metrics.gate.bounds
-	var bottom := float(b[1]) + float(b[3])
-	var h := float(b[3]) * _gate_k
-	var base := Vector2(EXIT_X, HIGH_Y + 4) - Vector2(float(b[0]) + float(b[2]) * 0.5, bottom) * GATE_SCALE
-	_gate_paint.region_rect = Rect2(0, bottom - h, 256, h)
-	_gate_paint.position = base + Vector2(0, (bottom - h) * GATE_SCALE)
-	_gate_sketch.modulate.a = 0.5 * (1.0 - _gate_k * 0.8)
-	_gate_glow.modulate.a = _gate_k * (0.85 + sin(_t * 3.0) * 0.15)
+	var fm := MARCO_ALTO / 768.0
+	var h := 768.0 * _gate_k
+	_gate_paint.region_rect = Rect2(0, 768.0 - h, 512, h)
+	_gate_paint.position = Vector2(EXIT_X - 256.0 * fm, HIGH_Y + 8.0 - h * fm)
+	_gate_sketch.modulate.a = 1.0 - _gate_k
+	_gate_glow.modulate.a = _gate_k * (0.35 + sin(_t * 3.0) * 0.1)
 
 
 func _update_camera(delta: float) -> void:
@@ -1277,15 +1322,10 @@ func _update_exits() -> void:
 	var above := p.y < CAVE_TOP
 	var found := ""
 	var h := ""
-	if above and p.x < HOME_X + 90.0:
+	# (ya no hay puerta al principio: se llega cayendo; el taller del copista está en la Zona de enemigos)
+	if above and gate_open and absf(p.x - EXIT_X) < 90.0:
 		found = "camino"
-		h = "E: volver a la pintura"
-	elif above and gate_open and absf(p.x - EXIT_X) < 90.0:
-		found = "camino"
-		h = "E: cruzar el arco hacia la pintura"
-	elif not above and absf(p.x - COPISTA_X) < 80.0 and p.y > CAVE_Y - 60.0:
-		found = "mundo:ca_copista"
-		h = "E: entrar al taller del copista"
+		h = "E: entrar a la pintura"
 	cur_exit = found
 	var now_near := found != "" and _moved
 	if now_near != near_exit or h != exit_hint:
@@ -1512,10 +1552,6 @@ func _draw_terrain() -> void:
 		_terrain.draw_rect(frame, Color(0.55, 0.42, 0.28))
 		_terrain.draw_rect(frame.grow(-14.0), Color(0.93, 0.89, 0.80))
 		_terrain.draw_rect(frame, line, false, 2.0)
-	var door := Rect2(COPISTA_X - 50.0, CAVE_Y - 170.0, 100.0, 170.0)
-	_terrain.draw_rect(door, Color(0.22, 0.18, 0.15))
-	_terrain.draw_rect(door, line, false, 2.5)
-	_terrain.draw_circle(Vector2(door.end.x - 18.0, CAVE_Y - 85.0), 5.0, stone)
 	_draw_leaf_passage(line)
 	if _fondos_v002_on:                    # pozo y espinas: piezas de ChatGPT
 		for d in _debris:
@@ -1579,8 +1615,8 @@ func _build_fondos_v002() -> void:
 		_fondos_v002.append(paper)
 	_build_panorama_v003()
 	for c in CAPAS_V002:
-		var hito: bool = (c as Array).size() > 6
-		var bordes: bool = (c[7] as bool) if hito else true
+		var hito := false
+		var bordes := true
 		var tex := load(FONDOS + "/definido/" + (c[0] as String) + ".png") as Texture2D
 		var f: float = ((c[4] as float) / tex.get_width()) if hito else ((c[4] as float) / tex.get_height())
 		var par := Parallax2D.new()
@@ -1598,6 +1634,7 @@ func _build_fondos_v002() -> void:
 			sp.scale = Vector2.ONE * f
 			sp.position = Vector2(c[5] as float, GROUND_Y + (c[6] as float)) if hito else Vector2(-150, GROUND_Y + (c[5] as float))
 			sp.modulate.a = c[3] as float
+			sp.flip_h = c[6] as bool
 			sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 			sp.material = _mats_dibujo[(0 if estado == "boceto" else 1) + (2 if bordes else 0)]
 			par.add_child(sp)
@@ -1632,28 +1669,16 @@ func _build_panorama_v003() -> void:
 				var box: Array = c[6]
 				sp.region_enabled = true
 				sp.region_rect = Rect2(box[0], box[1], box[2] - box[0], box[3] - box[1])
-				var f: float = (c[5] as float) / sp.region_rect.size.x * e
+				var f: float = (c[5] as float) / sp.region_rect.size.x
 				sp.scale = Vector2.ONE * f
-				sp.position = Vector2(dx + (c[3] as float) * e, arriba + (c[4] as float) * e - sp.region_rect.size.y * f)
+				# en una capa con parallax s, lo que está en x se ve al centro cuando la cámara está en x / s
+				sp.position = Vector2((c[3] as float) * s - (c[5] as float) * 0.5, GROUND_Y + (c[4] as float) - sp.region_rect.size.y * f)
+				sp.modulate.a = c[7] as float
 			else:
 				sp.scale = Vector2.ONE * e
 				sp.position = Vector2(dx, arriba + (c[3] as float) * e)
 			par.add_child(sp)
 		_fondos_v002.append(par)
-	# puerta de regreso a la pintura: marco de cuadro de pie sobre el suelo, al inicio
-	_marco_v3 = Node2D.new()
-	_marco_v3.z_index = -2
-	add_child(_marco_v3)
-	for k in 2:
-		var sp := Sprite2D.new()
-		sp.texture = _tex_v3(["boceto", "definido"][k], "16_marco_pintura")
-		sp.scale = Vector2.ONE * MARCO_ALTO / 768.0
-		sp.position = Vector2(HOME_X, GROUND_Y + 6.0 - MARCO_ALTO * 0.5)
-		sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-		sp.material = _mats_dibujo[k]
-		_marco_v3.add_child(sp)
-	_fondos_v002.append(_marco_v3)
-
 
 ## Al pintar la puerta: el frente de dibujo sale de la puerta y cubre el paisaje (boceto -> definido).
 func _dibujar_paisaje(efecto: bool) -> void:

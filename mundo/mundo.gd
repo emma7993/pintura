@@ -24,11 +24,12 @@ const TRACK := 5                          # canción: Camino
 ## Dónde aparece el lobo al llegar desde el Nivel 1 (sala -> fracción del ancho).
 const ENTRADAS := {"ca_sello": 0.06, "ca_enemigos": 0.94, "ca_copista": 0.25}
 ## Al pasar de una sala de aquí a una del Nivel 1: a qué punto del Nivel 1 se llega.
+## A la Zona de enemigos se llega cayendo desde la cueva del Nivel 1; subiendo por ese hueco se vuelve ahí.
 const SALIDAS := {
-	"ca_sello>ca_arco": "z_camino:fin", "ca_copista>ca_arco": "z_camino:arco",
-	"ca_copista>ca_pozo": "z_camino:pozo", "ca_paleta>ca_cueva": "z_camino:cueva",
-	"ca_enemigos>ca_cascada": "z_camino:cueva",
+	"ca_sello>ca_arco": "z_camino:fin", "ca_enemigos>ca_paleta": "z_camino:cueva",
+	"ca_a_sueno>ca_paleta": "z_camino:cueva", "ca_enemigos>ca_cascada": "z_camino:cueva",
 }
+const CAE := ["ca_enemigos"]              # salas a las que se llega cayendo por el hueco del techo
 ## Zona del juego (main.gd) a la que lleva un portal hacia otra zona.
 const ZONA_JUEGO := {"pintura": "camino", "sueno": "z_sueno", "miedo": "z_miedo", "cambio": "z_cambio", "final": "z_final"}
 
@@ -82,7 +83,9 @@ func _ready() -> void:
 	if en_juego:
 		var e := entrada if _rooms.has(entrada) and not _rooms[entrada].fuera else "ca_sello"
 		walker.position = _floor_point(e, ENTRADAS.get(e, 0.3)) + Vector2(0, -4)
-		if ENTRADAS.get(e, 0.3) > 0.5:
+		if e in CAE:                          # por el centro del hueco del techo, entre las repisas
+			walker.position = Vector2((_rooms[e].rect as Rect2).get_center().x, (_rooms[e].rect as Rect2).position.y + 90.0)
+		elif ENTRADAS.get(e, 0.3) > 0.5:
 			walker.lobo.face(-1)
 	else:
 		walker.position = _floor_point(MapaDatos.INICIO, 0.3) + Vector2(0, -4)
