@@ -75,6 +75,8 @@ func _ready() -> void:
 	camera.limit_bottom = int((tex.get_height() - CUADRO_ESQ.y) * S)
 	camera.offset = Vector2(0, -40)
 	walker.add_child(camera)
+	camera.make_current()   # la cámara de la zona anterior aún existe; con interpolación de física no cede sola
+	walker.reset_physics_interpolation()
 	camera.reset_smoothing()
 
 	_add_motes()

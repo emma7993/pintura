@@ -103,7 +103,9 @@ func _ready() -> void:
 	_cam.position_smoothing_speed = 6.0
 	_cam.position = Vector2(0, -80)          # (no offset: el offset no respeta los límites de la sala)
 	walker.add_child(_cam)
+	_cam.make_current()   # la cámara de la zona anterior aún existe; con interpolación de física no cede sola
 	_build_ui()
+	walker.reset_physics_interpolation()
 	_cam.reset_smoothing()
 	if "--ver-mapa" in OS.get_cmdline_user_args() and not en_juego:      # para capturas de revisión
 		for id in _rooms:

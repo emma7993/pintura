@@ -272,6 +272,7 @@ func _ready() -> void:
 	_cam.limit_bottom = int(CHAMBER_Y + 200.0)
 	_cam.offset = Vector2(0, -70)
 	walker.add_child(_cam)
+	_cam.make_current()   # la cámara de la zona anterior aún existe; con interpolación de física no cede sola
 	_build_ui()
 
 	var auto := "--auto-nivel1" in OS.get_cmdline_user_args()
@@ -293,6 +294,7 @@ func _ready() -> void:
 		Inventario.atajo = -1
 	elif _shortcuts_on() and not auto:
 		_show_hint("Atajos:  0 reiniciar · 1 hueco · 2 pincel · 3 plataformas · 4 cascada · 5 arco · 6 pozo", 4.0)
+	walker.reset_physics_interpolation()
 	_cam.reset_smoothing()
 	if auto:
 		add_child((load("res://herramientas/auto_nivel1.gd") as GDScript).new())

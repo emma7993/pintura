@@ -43,6 +43,7 @@ func _ready() -> void:
 	cam.limit_bottom = int(GROUND_Y + 160.0)
 	cam.offset = Vector2(0, -70)
 	walker.add_child(cam)
+	cam.make_current()   # la cámara de la zona anterior aún existe; con interpolación de física no cede sola
 	cam.reset_smoothing()
 
 

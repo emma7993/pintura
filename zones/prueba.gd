@@ -39,6 +39,7 @@ func _ready() -> void:
 	cam.limit_bottom = 900
 	cam.offset = Vector2(0, -60)
 	player.add_child(cam)
+	cam.make_current()   # la cámara de la zona anterior aún existe; con interpolación de física no cede sola
 
 	var ui := CanvasLayer.new()
 	add_child(ui)
