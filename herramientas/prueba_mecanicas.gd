@@ -73,10 +73,10 @@ func _physics_process(delta: float) -> bool:
 				_paso = 4
 				_t = 0.6
 		4:  # mano frente al lobo: tajo con tinta
-			_w.position = Vector2(6300.0, _n.HIGH_Y)
+			_w.position = Vector2(_n.WELL_X - 430.0, _n.HIGH_Y)   # entre el arco y el pozo
 			_w.velocity = Vector2.ZERO
 			_w.lobo.face(1.0)
-			_n._sombras._spawn_hand(6360.0, _n.HIGH_Y)
+			_n._sombras._spawn_hand(_n.WELL_X - 370.0, _n.HIGH_Y)
 			_paso = 5
 			_t = 0.6
 		5:

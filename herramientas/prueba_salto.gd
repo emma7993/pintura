@@ -1,9 +1,9 @@
 extends SceneTree
 ## Mide el salto y la carrera del lobo (player.gd) sobre un suelo plano, sin ventana:
 ##   Godot --headless --path . -s res://herramientas/prueba_salto.gd
-## Objetivo, medido de una grabación de Silksong y escalado al lobo (~130 px):
-##   salto completo ~240 px, sube ~0.42 s, ~0.95 s en el aire; carrera 360 px/s.
-## Control total: un toque da un brinco corto (~40 px) y soltar a media subida lo para en seco.
+## Objetivo, medido cuadro por cuadro del video de Hornet (docs/mecanicas_hornet.md) y escalado al lobo (x1.83):
+##   salto completo ~222 px, cima a ~0.44 s, ~0.92 s en el aire; carrera 340 px/s.
+## Control total: un toque da un brinco corto (~60 px) y soltar a media subida lo para en seco.
 
 const GROUND := 600.0
 var _w: Player
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> bool:
 		1:  # salto completo: botón apretado todo el tiempo
 			if _mide(delta):
 				Input.action_release("jump")
-				_reporta("completo", 200.0, 280.0, 0.85, 1.05)
+				_reporta("completo", 210.0, 235.0, 0.86, 0.98)
 				_t = 0.0
 				_paso = 2
 		2:
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> bool:
 			if _t > 0.02:
 				Input.action_release("jump")
 			if _mide(delta):
-				_reporta("toque", 25.0, 80.0, 0.15, 0.45)
+				_reporta("toque", 50.0, 90.0, 0.25, 0.40)
 				_t = 0.0
 				_paso = 40
 		40:
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> bool:
 			if _t >= 1.0:
 				var v := _w.position.x - _x0
 				Input.action_release("move_right")
-				_check("carrera %.0f px/s (objetivo ~360)" % v, absf(v - 360.0) < 25.0)
+				_check("carrera %.0f px/s (objetivo ~340)" % v, absf(v - 340.0) < 15.0)
 				print("[salto] FIN: %s" % ("OK" if _fallas == 0 else "%d fallas" % _fallas))
 				quit(1 if _fallas else 0)
 				return true

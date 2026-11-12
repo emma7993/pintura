@@ -73,7 +73,7 @@ func _explorar() -> void:
 	match _fase:
 		0:  # hasta el escalón; salta encima (antes, por encima del brocal del pozo, sin caer por la boca)
 			# cayendo sobre el lado izquierdo del brocal: se frena para no irse por la boca
-			var sobre_brocal: bool = not _w.is_on_floor() and y < n.BROCAL_Y + 5.0 and _salto_brocal 				and x > n.WELL_X - 200.0 and x < n.WELL_X - 100.0
+			var sobre_brocal: bool = not _w.is_on_floor() and y < n.BROCAL_Y + 5.0 and _salto_brocal 				and x > n.WELL_X - n.BROCAL_ANCHO * 0.5 + 12.0 and x < n.WELL_X - n.BROCAL_HUECO
 			_mover(0.0 if sobre_brocal else 1.0)
 			if suelo and _cerca(y, n.HIGH_Y) and x > n.WELL_X - 330.0 and x < n.WELL_X - 150.0:
 				_saltar("al brocal")

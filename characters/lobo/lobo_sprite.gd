@@ -65,6 +65,14 @@ const RUN_STRIDE := 446.0           # carrera v027: el pie apoyado retrocede ~55
 ## Corre cuando avanza más de RUN_FROM px de celda por segundo; vuelve a caminar bajo RUN_TO.
 const RUN_FROM := 380.0
 const RUN_TO := 330.0
+## Sprint (provisional, sin arte propio todavía): la carrera v027 más rápida y con el cuerpo inclinado hacia
+## adelante, como Hornet. Derrape: la pose de aterrizaje, echado hacia atrás. Voltereta del salto en sprint:
+## la pose de la cima girando una vuelta sobre el centro del cuerpo.
+const SPRINT_LEAN := 0.20             # rad de inclinación hacia adelante
+const SPRINT_STRIDE := 620.0          # px de celda por ciclo en sprint (zancada más larga que la carrera)
+const SKID := &"skid"
+const SKID_LEAN := -0.16
+const CUERPO_CENTRO := Vector2(0, -105)   # centro del cuerpo respecto a los pies, en px de celda
 const SMEAR_TINT := {"color": Color(1.0, 0.72, 0.35), "ink": Color(0.10, 0.10, 0.14), "dry": Color(0.85, 0.83, 0.80, 0.45)}
 
 var facing := 1.0
@@ -75,6 +83,10 @@ var attacking := false            # tajo en curso (el lobo sí se mueve)
 ## Ya no camina: cualquier avance usa la carrera (desde que lo persiguen las manos; Emma decide si vuelve).
 var solo_correr := false
 var special := ""                 # estado especial que pide Player ("dash", "wall_slide", ...); "" = ninguno
+var sprinting := false            # lo pone Player: sprint en el suelo
+var _lean := 0.0                  # inclinación actual (se suaviza)
+var _volt := 0.0                  # tiempo que queda de la voltereta
+var _volt_dur := 0.0
 var _running := false
 var _air := false
 var _landing := false
@@ -105,7 +117,7 @@ func _ready() -> void:
 	sprite.animation_changed.connect(_sync_layers)
 	sprite.animation_changed.connect(func() -> void:
 		sprite.offset = SPRITE_OFFSET + (Vector2(COMBO_DX, 0) if COMBO_HITS.has(sprite.animation) else Vector2.ZERO)
-		sprite.scale = Vector2.ONE * (SALTO_ESCALA if sprite.animation in SALTO_ANIMS or sprite.animation == IDLE_RELAX else 1.0))
+		sprite.scale = Vector2.ONE * (SALTO_ESCALA if sprite.animation in SALTO_ANIMS or sprite.animation in [IDLE_RELAX, SKID] else 1.0))
 	_last_pos = global_position
 	for c in JSON.parse_string(FileAccess.get_file_as_string(ART + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c
@@ -128,6 +140,7 @@ func _body_frames() -> SpriteFrames:
 	_set_anim(f, JUMP_APEX, [SALTO + "/jump_apex.png"], 5.0, true)
 	_set_anim(f, FALL, [SALTO + "/fall.png"], 5.0, true)
 	_set_anim(f, LAND, [SALTO + "/land.png"], 1.0 / LAND_BOUNCE_T, false)
+	_set_anim(f, SKID, [SALTO + "/land.png"], 5.0, true)
 	for i in ATTACKS.size():
 		var files: Array[String] = []
 		for k in 4:
@@ -253,6 +266,31 @@ func hitbox_global(anim: StringName, frame: int, margin := 14.0) -> Rect2:
 	return Rect2(Vector2(minf(a.x, b.x), minf(a.y, b.y)), (b - a).abs()).grow(margin)
 
 
+## Voltereta (salto en sprint): una vuelta completa hacia adelante sobre el centro del cuerpo.
+func voltereta(dur: float) -> void:
+	_volt = dur
+	_volt_dur = dur
+
+
+## Inclinación del cuerpo (sprint, derrape) y giro de la voltereta, alrededor de los pies o del centro.
+func _pose(delta: float, air: bool) -> void:
+	var meta := 0.0
+	if special == "skid":
+		meta = SKID_LEAN
+	elif sprinting and not air:
+		meta = SPRINT_LEAN
+	_lean = lerpf(_lean, meta, 1.0 - exp(-18.0 * delta))
+	var ang := _lean * facing
+	var pos := Vector2(0, _flip.position.y)
+	if _volt > 0.0:
+		_volt = maxf(0.0, _volt - delta) if air else 0.0
+		var k := 1.0 - _volt / _volt_dur
+		ang = facing * TAU * smoothstep(0.0, 1.0, k)
+		pos = CUERPO_CENTRO - CUERPO_CENTRO.rotated(ang)
+	_flip.rotation = ang
+	_flip.position = pos
+
+
 ## Reposo que toca: relajado una vez vencidas las sombras de Camino; antes, el tímido.
 func _reposo() -> StringName:
 	return IDLE_RELAX if Inventario.hecho("n1_sombras") else IDLE
@@ -284,6 +322,7 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 	# rebote visual del aterrizaje: sube unos px y vuelve (la colisión sigue en el suelo)
 	_bounce = maxf(0.0, _bounce - delta)
 	_flip.position.y = -sin((1.0 - _bounce / LAND_BOUNCE_T) * PI) * LAND_BOUNCE if _bounce > 0.0 else 0.0
+	_pose(delta, air)
 	if acting:
 		return
 	if absf(vel_x) > 6.0 and special != "wall_slide":
@@ -298,7 +337,9 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 	if air:
 		sprite.speed_scale = 1.0
 		_landing = false
-		if not _air:
+		if _volt > 0.0:
+			_play(JUMP_APEX)                # voltereta: pose recogida de la cima mientras gira
+		elif not _air:
 			_play(JUMP_START if vy < 0.0 else FALL, true)
 		elif absf(vy) < APEX_VY and sprite.animation != JUMP_START:
 			_play(JUMP_APEX)
@@ -324,7 +365,7 @@ func animate(delta: float, speed01: float, vel_x: float = 0.0, air: bool = false
 		_running = solo_correr or cell > (RUN_TO if _running else RUN_FROM)
 		var anim := RUN if _running else WALK
 		# ciclos por segundo que pide el avance / ciclos por segundo de la animación a speed_scale 1
-		var ciclos := cell / (RUN_STRIDE if _running else STRIDE)
+		var ciclos := cell / ((SPRINT_STRIDE if sprinting else RUN_STRIDE) if _running else STRIDE)
 		var rate := sprite.sprite_frames.get_animation_speed(anim) / sprite.sprite_frames.get_frame_count(anim)
 		sprite.speed_scale = clampf(ciclos / rate, 0.3, 4.5)
 		_play(anim)

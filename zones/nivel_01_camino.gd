@@ -130,10 +130,10 @@ const PLUG := Rect2(WELL_X - WELL_HALF, HIGH_Y + 30.0, WELL_HALF * 2.0, 24)   # 
 const STAGES := [
 	[0.0, 127.0, 122.0, 520.0],           # miedo: solo camina (las sombras casi lo igualan)
 	[1100.0, 215.0, 190.0, 560.0],        # se apuran las sombras
-	[2200.0, 360.0, 320.0, 430.0],        # corren
+	[2200.0, 340.0, 305.0, 430.0],        # corren
 ]
 const SHADOW_START_X := 380.0             # las sombras aparecen al poco de empezar a caminar
-const RUN_SPEED := 360.0                  # con el pincel el lobo ya no camina: siempre corre
+const RUN_SPEED := Player.RUN_SPEED       # con el pincel el lobo ya no camina: siempre corre (340, medido de Hornet)
 const INK := Color(0.07, 0.06, 0.07)
 const STROKE_ANGLE := PI / 3.0            # pincelada de color: 60° sobre la horizontal
 const STROKE_LEN := 1000.0                # largo de la pincelada (del suelo hasta arriba de la pantalla)
@@ -1014,6 +1014,10 @@ func _update_shadows(delta: float, st: Array) -> void:
 				Inventario.marcar("n1_sombras")
 				walker.can_jump = true
 				_show_hint("Las sombras se quedaron atrás… pero el pincel quedó seco", 4.0)
+				# poco después, los movimientos nuevos (si no hay otro aviso en pantalla)
+				get_tree().create_timer(6.5).timeout.connect(func() -> void:
+					if _hint.modulate.a <= 0.01:
+						_show_hint("Shift: dash  ·  mantenlo para correr más rápido  ·  Espacio en sprint: salto largo", 5.0))
 				return
 	var near := walker.position.x - shadow_x
 	_vignette.modulate.a = clampf(1.0 - (near - 120.0) / 650.0, 0.0, 1.0) * _shadow_alpha

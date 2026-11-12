@@ -28,7 +28,8 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 - Pozo del Nivel 1 (`WELL_X`): sin tapa; brocal macizo al que se sube y por cuya boca se cae al tiro; repisas a los lados del tiro para volver a subir. La paleta del altar mide `PALETA_ANCHO`; con tinta, el ícono usa `04_paleta_tinta` (`herramientas/paleta_tinta_v001.py`). La puerta del arco es el cuadro de Camino con marco oscuro (`16_marco_camino`, 512x512).
 - Interpolación de física activa (`project.godot`): al teletransportar al lobo, `reset_physics_interpolation()`.
 - Salto v004 agrandado 6.5 % por código (`SALTO_ESCALA`) para igualar el tamaño de la carrera v027.
-- Física del lobo (`player.gd`): salto y carrera medidos de una grabación de Silksong, escalados al tamaño del lobo; `herramientas/prueba_salto.gd` comprueba las medidas (salto completo ~240 px, toque ~70 px, carrera 360).
+- Física del lobo (`player.gd`): todo medido cuadro por cuadro del video de Hornet y escalado x1.83 (tabla en `docs/mecanicas_hornet.md`): carrera 340, salto completo ~216 px (0.92 s), brinco ~60 px, dash 1100 px/s x 0.14 s. **Sprint**: mantener el dash tras el dash (x2.1, con inercia: derrapa al girar); salto en sprint largo (~595 px) con voltereta. `herramientas/prueba_salto.gd` y `prueba_sprint.gd` comprueban las cifras; `captura_sprint.gd` saca la tira de cuadros. Sprint, derrape y voltereta usan poses prestadas (`LoboSprite.sprinting`, `skid`, `voltereta()`) hasta que llegue `PEDIDO_Wolf_Sprint_v001.md`.
+- `herramientas/auto_nivel1.gd` (recorrido completo del Nivel 1 con `-- --auto-nivel1`) está calibrado para esa física: si cambia el salto o la carrera, volver a correrlo.
 
 ## Git (dos computadoras: Windows y Mac)
 - Repo privado con Git LFS (png, audio, 3D). `herramientas/subir_cambios.*` y `bajar_cambios.*` sincronizan; revisar `git status` antes de subir.

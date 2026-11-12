@@ -15,48 +15,63 @@ const SPRITE_SCALE := 0.60        # tamaño del lobo en pantalla (~130 px de alt
 
 ## Tacto de metroidvania de acción precisa: arranca y frena casi al instante (sin patinar), control total
 ## en el aire, salto alto y vivo con un instante de "flote" en la cima y caída rápida con tope.
-## Salto medido de una grabación de Silksong (nov 2026), escalado por altura del personaje (Hornet ~70 px
-## en el video, el lobo ~130 px): sube a velocidad constante mientras se mantiene el botón (~0.15 s),
-## frena hasta la cima (~0.42 s en total), flota un instante y cae acelerando hasta el tope (~0.52 s).
-## Salto completo ~1.8 veces el lobo (~240 px, ~0.95 s en el aire).
+## Todo está medido cuadro por cuadro de la grabación de Hornet (Silksong, 4 nov 2026) y escalado por la
+## altura del personaje (Hornet 71 px en el video, el lobo 130 px: x1.83). Tabla completa y método en
+## docs/mecanicas_hornet.md; herramientas/prueba_salto.gd y prueba_sprint.gd comprueban las cifras.
+##   Hornet: carrera 184 px/s, sprint 386, dash ~605 durante 0.13 s (133 px en 0.25 s con la frenada);
+##   salto: sube a 390 px/s constantes ~0.18 s, frena a 1560 px/s2, cima a 0.44 s y 122 px, cae a ~1150 px/s2,
+##   0.92 s en el aire; brinco mínimo ~32 px.
 ## Control total (pedido de Emma): soltar el salto lo para en seco, en el aire se mueve igual que en el suelo,
 ## voltea al instante y ninguna pulsación de salto, tajo o dash se pierde (se guarda un instante). Cada error
-## debe sentirse evitable.
+## debe sentirse evitable. Solo el sprint tiene inercia (derrapa al girar), como en el video.
 const ACCEL := 7000.0             # llega a la velocidad tope en ~0.05 s (en el video: casi instantáneo)
 const AIR_ACCEL := 7000.0         # en el aire, el mismo control que en el suelo
 const FRICTION := 8000.0          # se detiene casi en seco al soltar
 const AIR_FRICTION := 8000.0
-const RISE_GRAVITY := 3000.0      # al subir, cuando ya no se sostiene el impulso
-const FALL_GRAVITY := 2700.0      # al caer
+const RISE_GRAVITY := 2850.0      # al subir, cuando ya no se sostiene el impulso
+const FALL_GRAVITY := 2100.0      # al caer
 const MAX_FALL := 1150.0
-const JUMP_VELOCITY := -780.0
-const JUMP_HOLD := 0.15           # con el botón apretado, sube sin gravedad este tiempo
-const JUMP_MIN := 0.05            # un toque sube al menos esto antes de cortarse (~40 px)
+const JUMP_VELOCITY := -715.0
+const JUMP_HOLD := 0.16           # con el botón apretado, sube sin gravedad este tiempo
+const JUMP_MIN := 0.08            # un toque sube al menos esto antes de cortarse (~58 px, como el brinco de Hornet)
 const JUMP_CUT := 0.0             # al soltar en el ascenso se para en seco y empieza a caer
-const APEX_SPEED := 110.0         # cerca de la cima, con el botón apretado...
-const APEX_GRAVITY := 0.45        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
+const APEX_SPEED := 180.0         # cerca de la cima, con el botón apretado...
+const APEX_GRAVITY := 0.80        # ...la gravedad baja: un instante de flote para apuntar el aterrizaje
 const COYOTE_TIME := 0.10
 const JUMP_BUFFER := 0.12
-## Dash: impulso horizontal corto, sin gravedad; uno por salto (se recupera al tocar suelo o pared).
-const DASH_SPEED := 1000.0
-const DASH_TIME := 0.22
+## Dash: impulso horizontal corto, sin gravedad; uno por salto (se recupera al tocar suelo o pared). Al
+## terminar no para en seco: frena con DASH_BRAKE hasta la velocidad que toque (carrera o sprint).
+const DASH_SPEED := 1100.0
+const DASH_TIME := 0.14
+const DASH_BRAKE := 4000.0
 const DASH_COOLDOWN := 0.35
+## Sprint: si al acabar el dash en el suelo se sigue apretando el botón, el lobo sigue corriendo al doble
+## de velocidad. Tiene inercia: al girar derrapa hasta parar y arranca hacia el otro lado (~0.65 s en
+## total); al soltar el botón frena. Saltar en sprint da un salto largo con voltereta.
+const SPRINT_MULT := 2.1          # sprint / carrera (386 / 184 en el video)
+const SPRINT_ACCEL := 2400.0
+const SPRINT_BRAKE := 2000.0      # derrape al girar
+const SPRINT_STOP := 3200.0       # derrape al soltar
+const SPRINT_JUMP_BOOST := 1.15   # el salto en sprint arranca un poco más rápido que el sprint...
+const SPRINT_AIR_END := 1.45      # ...y en el aire va perdiendo hasta esta fracción de la carrera
+const SPRINT_AIR_DRAG := 420.0
 ## Pared: al caer pegado a una pared (empujando hacia ella) resbala despacio; saltar lo despega.
 const WALL_SLIDE_SPEED := 160.0
-const WALL_JUMP := Vector2(520.0, -980.0)
+const WALL_JUMP := Vector2(480.0, -900.0)
 const WALL_JUMP_LOCK := 0.10      # tras saltar de la pared, un instante sin control horizontal
 ## Tajos y rebote: la estocada hacia abajo que da en algo rebota hacia arriba (pogo).
-const ATTACK_COOLDOWN := 0.22
+const ATTACK_COOLDOWN := 0.28      # Hornet encadena un tajo cada ~0.30 s
 const COMBO_WINDOW := 0.55        # golpe de lado dentro de este tiempo desde el anterior: sigue el combo
 const ACTION_BUFFER := 0.15       # un tajo o dash pulsado un poco antes de poder hacerlo sale en cuanto se puede
-const POGO_VELOCITY := -880.0
+const POGO_VELOCITY := -810.0
 ## Vida
 const MAX_VIDA := 5
 const INVULNERABLE := 1.0
 const KNOCKBACK := Vector2(420.0, -420.0)
 
-## Velocidad máxima. Zona Camino: caminata lenta (120). Carrera: 360 (medida de Silksong, escalada al lobo).
-var max_speed := 360.0
+## Velocidad máxima. Zona Camino: caminata lenta (120). Carrera: 340 (medida de Silksong, escalada al lobo).
+const RUN_SPEED := 340.0
+var max_speed := RUN_SPEED
 ## El lobo empieza sin poder saltar; se desbloquea más adelante en el juego.
 var can_jump := true
 var can_attack := false
@@ -78,6 +93,11 @@ var _dash_t := 0.0
 var _dash_cd := 0.0
 var _dash_ready := true
 var _dash_dir := 1.0
+var _sprint := false              # sprint en curso (suelo) o su inercia (aire)
+var _sprint_limit := 0.0          # tope de velocidad del sprint ahora (en el aire va bajando)
+var _sprint_jump := false         # salto dado en sprint: voltereta en la cima
+var _skid := false                # derrapando (giro o frenada del sprint)
+var _skid_t := 0.0
 var _wall_lock := 0.0
 var _wall_dir := 0.0              # -1 pared a la izquierda, 1 a la derecha, 0 ninguna
 var _attack_cd := 0.0
@@ -159,18 +179,32 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		if is_on_wall():
 			_dash_t = 0.0
+			velocity.x = 0.0
+		if _dash_t <= 0.0:
+			# sigue apretado el dash con una dirección y hay suelo: sprint
+			_sprint = is_on_floor() and not is_on_wall() and Input.is_action_pressed("dash") \
+				and (absf(dir) < 0.01 or signf(dir) == _dash_dir)
+			_sprint_limit = max_speed * SPRINT_MULT
 		lobo.special = "dash" if _dash_t > 0.0 else ""
 		_animate(delta)
 		return
 
 	# --- horizontal
-	if _wall_lock <= 0.0 and _hurt_t <= 0.0:
+	_skid = false
+	if _sprint:
+		_sprint_step(delta, dir, on_floor, active)
+	if _sprint:
+		pass
+	elif _wall_lock <= 0.0 and _hurt_t <= 0.0:
 		if absf(dir) > 0.01:
 			if velocity.x * dir < 0.0:
 				velocity.x = 0.0               # voltea al instante, sin derrapar
-			velocity.x = move_toward(velocity.x, dir * max_speed, (ACCEL if on_floor else AIR_ACCEL) * delta)
+			# por encima del tope (al salir de un dash o de un sprint) no para en seco: frena
+			var rate := (ACCEL if on_floor else AIR_ACCEL) if absf(velocity.x) <= max_speed else DASH_BRAKE
+			velocity.x = move_toward(velocity.x, dir * max_speed, rate * delta)
 		else:
-			velocity.x = move_toward(velocity.x, 0.0, (FRICTION if on_floor else AIR_FRICTION) * delta)
+			var freno := (FRICTION if on_floor else AIR_FRICTION) if absf(velocity.x) <= max_speed else SPRINT_STOP
+			velocity.x = move_toward(velocity.x, 0.0, freno * delta)
 
 	# --- gravedad (sin gravedad mientras se sostiene el impulso del salto)
 	var held := Input.is_action_pressed("jump") and active
@@ -226,6 +260,12 @@ func _physics_process(delta: float) -> void:
 		_cut_pending = false
 		Efectos.polvo(get_parent(), global_position, 6, Vector2.UP, PI * 0.9, 140.0, 8.0)
 		_squash = Vector2(0.86, 1.16)
+		if _sprint and not _skid and absf(velocity.x) > max_speed * 1.3:
+			# salto en sprint: sale un poco más rápido y con más polvo; voltereta al llegar a la cima
+			_sprint_jump = true
+			_sprint_limit = max_speed * SPRINT_MULT * SPRINT_JUMP_BOOST
+			velocity.x = signf(velocity.x) * _sprint_limit
+			Efectos.polvo(get_parent(), global_position, 10, Vector2(-signf(velocity.x), -0.4), 1.0, 300.0, 10.0)
 	elif _buffer > 0.0 and _wall_dir != 0.0:
 		velocity = Vector2(-_wall_dir * WALL_JUMP.x, WALL_JUMP.y)
 		_wall_lock = WALL_JUMP_LOCK
@@ -263,6 +303,14 @@ func _physics_process(delta: float) -> void:
 	_vy_caida = velocity.y
 	move_and_slide()
 	_efectos_suelo(delta)
+	if _sprint and is_on_wall():
+		_sprint = false                    # chocó: se acaba el sprint
+	if _sprint_jump:
+		if is_on_floor() and not _jumping:
+			_sprint_jump = false
+		elif velocity.y > -APEX_SPEED:
+			_sprint_jump = false
+			lobo.voltereta(0.34)
 
 	_on_one_way = false
 	for i in get_slide_collision_count():
@@ -271,13 +319,57 @@ func _physics_process(delta: float) -> void:
 		if body and (body.collision_layer & 2) != 0 and c.get_normal().y < -0.5:
 			_on_one_way = true
 
+	lobo.sprinting = _sprint and not _skid and is_on_floor()
 	if not _dead and _hurt_t <= 0.0:
+		if _skid and is_on_floor():
+			lobo.special = "skid"
+		elif lobo.special == "skid":
+			lobo.special = ""
 		if _wall_dir != 0.0:
 			lobo.special = "wall_slide"
 			lobo.face(-_wall_dir)          # de espaldas a la pared
 		elif lobo.special == "wall_slide" or (lobo.special == "wall_jump" and (on_floor or velocity.y > 0.0)):
 			lobo.special = ""
 	_animate(delta)
+
+
+## Sprint: velocidad doble con inercia. En el suelo hay que seguir apretando el dash y una dirección; al
+## girar derrapa hasta parar y arranca hacia el otro lado; al soltar el dash frena hasta la carrera o hasta
+## parar. En el aire (salto en sprint o caída de un borde) conserva el impulso, que va bajando; girar lo corta.
+func _sprint_step(delta: float, dir: float, on_floor: bool, active: bool) -> void:
+	var held := active and Input.is_action_pressed("dash") and _hurt_t <= 0.0
+	var tope := max_speed * SPRINT_MULT
+	if on_floor:
+		if not _jumping:
+			_sprint_limit = tope
+		if not held:
+			_sprint = false                    # soltó el dash: vuelve a la carrera (frena con DASH_BRAKE)
+			return
+		# sin dirección sigue hacia donde iba (basta con mantener el dash)
+		var d := signf(dir) if absf(dir) > 0.01 else (signf(velocity.x) if velocity.x != 0.0 else lobo.facing)
+		if velocity.x * d < 0.0:
+			_skid = true                       # giro: derrapa hasta parar
+			velocity.x = move_toward(velocity.x, 0.0, SPRINT_BRAKE * delta)
+		else:
+			velocity.x = move_toward(velocity.x, d * tope, SPRINT_ACCEL * delta)
+		if _skid:
+			_skid_t -= delta
+			if _skid_t <= 0.0:
+				_skid_t = 0.05
+				var adelante := signf(velocity.x)
+				Efectos.polvo(get_parent(), global_position + Vector2(adelante * 22.0, -2.0), 3,
+					Vector2(adelante, -0.5), 0.8, 160.0, 9.0)
+	else:
+		if velocity.x * dir < 0.0:
+			_sprint = false                    # en el aire, girar corta el impulso
+			return
+		_sprint_limit = move_toward(_sprint_limit, max_speed * SPRINT_AIR_END, SPRINT_AIR_DRAG * delta)
+		velocity.x = move_toward(velocity.x, signf(velocity.x) * _sprint_limit, AIR_ACCEL * delta)
+
+
+## Para pruebas y para la cámara: ¿va en sprint?
+func is_sprinting() -> bool:
+	return _sprint
 
 
 func _on_attack_frame(anim: StringName, frame: int) -> void:
@@ -315,10 +407,15 @@ func _efectos_suelo(delta: float) -> void:
 	if suelo and absf(velocity.x) > 250.0 and _dash_t <= 0.0:
 		_paso_t -= delta
 		if _paso_t <= 0.0:
-			_paso_t = 0.2
 			var atras := -signf(velocity.x)
-			Efectos.polvo(get_parent(), global_position + Vector2(atras * 14.0, -2.0), 2,
-				Vector2(atras, -0.5), 0.8, 70.0, 6.0)
+			if _sprint:                         # sprint: nube más grande y seguida, como en el video
+				_paso_t = 0.09
+				Efectos.polvo(get_parent(), global_position + Vector2(atras * 20.0, -2.0), 4,
+					Vector2(atras, -0.35), 0.9, 150.0, 10.0)
+			else:
+				_paso_t = 0.2
+				Efectos.polvo(get_parent(), global_position + Vector2(atras * 14.0, -2.0), 2,
+					Vector2(atras, -0.5), 0.8, 70.0, 6.0)
 	else:
 		_paso_t = 0.0
 
@@ -334,6 +431,8 @@ func hurt(from_x: float, amount := 1) -> bool:
 	Efectos.temblar(8.0, 0.25)
 	Efectos.pausa(get_tree(), 0.10)
 	_dash_t = 0.0
+	_sprint = false
+	_sprint_jump = false
 	var away := signf(global_position.x - from_x) if global_position.x != from_x else -lobo.facing
 	velocity = Vector2(away * KNOCKBACK.x, KNOCKBACK.y)
 	hurt_taken.emit(vida)
@@ -355,6 +454,8 @@ func revive() -> void:
 	_hurt_t = 0.0
 	_invulnerable = 0.0
 	_dash_t = 0.0
+	_sprint = false
+	_sprint_jump = false
 	lobo.special = ""
 	lobo.modulate.a = 1.0
 
