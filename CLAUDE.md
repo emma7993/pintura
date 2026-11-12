@@ -29,6 +29,7 @@ Metroidvania 2D estilo Hollow Knight en Godot 4.7.2 (GL Compatibility, 1280x720)
 - Interpolación de física activa (`project.godot`): al teletransportar al lobo, `reset_physics_interpolation()`.
 - Salto v004 agrandado 6.5 % por código (`SALTO_ESCALA`) para igualar el tamaño de la carrera v027.
 - Física del lobo (`player.gd`): todo medido cuadro por cuadro del video de Hornet y escalado x1.83 (tabla en `docs/mecanicas_hornet.md`): carrera 340, salto completo ~216 px (0.92 s), brinco ~60 px, dash 1100 px/s x 0.14 s. **Sprint**: mantener el dash tras el dash (x2.1, con inercia: derrapa al girar); salto en sprint largo (~595 px) con voltereta. `herramientas/prueba_salto.gd` y `prueba_sprint.gd` comprueban las cifras; `captura_sprint.gd` saca la tira de cuadros. Sprint, derrape y voltereta usan poses prestadas (`LoboSprite.sprinting`, `skid`, `voltereta()`) hasta que llegue `PEDIDO_Wolf_Sprint_v001.md`.
+- Tamaño del lobo: la carrera v027 manda (masa del cuerpo 7088 px de celda). `ESCALAS` en `lobo_sprite.gd` iguala por código el combo, el dash, la pared (dibujados ~14 % más grandes) y el tajo hacia abajo (9 % más chico); las zonas de golpe se escalan igual. `herramientas/captura_acciones.gd` saca la tira para revisarlo. Redibujo pendiente: `Game_Assets/PEDIDO_Wolf_Acciones_v001.md`.
 - `herramientas/auto_nivel1.gd` (recorrido completo del Nivel 1 con `-- --auto-nivel1`) está calibrado para esa física: si cambia el salto o la carrera, volver a correrlo.
 
 ## Git (dos computadoras: Windows y Mac)

@@ -26,6 +26,14 @@ const SALTO := "res://characters/lobo/salto_v004"
 ## tamaño al saltar. El arte no se toca.
 const SALTO_ESCALA := 1.065
 const SALTO_ANIMS: Array[StringName] = [&"jump_start", &"jump_up", &"jump_apex", &"fall", &"land"]
+## Lo mismo con las demás animaciones que no están dibujadas al tamaño de la carrera v027 (masa del cuerpo 7088 px
+## de celda; medido el 12 nov 2026): combo ~9300, dash 9411, pared ~9200 (dibujados más grandes) y tajo hacia abajo
+## 5883 (más chico). Escala = raíz(7088 / masa), desde los pies; las zonas de golpe se escalan igual. El arte no se
+## toca. Cuando llegue el redibujo de estas animaciones (PEDIDO_Wolf_Acciones_v001.md) se quitan de aquí.
+const ESCALAS := {
+	&"attack_01": 0.87, &"attack_02": 0.87, &"attack_03": 0.87, &"attack_up": 0.87,
+	&"dash": 0.87, &"wall_slide": 0.87, &"wall_jump": 0.89, &"slash_down": 1.09,
+}
 ## Ataques del combo de Codex (Wolf_Combo_v001, poses clave pasadas a celdas de 384 con
 ## herramientas/ajustar_combo_v001.py): el pincel y la tinta vienen dibujados en el cuerpo.
 const COMBO := "res://characters/lobo/combo_v001"
@@ -117,7 +125,10 @@ func _ready() -> void:
 	sprite.animation_changed.connect(_sync_layers)
 	sprite.animation_changed.connect(func() -> void:
 		sprite.offset = SPRITE_OFFSET + (Vector2(COMBO_DX, 0) if COMBO_HITS.has(sprite.animation) else Vector2.ZERO)
-		sprite.scale = Vector2.ONE * (SALTO_ESCALA if sprite.animation in SALTO_ANIMS or sprite.animation in [IDLE_RELAX, SKID] else 1.0))
+		var e := _escala(sprite.animation)
+		sprite.scale = Vector2.ONE * e
+		for capa in _layers:                   # las capas del pincel, al mismo tamaño que el cuerpo
+			capa.scale = Vector2.ONE * e)
 	_last_pos = global_position
 	for c in JSON.parse_string(FileAccess.get_file_as_string(ART + "/brush_contacts.json")):
 		_contacts["%s:%d" % [c.animation, int(c.frame)]] = c
@@ -168,6 +179,13 @@ func _layer(frames: SpriteFrames) -> AnimatedSprite2D:
 	s.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	_flip.add_child(s)
 	return s
+
+
+## Escala de dibujo de una animación para que el lobo mida lo mismo que en la carrera (ver ESCALAS).
+func _escala(anim: StringName) -> float:
+	if anim in SALTO_ANIMS or anim in [IDLE_RELAX, SKID]:
+		return SALTO_ESCALA
+	return ESCALAS.get(anim, 1.0)
 
 
 ## Cambia la punta del pincel ("color", "dry", "ink") o lo quita ("").
@@ -244,7 +262,7 @@ func tip_global(anim: StringName, frame: int) -> Vector2:
 	if c.is_empty():
 		return global_position
 	var p: Array = c.contact_by_state_xy[brush if brush != "" else "dry"]
-	return _flip.get_global_transform() * (Vector2(p[0], p[1]) - CELL_FEET)
+	return _flip.get_global_transform() * ((Vector2(p[0], p[1]) - CELL_FEET) * _escala(anim))
 
 
 ## Zona de golpe (global) de un cuadro de tajo, o un Rect2 vacío si ese cuadro no golpea.
@@ -261,8 +279,9 @@ func hitbox_global(anim: StringName, frame: int, margin := 14.0) -> Rect2:
 			return Rect2()
 		hb = Rect2(c.hitbox[0], c.hitbox[1], c.hitbox[2], c.hitbox[3])
 	var t := _flip.get_global_transform()
-	var a := t * (hb.position - CELL_FEET)
-	var b := t * (hb.end - CELL_FEET)
+	var e := _escala(anim)
+	var a := t * ((hb.position - CELL_FEET) * e)
+	var b := t * ((hb.end - CELL_FEET) * e)
 	return Rect2(Vector2(minf(a.x, b.x), minf(a.y, b.y)), (b - a).abs()).grow(margin)
 
 
