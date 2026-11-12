@@ -447,6 +447,13 @@ func _build_ground() -> void:
 	_rock_node = _nodo_tierra(-3, _draw_rock)           # tapa el chorro de la cascada por encima del techo de la cueva
 	# roca sobre el tiro del pozo: desde arriba no se ve el camino de abajo; se aparta al bajar a la cueva
 	_tapa_roca = _nodo_tierra(2, _draw_tapa_roca)
+	# y la losa del suelo sigue por debajo del brocal (se va con la roca al bajar)
+	var antes := get_child_count()
+	_ground_strip(WELL_X - WELL_HALF - 24.0, WELL_X + WELL_HALF + 24.0, HIGH_Y)
+	for i in range(get_child_count() - 1, antes - 1, -1):
+		var losa := get_child(i)
+		if losa is CanvasItem:
+			losa.reparent(_tapa_roca, false)
 	_terrain = Node2D.new()
 	_terrain.z_index = -2
 	_terrain.draw.connect(_draw_terrain)
@@ -1657,6 +1664,9 @@ func _build_panorama_v003() -> void:
 			sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 			sp.material = _mats_dibujo[k]
 			if hito:
+				# los que llegan cortados al borde de su imagen (laderas con puente, ruinas) se funden a los lados
+				if (c[0] as String) in ["04_plano_medio", "03_ruinas_lejanas"]:
+					sp.material = _mats_dibujo[k + 2]
 				var box: Array = c[6]
 				sp.region_enabled = true
 				sp.region_rect = Rect2(box[0], box[1], box[2] - box[0], box[3] - box[1])
@@ -1678,8 +1688,8 @@ func _build_panorama_v003() -> void:
 ## montaje se pasan al mundo con la misma escala y el mismo punto que el faro (su recorte empieza en x 1697, y su
 ## borde de abajo está en y 890 del montaje).
 const FARO_MAR := [   # [archivo, x, y, ancho, alto, z, repeticiones] en px del montaje
-	["22_mar_lejano", 900.0, -105.0, 1774.0, 887.0, -67, 3],
-	["20_mar_agitado_derecha", 1100.0, 20.0, 1774.0, 887.0, -66, 3],
+	["22_mar_lejano", 900.0, -105.0, 1774.0, 887.0, -67, 6],          # 6 y 5 tramos: llegan al final del nivel
+	["20_mar_agitado_derecha", 1100.0, 20.0, 1774.0, 887.0, -66, 5],
 	["21_camino_izquierda_faro", 0.0, -120.0, 2100.0, 887.0, -65, 1],
 ]
 
@@ -1705,7 +1715,7 @@ func _build_faro_mar() -> void:
 				sp.texture = _tex_v3(["boceto", "definido"][e], archivo)
 				sp.centered = false
 				sp.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
-				sp.material = _mats_dibujo[e]
+				sp.material = _mats_dibujo[e + (2 if (c[6] as int) == 1 else 0)]   # el camino costero: bordes fundidos
 				var t := sp.texture
 				sp.scale = Vector2((c[3] as float) / t.get_width(), (c[4] as float) / t.get_height()) * k
 				var mx: float = (c[1] as float) + n * (c[3] as float)
@@ -1861,8 +1871,10 @@ func _update_tapa_roca(delta: float) -> void:
 
 
 func _draw_tapa_roca(ci: CanvasItem, estado: String) -> void:
-	var r := Rect2(WELL_X - WELL_HALF - 2.0, HIGH_Y + 4.0, WELL_HALF * 2.0 + 4.0, CAVE_TOP - HIGH_Y - 4.0)   # bajo el brocal: sin franja clara
-	_rock_rect(ci, r, estado, true, HIGH_Y + 26.0)
+	# mismo mosaico y misma altura de orilla que la roca de los lados: no se nota la unión
+	var band := HIGH_Y + 26.0
+	var r := Rect2(WELL_X - WELL_HALF, band, WELL_HALF * 2.0, CAVE_TOP - band)
+	_rock_rect(ci, r, estado, true, band)
 
 
 ## Lleva al lobo al punto de una sala (Ñ / L en main.gd, para probar).
